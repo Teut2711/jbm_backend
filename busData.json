@@ -1,1202 +1,1202 @@
 [
   {
-    "uuid": "e9d74ef7-d529-4fb0-acad-16353fcef154",
-    "depotNumber": "Depot I",
+    "uuid": "7b2bfc24-34bc-46b7-87cf-63eb9d41aa1b",
+    "depotNumber": "Depot A",
     "busNumber": "Bus-001",
-    "IMEI": "3754281459",
-    "battery": "BAT83",
-    "status": "disconnected",
+    "IMEI": "3233997839",
+    "battery": "BAT36",
+    "status": "discharging",
     "coordinates": {
-      "lat": 28.666091,
-      "lng": 76.167897
+      "lat": 28.074565,
+      "lng": 76.994814
     }
   },
   {
-    "uuid": "31380a5d-725e-4f37-8d7c-6ef3b7940b78",
+    "uuid": "01e39a63-bd0a-4184-a5f3-b4ea8c8fa7a2",
     "depotNumber": "Depot Y",
     "busNumber": "Bus-002",
-    "IMEI": "6880753403",
-    "battery": "BAT5",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.309359,
-      "lng": 76.304109
-    }
-  },
-  {
-    "uuid": "ccc9cf8b-1a85-41fc-b4f8-817a5f0cc92c",
-    "depotNumber": "Depot F",
-    "busNumber": "Bus-003",
-    "IMEI": "7670249158",
-    "battery": "BAT67",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.516306,
-      "lng": 76.443968
-    }
-  },
-  {
-    "uuid": "71f3666b-77ca-4303-ad93-fe69448e06ad",
-    "depotNumber": "Depot U",
-    "busNumber": "Bus-004",
-    "IMEI": "1696390388",
-    "battery": "BAT62",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.662233,
-      "lng": 77.020115
-    }
-  },
-  {
-    "uuid": "d8e8c8da-b322-44c0-995d-f7d01391a214",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-005",
-    "IMEI": "5887847429",
-    "battery": "BAT18",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.860516,
-      "lng": 76.221633
-    }
-  },
-  {
-    "uuid": "e07de6cc-f96a-4a7f-84e9-46e818480450",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-006",
-    "IMEI": "6057364154",
-    "battery": "BAT48",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.553013,
-      "lng": 76.221182
-    }
-  },
-  {
-    "uuid": "ff9e69de-ee5a-419d-acd4-e4327b25eb05",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-007",
-    "IMEI": "8725557795",
-    "battery": "BAT97",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.725545,
-      "lng": 76.628785
-    }
-  },
-  {
-    "uuid": "96800309-ba8c-45e6-a86f-ae2438d00d55",
-    "depotNumber": "Depot A",
-    "busNumber": "Bus-008",
-    "IMEI": "9327684883",
-    "battery": "BAT29",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.544106,
-      "lng": 76.436541
-    }
-  },
-  {
-    "uuid": "5d5bedb6-16fd-41a1-b19f-d56481ec3001",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-009",
-    "IMEI": "5872100492",
-    "battery": "BAT37",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.473776,
-      "lng": 77.164319
-    }
-  },
-  {
-    "uuid": "7724fe8e-cc2f-44b5-9a33-567ca1ace4d6",
-    "depotNumber": "Depot U",
-    "busNumber": "Bus-0010",
-    "IMEI": "7166143550",
-    "battery": "BAT48",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.231415,
-      "lng": 77.100717
-    }
-  },
-  {
-    "uuid": "a0cb595c-007d-4cd6-89b4-8e118fd54bb7",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0011",
-    "IMEI": "8897812211",
-    "battery": "BAT78",
+    "IMEI": "6934973431",
+    "battery": "BAT7",
     "status": "charging",
     "coordinates": {
-      "lat": 28.8571,
-      "lng": 76.690782
+      "lat": 28.024166,
+      "lng": 77.095288
     }
   },
   {
-    "uuid": "0e652610-7b6b-465d-95ed-df559a735705",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0012",
-    "IMEI": "5278216416",
-    "battery": "BAT17",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.873302,
-      "lng": 76.23452
-    }
-  },
-  {
-    "uuid": "14a7b018-7182-4275-8c9a-af3f475450c0",
-    "depotNumber": "Depot C",
-    "busNumber": "Bus-0013",
-    "IMEI": "5586016297",
-    "battery": "BAT20",
+    "uuid": "7ee08c7d-725d-4367-80ba-62e3faea6e9b",
+    "depotNumber": "Depot M",
+    "busNumber": "Bus-003",
+    "IMEI": "4162898515",
+    "battery": "BAT62",
     "status": "full-charged",
     "coordinates": {
-      "lat": 28.551353,
-      "lng": 77.083906
+      "lat": 28.124819,
+      "lng": 76.131763
     }
   },
   {
-    "uuid": "effe43ac-106a-4222-9cb3-8531d84bc7aa",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0014",
-    "IMEI": "1981773198",
-    "battery": "BAT5",
-    "status": "discharging",
+    "uuid": "2d0a491f-9ef3-4d69-8238-45a532136f21",
+    "depotNumber": "Depot Q",
+    "busNumber": "Bus-004",
+    "IMEI": "2666878937",
+    "battery": "BAT66",
+    "status": "full-charged",
     "coordinates": {
-      "lat": 28.248967,
-      "lng": 76.458218
+      "lat": 28.45168,
+      "lng": 76.860461
     }
   },
   {
-    "uuid": "9614e5ab-ee6e-43fb-a957-47a63d6483c3",
-    "depotNumber": "Depot U",
-    "busNumber": "Bus-0015",
-    "IMEI": "6626772586",
-    "battery": "BAT49",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.791931,
-      "lng": 76.102734
-    }
-  },
-  {
-    "uuid": "e5e9d7be-6880-44d8-97c1-ea7d4d203e6c",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0016",
-    "IMEI": "8960473300",
-    "battery": "BAT64",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.275586,
-      "lng": 76.123351
-    }
-  },
-  {
-    "uuid": "d696e446-63c9-4bf8-b8d7-785591951147",
-    "depotNumber": "Depot I",
-    "busNumber": "Bus-0017",
-    "IMEI": "1373980466",
-    "battery": "BAT7",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.426846,
-      "lng": 76.559165
-    }
-  },
-  {
-    "uuid": "4c3b0185-083b-4041-bde5-2b70392593c8",
-    "depotNumber": "Depot F",
-    "busNumber": "Bus-0018",
-    "IMEI": "3417677915",
-    "battery": "BAT3",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.09127,
-      "lng": 76.018646
-    }
-  },
-  {
-    "uuid": "97be58b6-7365-482f-92ab-2afcab67a879",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0019",
-    "IMEI": "5149431649",
-    "battery": "BAT79",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.422753,
-      "lng": 76.285305
-    }
-  },
-  {
-    "uuid": "95862323-8d5e-4d2e-a1a8-3af07bcf840d",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0020",
-    "IMEI": "3781354227",
-    "battery": "BAT21",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.859378,
-      "lng": 76.353198
-    }
-  },
-  {
-    "uuid": "111ea12f-772b-4112-9b65-b658f142cb89",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0021",
-    "IMEI": "5525269552",
-    "battery": "BAT17",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.808464,
-      "lng": 76.793294
-    }
-  },
-  {
-    "uuid": "2a7f0a57-5d2c-4a71-b056-ce3d4868e434",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-0022",
-    "IMEI": "9189823973",
-    "battery": "BAT38",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.795951,
-      "lng": 76.773628
-    }
-  },
-  {
-    "uuid": "1a83c6c7-0d26-4b41-88fa-a102f99b3ecd",
-    "depotNumber": "Depot D",
-    "busNumber": "Bus-0023",
-    "IMEI": "3697012609",
-    "battery": "BAT70",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.423644,
-      "lng": 76.818036
-    }
-  },
-  {
-    "uuid": "ccea53d2-3489-41fe-8273-c3c523d35c20",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0024",
-    "IMEI": "1258652830",
-    "battery": "BAT60",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.089881,
-      "lng": 77.076545
-    }
-  },
-  {
-    "uuid": "8261a645-b9e9-4313-8b20-9cf86f5fcbd1",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0025",
-    "IMEI": "4802616587",
-    "battery": "BAT10",
+    "uuid": "7efcd9c7-ff0b-4caa-8d49-7fa9bf790c9a",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-005",
+    "IMEI": "5639391927",
+    "battery": "BAT15",
     "status": "idle",
     "coordinates": {
-      "lat": 28.198635,
-      "lng": 77.117824
+      "lat": 28.743725,
+      "lng": 77.169156
     }
   },
   {
-    "uuid": "c04e8bd4-27d1-455b-85e3-828950141ddd",
-    "depotNumber": "Depot M",
-    "busNumber": "Bus-0026",
-    "IMEI": "7691168877",
-    "battery": "BAT8",
+    "uuid": "12a4ec6d-e166-4cfa-85d8-9a55d68537f1",
+    "depotNumber": "Depot J",
+    "busNumber": "Bus-006",
+    "IMEI": "7593292824",
+    "battery": "BAT7",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.197774,
+      "lng": 77.102429
+    }
+  },
+  {
+    "uuid": "4d71262f-eb60-4d04-8aa0-09773a41575e",
+    "depotNumber": "Depot Y",
+    "busNumber": "Bus-007",
+    "IMEI": "5705502244",
+    "battery": "BAT49",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.364622,
+      "lng": 76.01216
+    }
+  },
+  {
+    "uuid": "e6e49ce7-47fb-491d-a362-ca1d1c737bd6",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-008",
+    "IMEI": "3338712902",
+    "battery": "BAT94",
     "status": "in-depot",
     "coordinates": {
-      "lat": 28.42826,
-      "lng": 76.082502
+      "lat": 28.393392,
+      "lng": 77.185624
     }
   },
   {
-    "uuid": "0e74cff6-8ac1-4fbd-b86b-e6de98995357",
+    "uuid": "d5ec422e-8b27-49c7-8c62-d5f564c956c5",
+    "depotNumber": "Depot B",
+    "busNumber": "Bus-009",
+    "IMEI": "4461211432",
+    "battery": "BAT94",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.460861,
+      "lng": 76.745337
+    }
+  },
+  {
+    "uuid": "55333b12-f06f-4a5f-91dc-0a69e84e86d7",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0010",
+    "IMEI": "3284367097",
+    "battery": "BAT45",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.361851,
+      "lng": 76.248693
+    }
+  },
+  {
+    "uuid": "abd73180-6258-4639-ae53-d9cacc31e6b9",
+    "depotNumber": "Depot C",
+    "busNumber": "Bus-0011",
+    "IMEI": "1944738933",
+    "battery": "BAT86",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.391069,
+      "lng": 76.124716
+    }
+  },
+  {
+    "uuid": "7e00344e-926f-40b3-a50c-e54639fd4d87",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0012",
+    "IMEI": "1142521635",
+    "battery": "BAT68",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.735246,
+      "lng": 76.388986
+    }
+  },
+  {
+    "uuid": "2a62d2f7-d10f-4039-adef-32563e9cdb01",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0013",
+    "IMEI": "5539614796",
+    "battery": "BAT62",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.176253,
+      "lng": 77.033126
+    }
+  },
+  {
+    "uuid": "8794ac72-931d-4fcb-8ff9-85e7212c3423",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-0014",
+    "IMEI": "8841988398",
+    "battery": "BAT58",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.15656,
+      "lng": 77.064825
+    }
+  },
+  {
+    "uuid": "fdf35fd4-c697-4ff7-9936-c1d5dca3971d",
+    "depotNumber": "Depot E",
+    "busNumber": "Bus-0015",
+    "IMEI": "2879184473",
+    "battery": "BAT91",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.558688,
+      "lng": 76.299428
+    }
+  },
+  {
+    "uuid": "47791151-075b-4142-b64c-53d76da6031f",
+    "depotNumber": "Depot G",
+    "busNumber": "Bus-0016",
+    "IMEI": "7151881175",
+    "battery": "BAT41",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.203224,
+      "lng": 77.093682
+    }
+  },
+  {
+    "uuid": "32ed3c70-adc1-43f8-be69-2baf24dcf421",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0017",
+    "IMEI": "8909351551",
+    "battery": "BAT77",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.045271,
+      "lng": 76.449918
+    }
+  },
+  {
+    "uuid": "032a1c2b-68a0-45ea-9c6c-9d28bc04e833",
+    "depotNumber": "Depot H",
+    "busNumber": "Bus-0018",
+    "IMEI": "5206413931",
+    "battery": "BAT47",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.807131,
+      "lng": 76.064552
+    }
+  },
+  {
+    "uuid": "249d3710-ca36-4bc8-a699-b23b90f046f6",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-0019",
+    "IMEI": "4693060923",
+    "battery": "BAT25",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.703968,
+      "lng": 76.30534
+    }
+  },
+  {
+    "uuid": "27021605-d812-408f-8ce2-85e62612030b",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0020",
+    "IMEI": "1594950464",
+    "battery": "BAT92",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.271911,
+      "lng": 76.694704
+    }
+  },
+  {
+    "uuid": "89dd57d5-16b9-4c56-b38e-b281e8744596",
+    "depotNumber": "Depot D",
+    "busNumber": "Bus-0021",
+    "IMEI": "1130156197",
+    "battery": "BAT94",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.783257,
+      "lng": 76.456053
+    }
+  },
+  {
+    "uuid": "344adfc6-3019-40b3-b0fb-d980624ce10a",
+    "depotNumber": "Depot O",
+    "busNumber": "Bus-0022",
+    "IMEI": "3393991905",
+    "battery": "BAT50",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.317963,
+      "lng": 76.095472
+    }
+  },
+  {
+    "uuid": "b0ad4750-7c30-413a-9363-4a30bc99e07d",
+    "depotNumber": "Depot S",
+    "busNumber": "Bus-0023",
+    "IMEI": "3834033424",
+    "battery": "BAT79",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.139614,
+      "lng": 76.175832
+    }
+  },
+  {
+    "uuid": "b9eb5c95-91ff-4cee-96b4-97dee61daa90",
+    "depotNumber": "Depot F",
+    "busNumber": "Bus-0024",
+    "IMEI": "7606583750",
+    "battery": "BAT41",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.788371,
+      "lng": 76.157218
+    }
+  },
+  {
+    "uuid": "130e52f8-6198-4a6c-8405-61a2531b5bc7",
+    "depotNumber": "Depot T",
+    "busNumber": "Bus-0025",
+    "IMEI": "6271750193",
+    "battery": "BAT69",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.055934,
+      "lng": 76.328095
+    }
+  },
+  {
+    "uuid": "7457a635-e705-4763-b8f6-10869457ccb7",
+    "depotNumber": "Depot P",
+    "busNumber": "Bus-0026",
+    "IMEI": "8771121776",
+    "battery": "BAT72",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.681947,
+      "lng": 76.322475
+    }
+  },
+  {
+    "uuid": "f6d65c35-5048-41a0-acc2-bb8f32ceebd4",
     "depotNumber": "Depot G",
     "busNumber": "Bus-0027",
-    "IMEI": "6091914525",
-    "battery": "BAT11",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.707242,
-      "lng": 76.722105
-    }
-  },
-  {
-    "uuid": "d425a1ac-f3db-47b0-ace4-ee4608bef442",
-    "depotNumber": "Depot I",
-    "busNumber": "Bus-0028",
-    "IMEI": "5622519275",
-    "battery": "BAT35",
+    "IMEI": "6512320839",
+    "battery": "BAT89",
     "status": "in-field",
     "coordinates": {
-      "lat": 28.819879,
-      "lng": 76.915206
+      "lat": 28.558925,
+      "lng": 76.124979
     }
   },
   {
-    "uuid": "ede57ee2-d59c-46e5-9b61-011a7e8c4696",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0029",
-    "IMEI": "4662969376",
+    "uuid": "67715d72-7d25-496d-8fce-7c51f726feba",
+    "depotNumber": "Depot B",
+    "busNumber": "Bus-0028",
+    "IMEI": "5950460479",
     "battery": "BAT0",
-    "status": "idle",
+    "status": "disconnected",
     "coordinates": {
-      "lat": 28.386327,
-      "lng": 76.149665
+      "lat": 28.484802,
+      "lng": 76.701564
     }
   },
   {
-    "uuid": "0c94ffda-98b5-43a5-a33b-f03b8fa0bd30",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0030",
-    "IMEI": "6242056649",
-    "battery": "BAT14",
-    "status": "full-charged",
+    "uuid": "4dc33f77-a3cb-40c5-918a-176c49c8a9a7",
+    "depotNumber": "Depot L",
+    "busNumber": "Bus-0029",
+    "IMEI": "5634629897",
+    "battery": "BAT88",
+    "status": "discharging",
     "coordinates": {
-      "lat": 28.64257,
-      "lng": 76.267236
+      "lat": 28.017748,
+      "lng": 76.248134
     }
   },
   {
-    "uuid": "331addad-69a5-49c0-979e-5f42ade1c457",
+    "uuid": "a17e0eb6-88fe-45e7-8f94-88d86096df6f",
     "depotNumber": "Depot I",
+    "busNumber": "Bus-0030",
+    "IMEI": "5042876521",
+    "battery": "BAT52",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.649382,
+      "lng": 76.286522
+    }
+  },
+  {
+    "uuid": "ba464168-fabf-49b1-af6e-78f90a9cf7e2",
+    "depotNumber": "Depot E",
     "busNumber": "Bus-0031",
-    "IMEI": "6139471794",
-    "battery": "BAT98",
-    "status": "discharging",
+    "IMEI": "1552932113",
+    "battery": "BAT22",
+    "status": "charging",
     "coordinates": {
-      "lat": 28.199516,
-      "lng": 76.116448
+      "lat": 28.096307,
+      "lng": 76.253842
     }
   },
   {
-    "uuid": "08b7c70c-b13f-4039-b023-79e1e7469f95",
-    "depotNumber": "Depot A",
+    "uuid": "6babb23a-875e-4476-8940-f46bd9e5adb6",
+    "depotNumber": "Depot T",
     "busNumber": "Bus-0032",
-    "IMEI": "2497633914",
-    "battery": "BAT80",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.717497,
-      "lng": 76.555034
-    }
-  },
-  {
-    "uuid": "a80ad527-9074-4cff-bb26-e7ec0d458906",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0033",
-    "IMEI": "8998338718",
-    "battery": "BAT53",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.601819,
-      "lng": 77.169202
-    }
-  },
-  {
-    "uuid": "8fe1fbb2-78ae-4370-a9b3-5b078f108db1",
-    "depotNumber": "Depot W",
-    "busNumber": "Bus-0034",
-    "IMEI": "3056992424",
+    "IMEI": "1429593442",
     "battery": "BAT46",
     "status": "in-fault",
     "coordinates": {
-      "lat": 28.118584,
-      "lng": 77.159211
+      "lat": 28.548858,
+      "lng": 76.733429
     }
   },
   {
-    "uuid": "480ad306-dc3e-41fa-aac4-bd34d12d4cdd",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0035",
-    "IMEI": "7928299904",
-    "battery": "BAT57",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.092137,
-      "lng": 77.098239
-    }
-  },
-  {
-    "uuid": "518b8c4e-db1d-4ef4-9e5d-d042be46ab55",
-    "depotNumber": "Depot M",
-    "busNumber": "Bus-0036",
-    "IMEI": "7605639054",
-    "battery": "BAT40",
+    "uuid": "96ae0d6b-8032-4d02-8255-0211341095ec",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0033",
+    "IMEI": "7703053976",
+    "battery": "BAT96",
     "status": "in-depot",
     "coordinates": {
-      "lat": 28.535515,
-      "lng": 76.447305
+      "lat": 28.668591,
+      "lng": 76.289218
     }
   },
   {
-    "uuid": "edfb66f5-d676-4fc6-b1fc-3ffc3c77704a",
-    "depotNumber": "Depot A",
-    "busNumber": "Bus-0037",
-    "IMEI": "3110973838",
-    "battery": "BAT10",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.4134,
-      "lng": 76.968869
-    }
-  },
-  {
-    "uuid": "41ec60bc-1680-4415-a99c-7e75e39d8a33",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-0038",
-    "IMEI": "4483885708",
-    "battery": "BAT23",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.5609,
-      "lng": 76.684651
-    }
-  },
-  {
-    "uuid": "9ea8f075-2aa6-4613-8ea0-8ad641c4a3d6",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0039",
-    "IMEI": "5182261702",
-    "battery": "BAT40",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.520745,
-      "lng": 77.190753
-    }
-  },
-  {
-    "uuid": "56cd6616-cb71-40b6-88e0-62977925c808",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0040",
-    "IMEI": "2863569238",
-    "battery": "BAT7",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.004937,
-      "lng": 76.004702
-    }
-  },
-  {
-    "uuid": "8ae20af5-407b-49a8-a1e6-9f88e7e3064e",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0041",
-    "IMEI": "3807725866",
-    "battery": "BAT9",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.422971,
-      "lng": 77.072164
-    }
-  },
-  {
-    "uuid": "7e6ee049-5bbe-48a6-bb64-84b7fb88cea7",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0042",
-    "IMEI": "3562371163",
-    "battery": "BAT6",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.37999,
-      "lng": 76.431369
-    }
-  },
-  {
-    "uuid": "5bf10bfa-c474-4ace-a41a-876b2f383512",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0043",
-    "IMEI": "5597512011",
-    "battery": "BAT60",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.376227,
-      "lng": 76.636587
-    }
-  },
-  {
-    "uuid": "21265845-a900-4f30-b246-ae67a6f64c3d",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0044",
-    "IMEI": "2617725784",
-    "battery": "BAT45",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.30543,
-      "lng": 76.909322
-    }
-  },
-  {
-    "uuid": "f167bf10-3244-41b1-b1cb-ad55e87bdfe7",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0045",
-    "IMEI": "3751487274",
-    "battery": "BAT56",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.370793,
-      "lng": 76.310576
-    }
-  },
-  {
-    "uuid": "c0956385-222f-418d-924f-5fd5d7fb359f",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0046",
-    "IMEI": "2635331566",
-    "battery": "BAT27",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.715767,
-      "lng": 77.176716
-    }
-  },
-  {
-    "uuid": "587994b6-bfd5-4d77-80b0-a491801096cd",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0047",
-    "IMEI": "7822137932",
-    "battery": "BAT85",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.474806,
-      "lng": 76.146337
-    }
-  },
-  {
-    "uuid": "aa6e84a7-8483-460c-bdb0-665a19c74820",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0048",
-    "IMEI": "4634014764",
-    "battery": "BAT27",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.405127,
-      "lng": 76.353068
-    }
-  },
-  {
-    "uuid": "45baa420-5169-48d4-a084-b0f2cea24863",
-    "depotNumber": "Depot C",
-    "busNumber": "Bus-0049",
-    "IMEI": "7463324303",
-    "battery": "BAT31",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.270479,
-      "lng": 76.677096
-    }
-  },
-  {
-    "uuid": "5bb0ffda-add0-4f27-94dd-05b61e25224a",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0050",
-    "IMEI": "9184305962",
-    "battery": "BAT19",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.367166,
-      "lng": 76.299968
-    }
-  },
-  {
-    "uuid": "db48a9b6-18e0-428f-8a41-ae3a05cc39b1",
-    "depotNumber": "Depot V",
-    "busNumber": "Bus-0051",
-    "IMEI": "4514661033",
-    "battery": "BAT68",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.341051,
-      "lng": 76.55153
-    }
-  },
-  {
-    "uuid": "24e5d577-aa09-4a42-8555-62815b482e41",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-0052",
-    "IMEI": "2231750037",
-    "battery": "BAT55",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.209416,
-      "lng": 76.529132
-    }
-  },
-  {
-    "uuid": "42fa1d9c-daab-4775-8964-7a7785a0bda3",
-    "depotNumber": "Depot V",
-    "busNumber": "Bus-0053",
-    "IMEI": "9726919458",
-    "battery": "BAT21",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.332945,
-      "lng": 76.784669
-    }
-  },
-  {
-    "uuid": "b0ca08e4-8f71-4121-a2a5-cffda1ac7680",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0054",
-    "IMEI": "2207995083",
-    "battery": "BAT14",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.34056,
-      "lng": 76.184252
-    }
-  },
-  {
-    "uuid": "06b5f057-6cde-4371-bcc0-22fd9099a0ba",
-    "depotNumber": "Depot Y",
-    "busNumber": "Bus-0055",
-    "IMEI": "2824026658",
-    "battery": "BAT36",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.74922,
-      "lng": 76.174268
-    }
-  },
-  {
-    "uuid": "10fa9a4c-757d-4aab-ae36-bbb2afa95def",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0056",
-    "IMEI": "8804464454",
-    "battery": "BAT60",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.04011,
-      "lng": 76.379942
-    }
-  },
-  {
-    "uuid": "d716a25a-109d-48e1-b519-8578c585467d",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0057",
-    "IMEI": "7396321940",
-    "battery": "BAT9",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.470436,
-      "lng": 77.010697
-    }
-  },
-  {
-    "uuid": "5df694d9-293a-4e7d-bea6-8339b3bfe415",
-    "depotNumber": "Depot Y",
-    "busNumber": "Bus-0058",
-    "IMEI": "4270058529",
-    "battery": "BAT93",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.867898,
-      "lng": 77.18826
-    }
-  },
-  {
-    "uuid": "37376bf6-5c1c-4fb3-aeda-6b1f6966b136",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0059",
-    "IMEI": "6487084337",
+    "uuid": "2bb9162d-deba-4140-9a6a-acbfa4706bfc",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0034",
+    "IMEI": "1548528725",
     "battery": "BAT74",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.436731,
+      "lng": 76.746234
+    }
+  },
+  {
+    "uuid": "293c86ad-a125-49f6-a074-0325407d66ab",
+    "depotNumber": "Depot C",
+    "busNumber": "Bus-0035",
+    "IMEI": "6758270611",
+    "battery": "BAT35",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.109903,
+      "lng": 76.061579
+    }
+  },
+  {
+    "uuid": "db31a85f-e449-4736-aa47-56594810af0d",
+    "depotNumber": "Depot Z",
+    "busNumber": "Bus-0036",
+    "IMEI": "2601936166",
+    "battery": "BAT36",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.087801,
+      "lng": 76.78728
+    }
+  },
+  {
+    "uuid": "65b8e195-f0e7-4adf-a6dd-c1e5f913e338",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0037",
+    "IMEI": "2696070856",
+    "battery": "BAT75",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.183914,
+      "lng": 76.853014
+    }
+  },
+  {
+    "uuid": "59e34a38-9d6a-4043-9b32-ebca33e25191",
+    "depotNumber": "Depot N",
+    "busNumber": "Bus-0038",
+    "IMEI": "4335891132",
+    "battery": "BAT64",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.890774,
+      "lng": 76.112447
+    }
+  },
+  {
+    "uuid": "35392e43-a104-495f-a5ee-a0ac3262477e",
+    "depotNumber": "Depot Y",
+    "busNumber": "Bus-0039",
+    "IMEI": "2808135236",
+    "battery": "BAT100",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.713378,
+      "lng": 76.524618
+    }
+  },
+  {
+    "uuid": "33378a2b-9e78-4614-8367-bd2d8cc2b4d5",
+    "depotNumber": "Depot T",
+    "busNumber": "Bus-0040",
+    "IMEI": "6129855223",
+    "battery": "BAT30",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.702726,
+      "lng": 76.743378
+    }
+  },
+  {
+    "uuid": "350f7c68-ca45-4514-96bc-1d5d42ef0690",
+    "depotNumber": "Depot S",
+    "busNumber": "Bus-0041",
+    "IMEI": "8402078690",
+    "battery": "BAT31",
     "status": "disconnected",
     "coordinates": {
-      "lat": 28.008736,
-      "lng": 76.697352
+      "lat": 28.683629,
+      "lng": 77.121941
     }
   },
   {
-    "uuid": "2c6ab371-f528-48ae-9691-3e15eb89adc2",
-    "depotNumber": "Depot F",
-    "busNumber": "Bus-0060",
-    "IMEI": "6253124090",
-    "battery": "BAT8",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.8824,
-      "lng": 76.976144
-    }
-  },
-  {
-    "uuid": "3c1ce9b1-41b5-4f63-9b10-5c59ad041c5e",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0061",
-    "IMEI": "7845154964",
-    "battery": "BAT23",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.265116,
-      "lng": 76.687247
-    }
-  },
-  {
-    "uuid": "3f67e4c1-fcc7-4ed9-afac-f4fa998bf1f6",
-    "depotNumber": "Depot A",
-    "busNumber": "Bus-0062",
-    "IMEI": "7147106130",
+    "uuid": "49635b55-72a5-4009-8753-a9555786f837",
+    "depotNumber": "Depot Q",
+    "busNumber": "Bus-0042",
+    "IMEI": "4074634329",
     "battery": "BAT24",
-    "status": "full-charged",
+    "status": "idle",
     "coordinates": {
-      "lat": 28.604121,
-      "lng": 76.767033
+      "lat": 28.866175,
+      "lng": 76.095084
     }
   },
   {
-    "uuid": "f380d269-cad1-4b22-a13e-fa530a842827",
-    "depotNumber": "Depot V",
-    "busNumber": "Bus-0063",
-    "IMEI": "2540408104",
-    "battery": "BAT24",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.725353,
-      "lng": 76.369319
-    }
-  },
-  {
-    "uuid": "e06cc570-7997-4a4f-861f-d1abd08a5a94",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0064",
-    "IMEI": "7149149957",
-    "battery": "BAT71",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.440276,
-      "lng": 76.501041
-    }
-  },
-  {
-    "uuid": "164ed5a3-34bb-4c35-96c9-d7a81557d839",
+    "uuid": "a33c872c-d541-4d88-b131-babdb5ef11b7",
     "depotNumber": "Depot Z",
-    "busNumber": "Bus-0065",
-    "IMEI": "4918519532",
-    "battery": "BAT86",
-    "status": "in-depot",
+    "busNumber": "Bus-0043",
+    "IMEI": "8774821204",
+    "battery": "BAT89",
+    "status": "disconnected",
     "coordinates": {
-      "lat": 28.285616,
-      "lng": 76.974802
+      "lat": 28.631735,
+      "lng": 76.100237
     }
   },
   {
-    "uuid": "00fd4558-f629-4d40-8770-48e4d0e40a98",
+    "uuid": "3431d300-d7c9-4500-940c-77d5e598f05d",
     "depotNumber": "Depot S",
-    "busNumber": "Bus-0066",
-    "IMEI": "2463573238",
-    "battery": "BAT42",
-    "status": "full-charged",
+    "busNumber": "Bus-0044",
+    "IMEI": "5959969729",
+    "battery": "BAT60",
+    "status": "charging",
     "coordinates": {
-      "lat": 28.023952,
-      "lng": 76.076678
+      "lat": 28.173593,
+      "lng": 76.831221
     }
   },
   {
-    "uuid": "89e10dd8-bac3-41bd-a931-9bbc00ba1f7e",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0067",
-    "IMEI": "6602765634",
-    "battery": "BAT34",
+    "uuid": "10e67168-c0ee-47f4-a035-964a64911b3b",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0045",
+    "IMEI": "8142044494",
+    "battery": "BAT100",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.101646,
+      "lng": 76.684665
+    }
+  },
+  {
+    "uuid": "868d0d72-d2c4-43f4-8baa-c16701dbe69f",
+    "depotNumber": "Depot C",
+    "busNumber": "Bus-0046",
+    "IMEI": "3065337577",
+    "battery": "BAT91",
     "status": "in-field",
     "coordinates": {
-      "lat": 28.740328,
-      "lng": 76.184517
+      "lat": 28.299473,
+      "lng": 76.348155
     }
   },
   {
-    "uuid": "b5e3fe0c-9b6c-4152-bd4d-6232bd2ba222",
+    "uuid": "29a7d6ce-c786-42d6-8e69-47a6dbf3727f",
+    "depotNumber": "Depot Z",
+    "busNumber": "Bus-0047",
+    "IMEI": "5347937199",
+    "battery": "BAT1",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.653236,
+      "lng": 77.041121
+    }
+  },
+  {
+    "uuid": "a32fa25b-34db-4fb4-8ded-69e7b8878d38",
+    "depotNumber": "Depot M",
+    "busNumber": "Bus-0048",
+    "IMEI": "7698659655",
+    "battery": "BAT30",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.492875,
+      "lng": 76.971879
+    }
+  },
+  {
+    "uuid": "d2d6cb64-b01f-42bd-a55c-8906b77ca0c7",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0049",
+    "IMEI": "3472918543",
+    "battery": "BAT9",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.392843,
+      "lng": 76.558832
+    }
+  },
+  {
+    "uuid": "8ec22f35-82d6-4abb-8b90-70a19e13779d",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0050",
+    "IMEI": "8403819688",
+    "battery": "BAT88",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.843073,
+      "lng": 76.61889
+    }
+  },
+  {
+    "uuid": "335cbd70-cc21-4eee-99aa-5c2e07d8a420",
+    "depotNumber": "Depot D",
+    "busNumber": "Bus-0051",
+    "IMEI": "6796018049",
+    "battery": "BAT21",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.325144,
+      "lng": 76.15581
+    }
+  },
+  {
+    "uuid": "1b18d33a-e6e8-4015-aee4-a2e142aa89b3",
+    "depotNumber": "Depot C",
+    "busNumber": "Bus-0052",
+    "IMEI": "1645476590",
+    "battery": "BAT9",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.297406,
+      "lng": 76.587827
+    }
+  },
+  {
+    "uuid": "f558d541-eb6e-4106-ac18-c9e4f8ef03c2",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0053",
+    "IMEI": "9219589899",
+    "battery": "BAT58",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.461648,
+      "lng": 76.196571
+    }
+  },
+  {
+    "uuid": "28504318-a930-4ca6-9e2c-02e5efba1226",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0054",
+    "IMEI": "2353931662",
+    "battery": "BAT75",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.584515,
+      "lng": 76.52453
+    }
+  },
+  {
+    "uuid": "2b05727f-3c2c-4103-bf73-02e52a8acd47",
+    "depotNumber": "Depot M",
+    "busNumber": "Bus-0055",
+    "IMEI": "7476353895",
+    "battery": "BAT34",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.225612,
+      "lng": 76.412053
+    }
+  },
+  {
+    "uuid": "d659f2ac-b3a9-47d7-860d-56f13e231558",
+    "depotNumber": "Depot L",
+    "busNumber": "Bus-0056",
+    "IMEI": "5724790463",
+    "battery": "BAT88",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.560682,
+      "lng": 77.10693
+    }
+  },
+  {
+    "uuid": "66b2749c-182b-454d-9454-58a5e10a69ed",
+    "depotNumber": "Depot M",
+    "busNumber": "Bus-0057",
+    "IMEI": "8227971871",
+    "battery": "BAT67",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.697553,
+      "lng": 76.42789
+    }
+  },
+  {
+    "uuid": "b5758648-174e-489e-b211-71ab1a9bfb97",
+    "depotNumber": "Depot V",
+    "busNumber": "Bus-0058",
+    "IMEI": "9149337850",
+    "battery": "BAT24",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.091928,
+      "lng": 77.18696
+    }
+  },
+  {
+    "uuid": "edc20b74-fcfd-4840-916c-39af5f2a93a9",
+    "depotNumber": "Depot G",
+    "busNumber": "Bus-0059",
+    "IMEI": "8367661534",
+    "battery": "BAT70",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.895639,
+      "lng": 76.682994
+    }
+  },
+  {
+    "uuid": "b0156a99-c6fc-43a8-8ee5-48326e687a66",
     "depotNumber": "Depot P",
+    "busNumber": "Bus-0060",
+    "IMEI": "3409839152",
+    "battery": "BAT59",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.470978,
+      "lng": 77.03706
+    }
+  },
+  {
+    "uuid": "0be33257-6c50-402b-9344-6e1e42f66fca",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0061",
+    "IMEI": "9061648200",
+    "battery": "BAT72",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.243745,
+      "lng": 76.759493
+    }
+  },
+  {
+    "uuid": "84ec6df2-52b4-49a7-a445-8b813970d819",
+    "depotNumber": "Depot Z",
+    "busNumber": "Bus-0062",
+    "IMEI": "7471765383",
+    "battery": "BAT90",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.068169,
+      "lng": 77.114546
+    }
+  },
+  {
+    "uuid": "cd3dade7-715b-4438-a359-d4ee2cb8896a",
+    "depotNumber": "Depot O",
+    "busNumber": "Bus-0063",
+    "IMEI": "2344433038",
+    "battery": "BAT25",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.416033,
+      "lng": 76.533744
+    }
+  },
+  {
+    "uuid": "8e985335-c4fa-4067-a094-63e0ee9bd056",
+    "depotNumber": "Depot T",
+    "busNumber": "Bus-0064",
+    "IMEI": "7529110760",
+    "battery": "BAT72",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.209629,
+      "lng": 76.588693
+    }
+  },
+  {
+    "uuid": "aa0b60b6-ea57-43fb-8006-2baaad4c8b34",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0065",
+    "IMEI": "8860986803",
+    "battery": "BAT60",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.543358,
+      "lng": 76.999302
+    }
+  },
+  {
+    "uuid": "e726512a-1211-4899-8270-54961066a421",
+    "depotNumber": "Depot W",
+    "busNumber": "Bus-0066",
+    "IMEI": "5168804609",
+    "battery": "BAT76",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.611395,
+      "lng": 76.937792
+    }
+  },
+  {
+    "uuid": "1fb139b6-fc28-473c-abc1-82813d620662",
+    "depotNumber": "Depot F",
+    "busNumber": "Bus-0067",
+    "IMEI": "8772943623",
+    "battery": "BAT45",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.319372,
+      "lng": 76.076152
+    }
+  },
+  {
+    "uuid": "5ec044a9-808d-45c0-b471-ffc1e45312d0",
+    "depotNumber": "Depot J",
     "busNumber": "Bus-0068",
-    "IMEI": "4035590715",
+    "IMEI": "9120766797",
+    "battery": "BAT10",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.403983,
+      "lng": 76.31539
+    }
+  },
+  {
+    "uuid": "55196aba-0827-4719-8c03-cf77d2d8da9d",
+    "depotNumber": "Depot H",
+    "busNumber": "Bus-0069",
+    "IMEI": "1202902990",
+    "battery": "BAT13",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.24264,
+      "lng": 76.039449
+    }
+  },
+  {
+    "uuid": "b5e87e0e-07dc-452b-a98a-8677b3dc6f69",
+    "depotNumber": "Depot Q",
+    "busNumber": "Bus-0070",
+    "IMEI": "1647528660",
+    "battery": "BAT20",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.661604,
+      "lng": 76.025815
+    }
+  },
+  {
+    "uuid": "61da3a33-d270-46a9-99ea-72a073a04ac8",
+    "depotNumber": "Depot Q",
+    "busNumber": "Bus-0071",
+    "IMEI": "2710251850",
+    "battery": "BAT64",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.883072,
+      "lng": 76.880279
+    }
+  },
+  {
+    "uuid": "be80de26-bd78-4293-9ed1-6d77419093e2",
+    "depotNumber": "Depot Y",
+    "busNumber": "Bus-0072",
+    "IMEI": "8009432810",
+    "battery": "BAT0",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.243325,
+      "lng": 76.052433
+    }
+  },
+  {
+    "uuid": "efacc444-d2f7-4b31-822f-88ec7d286cfe",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0073",
+    "IMEI": "3237425582",
+    "battery": "BAT35",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.328218,
+      "lng": 76.749212
+    }
+  },
+  {
+    "uuid": "834adf40-4215-449c-a019-18effd87c78a",
+    "depotNumber": "Depot M",
+    "busNumber": "Bus-0074",
+    "IMEI": "8824026869",
+    "battery": "BAT84",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.850175,
+      "lng": 77.176882
+    }
+  },
+  {
+    "uuid": "2fc55ba8-9423-435a-b3f0-d6409a18dbeb",
+    "depotNumber": "Depot C",
+    "busNumber": "Bus-0075",
+    "IMEI": "1664127180",
+    "battery": "BAT26",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.083113,
+      "lng": 76.264464
+    }
+  },
+  {
+    "uuid": "c87772f2-d4bc-4abb-bb73-684e4a4acf71",
+    "depotNumber": "Depot Q",
+    "busNumber": "Bus-0076",
+    "IMEI": "6522840873",
+    "battery": "BAT18",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.54825,
+      "lng": 76.857868
+    }
+  },
+  {
+    "uuid": "8c0d6e10-4e1b-4fb3-b24d-3bce3a855f5d",
+    "depotNumber": "Depot B",
+    "busNumber": "Bus-0077",
+    "IMEI": "2254845792",
+    "battery": "BAT19",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.525157,
+      "lng": 76.131559
+    }
+  },
+  {
+    "uuid": "e89d8939-84ed-4926-ad6f-8b2b684541c1",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0078",
+    "IMEI": "2298769287",
+    "battery": "BAT12",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.454509,
+      "lng": 77.167715
+    }
+  },
+  {
+    "uuid": "a4099f43-98a4-4b33-bd4b-ffb5430cbfe4",
+    "depotNumber": "Depot D",
+    "busNumber": "Bus-0079",
+    "IMEI": "8468381012",
+    "battery": "BAT92",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.671359,
+      "lng": 76.197729
+    }
+  },
+  {
+    "uuid": "d520d3ea-425e-432c-99e0-78f2f3a0ffa2",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0080",
+    "IMEI": "8882564201",
+    "battery": "BAT29",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.842091,
+      "lng": 76.45235
+    }
+  },
+  {
+    "uuid": "5707e460-d55e-4f0b-b96a-17788b02057a",
+    "depotNumber": "Depot T",
+    "busNumber": "Bus-0081",
+    "IMEI": "8569029041",
+    "battery": "BAT0",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.674879,
+      "lng": 76.078746
+    }
+  },
+  {
+    "uuid": "fad455cc-99b3-439c-8b73-6c9f9c7fe49a",
+    "depotNumber": "Depot L",
+    "busNumber": "Bus-0082",
+    "IMEI": "4882293823",
+    "battery": "BAT74",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.677045,
+      "lng": 76.703986
+    }
+  },
+  {
+    "uuid": "32b590cb-d934-4345-bb1e-115aeb641165",
+    "depotNumber": "Depot T",
+    "busNumber": "Bus-0083",
+    "IMEI": "5583235940",
+    "battery": "BAT44",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.245356,
+      "lng": 76.475439
+    }
+  },
+  {
+    "uuid": "9ed4bc25-fcaf-48b3-b2af-3a2e9ce21dbc",
+    "depotNumber": "Depot J",
+    "busNumber": "Bus-0084",
+    "IMEI": "9654975001",
+    "battery": "BAT78",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.392601,
+      "lng": 76.444919
+    }
+  },
+  {
+    "uuid": "690bc2fd-f0c0-4dea-8d74-a3a32e735f89",
+    "depotNumber": "Depot B",
+    "busNumber": "Bus-0085",
+    "IMEI": "9159919202",
+    "battery": "BAT18",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.509339,
+      "lng": 76.158445
+    }
+  },
+  {
+    "uuid": "cf4cf545-711c-4e9d-8a55-a457bfabc729",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0086",
+    "IMEI": "8625859534",
+    "battery": "BAT100",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.222758,
+      "lng": 76.39881
+    }
+  },
+  {
+    "uuid": "e15a31e9-0823-4029-a18f-39cf03c90b65",
+    "depotNumber": "Depot N",
+    "busNumber": "Bus-0087",
+    "IMEI": "1563642175",
+    "battery": "BAT44",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.86045,
+      "lng": 76.766923
+    }
+  },
+  {
+    "uuid": "f9641751-6e52-4690-8847-67b2a0d51d11",
+    "depotNumber": "Depot D",
+    "busNumber": "Bus-0088",
+    "IMEI": "8146760223",
+    "battery": "BAT82",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.13508,
+      "lng": 76.327284
+    }
+  },
+  {
+    "uuid": "f4137155-56f2-4677-9265-8f2777f14d0f",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0089",
+    "IMEI": "6916603313",
+    "battery": "BAT66",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.728428,
+      "lng": 76.357644
+    }
+  },
+  {
+    "uuid": "1039d0ca-0f04-4370-be72-8d097bfc4b89",
+    "depotNumber": "Depot S",
+    "busNumber": "Bus-0090",
+    "IMEI": "4473491413",
+    "battery": "BAT64",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.772494,
+      "lng": 76.435148
+    }
+  },
+  {
+    "uuid": "84f621c5-a1d2-451c-b56c-f1a9a321edf3",
+    "depotNumber": "Depot H",
+    "busNumber": "Bus-0091",
+    "IMEI": "4087567901",
+    "battery": "BAT31",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.48085,
+      "lng": 76.129774
+    }
+  },
+  {
+    "uuid": "66867ff5-8b2a-46d2-af0f-30b730563844",
+    "depotNumber": "Depot G",
+    "busNumber": "Bus-0092",
+    "IMEI": "3482427034",
+    "battery": "BAT53",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.875024,
+      "lng": 77.00621
+    }
+  },
+  {
+    "uuid": "f5d45363-a845-47e9-8cef-e254cc12f218",
+    "depotNumber": "Depot L",
+    "busNumber": "Bus-0093",
+    "IMEI": "2058132401",
+    "battery": "BAT2",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.804787,
+      "lng": 76.533073
+    }
+  },
+  {
+    "uuid": "34289093-e0c7-410e-a98e-c9569d18d526",
+    "depotNumber": "Depot W",
+    "busNumber": "Bus-0094",
+    "IMEI": "3488954375",
+    "battery": "BAT91",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.368818,
+      "lng": 76.264347
+    }
+  },
+  {
+    "uuid": "14f2f719-b24f-41bb-92f2-d52ca57e4cd6",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0095",
+    "IMEI": "7807642360",
+    "battery": "BAT13",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.624694,
+      "lng": 77.017933
+    }
+  },
+  {
+    "uuid": "9962ebc4-705e-41fd-b8b3-f4b12c3e0c19",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0096",
+    "IMEI": "8254283054",
+    "battery": "BAT52",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.089938,
+      "lng": 76.315348
+    }
+  },
+  {
+    "uuid": "86978dec-f083-4f04-8360-514e4cae4f26",
+    "depotNumber": "Depot E",
+    "busNumber": "Bus-0097",
+    "IMEI": "1863590430",
+    "battery": "BAT36",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.726768,
+      "lng": 76.542122
+    }
+  },
+  {
+    "uuid": "4f55a935-f5fc-447e-859a-6477b13a9530",
+    "depotNumber": "Depot G",
+    "busNumber": "Bus-0098",
+    "IMEI": "2820305131",
+    "battery": "BAT55",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.6293,
+      "lng": 76.40009
+    }
+  },
+  {
+    "uuid": "a775eeea-8f55-43cf-a164-2229e9cc41e9",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0099",
+    "IMEI": "9159631334",
+    "battery": "BAT33",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.250902,
+      "lng": 76.663144
+    }
+  },
+  {
+    "uuid": "01c4ba2b-91b9-4fec-aee0-9d55323bf715",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-00100",
+    "IMEI": "1489880253",
     "battery": "BAT51",
     "status": "disconnected",
     "coordinates": {
-      "lat": 28.676479,
-      "lng": 76.810408
-    }
-  },
-  {
-    "uuid": "6796a81d-3541-4255-91fa-eac58610bd30",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0069",
-    "IMEI": "1717152667",
-    "battery": "BAT7",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.488984,
-      "lng": 76.169611
-    }
-  },
-  {
-    "uuid": "84525e19-2019-40c3-81bb-08b87352a59c",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0070",
-    "IMEI": "7550521136",
-    "battery": "BAT71",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.190439,
-      "lng": 76.082976
-    }
-  },
-  {
-    "uuid": "d7e9a4d4-0468-467a-93d8-bf648857eee4",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0071",
-    "IMEI": "2685823003",
-    "battery": "BAT14",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.524138,
-      "lng": 77.03859
-    }
-  },
-  {
-    "uuid": "f3bc1525-be28-4dd2-995f-9e7f261c74e2",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0072",
-    "IMEI": "5132595936",
-    "battery": "BAT92",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.203558,
-      "lng": 76.244717
-    }
-  },
-  {
-    "uuid": "ebed4294-cfb7-40f4-bdfa-23d7c64a0920",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0073",
-    "IMEI": "9835120031",
-    "battery": "BAT1",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.359363,
-      "lng": 76.593579
-    }
-  },
-  {
-    "uuid": "037ed491-b1e2-4c3e-8a0c-3ac15e541163",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0074",
-    "IMEI": "8685599543",
-    "battery": "BAT25",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.545513,
-      "lng": 76.410788
-    }
-  },
-  {
-    "uuid": "7c990886-601d-4ef1-b51b-df45a97a0bbe",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-0075",
-    "IMEI": "2833331807",
-    "battery": "BAT39",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.767702,
-      "lng": 77.175641
-    }
-  },
-  {
-    "uuid": "42d55039-1a1c-4f81-82ac-97689d0a0fa0",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0076",
-    "IMEI": "8812970446",
-    "battery": "BAT36",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.043737,
-      "lng": 77.137563
-    }
-  },
-  {
-    "uuid": "0d82ac1a-3fc4-41b4-91b4-a1eccf018f26",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0077",
-    "IMEI": "4896616458",
-    "battery": "BAT24",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.57293,
-      "lng": 76.097167
-    }
-  },
-  {
-    "uuid": "db091650-dadf-4f81-9234-25cd3b156e6a",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0078",
-    "IMEI": "2409840143",
-    "battery": "BAT80",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.605728,
-      "lng": 76.86666
-    }
-  },
-  {
-    "uuid": "b3b57e57-9ac1-4ab3-af4e-4b1026d31d56",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0079",
-    "IMEI": "6780595379",
-    "battery": "BAT2",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.622012,
-      "lng": 76.196372
-    }
-  },
-  {
-    "uuid": "3103cd1a-285a-4346-ad6e-bca266899867",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0080",
-    "IMEI": "5230119985",
-    "battery": "BAT43",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.474403,
-      "lng": 76.749216
-    }
-  },
-  {
-    "uuid": "29cbb85a-e5b4-4814-b326-17a95e22a9dd",
-    "depotNumber": "Depot C",
-    "busNumber": "Bus-0081",
-    "IMEI": "1989524958",
-    "battery": "BAT35",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.317767,
-      "lng": 76.1375
-    }
-  },
-  {
-    "uuid": "c67f9223-a107-4683-aa52-5dafd980b83e",
-    "depotNumber": "Depot B",
-    "busNumber": "Bus-0082",
-    "IMEI": "5763756050",
-    "battery": "BAT100",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.620322,
-      "lng": 76.987947
-    }
-  },
-  {
-    "uuid": "4f4112e6-4f62-42c9-9005-af277fe6413c",
-    "depotNumber": "Depot W",
-    "busNumber": "Bus-0083",
-    "IMEI": "6239357818",
-    "battery": "BAT20",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.638544,
-      "lng": 76.441312
-    }
-  },
-  {
-    "uuid": "03f19a5a-f988-4d9f-b9cb-56b03c543c2e",
-    "depotNumber": "Depot C",
-    "busNumber": "Bus-0084",
-    "IMEI": "6574760122",
-    "battery": "BAT79",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.406397,
-      "lng": 77.164433
-    }
-  },
-  {
-    "uuid": "7bcea59f-f04c-428d-8a1b-99eed1f8c9f0",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0085",
-    "IMEI": "4642405774",
-    "battery": "BAT33",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.667968,
-      "lng": 77.190677
-    }
-  },
-  {
-    "uuid": "9e57c3d4-8a36-4c70-9211-83f6ca0fce6b",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0086",
-    "IMEI": "3346738413",
-    "battery": "BAT52",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.746003,
-      "lng": 76.940959
-    }
-  },
-  {
-    "uuid": "a628f221-0632-41de-8fe6-1e83072cfa59",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0087",
-    "IMEI": "7882833672",
-    "battery": "BAT95",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.817385,
-      "lng": 76.714658
-    }
-  },
-  {
-    "uuid": "eff1f925-1421-4110-821e-2492670d901b",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0088",
-    "IMEI": "5575730356",
-    "battery": "BAT79",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.706832,
-      "lng": 76.200785
-    }
-  },
-  {
-    "uuid": "3de3a97e-169d-4fd2-ab90-49ed08dfaa2d",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0089",
-    "IMEI": "9202356980",
-    "battery": "BAT42",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.810548,
-      "lng": 76.117529
-    }
-  },
-  {
-    "uuid": "f65cf317-bcf2-4eb9-b648-5245819b7ad4",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0090",
-    "IMEI": "3919783155",
-    "battery": "BAT18",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.204072,
-      "lng": 76.904028
-    }
-  },
-  {
-    "uuid": "ec8accf2-b95f-4646-ae77-32179224bd72",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0091",
-    "IMEI": "2714246736",
-    "battery": "BAT75",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.064828,
-      "lng": 77.183731
-    }
-  },
-  {
-    "uuid": "48f3aa2c-0078-4cfb-ab12-a5728e8c2ca8",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-0092",
-    "IMEI": "7293501905",
-    "battery": "BAT11",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.707699,
-      "lng": 76.679231
-    }
-  },
-  {
-    "uuid": "70802794-b1f1-4891-bcd8-ee79f08b56a9",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0093",
-    "IMEI": "9313248727",
-    "battery": "BAT1",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.241968,
-      "lng": 76.815349
-    }
-  },
-  {
-    "uuid": "84b71c5f-f8a2-4bfe-8479-de2ae33c13be",
-    "depotNumber": "Depot V",
-    "busNumber": "Bus-0094",
-    "IMEI": "1942972927",
-    "battery": "BAT34",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.320484,
-      "lng": 76.026788
-    }
-  },
-  {
-    "uuid": "7d26c248-f918-4a98-9693-fae1fc75a307",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0095",
-    "IMEI": "1257305941",
-    "battery": "BAT33",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.452722,
-      "lng": 76.692542
-    }
-  },
-  {
-    "uuid": "5dbf1a1a-11c6-4711-9c1a-24a0b7fffb27",
-    "depotNumber": "Depot D",
-    "busNumber": "Bus-0096",
-    "IMEI": "9785683032",
-    "battery": "BAT68",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.374419,
-      "lng": 76.633028
-    }
-  },
-  {
-    "uuid": "ac687bfd-9a9a-474c-aa67-4ae4b72098a1",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0097",
-    "IMEI": "6432190827",
-    "battery": "BAT5",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.513459,
-      "lng": 76.068659
-    }
-  },
-  {
-    "uuid": "096213c9-1e6f-4eaf-8d06-2292e77d554b",
-    "depotNumber": "Depot Y",
-    "busNumber": "Bus-0098",
-    "IMEI": "2516621086",
-    "battery": "BAT56",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.067038,
-      "lng": 76.288777
-    }
-  },
-  {
-    "uuid": "02a9b78e-95a1-421d-9a91-8940d9892c7d",
-    "depotNumber": "Depot X",
-    "busNumber": "Bus-0099",
-    "IMEI": "4536724938",
-    "battery": "BAT81",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.259508,
-      "lng": 77.020356
-    }
-  },
-  {
-    "uuid": "7f520745-a1ce-4f87-a73a-e208a2416347",
-    "depotNumber": "Depot M",
-    "busNumber": "Bus-00100",
-    "IMEI": "4932212876",
-    "battery": "BAT69",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.615289,
-      "lng": 76.441116
+      "lat": 28.405899,
+      "lng": 76.201034
     }
   }
 ]

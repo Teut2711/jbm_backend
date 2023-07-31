@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 import random
 import json
 import string
@@ -6,6 +7,11 @@ import uuid
 
 from datetime import datetime, timedelta
 from geopy.geocoders import Nominatim
+
+
+class SWITCH:
+    ON = "on"
+    OFF = "off"
 
 
 def get_address_from_lat_long(latitude, longitude):
@@ -33,12 +39,15 @@ def random_datetime(start_date, end_date):
     return random_datetime.isoformat()
 
 
-start_date = datetime.now()
-end_date = datetime(2023, 12, 31, 23, 59, 59)
+end_date = datetime.now()
+start_date = datetime(2022, 10, 1, 23, 59, 59)
 
 
 dummy_buses_data = []
+dummy_faults_data = []
+
 dummy_specific_bus_data = []
+dummy_specific_fault_data = []
 
 for i in range(100):
     bus_status = random.choice(
@@ -62,13 +71,14 @@ for i in range(100):
     )  # Random longitude in the range 76.0 to 77.2
     _uuid = str(uuid.uuid4())
     _imei = str(random.randint(10**9, 10**10))
+    _battery_number = random.randint(0, 100)
 
     bus_data = {
         "uuid": _uuid,
         "depotNumber": depot_number,
         "busNumber": f"Bus-00{i+1}",
         "IMEI": _imei,
-        "battery": f"BAT{random.randint(0, 100)}",
+        "battery": f"BAT{_battery_number}",
         "status": bus_status,
         "coordinates": {"lat": latitude, "lng": longitude},
     }
@@ -130,32 +140,75 @@ for i in range(100):
                 "units": "km/h",
             },
             "contractorStatus": {
-                "text": "Contractor Status",
+                "text": "String Contractor Status",
                 "value": "Closed",
             },
             "cellVoltageDelta": {
-                "text": "Delta of Cell Voltage",
+                "text": "String-Wise Delta of Cell Voltage",
                 "min": round(random.uniform(0, 0.5), 2),
                 "max": round(random.uniform(0.5, 1), 2),
                 "units": "V",
             },
             "temperatureDelta": {
-                "text": "Delta of Temperature",
+                "text": "String-Wise Delta of Temperature",
                 "min": random.randint(25, 35),
                 "max": round(random.uniform(50, 100), 2),
                 "units": "°C",
             },
         },
     }
+    _uuid = str(uuid.uuid4())
+    fault_description = random.choice(
+        [
+            "B2V CellVoltTooHigh",
+            "B2V BatTempTooHigh",
+            "B2V BMSWorkVoltError",
+            "B2V TempDiff",
+            "B2V TempNotControl",
+        ]
+    )
+    fault_code = random.randint(125, 400)
+    fault_data = {
+        "uuid": _uuid,
+        "faultCode": f"F{fault_code}",
+        "faultDescription": fault_description,
+        "faultTime": str(random_datetime(start_date, end_date)),
+        "faultDuration": f"{random.randint(1, 10)} hours ago",
+    }
+    specific_fault_data = {
+        "uuid": _uuid,
+        "faultCode": f"F{fault_code}",
+        "faultDescription": fault_description,
+        "faultDuration": f"{random.randint(1, 10)} hours ago",
+        "busNumber": f"Bus-00{i+1}",
+        "battery": f"BAT{_battery_number}",
+        "IMEI": _imei,
+        "depotNumber": depot_number,
+        "faultLevel": "on",
+        "location": {
+            "coordinates": {"lat": latitude, "lng": longitude},
+        },
+    }
 
+    dummy_faults_data.append(fault_data)
     dummy_buses_data.append(bus_data)
     dummy_specific_bus_data.append(specific_bus_data)
+    dummy_specific_fault_data.append(specific_fault_data)
+
 
 with open("./busData.json", "w") as file:
     json.dump(dummy_buses_data, file, indent=2)
 
+with open("./faultData.json", "w") as file:
+    json.dump(dummy_faults_data, file, indent=2)
+
 
 with open("./specificBusData.json", "w") as file:
     json.dump(dummy_specific_bus_data, file, indent=2)
+
+
+with open("./specificFaultData.json", "w") as file:
+    json.dump(dummy_specific_fault_data, file, indent=2)
+
 
 print("Data saved")

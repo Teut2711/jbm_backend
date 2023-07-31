@@ -1,3 +1,4 @@
+from collections import Counter
 import json
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -9,13 +10,23 @@ CORS(
 )  # Add CORS support and expose "Authorization" header
 
 with open("./specificBusData.json") as f:
-    specific_buses_data = json.load(f)
+    specific_bus_data = json.load(f)
 
-for i in specific_buses_data:
-    print(i["uuid"])
+with open("./faultData.json") as f:
+    faults_data = json.load(f)
+
 
 with open("./busData.json") as f:
     buses_data = json.load(f)
+
+
+with open("./specificFaultData.json") as f:
+    specific_fault_data = json.load(f)
+
+
+def kebab_to_camel(kebab_str):
+    words = kebab_str.split("-")
+    return words[0] + "".join(word.capitalize() for word in words[1:])
 
 
 @app.after_request
@@ -27,8 +38,10 @@ def add_cors_headers(response):
 
 @app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
 def get_total_buses(appName):
-    total_buses = len(buses_data)
-    return jsonify({"status": "success", "data": {"total": total_buses}})
+    c = Counter([i["status"] for i in buses_data])
+    c["total"] = len(buses_data)
+
+    return jsonify({"status": "success", "data": c})
 
 
 bus_statuses = [
@@ -85,10 +98,10 @@ def get_buses_data(appName, busStatus):
 @app.route("/api/v1/app/<appName>/bus/all/<uuid>", methods=["GET"])
 def get_bus_by_uuid(appName, uuid):
     if uuid == 0 or uuid == "0":
-        bus_data = specific_buses_data[0]
+        bus_data = specific_bus_data[0]
     else:
         bus_data = next(
-            filter(lambda x: x["uuid"] == uuid, specific_buses_data), None
+            filter(lambda x: x["uuid"] == uuid, specific_bus_data), None
         )
 
     if not bus_data:
@@ -98,42 +111,39 @@ def get_bus_by_uuid(appName, uuid):
 
 
 @app.route("/api/v1/app/<appName>/fault", methods=["GET"])
-def get_faults_data(appName, busStatus):
-    # Your code to retrieve data from the database or dummy data
-    # Replace this with actual database queries
-    # Example: buses_data = YourModel.query.filter_by(status=busStatus).all()
-
-    # For demonstration, we'll use the dummy data
-    buses_data = dummy_buses_data
-
-    # Implement pagination here if needed based on query parameters 'limit' and 'offset'
+def get_faults_data(appName):
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))
-    paginated_data = buses_data[offset : offset + limit]
 
+    paginated_data = faults_data[offset : offset + limit]
+
+    next_offset = offset + limit
+    has_more = next_offset < len(faults_data)
+
+    next_url = (
+        f"/api/v1/app/{appName}/fault?limit={limit}&offset={next_offset}"
+        if has_more
+        else None
+    )
     return jsonify(
         {
             "status": "success",
-            "data": {"buses": paginated_data, "length": len(buses_data)},
+            "data": {"faults": paginated_data, "length": len(faults_data)},
+            "next": next_url,
         }
     )
 
 
 @app.route("/api/v1/app/<appName>/fault/<uuid>", methods=["GET"])
 def get_fault_by_uuid(appName, uuid):
-    # Your code to retrieve data from the database or dummy data
-    # Replace this with actual database queries
-    # Example: bus_data = YourModel.query.filter_by(uuid=uuid).first()
-
-    # For demonstration, we'll use the dummy data
-    bus_data = next(
-        (bus for bus in dummy_buses_data if bus["uuid"] == uuid), None
+    fault_data = list(
+        (fault for fault in specific_fault_data if fault["uuid"] == uuid)
     )
 
-    if not bus_data:
+    if not fault_data:
         return jsonify({"status": "error", "message": "Bus not found"}), 404
 
-    return jsonify({"status": "success", "data": bus_data})
+    return jsonify({"status": "success", "data": {"faultedBuses": fault_data}})
 
 
 if __name__ == "__main__":
