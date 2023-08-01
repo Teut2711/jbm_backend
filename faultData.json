@@ -1,802 +1,802 @@
 [
   {
-    "status": "in-field",
-    "uuid": "005c5f64-aae1-4b8e-9a71-fd38afb7eb77",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-05-26T05:55:05",
-    "faultDuration": "5 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "45c5d13c-2a8b-416b-916f-caba5a44536d",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-01-09T07:35:42",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "60c0ff3b-da1b-4ed3-9cd3-2c099859c0a1",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-04-13T08:50:15",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "dfe027b4-60fd-497f-9fa5-8af37c5d10c3",
-    "faultCode": "F171",
+    "status": "full-charged",
+    "uuid": "f0b54ce6-bea2-44bf-904f-1d071494e4fe",
+    "faultCode": "F189",
     "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-03-18T02:16:17",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "1d7b31f0-eeab-471d-ae82-7559e3267833",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-12-24T09:42:46",
+    "faultTime": "2023-07-25T15:33:45",
     "faultDuration": "2 hours ago"
   },
   {
-    "status": "in-field",
-    "uuid": "6940ca9f-0191-4ee3-b043-8e173f4b0ddd",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-12-04T05:17:13",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "disconnected",
-    "uuid": "3035a799-05bb-4c0e-b7d7-bc8710de9fba",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-03-15T10:46:07",
+    "status": "discharging",
+    "uuid": "a30702fd-68f3-4872-bed8-425a798365f1",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2022-12-07T08:36:19",
     "faultDuration": "6 hours ago"
   },
   {
-    "status": "charging",
-    "uuid": "464d9999-5c7b-4eb7-b2b5-9031d7ab079d",
-    "faultCode": "F295",
+    "status": "in-depot",
+    "uuid": "e6933ceb-bad5-413c-87f4-033ebfe80349",
+    "faultCode": "F305",
     "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-01-05T02:41:36",
+    "faultTime": "2023-07-05T13:10:44",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "c4476616-433d-4c87-ab64-7cf4badc7d31",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2022-10-25T07:54:07",
+    "faultDuration": "6 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "76ddbe93-5de2-41c5-a953-58d6b59be12f",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-07-21T03:06:38",
     "faultDuration": "4 hours ago"
   },
   {
     "status": "in-field",
-    "uuid": "b29a4a81-6e20-4037-b83b-2cdf04c8aa4a",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-03-11T03:10:35",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "d3fd086c-8ce7-48f0-8cbf-0c2c6127e738",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2022-10-15T02:33:22",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "b1d542a6-c8d6-4b23-b629-3ef3bc7ac5b2",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-07-03T22:59:18",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "e9bb890b-6fc2-4bba-a192-7fe54733d083",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-02-13T09:05:37",
-    "faultDuration": "1 hours ago"
+    "uuid": "9d90963e-9a70-40ec-a2a0-21e1382365a6",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-10-04T11:06:25",
+    "faultDuration": "10 hours ago"
   },
   {
     "status": "in-fault",
-    "uuid": "872a4933-b6cf-4335-8ebc-fc2fe078df4c",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-07-06T11:51:05",
-    "faultDuration": "4 hours ago"
+    "uuid": "60dfc9cd-c6d6-4692-9fbd-722d205452ea",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-10-31T17:53:03",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "6b232883-f879-4801-82e4-9453cfa2e0ce",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-05-16T20:24:11",
+    "faultDuration": "6 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "ad3ea548-ffc4-46a6-91ec-d664a1b431d9",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-06-30T02:49:28",
+    "faultDuration": "10 hours ago"
   },
   {
     "status": "idle",
-    "uuid": "44140513-ef06-427d-b4e6-4886d716fd60",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-07-25T16:31:54",
-    "faultDuration": "6 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "25476c50-3f79-4502-bc8b-ae1a536d4c99",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-05-24T02:44:34",
-    "faultDuration": "5 hours ago"
-  },
-  {
-    "status": "disconnected",
-    "uuid": "9887e35e-d0f5-42d6-b23a-c08b030b2a46",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-10-16T15:17:01",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "e281e7fa-acb8-496a-a207-29115f4f42c8",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-03-10T23:46:09",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "disconnected",
-    "uuid": "5139866d-eb5f-414e-9f1b-9d55ff14577c",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-01-05T14:53:03",
+    "uuid": "0486515f-16ba-4522-9eaa-0d0ecbb138a1",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2022-12-04T13:22:53",
     "faultDuration": "2 hours ago"
   },
   {
+    "status": "disconnected",
+    "uuid": "583bcf3a-62b2-42e4-be75-03ed55a86aaa",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-06-28T02:44:34",
+    "faultDuration": "4 hours ago"
+  },
+  {
     "status": "full-charged",
-    "uuid": "2f7a0b7a-d77c-41c9-938b-276c3812bfb1",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-12-05T00:18:16",
+    "uuid": "a1d48ba0-1ede-4463-b735-5fb5b458a8f8",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2022-10-10T07:49:56",
     "faultDuration": "1 hours ago"
   },
   {
-    "status": "in-field",
-    "uuid": "6bebdde3-e503-4437-8e28-ccac331592ff",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-05-18T22:15:52",
+    "status": "disconnected",
+    "uuid": "ee9a17c0-c096-4d1d-ab96-5ea0ca0e03f7",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-03-22T01:41:44",
     "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "9f567c85-4d66-46a2-8cf5-424188b21a5f",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-03-04T00:23:35",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "e1e748aa-b831-4a34-aa2f-338044a585d7",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-01-21T06:47:58",
-    "faultDuration": "6 hours ago"
   },
   {
     "status": "disconnected",
-    "uuid": "0e70f024-3203-49a6-b25a-f2fce6a8e208",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-10-09T16:17:18",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "46781eeb-c88e-472e-bc30-bc8a1d571485",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-07-23T09:45:57",
-    "faultDuration": "6 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "b97a1619-b60c-47c9-8fdd-245199c73e51",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-06-29T05:25:30",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "2db93b41-8fc2-4d06-ac35-193dcd67dee2",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-04-25T14:32:47",
-    "faultDuration": "5 hours ago"
+    "uuid": "c1a439a2-0288-4080-8547-aa8c8b4ef6e9",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-07-24T10:25:41",
+    "faultDuration": "7 hours ago"
   },
   {
     "status": "full-charged",
-    "uuid": "f7a122f1-c74a-4ffa-82ea-d600fa8d0354",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2022-12-27T22:54:59",
+    "uuid": "642acf2b-e4eb-4dfe-9ced-a6f51d62bf1b",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-05-04T12:32:11",
     "faultDuration": "4 hours ago"
   },
   {
     "status": "in-field",
-    "uuid": "14461d3e-66fb-4d80-8d35-5b4240101b10",
-    "faultCode": "F195",
+    "uuid": "63b6cf12-380f-484f-821b-b66b13f18b6e",
+    "faultCode": "F309",
     "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-05-24T13:56:35",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "dfb67199-7b04-40ed-b630-b15991a4ae31",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-06-12T14:40:16",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "31f2d461-cb56-4969-8f3b-63658abe62a4",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-05-15T23:53:09",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "0657c441-431d-492e-9944-da0ae88a8683",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-10-25T23:18:39",
-    "faultDuration": "6 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "a2eb23bc-c49e-43c9-89ad-a75c18eb66cb",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-06-23T21:27:11",
-    "faultDuration": "6 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "a0ca70eb-c248-4146-bff4-d1c237403f92",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-01-07T09:25:52",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "2170dc46-4d5f-47c3-ac27-24262003c177",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2022-12-23T14:31:52",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "c9c645db-0d82-44b8-89ea-30ae52ee114b",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-02-26T13:55:07",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "d3232563-9dd7-4eef-b2ca-d49f5ed23e10",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-06-08T05:19:17",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "63e6d125-5be4-450e-a417-936150ec5ade",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-06-27T10:58:35",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "47a61677-c977-43e8-b33a-5fd6d95bdbd5",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-06-25T23:04:20",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "disconnected",
-    "uuid": "848f2d17-1a3e-4eb7-9c2a-01ce581cd485",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-05-14T12:11:13",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "11356955-cc89-43cd-9440-078a2dcbcdf7",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2022-12-20T12:19:03",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "917e1de9-7a8d-41ff-896a-088bf444adf5",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-10-18T00:48:02",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "c7d3e809-e4c3-41d3-9034-7944fe843e4c",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-11-21T01:25:35",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "5f2dc77d-8bfe-49b8-8843-bfd6bf5b9c7a",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-05-06T23:17:46",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "c17f59a1-3f05-47d7-9a23-e1b9cc9e09db",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-11-20T17:22:20",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "89bb2269-3978-4b5f-9da2-f61d140fa8b6",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-03-26T07:36:37",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "891589b2-ee5b-4eec-8ae0-6210d1305c13",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-07-18T00:42:18",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "80a88fbb-d2ad-413c-8a5b-0cc2961baca5",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-11-15T00:09:19",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "47542fdb-d1cc-47dd-8415-a8975ac67bf7",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-03-26T02:35:38",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "4fb33aeb-6a8d-417c-8cf3-b355082794ca",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-03-04T14:55:34",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "9c6f7366-de00-447c-b44b-277f61ec5f45",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2022-12-09T08:17:59",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "disconnected",
-    "uuid": "a66833f8-5568-42a6-b268-2c7e037ec142",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-01-14T09:11:50",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "4cbc14cb-a876-43be-a4b5-ca8b2126965c",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-02-26T04:26:36",
+    "faultTime": "2023-02-07T07:53:03",
     "faultDuration": "4 hours ago"
   },
   {
     "status": "in-field",
-    "uuid": "487191da-0342-4053-ac0d-fcbb5fcb86fa",
-    "faultCode": "F171",
+    "uuid": "83056182-2376-458f-9197-63616c8cceb0",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-05-06T16:48:45",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "0e7560b7-192e-4431-8144-87bc70a5bb8e",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-05-28T20:51:07",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "0b5f6a9c-4069-40a4-ac72-e3057699e1b4",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-05-05T05:27:53",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "d4c5ccb5-8129-4eb2-a747-107ffb6aa167",
+    "faultCode": "F189",
     "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-07-12T13:04:02",
+    "faultTime": "2023-06-25T21:21:56",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "9382d53f-d62b-4972-bb6d-7e1a4841c730",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-02-11T06:21:10",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "ae1be7a3-d3c6-4c98-96db-f71d7bf8624e",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-01-05T16:33:17",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "1e74b0c8-1f10-4ae7-a847-dfd48964be37",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2022-11-26T14:04:39",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "766d57b6-e560-4029-b0d8-7d6f91347272",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-01-23T21:32:28",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "af4cef7e-38cd-4853-adfe-aa683f754dec",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-02-25T17:22:05",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "8d5502fc-bee1-42bb-a5d7-52084bede908",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-04-09T12:42:27",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "736f4406-05c2-4c9d-9af0-91b5ee0dc215",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-12-11T07:31:10",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "17c8e7bc-3d9a-4c65-8a61-6e5a5e1ff279",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-01-12T09:07:12",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "fec4d2f4-2a6c-449b-b0a5-512cf8d4ab5c",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-04-15T15:17:29",
+    "faultDuration": "7 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "08b46b78-e310-4293-af1a-41c3a91247d4",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-01-16T02:54:12",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "5c99fd53-4f19-41d1-96b8-76a52f3fa0a7",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-03-06T10:55:01",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "be8ebbaf-bef4-4f28-ba2a-719fee586b22",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-10-13T01:36:00",
+    "faultDuration": "2 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "8cdc92a5-baed-4f40-b7eb-0d98086c87d9",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-04-04T09:33:14",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "c62ca5a0-4f1b-4053-964c-156c78f7b810",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-12-04T15:55:29",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "1027a319-5869-4342-97dd-be57cad46cd6",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2022-10-03T09:54:17",
     "faultDuration": "7 hours ago"
   },
   {
     "status": "disconnected",
-    "uuid": "83ebb9b7-1a62-4bd9-a0ae-72e085401f97",
-    "faultCode": "F171",
+    "uuid": "d4b9f39f-710a-4c54-a8d9-d629091cd239",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-01-05T08:17:44",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "d73fb5ad-b556-4760-a5a4-55f06df3d96f",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-02-22T05:07:40",
+    "faultDuration": "2 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "c2d4fbc5-6886-40cb-a06c-ecb17c106f5f",
+    "faultCode": "F189",
     "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-07-26T22:42:46",
+    "faultTime": "2023-04-01T23:26:53",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "16b38b77-f0a5-42f2-8d0f-b8e20abffae6",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-01-27T13:03:24",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "6729f148-c7ea-4f39-add2-94de794b60d1",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-03-25T23:41:13",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "67210e18-8a73-4b95-a421-675cc5cea2b2",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-01-25T17:43:00",
+    "faultDuration": "2 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "89683f46-3bfb-467a-b498-9271c4775818",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-06-02T14:32:58",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "c62614be-d366-4579-bfad-f92f1792e872",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-06-09T19:02:15",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "fe5d4960-ef4a-437a-abe9-f6c910850f3e",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-07-11T11:23:16",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "3c7ee320-bfdb-4153-89eb-83c6f6d894f3",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-06-10T14:47:38",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "003c8225-3f4a-4fd8-9dfc-f1c337d4a052",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-07-17T05:02:35",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "6a3d2f26-59cf-45a6-ab9c-fb822f881bfd",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-05-11T09:16:57",
+    "faultDuration": "2 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "63f0ed8a-ea83-4901-9745-ba8b713ecf6b",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-02-20T20:45:02",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "6360c45d-7a3f-4eab-b477-eeb783d28d16",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-11-25T04:01:34",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "d7dea7fe-9287-45c0-9bbf-9d138017b30d",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-01-31T11:36:25",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "a62dcd9d-a854-4f26-8296-ab1c46c202fc",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2022-11-19T11:26:58",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "d6a527c5-24a6-4a3d-8f06-7b9782567159",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-01-21T17:14:59",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "a829c3a3-c340-4600-8638-ff74b3832332",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2022-10-14T08:41:40",
+    "faultDuration": "6 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "9e2a0cf7-3c12-4c25-9e6b-42b1123cd2e1",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-02-28T09:08:38",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "d496987b-66da-4c04-950d-7f5a4ca00af3",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-02-08T09:18:49",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "9f908fdd-24e0-48c6-a408-94907df2c516",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-02-28T06:18:22",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "1807e5c0-4931-46e5-8873-690d166ef551",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-05-16T21:21:15",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "4c8d3e45-8958-437e-8215-fd4a210cb784",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-04-14T14:54:31",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "9b838562-38bf-4a7a-a7c9-0a5b806d463a",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-07-08T22:45:55",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "98bb8efb-467b-4d23-ae2c-ce7369108eda",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-05-27T09:32:06",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "3241c85a-eb04-483d-9728-bc977b7c77e5",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-02-20T07:18:31",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "9d5ba36b-3244-40ff-b739-6339f3d19026",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-04-06T17:25:29",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "9bd6de07-ce6c-4de0-bbdb-c375712875f1",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-05-03T06:51:14",
+    "faultDuration": "7 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "ced3dffa-1b75-40e9-8d7e-feb9bea05257",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-06-05T18:29:04",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "5462de95-852f-4336-899e-da28c442c2f9",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-05-18T14:48:53",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "2c2d36ce-d23f-4953-b64a-6352d890f2e8",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-01-19T20:46:17",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "3467ec9b-d084-49aa-8190-fd47e570a2f1",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-01-26T11:54:25",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "7fca55be-629b-4f38-890a-eefef5aabb5e",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-05-16T01:34:46",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "e40afbce-d75c-4ead-ab4c-99348a6e3e37",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2022-12-20T23:59:05",
+    "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "bba4f069-d0bd-4032-8ec5-f5ca382181a9",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-02-04T21:12:55",
+    "faultDuration": "7 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "83f5d052-7572-4d95-be19-f54739c8de7d",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-05-17T14:13:20",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "39cd45fe-68a7-427a-9ccb-e2e7a001a9c2",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2022-11-27T20:53:53",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "charging",
+    "uuid": "57e30b37-2c36-4a2c-9b4d-902bb9566df1",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-03-18T10:16:33",
     "faultDuration": "6 hours ago"
   },
   {
     "status": "discharging",
-    "uuid": "c3d59454-25f1-4976-9506-936ccc4f849c",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-02-06T18:50:10",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "a81d9e90-0007-4f2c-9552-27674e4bc68f",
-    "faultCode": "F252",
+    "uuid": "a00007d8-3797-4257-a64d-5c3d71f17fdf",
+    "faultCode": "F267",
     "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-03-09T00:40:19",
-    "faultDuration": "5 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "d4a9990c-f8ae-49fd-a920-bf885e1bb0d2",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2022-11-10T09:37:45",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "da41efec-4f3b-4d0a-a365-d1c3b20e8caa",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-06-25T23:26:08",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "ee3d2944-9715-43fe-94de-f21fc5467191",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-01-25T18:10:42",
-    "faultDuration": "5 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "e19503e3-4484-4fa8-bc97-f19d291730ac",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2022-12-24T01:06:11",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "39a04230-3b5f-4165-8703-9f4a710a4792",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-04-01T07:41:00",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "06273a45-f5f1-47cc-8902-a31c08c481c1",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-02-06T07:33:09",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "6dd979a1-6a61-4fc7-bfa2-55d1c322bf2c",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-04-30T01:34:10",
-    "faultDuration": "5 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "492485ad-13bb-466b-8492-a6aa1d82dc2a",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-10-26T15:23:15",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "6857c788-2e62-4975-ae51-bd3af4e55068",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2022-11-22T15:17:02",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "f40ee1db-6661-43ce-b5f1-8e1aefdfe573",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-03-10T10:27:29",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "full-charged",
-    "uuid": "73d177ed-a9b5-4075-babf-3266c355789e",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2022-11-18T12:43:48",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "dd8f8084-d26e-41bf-8c47-b5363eef3bd1",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-05-02T23:37:20",
-    "faultDuration": "2 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "686524a7-f92d-4ec7-a24a-5321d4b46821",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2022-11-29T19:41:46",
-    "faultDuration": "5 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "2307e43a-e407-4b69-9f18-9cde9be7cc2f",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-12-22T14:14:32",
-    "faultDuration": "4 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "cb016664-566d-4a85-a491-e51bb1e6c851",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-06-02T15:35:25",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "bdd8e070-712f-49b8-857d-e25157795b04",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-04-17T03:38:22",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "98d0e99e-0c6c-4832-bcd0-dd32537afd35",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-10-12T07:01:55",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "bdeee36c-3999-4367-bbf6-79b91de05f3f",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-03-30T18:12:53",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "62e44570-5ce3-4c8b-b14c-cf31f515f0f9",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-07-27T16:04:31",
-    "faultDuration": "4 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "8631a1f0-c491-42d2-9fa8-dec06bbfd3f7",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-06-01T06:02:38",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "92036d89-0b4d-4e71-bfdb-690f14672b43",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2022-10-19T09:46:42",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "a8e290ea-4f13-468e-8a4d-a9f5152b3e4c",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-12-18T22:43:49",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "56ffeb54-ab22-49b7-aaca-664bdac85338",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-06-13T04:46:41",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "6a6eb9be-cd1c-4b71-98cd-08c2dab51c90",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2022-12-17T01:55:54",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "1cfaec13-027c-46f1-9699-f3c8202c3705",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-07-18T06:03:12",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "a3e0d658-2862-4a03-9eed-c70cf5247294",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2022-12-16T15:41:58",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "14028776-acfd-4aeb-91b9-d162b6e52245",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-05-31T03:30:30",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "80ddb460-2a5f-449d-8278-e4fbbe56e865",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-07-14T06:37:55",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "c9b64ed0-22e1-42d8-9da5-cdfb72b05455",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-06-24T09:02:39",
-    "faultDuration": "7 hours ago"
-  },
-  {
-    "status": "in-fault",
-    "uuid": "c9a23485-f50b-4d3c-9897-197ed0f011de",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-03-08T10:28:46",
-    "faultDuration": "1 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "ef80aa8f-a64d-4777-99a2-e268c327372e",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-05-20T07:21:50",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-field",
-    "uuid": "4cd30621-b7a8-48e6-9874-1be56d4b0290",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-02-02T17:27:50",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "f5d5a185-4e56-4407-97ac-e1cd33a6a3cb",
-    "faultCode": "F196",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultTime": "2023-01-13T16:25:30",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "in-depot",
-    "uuid": "1ae84942-3cd2-4d6c-bbcb-7d8b81fd0aa8",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-01-14T02:50:22",
-    "faultDuration": "9 hours ago"
-  },
-  {
-    "status": "disconnected",
-    "uuid": "f5f8dc4d-5471-4635-9680-820c4df3e930",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-01-09T08:41:53",
-    "faultDuration": "4 hours ago"
-  },
-  {
-    "status": "idle",
-    "uuid": "a5091627-9122-4fa0-a57e-4243c92eafd1",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-05-06T19:46:19",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "86e45efd-73ac-484f-b212-7b2c8226ba63",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-10-25T20:06:10",
-    "faultDuration": "3 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "eb60ae8b-c978-4a72-9383-9a4e832af83e",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-07-14T12:30:14",
-    "faultDuration": "10 hours ago"
-  },
-  {
-    "status": "discharging",
-    "uuid": "29f017c3-8c18-475d-8556-c49a11677816",
-    "faultCode": "F252",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultTime": "2023-02-23T04:38:13",
+    "faultTime": "2022-10-11T10:10:27",
     "faultDuration": "6 hours ago"
   },
   {
-    "status": "idle",
-    "uuid": "069b306d-38f7-4e78-8d16-cfbef12df0ca",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-05-02T09:26:21",
-    "faultDuration": "8 hours ago"
+    "status": "charging",
+    "uuid": "a7e73d81-26df-4385-ac05-a58c304ee264",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-07-26T11:55:44",
+    "faultDuration": "5 hours ago"
   },
   {
-    "status": "in-field",
-    "uuid": "0cc81f5a-61ab-49a0-a1c9-5314f88c558d",
-    "faultCode": "F295",
-    "faultDescription": "B2V TempNotControl",
-    "faultTime": "2023-01-13T20:35:37",
-    "faultDuration": "10 hours ago"
+    "status": "in-fault",
+    "uuid": "ec833b0a-09a1-459d-9d37-b401c591af74",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2022-12-03T20:02:45",
+    "faultDuration": "4 hours ago"
   },
   {
     "status": "disconnected",
-    "uuid": "91921a8b-cb27-43fb-bc3b-83b4fe16d826",
-    "faultCode": "F171",
-    "faultDescription": "B2V TempDiff",
-    "faultTime": "2023-05-14T13:03:47",
-    "faultDuration": "8 hours ago"
-  },
-  {
-    "status": "charging",
-    "uuid": "c04d5bcd-6e59-4713-a428-9f1ac9027490",
-    "faultCode": "F195",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultTime": "2023-05-03T01:17:49",
-    "faultDuration": "3 hours ago"
+    "uuid": "3215253b-b484-4aba-8e0a-149779f4dfa4",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2022-12-12T23:43:02",
+    "faultDuration": "2 hours ago"
   },
   {
     "status": "in-depot",
-    "uuid": "c2422f42-3812-4780-9f8c-20b71b30299b",
-    "faultCode": "F171",
+    "uuid": "d36c37d4-2cda-4fd5-8714-50950ce3c528",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-03-05T09:38:34",
+    "faultDuration": "3 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "c855f947-fe8a-4958-93a1-877726802aa1",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-06-04T07:29:30",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "c7122e21-ec5f-40bf-8f5a-4da6cf721f7b",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2022-12-30T04:41:27",
+    "faultDuration": "6 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "475a79ed-a900-4dfd-b409-2d19f17875c3",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-02-10T14:08:13",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "760b7715-c9ba-4040-b100-ea2afbb258ce",
+    "faultCode": "F189",
     "faultDescription": "B2V TempDiff",
-    "faultTime": "2022-11-07T02:42:55",
+    "faultTime": "2023-04-04T12:15:31",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "c692e759-4bdb-4cde-bf34-261eab5799dd",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-04-28T04:02:49",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "in-field",
+    "uuid": "eacc114a-1a57-4f40-a003-482f789b2a7a",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-01-30T12:11:38",
+    "faultDuration": "9 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "4437a981-79f1-4c34-991e-90c05a286c90",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-05-12T19:59:41",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "0c4f9f93-85dd-4a43-9eec-5ebce07ef223",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2022-10-26T17:42:05",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "f1193b45-81e2-4691-801e-02c510da0156",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-07-10T02:51:33",
+    "faultDuration": "7 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "3b1683f3-d354-4849-b82e-933343bf45d9",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-04-19T18:08:41",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "71afa08f-98aa-4a45-bccd-8696347ea180",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2022-12-30T01:20:14",
+    "faultDuration": "6 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "5297784e-c5f1-4369-b58f-2309eeda968c",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2022-10-12T07:25:45",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "5bdc10a3-a695-49a6-bd85-76a8b2f4b234",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2022-10-23T18:40:37",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "40629378-61b9-47d4-a2ea-06705b6f4398",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-02-02T02:08:33",
     "faultDuration": "8 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "85b76217-b322-4d07-b01b-185b703db31a",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-03-31T02:19:12",
+    "faultDuration": "6 hours ago"
+  },
+  {
+    "status": "disconnected",
+    "uuid": "6e895aea-5169-4244-9594-14a082e15eaf",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-03-12T12:53:15",
+    "faultDuration": "2 hours ago"
+  },
+  {
+    "status": "in-fault",
+    "uuid": "e9373a60-2e2a-4a81-9631-b59ad06237b3",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2022-11-25T02:56:02",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "idle",
+    "uuid": "d94d0afa-ce30-4e5f-a597-79b13431f365",
+    "faultCode": "F267",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultTime": "2023-06-25T23:38:32",
+    "faultDuration": "4 hours ago"
+  },
+  {
+    "status": "full-charged",
+    "uuid": "f4b91aec-e0b9-468a-a720-1cf9a838d06f",
+    "faultCode": "F309",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultTime": "2023-04-22T02:09:20",
+    "faultDuration": "5 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "7f6fdb80-6ea8-4612-ac85-27baae09073a",
+    "faultCode": "F189",
+    "faultDescription": "B2V TempDiff",
+    "faultTime": "2023-06-28T00:02:07",
+    "faultDuration": "1 hours ago"
+  },
+  {
+    "status": "discharging",
+    "uuid": "8cc63a87-60bd-4790-b972-9b36df1c5e0e",
+    "faultCode": "F249",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultTime": "2023-03-07T05:59:45",
+    "faultDuration": "10 hours ago"
+  },
+  {
+    "status": "in-depot",
+    "uuid": "36cd983c-40e7-48cf-86b2-4698d3d78789",
+    "faultCode": "F305",
+    "faultDescription": "B2V TempNotControl",
+    "faultTime": "2023-07-24T07:30:26",
+    "faultDuration": "5 hours ago"
   }
 ]

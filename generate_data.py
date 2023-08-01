@@ -181,17 +181,19 @@ for i in range(100):
     }
     _uuid = str(uuid.uuid4())
     _random_fault_description = random.choice(fault_description)
+    _fault_time = str(random_datetime(start_date, end_date))
     fault_data = {
         "status": bus_status,
         "uuid": _uuid,
         "faultCode": _random_fault_description["code"],
         "faultDescription": _random_fault_description["label"],
-        "faultTime": str(random_datetime(start_date, end_date)),
+        "faultTime": _fault_time,
         "faultDuration": f"{random.randint(1, 10)} hours ago",
     }
     specific_fault_data = {
         "uuid": _uuid,
         "faultCode": _random_fault_description["code"],
+        "faultTime": _fault_time,
         "faultDescription": _random_fault_description["label"],
         "faultDuration": f"{random.randint(1, 10)} hours ago",
         "busNumber": f"Bus-00{i+1}",
