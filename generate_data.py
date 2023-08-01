@@ -48,6 +48,28 @@ dummy_faults_data = []
 
 dummy_specific_bus_data = []
 dummy_specific_fault_data = []
+fault_description = [
+    {
+        "code": f"F{random.randint(125, 400)}",
+        "label": "B2V CellVoltTooHigh",
+    },
+    {
+        "code": f"F{random.randint(125, 400)}",
+        "label": "B2V BatTempTooHigh",
+    },
+    {
+        "code": f"F{random.randint(125, 400)}",
+        "label": "B2V BMSWorkVoltError",
+    },
+    {
+        "code": f"F{random.randint(125, 400)}",
+        "label": "B2V TempDiff",
+    },
+    {
+        "code": f"F{random.randint(125, 400)}",
+        "label": "B2V TempNotControl",
+    },
+]
 
 for i in range(100):
     bus_status = random.choice(
@@ -70,7 +92,7 @@ for i in range(100):
         random.uniform(76.0, 77.2), 6
     )  # Random longitude in the range 76.0 to 77.2
     _uuid = str(uuid.uuid4())
-    _imei = str(random.randint(10**9, 10**10))
+    _imei = str(random.randint(10**14, 10**15))
     _battery_number = random.randint(0, 100)
 
     bus_data = {
@@ -158,33 +180,25 @@ for i in range(100):
         },
     }
     _uuid = str(uuid.uuid4())
-    fault_description = random.choice(
-        [
-            "B2V CellVoltTooHigh",
-            "B2V BatTempTooHigh",
-            "B2V BMSWorkVoltError",
-            "B2V TempDiff",
-            "B2V TempNotControl",
-        ]
-    )
-    fault_code = random.randint(125, 400)
+    _random_fault_description = random.choice(fault_description)
     fault_data = {
+        "status": bus_status,
         "uuid": _uuid,
-        "faultCode": f"F{fault_code}",
-        "faultDescription": fault_description,
+        "faultCode": _random_fault_description["code"],
+        "faultDescription": _random_fault_description["label"],
         "faultTime": str(random_datetime(start_date, end_date)),
         "faultDuration": f"{random.randint(1, 10)} hours ago",
     }
     specific_fault_data = {
         "uuid": _uuid,
-        "faultCode": f"F{fault_code}",
-        "faultDescription": fault_description,
+        "faultCode": _random_fault_description["code"],
+        "faultDescription": _random_fault_description["label"],
         "faultDuration": f"{random.randint(1, 10)} hours ago",
         "busNumber": f"Bus-00{i+1}",
         "battery": f"BAT{_battery_number}",
         "IMEI": _imei,
         "depotNumber": depot_number,
-        "faultLevel": "on",
+        "faultLevel": "off",
         "location": {
             "coordinates": {"lat": latitude, "lng": longitude},
         },

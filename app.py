@@ -110,18 +110,32 @@ def get_bus_by_uuid(appName, uuid):
     return jsonify({"status": "success", "data": bus_data})
 
 
-@app.route("/api/v1/app/<appName>/fault", methods=["GET"])
-def get_faults_data(appName):
+@app.route("/api/v1/app/<appName>/fault/<faultStatus>", methods=["GET"])
+def get_faults_data(appName, faultStatus):
+    if faultStatus not in bus_statuses:
+        return (
+            jsonify({"status": "error", "message": "Invalid bus status."}),
+            400,
+        )
+
+    # Filter the data based on the bus status
+    if faultStatus != "all":
+        filtered_data = [
+            fault for fault in faults_data if fault["status"] == faultStatus
+        ]
+    else:
+        filtered_data = faults_data
+
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))
 
-    paginated_data = faults_data[offset : offset + limit]
+    paginated_data = filtered_data[offset : offset + limit]
 
     next_offset = offset + limit
     has_more = next_offset < len(faults_data)
 
     next_url = (
-        f"/api/v1/app/{appName}/fault?limit={limit}&offset={next_offset}"
+        f"/api/v1/app/{appName}/fault/{faultStatus}?limit={limit}&offset={next_offset}"
         if has_more
         else None
     )
@@ -134,14 +148,14 @@ def get_faults_data(appName):
     )
 
 
-@app.route("/api/v1/app/<appName>/fault/<uuid>", methods=["GET"])
+@app.route("/api/v1/app/<appName>/fault/all/<uuid>", methods=["GET"])
 def get_fault_by_uuid(appName, uuid):
     fault_data = list(
         (fault for fault in specific_fault_data if fault["uuid"] == uuid)
     )
 
     if not fault_data:
-        return jsonify({"status": "error", "message": "Bus not found"}), 404
+        return jsonify({"status": "error", "message": "Faults not found"}), 404
 
     return jsonify({"status": "success", "data": {"faultedBuses": fault_data}})
 
