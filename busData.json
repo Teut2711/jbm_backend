@@ -1,1202 +1,5152 @@
 [
   {
-    "uuid": "ecc6bc10-7324-4cf1-a276-1bbe741acfac",
-    "depotNumber": "Depot R",
+    "uuid": "c4941ef7-a52f-4a4f-9dc8-5ac05f26f549",
+    "depotNumber": "Depot J",
     "busNumber": "Bus-001",
-    "IMEI": "763208485879988",
-    "battery": "BAT22",
-    "status": "full-charged",
+    "IMEI": "903726653502192",
+    "battery": "BAT61",
+    "status": "discharging",
     "coordinates": {
-      "lat": 28.765176,
-      "lng": 76.300531
+      "lat": 28.260082,
+      "lng": 76.292367
+    },
+    "timestamp": "2023-02-03T03:46:33",
+    "location": {
+      "address": "MDR124, Mahasar, Narnaul, Mahendragarh District, Haryana, 123021, India",
+      "coordinates": {
+        "lat": 28.260082,
+        "lng": 76.292367
+      }
+    },
+    "totalAlerts": 6,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 64.62,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 79.49,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 42.74,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 423,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 80,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 99,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.29,
+        "max": 0.69,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 34,
+        "max": 73.21,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "cd0306e1-0b18-478b-9ce7-579ce375ea5e",
+    "uuid": "0dbb83a0-918f-4f94-8a14-ab850ec8b57f",
     "depotNumber": "Depot I",
     "busNumber": "Bus-002",
-    "IMEI": "623797276636584",
-    "battery": "BAT44",
-    "status": "discharging",
+    "IMEI": "149733652005192",
+    "battery": "BAT27",
+    "status": "in-depot",
     "coordinates": {
-      "lat": 28.199733,
-      "lng": 76.770901
+      "lat": 28.890283,
+      "lng": 76.448526
+    },
+    "timestamp": "2023-05-03T19:17:52",
+    "location": {
+      "address": "Maham, Rohtak District, Haryana, 124022, India",
+      "coordinates": {
+        "lat": 28.890283,
+        "lng": 76.448526
+      }
+    },
+    "totalAlerts": 7,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 38.2,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 92.35,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 97.34,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 299,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 54,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 88,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.23,
+        "max": 0.51,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 92.95,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "a03e12ec-9a91-4a6a-bf6d-c623bb8419a2",
-    "depotNumber": "Depot O",
+    "uuid": "bfd0c4b1-4976-4bf0-8653-936428c9f814",
+    "depotNumber": "Depot J",
     "busNumber": "Bus-003",
-    "IMEI": "866564406668378",
-    "battery": "BAT71",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.449129,
-      "lng": 76.55267
-    }
-  },
-  {
-    "uuid": "16b8b602-3566-45f5-af74-ad831c605d94",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-004",
-    "IMEI": "673251737221888",
-    "battery": "BAT43",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.066381,
-      "lng": 77.052054
-    }
-  },
-  {
-    "uuid": "825d0ba1-bfca-4abf-a9cb-e852fd749e7e",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-005",
-    "IMEI": "106900289973937",
-    "battery": "BAT17",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.890837,
-      "lng": 76.808407
-    }
-  },
-  {
-    "uuid": "86a397e4-5589-4aac-8a05-60609dbf00f0",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-006",
-    "IMEI": "460239727695156",
-    "battery": "BAT46",
+    "IMEI": "253134919993323",
+    "battery": "BAT59",
     "status": "in-field",
     "coordinates": {
-      "lat": 28.360021,
-      "lng": 76.59394
+      "lat": 28.553396,
+      "lng": 76.975303
+    },
+    "timestamp": "2023-06-13T18:02:39",
+    "location": {
+      "address": "Najafgarh, Kapashera Tehsil, South West Delhi District, Delhi, 110071, India",
+      "coordinates": {
+        "lat": 28.553396,
+        "lng": 76.975303
+      }
+    },
+    "totalAlerts": 6,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 85.84,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 33.47,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 43.78,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 403,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 50,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 86,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.29,
+        "max": 0.61,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 35,
+        "max": 96.93,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "9f28eab8-2c24-4efe-8a02-2a8816ce80b4",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-007",
-    "IMEI": "763057135942130",
-    "battery": "BAT61",
-    "status": "in-fault",
+    "uuid": "1655ec37-d466-42b1-a318-ec2bfa0e8e1b",
+    "depotNumber": "Depot B",
+    "busNumber": "Bus-004",
+    "IMEI": "286127424150592",
+    "battery": "BAT23",
+    "status": "in-depot",
     "coordinates": {
-      "lat": 28.708832,
-      "lng": 76.738102
+      "lat": 28.437347,
+      "lng": 76.256544
+    },
+    "timestamp": "2023-06-24T14:31:48",
+    "location": {
+      "address": "MDR124, Bhagot, Mahendragarh, Mahendragarh District, Haryana, India",
+      "coordinates": {
+        "lat": 28.437347,
+        "lng": 76.256544
+      }
+    },
+    "totalAlerts": 6,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 20.26,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 6.21,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 65.65,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 249,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 83,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 70,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.36,
+        "max": 0.61,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 29,
+        "max": 65.37,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "69b95a0a-9209-484c-8d70-45f2a338571a",
+    "uuid": "a787132b-763d-4c46-abd8-a2449b5a0a03",
+    "depotNumber": "Depot E",
+    "busNumber": "Bus-005",
+    "IMEI": "752552955486401",
+    "battery": "BAT60",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.304122,
+      "lng": 76.653368
+    },
+    "timestamp": "2023-06-24T00:40:47",
+    "location": {
+      "address": "Rewari, Rewari District, Haryana, India",
+      "coordinates": {
+        "lat": 28.304122,
+        "lng": 76.653368
+      }
+    },
+    "totalAlerts": 9,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 77.31,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 96.94,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 79.97,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 205,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 83,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 64,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.04,
+        "max": 0.99,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 26,
+        "max": 59.04,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "07b25d12-6984-4707-88f9-71c6df65a6ee",
+    "depotNumber": "Depot G",
+    "busNumber": "Bus-006",
+    "IMEI": "983760031705213",
+    "battery": "BAT99",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.831689,
+      "lng": 77.046732
+    },
+    "timestamp": "2023-05-13T21:36:14",
+    "location": {
+      "address": "Narela Tehsil, North Delhi District, Delhi, 110039, India",
+      "coordinates": {
+        "lat": 28.831689,
+        "lng": 77.046732
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 5.95,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 90.98,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 51.56,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 300,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 75,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 79,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.03,
+        "max": 0.58,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 77.82,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "7ac80d6d-3946-47eb-8b36-91181c9dfa8b",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-007",
+    "IMEI": "882900650393171",
+    "battery": "BAT78",
+    "status": "in-depot",
+    "coordinates": {
+      "lat": 28.171336,
+      "lng": 76.990777
+    },
+    "timestamp": "2023-04-25T20:40:48",
+    "location": {
+      "address": "Nuh, Nuh District, Haryana, 122107, India",
+      "coordinates": {
+        "lat": 28.171336,
+        "lng": 76.990777
+      }
+    },
+    "totalAlerts": 8,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 58.43,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 4.54,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 47.5,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 386,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 84,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 62,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.04,
+        "max": 0.96,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 57.62,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "0e9c4a84-ff79-4f88-877b-3259653b5147",
     "depotNumber": "Depot L",
     "busNumber": "Bus-008",
-    "IMEI": "444109071608278",
-    "battery": "BAT15",
-    "status": "in-depot",
+    "IMEI": "224058453642958",
+    "battery": "BAT20",
+    "status": "full-charged",
     "coordinates": {
-      "lat": 28.821995,
-      "lng": 76.069608
+      "lat": 28.62911,
+      "lng": 76.57607
+    },
+    "timestamp": "2023-06-07T01:53:37",
+    "location": {
+      "address": "Jahazgarh, Beri, Jhajjar District, Haryana, India",
+      "coordinates": {
+        "lat": 28.62911,
+        "lng": 76.57607
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 42.32,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 36.29,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 70.94,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 454,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 83,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 92,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.27,
+        "max": 0.79,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 73.69,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "aeeb6d24-3f1e-4bc2-b905-2679fb77a269",
-    "depotNumber": "Depot X",
+    "uuid": "e5bf6488-c3ad-4e09-a5ae-03032a9bf03d",
+    "depotNumber": "Depot N",
     "busNumber": "Bus-009",
-    "IMEI": "569335743217971",
-    "battery": "BAT23",
-    "status": "in-depot",
+    "IMEI": "155881246745295",
+    "battery": "BAT36",
+    "status": "idle",
     "coordinates": {
-      "lat": 28.680949,
-      "lng": 76.954497
+      "lat": 28.810588,
+      "lng": 76.12252
+    },
+    "timestamp": "2023-03-11T00:32:03",
+    "location": {
+      "address": "Bhiwani, Bhiwani District, Haryana, 125021, India",
+      "coordinates": {
+        "lat": 28.810588,
+        "lng": 76.12252
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 7.61,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 57.33,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 91.61,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 249,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 71,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 61,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.1,
+        "max": 0.8,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 32,
+        "max": 69.49,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "b48457b8-8d25-486b-adb0-6987341cc238",
-    "depotNumber": "Depot J",
+    "uuid": "105e48a1-670c-4a90-8135-7b5fdabb77ed",
+    "depotNumber": "Depot P",
     "busNumber": "Bus-0010",
-    "IMEI": "551007249685115",
-    "battery": "BAT91",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.824438,
-      "lng": 76.150306
-    }
-  },
-  {
-    "uuid": "d221d4da-9276-4e0b-900f-68d4d8554b20",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-0011",
-    "IMEI": "129801583014906",
-    "battery": "BAT87",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.524687,
-      "lng": 76.432478
-    }
-  },
-  {
-    "uuid": "db1566f1-5c3f-4718-a40e-05880b071102",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0012",
-    "IMEI": "592847746046878",
-    "battery": "BAT46",
+    "IMEI": "359776780816039",
+    "battery": "BAT93",
     "status": "full-charged",
     "coordinates": {
-      "lat": 28.310938,
-      "lng": 76.701531
+      "lat": 28.15855,
+      "lng": 77.130472
+    },
+    "timestamp": "2022-10-23T08:28:39",
+    "location": {
+      "address": "Nuh, Nuh District, Haryana, India",
+      "coordinates": {
+        "lat": 28.15855,
+        "lng": 77.130472
+      }
+    },
+    "totalAlerts": 5,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 59.41,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 22.5,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 34.34,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 474,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 53,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 64,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.11,
+        "max": 0.73,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 61.29,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "29281928-8c73-4dd9-b6ea-8e058916d095",
-    "depotNumber": "Depot B",
-    "busNumber": "Bus-0013",
-    "IMEI": "902901660292983",
-    "battery": "BAT11",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.683513,
-      "lng": 77.077208
-    }
-  },
-  {
-    "uuid": "06289d88-2b1c-4d64-b883-39ffba9875a5",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0014",
-    "IMEI": "580163136910423",
-    "battery": "BAT40",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.789572,
-      "lng": 76.445067
-    }
-  },
-  {
-    "uuid": "016da727-dffa-437e-8369-113c735d8b48",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0015",
-    "IMEI": "987309642445935",
-    "battery": "BAT69",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.018742,
-      "lng": 76.961377
-    }
-  },
-  {
-    "uuid": "e5d1c2bf-f6ae-4653-8a3f-00f74df1745a",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0016",
-    "IMEI": "257486921990962",
-    "battery": "BAT32",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.026287,
-      "lng": 76.21357
-    }
-  },
-  {
-    "uuid": "b07a01a2-b457-4d2c-8e57-e5dae8ed1960",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0017",
-    "IMEI": "577809736552335",
-    "battery": "BAT1",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.04877,
-      "lng": 76.185913
-    }
-  },
-  {
-    "uuid": "df7463bf-349d-4a95-8880-c18b675d33ad",
-    "depotNumber": "Depot W",
-    "busNumber": "Bus-0018",
-    "IMEI": "260612064605248",
-    "battery": "BAT33",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.333863,
-      "lng": 76.814956
-    }
-  },
-  {
-    "uuid": "017fc562-89b8-48fa-a0fd-4ace602af3ea",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0019",
-    "IMEI": "929531677778583",
-    "battery": "BAT73",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.545811,
-      "lng": 76.96028
-    }
-  },
-  {
-    "uuid": "d3d88baa-a0df-4370-a534-547d7c87ee8f",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0020",
-    "IMEI": "855203016939277",
-    "battery": "BAT26",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.792242,
-      "lng": 76.878701
-    }
-  },
-  {
-    "uuid": "ffda8554-e349-4eed-b57a-2832e7df0a23",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0021",
-    "IMEI": "353610911994281",
-    "battery": "BAT3",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.46918,
-      "lng": 77.158853
-    }
-  },
-  {
-    "uuid": "c7284ec3-1903-4929-9360-29d7b3cdc406",
-    "depotNumber": "Depot U",
-    "busNumber": "Bus-0022",
-    "IMEI": "551089275090470",
-    "battery": "BAT23",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.081024,
-      "lng": 76.659477
-    }
-  },
-  {
-    "uuid": "dcf430e8-aaa1-47c0-91e5-3a331548a7fb",
-    "depotNumber": "Depot B",
-    "busNumber": "Bus-0023",
-    "IMEI": "482325737523445",
-    "battery": "BAT82",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.18854,
-      "lng": 77.110853
-    }
-  },
-  {
-    "uuid": "3ba2aa67-1457-4e8e-ab46-b7a805abb424",
-    "depotNumber": "Depot I",
-    "busNumber": "Bus-0024",
-    "IMEI": "774952230117810",
-    "battery": "BAT85",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.50929,
-      "lng": 76.30455
-    }
-  },
-  {
-    "uuid": "d75115f1-ca86-48b2-a366-d150f8504fde",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0025",
-    "IMEI": "508374039202437",
-    "battery": "BAT41",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.159199,
-      "lng": 76.222528
-    }
-  },
-  {
-    "uuid": "d4f35b85-749b-4b3c-8064-09aa73847c00",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0026",
-    "IMEI": "333949109085364",
-    "battery": "BAT74",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.424074,
-      "lng": 77.115194
-    }
-  },
-  {
-    "uuid": "96eed7bb-adf4-4696-ae88-8c9ee1a4f646",
-    "depotNumber": "Depot F",
-    "busNumber": "Bus-0027",
-    "IMEI": "910416932419555",
-    "battery": "BAT50",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.654559,
-      "lng": 77.088317
-    }
-  },
-  {
-    "uuid": "25a8f1db-dd47-49b2-a11a-ee43121400ac",
-    "depotNumber": "Depot A",
-    "busNumber": "Bus-0028",
-    "IMEI": "404244409806855",
-    "battery": "BAT15",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.112663,
-      "lng": 76.004114
-    }
-  },
-  {
-    "uuid": "cfda73e7-554a-48b4-ae59-0c8b815bba5f",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0029",
-    "IMEI": "520822445393004",
-    "battery": "BAT73",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.397686,
-      "lng": 76.902727
-    }
-  },
-  {
-    "uuid": "756873b9-c774-46d1-8622-955eb1956ed2",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0030",
-    "IMEI": "589093398717740",
-    "battery": "BAT46",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.479635,
-      "lng": 77.197369
-    }
-  },
-  {
-    "uuid": "d44d386d-3923-4c09-bd41-3233ee95127f",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0031",
-    "IMEI": "870223204210451",
-    "battery": "BAT40",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.644623,
-      "lng": 76.577821
-    }
-  },
-  {
-    "uuid": "df7b0194-7533-4c43-93f6-2d5ac275652f",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0032",
-    "IMEI": "634746977150321",
-    "battery": "BAT55",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.761936,
-      "lng": 76.454613
-    }
-  },
-  {
-    "uuid": "b421f997-c7c6-4d7a-860b-d34bcfb378b6",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0033",
-    "IMEI": "810514274743514",
-    "battery": "BAT18",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.158601,
-      "lng": 76.043491
-    }
-  },
-  {
-    "uuid": "65432d6a-fd40-4ab8-a5e8-970f8290abae",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0034",
-    "IMEI": "764965112855375",
-    "battery": "BAT94",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.38711,
-      "lng": 77.110916
-    }
-  },
-  {
-    "uuid": "121e9003-46a8-4f8a-9a1d-74971861567d",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0035",
-    "IMEI": "510551793670033",
-    "battery": "BAT79",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.485239,
-      "lng": 76.36113
-    }
-  },
-  {
-    "uuid": "332108b6-e44c-4708-8814-4939f5baaaad",
-    "depotNumber": "Depot X",
-    "busNumber": "Bus-0036",
-    "IMEI": "950920432081306",
-    "battery": "BAT41",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.182983,
-      "lng": 76.595719
-    }
-  },
-  {
-    "uuid": "c263f075-a93b-4945-aff0-7db99cf2bb11",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0037",
-    "IMEI": "135752724450989",
-    "battery": "BAT58",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.354716,
-      "lng": 77.115169
-    }
-  },
-  {
-    "uuid": "f76c2a82-bfad-4f29-aeda-a7325c95cb84",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0038",
-    "IMEI": "400149127922475",
-    "battery": "BAT54",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.639814,
-      "lng": 76.792017
-    }
-  },
-  {
-    "uuid": "19d9134e-2a42-4b6a-b69e-8c7ca571150a",
-    "depotNumber": "Depot M",
-    "busNumber": "Bus-0039",
-    "IMEI": "411003116631588",
-    "battery": "BAT53",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.48855,
-      "lng": 76.421043
-    }
-  },
-  {
-    "uuid": "91ce9c79-7b17-45e2-b45c-eaef9dce2ab8",
-    "depotNumber": "Depot E",
-    "busNumber": "Bus-0040",
-    "IMEI": "794996915788520",
-    "battery": "BAT56",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.654562,
-      "lng": 76.21628
-    }
-  },
-  {
-    "uuid": "0c8f6fe6-cf67-4995-9a88-81b2ba6c80e4",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0041",
-    "IMEI": "407894737361617",
-    "battery": "BAT52",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.83483,
-      "lng": 76.928035
-    }
-  },
-  {
-    "uuid": "93930258-4d32-45cf-ada7-a72ae9a5389c",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0042",
-    "IMEI": "257684267242807",
-    "battery": "BAT57",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.47105,
-      "lng": 76.669694
-    }
-  },
-  {
-    "uuid": "822f94b8-c51f-486c-996d-9cb6fb0b4781",
-    "depotNumber": "Depot B",
-    "busNumber": "Bus-0043",
-    "IMEI": "307251884694201",
-    "battery": "BAT18",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.724836,
-      "lng": 76.206722
-    }
-  },
-  {
-    "uuid": "e18822cf-3c3d-4750-b3dd-c991b5e6c32d",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0044",
-    "IMEI": "448770554990259",
-    "battery": "BAT6",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.085796,
-      "lng": 77.077118
-    }
-  },
-  {
-    "uuid": "b1446bec-e1e2-4649-bfb8-97480b4a24f0",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0045",
-    "IMEI": "199822879781990",
-    "battery": "BAT38",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.343716,
-      "lng": 76.136139
-    }
-  },
-  {
-    "uuid": "0a0a7536-cc92-4bad-8564-89de91489e59",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0046",
-    "IMEI": "815216078954043",
-    "battery": "BAT88",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.373899,
-      "lng": 76.31982
-    }
-  },
-  {
-    "uuid": "07d5a6f9-1c59-4b37-a535-27b3b7fa42d2",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0047",
-    "IMEI": "693970080043490",
-    "battery": "BAT95",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.642446,
-      "lng": 77.100365
-    }
-  },
-  {
-    "uuid": "e534a21a-53ce-491a-a750-39c8fdcb890f",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0048",
-    "IMEI": "902600559307834",
-    "battery": "BAT18",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.524268,
-      "lng": 76.551761
-    }
-  },
-  {
-    "uuid": "bab14053-a84d-46ef-84a5-3b298842ab0d",
-    "depotNumber": "Depot I",
-    "busNumber": "Bus-0049",
-    "IMEI": "547257278808918",
-    "battery": "BAT86",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.252584,
-      "lng": 77.139391
-    }
-  },
-  {
-    "uuid": "29e8a257-df6e-4d1c-9f47-b49471242ee8",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0050",
-    "IMEI": "823170169035399",
-    "battery": "BAT44",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.539939,
-      "lng": 76.036804
-    }
-  },
-  {
-    "uuid": "9d1e8710-95b4-459e-bd16-af20713e58dc",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0051",
-    "IMEI": "258190576834175",
-    "battery": "BAT16",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.568655,
-      "lng": 76.691532
-    }
-  },
-  {
-    "uuid": "c07db8ca-a8fc-4037-9f09-d71bfc8bd436",
-    "depotNumber": "Depot C",
-    "busNumber": "Bus-0052",
-    "IMEI": "621693605415059",
-    "battery": "BAT95",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.638015,
-      "lng": 76.827425
-    }
-  },
-  {
-    "uuid": "64b788ca-5da0-48c5-a7f8-e7ea54b5fdc9",
-    "depotNumber": "Depot M",
-    "busNumber": "Bus-0053",
-    "IMEI": "753150240535399",
-    "battery": "BAT53",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.41602,
-      "lng": 77.190932
-    }
-  },
-  {
-    "uuid": "763c4339-2655-4aad-9799-e04e9a488f99",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0054",
-    "IMEI": "438531499782576",
-    "battery": "BAT13",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.021718,
-      "lng": 77.088221
-    }
-  },
-  {
-    "uuid": "12380d53-2640-418a-9e54-f919dd165ce8",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0055",
-    "IMEI": "769812330216447",
-    "battery": "BAT90",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.002881,
-      "lng": 76.180823
-    }
-  },
-  {
-    "uuid": "817419e6-382d-48b7-825a-64472a1c17f6",
-    "depotNumber": "Depot R",
-    "busNumber": "Bus-0056",
-    "IMEI": "175373496973673",
-    "battery": "BAT45",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.469971,
-      "lng": 76.201049
-    }
-  },
-  {
-    "uuid": "7d7201b6-37ce-4710-ab18-0cda17d28c4e",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-0057",
-    "IMEI": "663269023399566",
-    "battery": "BAT9",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.491064,
-      "lng": 76.834698
-    }
-  },
-  {
-    "uuid": "61f013f1-1fdd-4fb5-a84d-4c358ddf63bb",
-    "depotNumber": "Depot D",
-    "busNumber": "Bus-0058",
-    "IMEI": "266946492449877",
-    "battery": "BAT70",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.834045,
-      "lng": 77.089342
-    }
-  },
-  {
-    "uuid": "50a5ab6b-8f21-4181-bb91-b5387d2712c1",
-    "depotNumber": "Depot P",
-    "busNumber": "Bus-0059",
-    "IMEI": "913954408428356",
-    "battery": "BAT84",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.098927,
-      "lng": 76.171822
-    }
-  },
-  {
-    "uuid": "2aa158a9-7719-4cfd-b6fd-ed00ede068f3",
-    "depotNumber": "Depot Q",
-    "busNumber": "Bus-0060",
-    "IMEI": "833212614460758",
-    "battery": "BAT56",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.827725,
-      "lng": 76.804349
-    }
-  },
-  {
-    "uuid": "75c41d86-209e-4fdc-91f8-5b98cf6b8c50",
+    "uuid": "0d30f014-e86f-49a8-932f-d13e893b2d88",
     "depotNumber": "Depot S",
-    "busNumber": "Bus-0061",
-    "IMEI": "754664400444286",
-    "battery": "BAT73",
+    "busNumber": "Bus-0011",
+    "IMEI": "306386728109775",
+    "battery": "BAT47",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.443174,
+      "lng": 76.432768
+    },
+    "timestamp": "2023-07-06T04:12:04",
+    "location": {
+      "address": "Juddi, Kosli, Rewari District, Haryana, India",
+      "coordinates": {
+        "lat": 28.443174,
+        "lng": 76.432768
+      }
+    },
+    "totalAlerts": 8,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 11.62,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 10.47,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 43.49,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 371,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 53,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 90,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.49,
+        "max": 0.78,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 66.33,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "de233e40-aebc-4ef4-b3db-4a93ddfa0842",
+    "depotNumber": "Depot D",
+    "busNumber": "Bus-0012",
+    "IMEI": "997719227957364",
+    "battery": "BAT89",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.238252,
+      "lng": 77.068585
+    },
+    "timestamp": "2022-12-07T15:53:32",
+    "location": {
+      "address": "Sohna, Gurugram District, Haryana, 122103, India",
+      "coordinates": {
+        "lat": 28.238252,
+        "lng": 77.068585
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 18.02,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 93.32,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 69.68,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 496,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 72,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 59,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.32,
+        "max": 0.86,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 67.45,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "7ae8520e-934e-4e12-b0dd-05a09fb8dd44",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-0013",
+    "IMEI": "163845310839317",
+    "battery": "BAT10",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.733029,
+      "lng": 76.665788
+    },
+    "timestamp": "2023-07-24T07:22:38",
+    "location": {
+      "address": "Beri, Jhajjar District, Haryana, 124107, India",
+      "coordinates": {
+        "lat": 28.733029,
+        "lng": 76.665788
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 63.34,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 13.27,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 58.25,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 258,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 59,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 59,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.14,
+        "max": 0.92,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 69.78,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "cfb36fbf-400a-4b51-a4bc-617b1d623d46",
+    "depotNumber": "Depot P",
+    "busNumber": "Bus-0014",
+    "IMEI": "841372109450170",
+    "battery": "BAT8",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.236184,
+      "lng": 77.014188
+    },
+    "timestamp": "2022-11-22T01:19:26",
+    "location": {
+      "address": "Soondh, Taoru, Nuh District, Haryana, India",
+      "coordinates": {
+        "lat": 28.236184,
+        "lng": 77.014188
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 95.49,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 68.19,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 50.94,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 252,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 99,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 74,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.14,
+        "max": 0.7,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 27,
+        "max": 79.18,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "45836417-63b1-4ce1-9be8-0b5bc2d58ea1",
+    "depotNumber": "Depot H",
+    "busNumber": "Bus-0015",
+    "IMEI": "618478498927334",
+    "battery": "BAT22",
     "status": "idle",
     "coordinates": {
-      "lat": 28.317704,
-      "lng": 76.75608
+      "lat": 28.834162,
+      "lng": 76.98776
+    },
+    "timestamp": "2022-11-22T00:18:58",
+    "location": {
+      "address": "Kharkhoda, Sonipat District, Haryana, 131103, India",
+      "coordinates": {
+        "lat": 28.834162,
+        "lng": 76.98776
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 64.35,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 61.31,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 80.46,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 257,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 90,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 93,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.2,
+        "max": 0.89,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 94.42,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "cd66c91e-6fed-45bb-a195-8fb595e20a92",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0062",
-    "IMEI": "928066488804466",
-    "battery": "BAT43",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.085363,
-      "lng": 76.419695
-    }
-  },
-  {
-    "uuid": "12d2774f-e0f3-4f72-b700-f275c1bf225e",
-    "depotNumber": "Depot C",
-    "busNumber": "Bus-0063",
-    "IMEI": "558494179184494",
+    "uuid": "894a2864-9861-4d22-93fe-eac17e9a766a",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0016",
+    "IMEI": "505047787582921",
     "battery": "BAT28",
     "status": "charging",
     "coordinates": {
-      "lat": 28.533164,
-      "lng": 76.665003
+      "lat": 28.573787,
+      "lng": 76.487752
+    },
+    "timestamp": "2023-04-23T08:14:20",
+    "location": {
+      "address": "Matenhail, Jhajjar District, Haryana, 124106, India",
+      "coordinates": {
+        "lat": 28.573787,
+        "lng": 76.487752
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 83.3,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 17.8,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 94.61,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 273,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 84,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 74,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.35,
+        "max": 0.69,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 99.24,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "850485e0-7761-4f58-b0d5-45a6a7d067a7",
-    "depotNumber": "Depot Y",
-    "busNumber": "Bus-0064",
-    "IMEI": "187724544920376",
-    "battery": "BAT55",
-    "status": "charging",
+    "uuid": "8af0139f-9e64-47c4-8ccd-500a367db842",
+    "depotNumber": "Depot J",
+    "busNumber": "Bus-0017",
+    "IMEI": "847243699782846",
+    "battery": "BAT82",
+    "status": "discharging",
     "coordinates": {
-      "lat": 28.579556,
-      "lng": 76.647289
+      "lat": 28.163761,
+      "lng": 76.838862
+    },
+    "timestamp": "2023-04-10T05:17:37",
+    "location": {
+      "address": "Udaipur, Tijara Tehsil, Alwar District, Rajasthan, 318019, India",
+      "coordinates": {
+        "lat": 28.163761,
+        "lng": 76.838862
+      }
+    },
+    "totalAlerts": 10,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 82.61,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 58.97,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 61.23,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 438,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 78,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 73,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.48,
+        "max": 0.83,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 34,
+        "max": 74.76,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "420ae915-41de-43c8-8485-f41058476c62",
+    "uuid": "1e504e13-2ea2-4435-9535-e788cfc68912",
+    "depotNumber": "Depot O",
+    "busNumber": "Bus-0018",
+    "IMEI": "910629990096021",
+    "battery": "BAT17",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.035557,
+      "lng": 76.105951
+    },
+    "timestamp": "2023-05-03T13:42:38",
+    "location": {
+      "address": "Jal Mahal-Jaipur Road Link Road, Narnaul, Mahendragarh District, Haryana, 123001, India",
+      "coordinates": {
+        "lat": 28.035557,
+        "lng": 76.105951
+      }
+    },
+    "totalAlerts": 3,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 60.47,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 87.37,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 72.27,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 305,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 83,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 67,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.02,
+        "max": 0.87,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 51.48,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "54ddc433-53e7-4dd6-930c-f2540055adc8",
+    "depotNumber": "Depot S",
+    "busNumber": "Bus-0019",
+    "IMEI": "411781395274785",
+    "battery": "BAT11",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.868099,
+      "lng": 77.038552
+    },
+    "timestamp": "2023-03-14T01:59:57",
+    "location": {
+      "address": "Sonipat, Sonipat District, Haryana, 131103, India",
+      "coordinates": {
+        "lat": 28.868099,
+        "lng": 77.038552
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 79.93,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 79.88,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 54.11,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 454,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 51,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 77,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.1,
+        "max": 0.87,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 26,
+        "max": 68.44,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "e87fd951-6571-41f8-ae5f-b7cd8c0533bd",
     "depotNumber": "Depot U",
-    "busNumber": "Bus-0065",
-    "IMEI": "965497845619838",
-    "battery": "BAT74",
-    "status": "charging",
+    "busNumber": "Bus-0020",
+    "IMEI": "691370733066629",
+    "battery": "BAT82",
+    "status": "full-charged",
     "coordinates": {
-      "lat": 28.036041,
-      "lng": 77.14615
+      "lat": 28.036347,
+      "lng": 76.691768
+    },
+    "timestamp": "2023-06-11T11:53:17",
+    "location": {
+      "address": "Kasimpur, Kotkasim Tehsil, Alwar District, Rajasthan, 301702, India",
+      "coordinates": {
+        "lat": 28.036347,
+        "lng": 76.691768
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 73.77,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 33.04,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 32.9,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 330,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 52,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 82,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.39,
+        "max": 0.61,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 35,
+        "max": 67.82,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "28c7d24e-5e28-424d-84d5-2f3bee3031c8",
-    "depotNumber": "Depot B",
-    "busNumber": "Bus-0066",
-    "IMEI": "832983418353177",
+    "uuid": "66d0c453-c136-49c9-8741-7aad91668f5f",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0021",
+    "IMEI": "786907650410519",
+    "battery": "BAT49",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.53904,
+      "lng": 76.558069
+    },
+    "timestamp": "2023-08-01T21:08:01",
+    "location": {
+      "address": "Chuchakwas, Matenhail, Jhajjar District, Haryana, India",
+      "coordinates": {
+        "lat": 28.53904,
+        "lng": 76.558069
+      }
+    },
+    "totalAlerts": 5,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 34.36,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 43.41,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 38.22,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 216,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 72,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 99,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.31,
+        "max": 0.98,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 94.74,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "79f7be26-ede6-4f8c-995e-90df11e906de",
+    "depotNumber": "Depot V",
+    "busNumber": "Bus-0022",
+    "IMEI": "466503784416142",
+    "battery": "BAT73",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.884201,
+      "lng": 76.916442
+    },
+    "timestamp": "2023-05-19T17:26:52",
+    "location": {
+      "address": "Kharkhoda, Sonipat District, Haryana, 131402, India",
+      "coordinates": {
+        "lat": 28.884201,
+        "lng": 76.916442
+      }
+    },
+    "totalAlerts": 3,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 36.99,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 59.58,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 73.89,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 384,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 60,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 55,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.39,
+        "max": 0.86,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 27,
+        "max": 85.4,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "bf19133a-9e45-4e42-93e6-a840fb09aded",
+    "depotNumber": "Depot A",
+    "busNumber": "Bus-0023",
+    "IMEI": "333366536405386",
+    "battery": "BAT79",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.405608,
+      "lng": 76.745181
+    },
+    "timestamp": "2023-03-12T08:28:02",
+    "location": {
+      "address": "Farrukhnagar, Gurugram District, Haryana, India",
+      "coordinates": {
+        "lat": 28.405608,
+        "lng": 76.745181
+      }
+    },
+    "totalAlerts": 10,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 76.5,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 79.99,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 71.72,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 429,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 62,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 82,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.49,
+        "max": 0.71,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 65.18,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "19c7dc12-634f-4da6-ab5c-e26abc955d62",
+    "depotNumber": "Depot A",
+    "busNumber": "Bus-0024",
+    "IMEI": "394017334603082",
+    "battery": "BAT72",
+    "status": "in-fault",
+    "coordinates": {
+      "lat": 28.623275,
+      "lng": 76.908222
+    },
+    "timestamp": "2023-02-05T22:50:31",
+    "location": {
+      "address": "Shidi Pur Lowa, Bahadurgarh, Jhajjar District, Haryana, India",
+      "coordinates": {
+        "lat": 28.623275,
+        "lng": 76.908222
+      }
+    },
+    "totalAlerts": 8,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 27.47,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 91.48,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 25.13,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 272,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 73,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 65,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.02,
+        "max": 0.55,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 29,
+        "max": 70.11,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "50c66922-0ce4-4316-8591-c03244868704",
+    "depotNumber": "Depot X",
+    "busNumber": "Bus-0025",
+    "IMEI": "989798478466470",
+    "battery": "BAT47",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.739912,
+      "lng": 76.382047
+    },
+    "timestamp": "2023-02-26T14:29:29",
+    "location": {
+      "address": "Dadri, Charkhi Dadri District, Haryana, 127307, India",
+      "coordinates": {
+        "lat": 28.739912,
+        "lng": 76.382047
+      }
+    },
+    "totalAlerts": 7,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 42.83,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 34.25,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 99.11,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 249,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 76,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 97,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.02,
+        "max": 0.62,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 66.93,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "d575a9f3-4ff3-4ba4-8050-8dbc52e28c41",
+    "depotNumber": "Depot N",
+    "busNumber": "Bus-0026",
+    "IMEI": "994724298204555",
+    "battery": "BAT12",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.163009,
+      "lng": 76.008754
+    },
+    "timestamp": "2022-10-04T08:20:49",
+    "location": {
+      "address": "Nihaloth, Buhana Tehsil, Jhunjhunu District, Rajasthan, India",
+      "coordinates": {
+        "lat": 28.163009,
+        "lng": 76.008754
+      }
+    },
+    "totalAlerts": 3,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 69.67,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 6.06,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 47.09,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 476,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 51,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 92,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.2,
+        "max": 0.93,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 91.84,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "9561024a-202d-46b4-8e78-16234802ed18",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-0027",
+    "IMEI": "555847530522139",
+    "battery": "BAT99",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.50839,
+      "lng": 76.545903
+    },
+    "timestamp": "2022-12-07T11:19:11",
+    "location": {
+      "address": "Matenhail, Jhajjar District, Haryana, 124109, India",
+      "coordinates": {
+        "lat": 28.50839,
+        "lng": 76.545903
+      }
+    },
+    "totalAlerts": 10,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 84.81,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 60.06,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 85.11,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 351,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 88,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 82,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.5,
+        "max": 0.83,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 72.64,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "e8cbe222-fcb7-40e2-a2a7-0596c20d799e",
+    "depotNumber": "Depot Z",
+    "busNumber": "Bus-0028",
+    "IMEI": "910334990756189",
     "battery": "BAT38",
     "status": "in-field",
     "coordinates": {
-      "lat": 28.045755,
-      "lng": 76.472831
+      "lat": 28.157781,
+      "lng": 76.293396
+    },
+    "timestamp": "2022-10-05T04:22:13",
+    "location": {
+      "address": "Bochadiya, Narnaul, Mahendragarh District, Haryana, India",
+      "coordinates": {
+        "lat": 28.157781,
+        "lng": 76.293396
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 15.68,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 91.73,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 82.32,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 341,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 51,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 64,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.15,
+        "max": 0.72,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 26,
+        "max": 94.71,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "071106ef-480b-47cb-9abb-ad2edc2efbc5",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-0067",
-    "IMEI": "122514524008370",
-    "battery": "BAT72",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.211009,
-      "lng": 76.289589
-    }
-  },
-  {
-    "uuid": "2e3ccc13-3091-4aa4-90c1-447b3d906cb8",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0068",
-    "IMEI": "858053618583844",
-    "battery": "BAT22",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.700167,
-      "lng": 76.982643
-    }
-  },
-  {
-    "uuid": "01836121-f72e-4f1f-a0f5-bbdc84f5d71e",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0069",
-    "IMEI": "530982215410679",
-    "battery": "BAT49",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.520258,
-      "lng": 76.602542
-    }
-  },
-  {
-    "uuid": "6bb5dc6f-bbd2-43f0-8844-b0a10d261c96",
-    "depotNumber": "Depot J",
-    "busNumber": "Bus-0070",
-    "IMEI": "991976522631098",
-    "battery": "BAT87",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.503827,
-      "lng": 76.206446
-    }
-  },
-  {
-    "uuid": "e0483edf-17e4-4c3e-80a8-959097bdec3a",
-    "depotNumber": "Depot X",
-    "busNumber": "Bus-0071",
-    "IMEI": "251568856224968",
-    "battery": "BAT84",
-    "status": "full-charged",
-    "coordinates": {
-      "lat": 28.291955,
-      "lng": 77.146852
-    }
-  },
-  {
-    "uuid": "fda3b9fd-6238-4a71-819f-62d14414438c",
-    "depotNumber": "Depot D",
-    "busNumber": "Bus-0072",
-    "IMEI": "254052120231452",
-    "battery": "BAT70",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.556311,
-      "lng": 77.052211
-    }
-  },
-  {
-    "uuid": "7c953ccf-d5a5-473b-a4e4-2ea4eb72edd0",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0073",
-    "IMEI": "829594802321802",
-    "battery": "BAT26",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.803742,
-      "lng": 76.084139
-    }
-  },
-  {
-    "uuid": "72ab05ee-5724-4e73-b651-8ea0cb387f7e",
-    "depotNumber": "Depot V",
-    "busNumber": "Bus-0074",
-    "IMEI": "168993526854385",
-    "battery": "BAT99",
-    "status": "discharging",
-    "coordinates": {
-      "lat": 28.75505,
-      "lng": 76.426886
-    }
-  },
-  {
-    "uuid": "005a5421-d789-438d-8e31-c9492af698ad",
-    "depotNumber": "Depot B",
-    "busNumber": "Bus-0075",
-    "IMEI": "702554190034363",
-    "battery": "BAT51",
-    "status": "charging",
-    "coordinates": {
-      "lat": 28.449589,
-      "lng": 76.649762
-    }
-  },
-  {
-    "uuid": "f2b60303-19fa-4781-9a97-2736a2ae7a54",
-    "depotNumber": "Depot A",
-    "busNumber": "Bus-0076",
-    "IMEI": "988948216403970",
-    "battery": "BAT30",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.826774,
-      "lng": 76.218846
-    }
-  },
-  {
-    "uuid": "17fa6403-c142-420a-aab8-43b2558f7000",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-0077",
-    "IMEI": "694543366130835",
-    "battery": "BAT35",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.174365,
-      "lng": 76.395549
-    }
-  },
-  {
-    "uuid": "ccbb875c-66e3-438f-a502-658a6bd9f380",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-0078",
-    "IMEI": "714842179507950",
-    "battery": "BAT40",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.827767,
-      "lng": 76.521013
-    }
-  },
-  {
-    "uuid": "0057ec61-8ea3-49bf-84c3-34a6272ccb58",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0079",
-    "IMEI": "915137100114711",
-    "battery": "BAT19",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.229426,
-      "lng": 76.89032
-    }
-  },
-  {
-    "uuid": "8e55d274-39f6-4186-a17c-08ee66085948",
-    "depotNumber": "Depot A",
-    "busNumber": "Bus-0080",
-    "IMEI": "943549802690936",
-    "battery": "BAT94",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.417095,
-      "lng": 76.583865
-    }
-  },
-  {
-    "uuid": "2bcf8f22-a97d-4a83-a915-8319dc41489c",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0081",
-    "IMEI": "574072742239611",
-    "battery": "BAT69",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.781893,
-      "lng": 76.929603
-    }
-  },
-  {
-    "uuid": "900d8d32-ac4f-4d90-b761-26b8b2b97f00",
+    "uuid": "7b60edb4-415a-411a-8baf-c3147969732f",
     "depotNumber": "Depot F",
-    "busNumber": "Bus-0082",
-    "IMEI": "437327820756862",
-    "battery": "BAT0",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.150186,
-      "lng": 76.119145
-    }
-  },
-  {
-    "uuid": "2b290b96-08ef-4b51-9a6a-c425351d7886",
-    "depotNumber": "Depot U",
-    "busNumber": "Bus-0083",
-    "IMEI": "131388157084853",
-    "battery": "BAT98",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.181429,
-      "lng": 76.786386
-    }
-  },
-  {
-    "uuid": "ff7633a9-00b5-490d-a181-d1364a05b250",
-    "depotNumber": "Depot L",
-    "busNumber": "Bus-0084",
-    "IMEI": "821946097314006",
-    "battery": "BAT66",
-    "status": "in-field",
-    "coordinates": {
-      "lat": 28.422845,
-      "lng": 76.17918
-    }
-  },
-  {
-    "uuid": "f1b2b1d7-531b-466f-8fcb-d5188d6a23f3",
-    "depotNumber": "Depot S",
-    "busNumber": "Bus-0085",
-    "IMEI": "652827946087527",
-    "battery": "BAT47",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.66441,
-      "lng": 76.681757
-    }
-  },
-  {
-    "uuid": "d56be521-482d-4bea-bdea-f77e8d1608d7",
-    "depotNumber": "Depot I",
-    "busNumber": "Bus-0086",
-    "IMEI": "773814502869745",
-    "battery": "BAT48",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.550305,
-      "lng": 76.572071
-    }
-  },
-  {
-    "uuid": "4288cc0b-edeb-4d91-9486-6649b9e99c15",
-    "depotNumber": "Depot M",
-    "busNumber": "Bus-0087",
-    "IMEI": "777863881369359",
-    "battery": "BAT66",
+    "busNumber": "Bus-0029",
+    "IMEI": "176944996880979",
+    "battery": "BAT44",
     "status": "discharging",
     "coordinates": {
-      "lat": 28.207569,
-      "lng": 76.064764
+      "lat": 28.584328,
+      "lng": 76.611716
+    },
+    "timestamp": "2023-02-17T17:00:54",
+    "location": {
+      "address": "Jhajjar, Jhajjar District, Haryana, 124103, India",
+      "coordinates": {
+        "lat": 28.584328,
+        "lng": 76.611716
+      }
+    },
+    "totalAlerts": 9,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 78.01,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 8.22,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 69.92,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 420,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 95,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 84,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.02,
+        "max": 0.66,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 98.04,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "226f04fb-23ee-42e0-b049-0e0cd74b7dee",
-    "depotNumber": "Depot G",
-    "busNumber": "Bus-0088",
-    "IMEI": "209493308517968",
-    "battery": "BAT81",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.040037,
-      "lng": 76.285481
-    }
-  },
-  {
-    "uuid": "db2e8f92-b164-40e3-ac45-9c047ff8d168",
-    "depotNumber": "Depot N",
-    "busNumber": "Bus-0089",
-    "IMEI": "652757172508977",
-    "battery": "BAT7",
-    "status": "in-depot",
-    "coordinates": {
-      "lat": 28.119102,
-      "lng": 76.688573
-    }
-  },
-  {
-    "uuid": "933875ed-4c14-4243-abc5-4dfb4c5bc08a",
-    "depotNumber": "Depot K",
-    "busNumber": "Bus-0090",
-    "IMEI": "157893594029783",
-    "battery": "BAT22",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.055137,
-      "lng": 77.002674
-    }
-  },
-  {
-    "uuid": "d9f243b6-c3e1-42fb-ad96-1c2389925855",
-    "depotNumber": "Depot O",
-    "busNumber": "Bus-0091",
-    "IMEI": "820657037323293",
-    "battery": "BAT66",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.58593,
-      "lng": 76.029836
-    }
-  },
-  {
-    "uuid": "2ddb0b60-ef93-4f22-b393-938950e6d6aa",
-    "depotNumber": "Depot T",
-    "busNumber": "Bus-0092",
-    "IMEI": "964099801687664",
-    "battery": "BAT70",
-    "status": "idle",
-    "coordinates": {
-      "lat": 28.862287,
-      "lng": 77.150935
-    }
-  },
-  {
-    "uuid": "433eb8e0-6b92-449a-a696-07dcf8c31d15",
-    "depotNumber": "Depot U",
-    "busNumber": "Bus-0093",
-    "IMEI": "845737043073324",
-    "battery": "BAT14",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.338773,
-      "lng": 76.701154
-    }
-  },
-  {
-    "uuid": "359420ec-e4a4-438e-b21c-f1bcd31d62b7",
-    "depotNumber": "Depot H",
-    "busNumber": "Bus-0094",
-    "IMEI": "646325508385907",
-    "battery": "BAT73",
-    "status": "disconnected",
-    "coordinates": {
-      "lat": 28.853242,
-      "lng": 76.170253
-    }
-  },
-  {
-    "uuid": "978c9d9f-d5ae-4cc0-9dca-d74ee43f5c1e",
-    "depotNumber": "Depot Z",
-    "busNumber": "Bus-0095",
-    "IMEI": "765299059533995",
-    "battery": "BAT84",
-    "status": "in-fault",
-    "coordinates": {
-      "lat": 28.895371,
-      "lng": 76.950091
-    }
-  },
-  {
-    "uuid": "78577c9b-30d7-45e4-8f7d-0868d7c1a7a6",
+    "uuid": "3c15319e-f584-4977-8bf9-90b1af6e5b1b",
     "depotNumber": "Depot E",
-    "busNumber": "Bus-0096",
-    "IMEI": "845345207455630",
-    "battery": "BAT68",
+    "busNumber": "Bus-0030",
+    "IMEI": "407689794664094",
+    "battery": "BAT12",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.85263,
+      "lng": 76.0898
+    },
+    "timestamp": "2023-07-28T00:15:43",
+    "location": {
+      "address": "Bawani Khera, Bhiwani District, Haryana, India",
+      "coordinates": {
+        "lat": 28.85263,
+        "lng": 76.0898
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 26.44,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 69.33,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 90.51,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 422,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 63,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 70,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.11,
+        "max": 0.71,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 50.93,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "e42548d8-74a1-4f98-8e37-02a8d3cdc4fd",
+    "depotNumber": "Depot B",
+    "busNumber": "Bus-0031",
+    "IMEI": "919900614625515",
+    "battery": "BAT78",
     "status": "idle",
     "coordinates": {
-      "lat": 28.802114,
-      "lng": 77.034247
+      "lat": 28.860295,
+      "lng": 76.586844
+    },
+    "timestamp": "2023-05-16T09:50:30",
+    "location": {
+      "address": "Rohtak, Rohtak District, Haryana, 124001, India",
+      "coordinates": {
+        "lat": 28.860295,
+        "lng": 76.586844
+      }
+    },
+    "totalAlerts": 8,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 61.39,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 39.77,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 84.43,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 276,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 76,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 84,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.46,
+        "max": 0.7,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 26,
+        "max": 73.06,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "e6bda8e2-881b-4b90-b46b-d2d5ac5e0d73",
-    "depotNumber": "Depot F",
-    "busNumber": "Bus-0097",
-    "IMEI": "860784040479886",
-    "battery": "BAT22",
+    "uuid": "10871051-42cb-4870-b136-20a3695f6398",
+    "depotNumber": "Depot S",
+    "busNumber": "Bus-0032",
+    "IMEI": "567531183043074",
+    "battery": "BAT0",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.736612,
+      "lng": 76.614511
+    },
+    "timestamp": "2022-11-22T14:40:06",
+    "location": {
+      "address": "Beri, Jhajjar District, Haryana, 124107, India",
+      "coordinates": {
+        "lat": 28.736612,
+        "lng": 76.614511
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 99.36,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 90.92,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 62.18,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 259,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 67,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 83,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.01,
+        "max": 0.81,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 97.12,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "c5f75cb7-f6e4-4897-bb24-73255071e50c",
+    "depotNumber": "Depot H",
+    "busNumber": "Bus-0033",
+    "IMEI": "364040699144530",
+    "battery": "BAT28",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.880226,
+      "lng": 76.510084
+    },
+    "timestamp": "2022-11-10T22:32:45",
+    "location": {
+      "address": "Kalanaur, Rohtak District, Haryana, 124411, India",
+      "coordinates": {
+        "lat": 28.880226,
+        "lng": 76.510084
+      }
+    },
+    "totalAlerts": 7,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 4.11,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 48.7,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 84.19,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 452,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 84,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 83,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.4,
+        "max": 0.92,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 83.37,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "1369efb7-0b2a-43ec-9a74-a8bcc9d11f7c",
+    "depotNumber": "Depot H",
+    "busNumber": "Bus-0034",
+    "IMEI": "809015898418805",
+    "battery": "BAT99",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.758585,
+      "lng": 76.543573
+    },
+    "timestamp": "2022-11-22T08:31:09",
+    "location": {
+      "address": "Ritauli, Rohtak, Rohtak District, Haryana, 124029, India",
+      "coordinates": {
+        "lat": 28.758585,
+        "lng": 76.543573
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 54.36,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 49.34,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 54.61,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 209,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 71,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 79,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.47,
+        "max": 0.73,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 34,
+        "max": 85.91,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "12518572-5ea9-4da5-9df2-00cc743921eb",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0035",
+    "IMEI": "958351488461619",
+    "battery": "BAT50",
     "status": "full-charged",
     "coordinates": {
-      "lat": 28.042135,
-      "lng": 76.264124
+      "lat": 28.212977,
+      "lng": 76.100823
+    },
+    "timestamp": "2023-04-05T05:45:40",
+    "location": {
+      "address": "Chhajiyawas, Mahendragarh, Mahendragarh District, Haryana, India",
+      "coordinates": {
+        "lat": 28.212977,
+        "lng": 76.100823
+      }
+    },
+    "totalAlerts": 9,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 35.8,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 41.62,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 98.57,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 380,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 62,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 94,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.18,
+        "max": 0.87,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 32,
+        "max": 95.62,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "aab93bf8-d6f1-44f7-9d86-ac0952cd9324",
-    "depotNumber": "Depot W",
-    "busNumber": "Bus-0098",
-    "IMEI": "224622111400023",
-    "battery": "BAT63",
-    "status": "discharging",
+    "uuid": "54b2b4a8-f380-4e9d-af74-81718d3e0486",
+    "depotNumber": "Depot Y",
+    "busNumber": "Bus-0036",
+    "IMEI": "197654945131959",
+    "battery": "BAT8",
+    "status": "in-field",
     "coordinates": {
-      "lat": 28.800422,
-      "lng": 76.7691
+      "lat": 28.860464,
+      "lng": 76.82011
+    },
+    "timestamp": "2022-10-07T12:17:02",
+    "location": {
+      "address": "Kharkhoda, Sonipat District, Haryana, 124404, India",
+      "coordinates": {
+        "lat": 28.860464,
+        "lng": 76.82011
+      }
+    },
+    "totalAlerts": 9,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 70.89,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 49.09,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 46.65,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 417,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 77,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 79,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.17,
+        "max": 0.59,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 35,
+        "max": 95.45,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "20148eec-3ce4-467f-8676-36cc4a664766",
-    "depotNumber": "Depot X",
-    "busNumber": "Bus-0099",
-    "IMEI": "709710969537586",
-    "battery": "BAT43",
-    "status": "discharging",
+    "uuid": "b5a480f5-0bae-4f9a-af66-eb635288f568",
+    "depotNumber": "Depot A",
+    "busNumber": "Bus-0037",
+    "IMEI": "162155491595421",
+    "battery": "BAT27",
+    "status": "idle",
     "coordinates": {
-      "lat": 28.521846,
-      "lng": 76.565148
+      "lat": 28.10131,
+      "lng": 76.498722
+    },
+    "timestamp": "2022-10-28T10:23:16",
+    "location": {
+      "address": "Tankri, Bawal, Rewari District, Haryana, 301708, India",
+      "coordinates": {
+        "lat": 28.10131,
+        "lng": 76.498722
+      }
+    },
+    "totalAlerts": 9,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 18.35,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 6.07,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 57.8,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 435,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 62,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 50,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.44,
+        "max": 0.88,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 75.78,
+        "units": "\u00b0C"
+      }
     }
   },
   {
-    "uuid": "705b45cd-faed-4a46-af75-4621cee11f6f",
-    "depotNumber": "Depot D",
-    "busNumber": "Bus-00100",
-    "IMEI": "345043349913813",
-    "battery": "BAT49",
+    "uuid": "36b35d67-347a-4d1d-90c2-9b1eee2cc5bd",
+    "depotNumber": "Depot U",
+    "busNumber": "Bus-0038",
+    "IMEI": "684337551965129",
+    "battery": "BAT8",
     "status": "in-depot",
     "coordinates": {
-      "lat": 28.782924,
-      "lng": 76.588994
+      "lat": 28.187024,
+      "lng": 76.90812
+    },
+    "timestamp": "2022-12-16T02:39:58",
+    "location": {
+      "address": "Taoru, Nuh District, Haryana, 301018, India",
+      "coordinates": {
+        "lat": 28.187024,
+        "lng": 76.90812
+      }
+    },
+    "totalAlerts": 5,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 48.95,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 49.6,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 54.6,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 380,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 83,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 71,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.22,
+        "max": 0.74,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 80.12,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "5d8ba287-028b-46e2-afff-259cbdbcc1f4",
+    "depotNumber": "Depot J",
+    "busNumber": "Bus-0039",
+    "IMEI": "680389473953368",
+    "battery": "BAT53",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.025032,
+      "lng": 76.28605
+    },
+    "timestamp": "2023-01-18T14:27:37",
+    "location": {
+      "address": "Raiwana, Neemrana Tehsil, Alwar District, Rajasthan, 301703, India",
+      "coordinates": {
+        "lat": 28.025032,
+        "lng": 76.28605
+      }
+    },
+    "totalAlerts": 3,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 60.2,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 85.46,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 25.99,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 396,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 88,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 67,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.28,
+        "max": 0.83,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 59.46,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "6b620984-9560-49bb-a7f2-f0081e262f97",
+    "depotNumber": "Depot M",
+    "busNumber": "Bus-0040",
+    "IMEI": "252029273741058",
+    "battery": "BAT39",
+    "status": "full-charged",
+    "coordinates": {
+      "lat": 28.641265,
+      "lng": 76.463922
+    },
+    "timestamp": "2023-08-01T02:55:54",
+    "location": {
+      "address": "Beri, Jhajjar District, Haryana, India",
+      "coordinates": {
+        "lat": 28.641265,
+        "lng": 76.463922
+      }
+    },
+    "totalAlerts": 2,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 1.66,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 66.64,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 77.72,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 257,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 72,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 77,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.08,
+        "max": 0.77,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 86.36,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "b49c23cd-4c4e-4422-afe6-5e77954a234f",
+    "depotNumber": "Depot Q",
+    "busNumber": "Bus-0041",
+    "IMEI": "402051896340014",
+    "battery": "BAT33",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.307502,
+      "lng": 76.960718
+    },
+    "timestamp": "2023-07-14T16:30:46",
+    "location": {
+      "address": "Bissar Akbarpur, Taoru, Nuh District, Haryana, 122015, India",
+      "coordinates": {
+        "lat": 28.307502,
+        "lng": 76.960718
+      }
+    },
+    "totalAlerts": 3,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 10.58,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 99.19,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 26.53,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 291,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 95,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 54,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.12,
+        "max": 0.99,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 61.36,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "97c78dd5-14e0-42bc-953a-c9e88f675ba6",
+    "depotNumber": "Depot R",
+    "busNumber": "Bus-0042",
+    "IMEI": "267848767315501",
+    "battery": "BAT92",
+    "status": "disconnected",
+    "coordinates": {
+      "lat": 28.081496,
+      "lng": 77.12854
+    },
+    "timestamp": "2022-10-21T12:23:30",
+    "location": {
+      "address": "Delhi - Vadodara Expressway, Hathin, Palwal District, Haryana, India",
+      "coordinates": {
+        "lat": 28.081496,
+        "lng": 77.12854
+      }
+    },
+    "totalAlerts": 6,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 97.81,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 39.55,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 76.59,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 348,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 53,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 82,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.46,
+        "max": 0.53,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 32,
+        "max": 53.06,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "0b23f0c1-8f8a-4d09-bbae-f422b7415918",
+    "depotNumber": "Depot W",
+    "busNumber": "Bus-0043",
+    "IMEI": "767703391343563",
+    "battery": "BAT58",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.766679,
+      "lng": 76.778559
+    },
+    "timestamp": "2023-02-14T10:05:37",
+    "location": {
+      "address": "NH9, Bahadurgarh, Jhajjar District, Haryana, 124507, India",
+      "coordinates": {
+        "lat": 28.766679,
+        "lng": 76.778559
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 2.48,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 19.51,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 74.9,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 206,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 59,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 70,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.38,
+        "max": 0.81,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 35,
+        "max": 68.49,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "09c79b0f-ed58-45ed-958b-6ed7a00d8ce5",
+    "depotNumber": "Depot L",
+    "busNumber": "Bus-0044",
+    "IMEI": "451091801215666",
+    "battery": "BAT90",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.58371,
+      "lng": 76.677449
+    },
+    "timestamp": "2023-04-29T12:24:43",
+    "location": {
+      "address": "NH352, Jhajjar, Jhajjar District, Haryana, 124104, India",
+      "coordinates": {
+        "lat": 28.58371,
+        "lng": 76.677449
+      }
+    },
+    "totalAlerts": 10,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 82.08,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 84.52,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 71.67,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 414,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 84,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 96,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.1,
+        "max": 0.67,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 25,
+        "max": 73.65,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "54972667-c44e-4bcc-9952-cb67e923d22d",
+    "depotNumber": "Depot I",
+    "busNumber": "Bus-0045",
+    "IMEI": "266482669691568",
+    "battery": "BAT57",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.591716,
+      "lng": 76.746479
+    },
+    "timestamp": "2023-07-20T02:59:52",
+    "location": {
+      "address": "MDR123, Jhajjar, Jhajjar District, Haryana, 124104, India",
+      "coordinates": {
+        "lat": 28.591716,
+        "lng": 76.746479
+      }
+    },
+    "totalAlerts": 5,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 54.82,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 14.89,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 44.7,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 488,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 58,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 53,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.0,
+        "max": 0.51,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 31,
+        "max": 59.55,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "e73cff89-cde8-4db4-8428-8d1579a067c6",
+    "depotNumber": "Depot K",
+    "busNumber": "Bus-0046",
+    "IMEI": "611668399688834",
+    "battery": "BAT92",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.35794,
+      "lng": 77.095678
+    },
+    "timestamp": "2023-07-09T16:58:44",
+    "location": {
+      "address": "Sohna, Gurugram District, Haryana, 122008, India",
+      "coordinates": {
+        "lat": 28.35794,
+        "lng": 77.095678
+      }
+    },
+    "totalAlerts": 3,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 6.18,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 98.73,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 89.91,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 410,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 59,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 77,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.06,
+        "max": 0.87,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 64.86,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "02416a57-042e-4667-ab58-5114b8a494d4",
+    "depotNumber": "Depot E",
+    "busNumber": "Bus-0047",
+    "IMEI": "367811703869650",
+    "battery": "BAT56",
+    "status": "charging",
+    "coordinates": {
+      "lat": 28.701581,
+      "lng": 76.089743
+    },
+    "timestamp": "2022-11-18T16:57:05",
+    "location": {
+      "address": "Bhiwani, Bhiwani District, Haryana, 125021, India",
+      "coordinates": {
+        "lat": 28.701581,
+        "lng": 76.089743
+      }
+    },
+    "totalAlerts": 10,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 18.28,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 91.21,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 80.92,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 278,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 98,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 99,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.02,
+        "max": 0.86,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 28,
+        "max": 89.31,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "89f6d2b6-b7fe-45e1-934f-7dea52e3145e",
+    "depotNumber": "Depot Z",
+    "busNumber": "Bus-0048",
+    "IMEI": "279847677280746",
+    "battery": "BAT74",
+    "status": "idle",
+    "coordinates": {
+      "lat": 28.270053,
+      "lng": 76.546619
+    },
+    "timestamp": "2023-08-02T11:22:12",
+    "location": {
+      "address": "Boria Kamalpur, Rewari, Rewari District, Haryana, India",
+      "coordinates": {
+        "lat": 28.270053,
+        "lng": 76.546619
+      }
+    },
+    "totalAlerts": 4,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 60.22,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 5.76,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 72.52,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 208,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 50,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 91,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.23,
+        "max": 0.66,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 26,
+        "max": 61.35,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "398b451d-cba7-46dd-a076-77027458f2ee",
+    "depotNumber": "Depot S",
+    "busNumber": "Bus-0049",
+    "IMEI": "904349146639015",
+    "battery": "BAT49",
+    "status": "in-field",
+    "coordinates": {
+      "lat": 28.7731,
+      "lng": 76.863059
+    },
+    "timestamp": "2022-11-25T03:36:40",
+    "location": {
+      "address": "Delhi Western Peripheral Expressway, Bahadurgarh, Jhajjar District, Haryana, 124507, India",
+      "coordinates": {
+        "lat": 28.7731,
+        "lng": 76.863059
+      }
+    },
+    "totalAlerts": 8,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 75.13,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 37.82,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 89.38,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 386,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 91,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 98,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.46,
+        "max": 0.9,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 33,
+        "max": 98.05,
+        "units": "\u00b0C"
+      }
+    }
+  },
+  {
+    "uuid": "bea26eae-2280-42b8-b6a0-2de452aab7cf",
+    "depotNumber": "Depot E",
+    "busNumber": "Bus-0050",
+    "IMEI": "216791500123024",
+    "battery": "BAT53",
+    "status": "discharging",
+    "coordinates": {
+      "lat": 28.458824,
+      "lng": 76.609463
+    },
+    "timestamp": "2023-03-03T06:33:05",
+    "location": {
+      "address": "Sahlawas, Jhajjar District, Haryana, 124108, India",
+      "coordinates": {
+        "lat": 28.458824,
+        "lng": 76.609463
+      }
+    },
+    "totalAlerts": 1,
+    "statusOptions": {
+      "bus": {
+        "text": "Online",
+        "status": "on"
+      },
+      "CANData": {
+        "text": "CAN Data",
+        "status": "on"
+      },
+      "externalPower": {
+        "text": "External Power",
+        "status": "on"
+      },
+      "deviceData": {
+        "text": "Device Data",
+        "status": "on"
+      },
+      "GPSData": {
+        "text": "GPS Data",
+        "status": "on"
+      },
+      "busRunning": {
+        "text": "Bus Running",
+        "status": "on"
+      }
+    },
+    "batteryOverview": {
+      "soc": {
+        "text": "SoC",
+        "value": 22.88,
+        "units": "%"
+      },
+      "soh": {
+        "text": "SoH",
+        "value": 26.87,
+        "units": "%"
+      },
+      "temperature": {
+        "text": "Temperature",
+        "value": 70.89,
+        "units": "\u00b0C"
+      },
+      "voltage": {
+        "text": "Voltage",
+        "value": 382,
+        "units": "V"
+      },
+      "current": {
+        "text": "Current",
+        "value": 86,
+        "units": "A"
+      },
+      "regenation": {
+        "text": "Regeneration",
+        "value": "Disabled"
+      },
+      "BMSStatus": {
+        "text": "BMS Status",
+        "value": "Normal"
+      },
+      "speed": {
+        "text": "Speed",
+        "value": 69,
+        "units": "km/h"
+      },
+      "contractorStatus": {
+        "text": "String Contractor Status",
+        "value": "Closed"
+      },
+      "cellVoltageDelta": {
+        "text": "String-Wise Delta of Cell Voltage",
+        "min": 0.33,
+        "max": 0.61,
+        "units": "V"
+      },
+      "temperatureDelta": {
+        "text": "String-Wise Delta of Temperature",
+        "min": 35,
+        "max": 55.13,
+        "units": "\u00b0C"
+      }
     }
   }
 ]

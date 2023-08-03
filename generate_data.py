@@ -3,6 +3,7 @@ from enum import Enum
 import random
 import json
 import string
+import time
 import uuid
 
 from datetime import datetime, timedelta
@@ -15,15 +16,15 @@ class SWITCH:
 
 
 def get_address_from_lat_long(latitude, longitude):
-    return "Sector 97, Farrukhnagar, Gurugram District, Haryana, India"
     geolocator = Nominatim(user_agent="myGeocoder")
     location = geolocator.reverse(f"{latitude}, {longitude}", exactly_one=True)
 
     if location is not None:
         address = location.address
+        print(address)
         return address
     else:
-        return None
+        return ""
 
 
 def random_datetime(start_date, end_date):
@@ -71,7 +72,8 @@ fault_description = [
     },
 ]
 
-for i in range(100):
+for i in range(50):
+    time.sleep(5)
     bus_status = random.choice(
         [
             "in-depot",
@@ -207,7 +209,7 @@ for i in range(100):
     }
 
     dummy_faults_data.append(fault_data)
-    dummy_buses_data.append(bus_data)
+    dummy_buses_data.append({**bus_data, **specific_bus_data})
     dummy_specific_bus_data.append(specific_bus_data)
     dummy_specific_fault_data.append(specific_fault_data)
 
