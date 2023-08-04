@@ -121,13 +121,13 @@
   },
   "voltage": {
     "initialValue": [
-      8,
-      78
+      0,
+      100
     ],
     "type": "range",
     "bounds": [
-      8,
-      78
+      0,
+      100
     ],
     "label": "Voltage Range",
     "unit": "mV"
