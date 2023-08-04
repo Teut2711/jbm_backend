@@ -54,71 +54,68 @@ bus_statuses = [
 
 
 def does_bus_data_satisfy_filters(data, filters):
+    is_true = True
     for k, _v in filters.items():
         try:
             v = int(_v)
         except Exception:
             v = _v
         match k:
-            case "busNumber":
-                return data.get("busNumber", False) and v == data[k]
-            case "batteryNumber":
-                # Apply filtering logic based on batteryNumber
-                return data.get("battery", False) and v == data["battery"]
-            case "deviceStatusType":
-                # Apply filtering logic based on deviceStatusType
-                return "status" in data and v == data["status"]
-            case "cityWise":
+            case "busNumber" if v.strip() != "":
+                is_true &= "busNumber" in data and v == data[k]
+            case "batteryNumber" if v.strip() != "-":
+                is_true &= "battery" in data and v == data["battery"]
+            case "deviceStatusType" if v.strip() != "-":
+                is_true = "status" in data and v == data["status"]
+            case "cityWise" if v.strip() != "-":
                 # Apply filtering logic based on cityWise
-                return (
-                    data.get("location", False)
-                    and data["location"].get("address", False)
+                is_true &= (
+                    "location" in data
+                    and "address" in data["location"]
                     and utils.get_district_name(data["location"]["address"])
                     == v
                 )
-            case "depotWise":
+            case "depotWise" if v.strip() != "-":
                 # Apply filtering logic based on depotWise
-                return (
-                    data.get("depotNumber", False) and v == data["depotNumber"]
-                )
+                is_true &= "depotNumber" in data and v == data["depotNumber"]
             case "soCRange":
                 # Apply filtering logic based on soCRange
-                return (
-                    data.get("batteryOverview", False)
-                    and data["batteryOverview"].get("soc", False)
+                is_true &= (
+                    "batteryOverview" in data
+                    and "soc" in data["batteryOverview"]
                     and data["batteryOverview"]["soc"]["value"] == v
                 )
             case "soHRange":
                 # Apply filtering logic based on soHRange
-                return (
-                    data.get("batteryOverview", False)
-                    and data["batteryOverview"].get("soh", False)
+                is_true &= (
+                    "batteryOverview" in data
+                    and "soh" in data["batteryOverview"]
                     and data["batteryOverview"]["soh"]["value"] == v
                 )
             case "cycleCount":
                 # Apply filtering logic based on cycleCount
-                return True
+                is_true &= True
             case "voltage":
                 # Apply filtering logic based on voltage
-                return (
-                    data.get("batteryOverview", False)
-                    and data["batteryOverview"].get("voltage", False)
+                is_true &= (
+                    "batteryOverview" in data
+                    and "voltage" in data["batteryOverview"]
                     and data["batteryOverview"]["voltage"]["value"] == v
                 )
             case "temperatureRange":
-                return (
-                    data.get("batteryOverview", False)
-                    and data["batteryOverview"].get("temperature", False)
+                is_true &= (
+                    "batteryOverview" in data
+                    and "temperature" in data["batteryOverview"]
                     and data["batteryOverview"]["temperature"]["value"] == v
                 )
 
             case "cellDiffInBatteryPackRange":
                 # Apply filtering logic based on cellDiffInBatteryPackRange
-                return True
+                is_true &= True
             case "voltageDiffInBatteryPackRange":
-                return (
-                    data.get("batteryOverview", False)
-                    and data["batteryOverview"].get("cellVoltageDelta", False)
+                is_true &= (
+                    "batteryOverview" in data
+                    and "cellVoltageDelta" in data["batteryOverview"]
                     and v[0]
                     <= data["batteryOverview"]["cellVoltageDelta"]["min"]
                     <= data["batteryOverview"]["cellVoltageDelta"]["max"]
@@ -127,13 +124,12 @@ def does_bus_data_satisfy_filters(data, filters):
                 # Apply filtering logic based on voltageDiffInBatteryPackRange
             case "deviceDiffDisconnectConditions":
                 # Apply filtering logic based on deviceDiffDisconnectConditions
-                return True
+                is_true &= True
             case "faultLevelWise":
                 # Apply filtering logic based on faultLevelWise
-                return True
-            case _:
-                # Handle the case for an unknown filter key (optional)
-                return True
+                is_true &= True
+
+    return is_true
 
 
 @app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
@@ -141,10 +137,10 @@ def get_buses_data(appName, busStatus):
     filters = request.args.get("filters", None)
     try:
         decoded_filters = urllib.parse.unquote(filters)
-        filters_data = json.loads(decoded_filters)
+        decoded_filters = json.loads(decoded_filters)
 
     except Exception:
-        filters_data = None
+        decoded_filters = None
 
     if busStatus not in bus_statuses:
         return (
@@ -157,13 +153,13 @@ def get_buses_data(appName, busStatus):
         filtered_data = [
             bus for bus in buses_data if bus["status"] == busStatus
         ]
-        if filters_data:
+    else:
+        if decoded_filters is not None:
             filtered_data = [
                 bus
                 for bus in buses_data
-                if does_bus_data_satisfy_filters(bus, filters_data)
+                if does_bus_data_satisfy_filters(bus, decoded_filters)
             ]
-    else:
         filtered_data = buses_data
 
     limit = int(request.args.get("limit", 10))
