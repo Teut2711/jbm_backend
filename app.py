@@ -83,14 +83,14 @@ def does_bus_data_satisfy_filters(data, filters):
                 is_true &= (
                     "batteryOverview" in data
                     and "soc" in data["batteryOverview"]
-                    and data["batteryOverview"]["soc"]["value"] == v
+                    and v[0] <= data["batteryOverview"]["soc"]["value"] <= v[1]
                 )
             case "soHRange":
                 # Apply filtering logic based on soHRange
                 is_true &= (
                     "batteryOverview" in data
                     and "soh" in data["batteryOverview"]
-                    and data["batteryOverview"]["soh"]["value"] == v
+                    and v[0] <= data["batteryOverview"]["soh"]["value"] <= v[1]
                 )
             case "cycleCount":
                 # Apply filtering logic based on cycleCount
@@ -100,13 +100,17 @@ def does_bus_data_satisfy_filters(data, filters):
                 is_true &= (
                     "batteryOverview" in data
                     and "voltage" in data["batteryOverview"]
-                    and data["batteryOverview"]["voltage"]["value"] == v
+                    and v[0]
+                    <= data["batteryOverview"]["voltage"]["value"]
+                    <= v[1]
                 )
             case "temperatureRange":
                 is_true &= (
                     "batteryOverview" in data
                     and "temperature" in data["batteryOverview"]
-                    and data["batteryOverview"]["temperature"]["value"] == v
+                    and v[0]
+                    <= data["batteryOverview"]["temperature"]["value"]
+                    <= v[1]
                 )
 
             case "cellDiffInBatteryPackRange":
@@ -160,7 +164,8 @@ def get_buses_data(appName, busStatus):
                 for bus in buses_data
                 if does_bus_data_satisfy_filters(bus, decoded_filters)
             ]
-        filtered_data = buses_data
+        else:
+            filtered_data = buses_data
 
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))
@@ -201,6 +206,15 @@ def get_bus_by_uuid(appName, uuid):
 
 @app.route("/api/v1/app/<appName>/fault/<faultStatus>", methods=["GET"])
 def get_faults_data(appName, faultStatus):
+    filters = request.args.get("filters", None)
+
+    try:
+        decoded_filters = urllib.parse.unquote(filters)
+        decoded_filters = json.loads(decoded_filters)
+
+    except Exception:
+        decoded_filters = None
+
     if faultStatus not in bus_statuses:
         return (
             jsonify({"status": "error", "message": "Invalid bus status."}),
@@ -213,7 +227,20 @@ def get_faults_data(appName, faultStatus):
             fault for fault in faults_data if fault["status"] == faultStatus
         ]
     else:
-        filtered_data = faults_data
+        if decoded_filters is not None:
+            bus_numbers = [
+                bus["busNumber"]
+                for bus in buses_data
+                if does_bus_data_satisfy_filters(bus, decoded_filters)
+            ]
+
+            filtered_data = [
+                fault
+                for fault in faults_data
+                if fault["busNumber"] in bus_numbers
+            ]
+        else:
+            filtered_data = faults_data
 
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))

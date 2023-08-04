@@ -142,7 +142,7 @@ for i in range(50):
             },
             "voltage": {
                 "text": "Voltage",
-                "value": random.randint(200, 500),
+                "value": random.randint(0, 100),
                 "units": "V",
             },
             "current": {
@@ -169,13 +169,13 @@ for i in range(50):
             },
             "cellVoltageDelta": {
                 "text": "String-Wise Delta of Cell Voltage",
-                "min": round(random.uniform(0, 0.5), 2),
-                "max": round(random.uniform(0.5, 1), 2),
-                "units": "V",
+                "min": round(random.uniform(0, 50), 2),
+                "max": round(random.uniform(50, 100), 2),
+                "units": "mV",
             },
             "temperatureDelta": {
                 "text": "String-Wise Delta of Temperature",
-                "min": random.randint(25, 35),
+                "min": round(random.uniform(25, 35), 2),
                 "max": round(random.uniform(50, 100), 2),
                 "units": "°C",
             },
@@ -208,7 +208,7 @@ for i in range(50):
         },
     }
 
-    dummy_faults_data.append(fault_data)
+    dummy_faults_data.append({**fault_data, **specific_fault_data})
     dummy_buses_data.append({**bus_data, **specific_bus_data})
     dummy_specific_bus_data.append(specific_bus_data)
     dummy_specific_fault_data.append(specific_fault_data)

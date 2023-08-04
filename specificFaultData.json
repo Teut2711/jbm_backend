@@ -1,901 +1,901 @@
 [
   {
-    "uuid": "5291008e-730e-4817-9955-0c4b3285d2e9",
-    "faultCode": "F235",
-    "faultTime": "2022-12-14T00:13:00",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "10 hours ago",
+    "uuid": "d29d9c44-025c-42f3-809a-aeff6b034b24",
+    "faultCode": "F206",
+    "faultTime": "2022-12-22T08:06:13",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "8 hours ago",
     "busNumber": "Bus-001",
-    "battery": "BAT61",
-    "IMEI": "903726653502192",
-    "depotNumber": "Depot J",
+    "battery": "BAT32",
+    "IMEI": "556767076947920",
+    "depotNumber": "Depot P",
     "faultLevel": "off",
     "location": {
       "coordinates": {
-        "lat": 28.260082,
-        "lng": 76.292367
+        "lat": 28.061004,
+        "lng": 76.033735
       }
     }
   },
   {
-    "uuid": "90636cde-96cf-4bb1-aca3-9345ed82188d",
-    "faultCode": "F204",
-    "faultTime": "2023-04-22T07:30:16",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "5 hours ago",
+    "uuid": "ac37ff73-e1ba-4600-9d16-625d25cad116",
+    "faultCode": "F206",
+    "faultTime": "2023-01-12T18:18:11",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "9 hours ago",
     "busNumber": "Bus-002",
-    "battery": "BAT27",
-    "IMEI": "149733652005192",
-    "depotNumber": "Depot I",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.890283,
-        "lng": 76.448526
-      }
-    }
-  },
-  {
-    "uuid": "afe366e2-18af-4d6c-8afd-c18fb84688ac",
-    "faultCode": "F204",
-    "faultTime": "2022-10-03T23:19:51",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "8 hours ago",
-    "busNumber": "Bus-003",
-    "battery": "BAT59",
-    "IMEI": "253134919993323",
-    "depotNumber": "Depot J",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.553396,
-        "lng": 76.975303
-      }
-    }
-  },
-  {
-    "uuid": "a5712a01-a44a-4b61-81a4-d5f8a440eec5",
-    "faultCode": "F204",
-    "faultTime": "2023-03-20T06:33:32",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "7 hours ago",
-    "busNumber": "Bus-004",
-    "battery": "BAT23",
-    "IMEI": "286127424150592",
-    "depotNumber": "Depot B",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.437347,
-        "lng": 76.256544
-      }
-    }
-  },
-  {
-    "uuid": "ed7d782c-f94a-4274-8eb8-fa1d1c0d1b2d",
-    "faultCode": "F235",
-    "faultTime": "2023-01-02T09:45:49",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "9 hours ago",
-    "busNumber": "Bus-005",
-    "battery": "BAT60",
-    "IMEI": "752552955486401",
-    "depotNumber": "Depot E",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.304122,
-        "lng": 76.653368
-      }
-    }
-  },
-  {
-    "uuid": "b74e14e7-03d2-445c-8bbf-a5dd6ea555a4",
-    "faultCode": "F360",
-    "faultTime": "2022-12-08T12:36:25",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultDuration": "5 hours ago",
-    "busNumber": "Bus-006",
-    "battery": "BAT99",
-    "IMEI": "983760031705213",
-    "depotNumber": "Depot G",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.831689,
-        "lng": 77.046732
-      }
-    }
-  },
-  {
-    "uuid": "8e736ab2-98ba-42d7-b4f3-8660ee7c954c",
-    "faultCode": "F398",
-    "faultTime": "2022-10-21T20:23:05",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "1 hours ago",
-    "busNumber": "Bus-007",
-    "battery": "BAT78",
-    "IMEI": "882900650393171",
-    "depotNumber": "Depot U",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.171336,
-        "lng": 76.990777
-      }
-    }
-  },
-  {
-    "uuid": "d4e0b596-1a39-47e1-8793-ede6876820b6",
-    "faultCode": "F398",
-    "faultTime": "2023-01-26T21:22:38",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "1 hours ago",
-    "busNumber": "Bus-008",
-    "battery": "BAT20",
-    "IMEI": "224058453642958",
-    "depotNumber": "Depot L",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.62911,
-        "lng": 76.57607
-      }
-    }
-  },
-  {
-    "uuid": "77b01983-a280-47b4-9a57-7f74e0bcd29e",
-    "faultCode": "F398",
-    "faultTime": "2023-07-20T03:36:02",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "1 hours ago",
-    "busNumber": "Bus-009",
-    "battery": "BAT36",
-    "IMEI": "155881246745295",
-    "depotNumber": "Depot N",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.810588,
-        "lng": 76.12252
-      }
-    }
-  },
-  {
-    "uuid": "9ccb4713-3b14-425b-ba7a-2b80fe4c9913",
-    "faultCode": "F398",
-    "faultTime": "2022-11-26T08:29:02",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "10 hours ago",
-    "busNumber": "Bus-0010",
-    "battery": "BAT93",
-    "IMEI": "359776780816039",
-    "depotNumber": "Depot P",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.15855,
-        "lng": 77.130472
-      }
-    }
-  },
-  {
-    "uuid": "1336632a-a59f-4d44-a792-da5a4a5022c7",
-    "faultCode": "F235",
-    "faultTime": "2023-06-17T01:58:08",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0011",
-    "battery": "BAT47",
-    "IMEI": "306386728109775",
-    "depotNumber": "Depot S",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.443174,
-        "lng": 76.432768
-      }
-    }
-  },
-  {
-    "uuid": "647769bf-0a78-43d1-a05e-b0b326f1bd13",
-    "faultCode": "F382",
-    "faultTime": "2022-12-19T11:24:41",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "10 hours ago",
-    "busNumber": "Bus-0012",
-    "battery": "BAT89",
-    "IMEI": "997719227957364",
-    "depotNumber": "Depot D",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.238252,
-        "lng": 77.068585
-      }
-    }
-  },
-  {
-    "uuid": "d8a3ba72-0a96-4adc-bcc6-092580dc3857",
-    "faultCode": "F382",
-    "faultTime": "2022-10-17T07:50:21",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "1 hours ago",
-    "busNumber": "Bus-0013",
-    "battery": "BAT10",
-    "IMEI": "163845310839317",
-    "depotNumber": "Depot U",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.733029,
-        "lng": 76.665788
-      }
-    }
-  },
-  {
-    "uuid": "1cf85727-5308-4e47-bd2b-ecf589e0227d",
-    "faultCode": "F382",
-    "faultTime": "2023-06-04T22:23:18",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "8 hours ago",
-    "busNumber": "Bus-0014",
-    "battery": "BAT8",
-    "IMEI": "841372109450170",
-    "depotNumber": "Depot P",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.236184,
-        "lng": 77.014188
-      }
-    }
-  },
-  {
-    "uuid": "903d946f-db09-43fa-8cdf-6464310fe504",
-    "faultCode": "F204",
-    "faultTime": "2023-06-19T00:17:04",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0015",
-    "battery": "BAT22",
-    "IMEI": "618478498927334",
-    "depotNumber": "Depot H",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.834162,
-        "lng": 76.98776
-      }
-    }
-  },
-  {
-    "uuid": "9c477148-eb3b-4cb0-b143-f26b00a48fd9",
-    "faultCode": "F360",
-    "faultTime": "2023-06-17T01:04:28",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0016",
-    "battery": "BAT28",
-    "IMEI": "505047787582921",
-    "depotNumber": "Depot I",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.573787,
-        "lng": 76.487752
-      }
-    }
-  },
-  {
-    "uuid": "d3df5314-ec0d-48ac-af1a-e320d98d3758",
-    "faultCode": "F382",
-    "faultTime": "2022-10-28T21:29:43",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "10 hours ago",
-    "busNumber": "Bus-0017",
     "battery": "BAT82",
-    "IMEI": "847243699782846",
-    "depotNumber": "Depot J",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.163761,
-        "lng": 76.838862
-      }
-    }
-  },
-  {
-    "uuid": "dec59998-3684-42b8-8ea6-ff578ea176c5",
-    "faultCode": "F235",
-    "faultTime": "2023-05-06T18:58:08",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0018",
-    "battery": "BAT17",
-    "IMEI": "910629990096021",
-    "depotNumber": "Depot O",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.035557,
-        "lng": 76.105951
-      }
-    }
-  },
-  {
-    "uuid": "a0240907-e632-44a4-8921-7bd266538c1c",
-    "faultCode": "F398",
-    "faultTime": "2022-12-06T09:22:02",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "10 hours ago",
-    "busNumber": "Bus-0019",
-    "battery": "BAT11",
-    "IMEI": "411781395274785",
-    "depotNumber": "Depot S",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.868099,
-        "lng": 77.038552
-      }
-    }
-  },
-  {
-    "uuid": "de4d4e83-5fe0-4f93-a0c0-7d2c0b5bf9c9",
-    "faultCode": "F382",
-    "faultTime": "2023-04-29T22:41:12",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "3 hours ago",
-    "busNumber": "Bus-0020",
-    "battery": "BAT82",
-    "IMEI": "691370733066629",
-    "depotNumber": "Depot U",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.036347,
-        "lng": 76.691768
-      }
-    }
-  },
-  {
-    "uuid": "02c0bb6c-cb0a-44eb-8a04-3c6cad9f18ce",
-    "faultCode": "F382",
-    "faultTime": "2023-04-22T06:55:00",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "9 hours ago",
-    "busNumber": "Bus-0021",
-    "battery": "BAT49",
-    "IMEI": "786907650410519",
-    "depotNumber": "Depot I",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.53904,
-        "lng": 76.558069
-      }
-    }
-  },
-  {
-    "uuid": "17882638-bd23-4a96-a3f4-985f04fe76bd",
-    "faultCode": "F360",
-    "faultTime": "2023-04-15T12:11:10",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0022",
-    "battery": "BAT73",
-    "IMEI": "466503784416142",
-    "depotNumber": "Depot V",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.884201,
-        "lng": 76.916442
-      }
-    }
-  },
-  {
-    "uuid": "ace1590e-27c4-452a-a7aa-0363245a2cbe",
-    "faultCode": "F360",
-    "faultTime": "2022-10-18T12:43:03",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultDuration": "9 hours ago",
-    "busNumber": "Bus-0023",
-    "battery": "BAT79",
-    "IMEI": "333366536405386",
-    "depotNumber": "Depot A",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.405608,
-        "lng": 76.745181
-      }
-    }
-  },
-  {
-    "uuid": "13fda734-76eb-4352-8eb4-b5f6b99551ce",
-    "faultCode": "F204",
-    "faultTime": "2023-06-25T15:34:34",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "8 hours ago",
-    "busNumber": "Bus-0024",
-    "battery": "BAT72",
-    "IMEI": "394017334603082",
-    "depotNumber": "Depot A",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.623275,
-        "lng": 76.908222
-      }
-    }
-  },
-  {
-    "uuid": "64af3bcb-6e63-4556-9c22-7df16fd4a4c4",
-    "faultCode": "F235",
-    "faultTime": "2022-11-22T17:08:17",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "6 hours ago",
-    "busNumber": "Bus-0025",
-    "battery": "BAT47",
-    "IMEI": "989798478466470",
-    "depotNumber": "Depot X",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.739912,
-        "lng": 76.382047
-      }
-    }
-  },
-  {
-    "uuid": "6727a65b-bd38-4f9e-b96c-709843661914",
-    "faultCode": "F382",
-    "faultTime": "2022-12-27T06:51:23",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0026",
-    "battery": "BAT12",
-    "IMEI": "994724298204555",
-    "depotNumber": "Depot N",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.163009,
-        "lng": 76.008754
-      }
-    }
-  },
-  {
-    "uuid": "86997aaa-385b-411e-b5b1-afa54cef7966",
-    "faultCode": "F204",
-    "faultTime": "2023-01-16T00:16:56",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "8 hours ago",
-    "busNumber": "Bus-0027",
-    "battery": "BAT99",
-    "IMEI": "555847530522139",
-    "depotNumber": "Depot U",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.50839,
-        "lng": 76.545903
-      }
-    }
-  },
-  {
-    "uuid": "e910ae7d-5db3-497b-860e-d03d883d5d3d",
-    "faultCode": "F398",
-    "faultTime": "2022-11-21T17:58:48",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "5 hours ago",
-    "busNumber": "Bus-0028",
-    "battery": "BAT38",
-    "IMEI": "910334990756189",
-    "depotNumber": "Depot Z",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.157781,
-        "lng": 76.293396
-      }
-    }
-  },
-  {
-    "uuid": "ab3538a1-5cfb-4f12-8c72-af3e15ed8362",
-    "faultCode": "F398",
-    "faultTime": "2022-10-19T11:30:03",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "8 hours ago",
-    "busNumber": "Bus-0029",
-    "battery": "BAT44",
-    "IMEI": "176944996880979",
-    "depotNumber": "Depot F",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.584328,
-        "lng": 76.611716
-      }
-    }
-  },
-  {
-    "uuid": "91dc8acf-09d8-4456-8b56-b98a16830de4",
-    "faultCode": "F235",
-    "faultTime": "2022-10-05T07:46:01",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0030",
-    "battery": "BAT12",
-    "IMEI": "407689794664094",
-    "depotNumber": "Depot E",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.85263,
-        "lng": 76.0898
-      }
-    }
-  },
-  {
-    "uuid": "f88794c4-a991-452a-abe6-2cb8e586eec2",
-    "faultCode": "F398",
-    "faultTime": "2023-01-21T07:21:30",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "2 hours ago",
-    "busNumber": "Bus-0031",
-    "battery": "BAT78",
-    "IMEI": "919900614625515",
-    "depotNumber": "Depot B",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.860295,
-        "lng": 76.586844
-      }
-    }
-  },
-  {
-    "uuid": "8d76a98a-7d1f-4d0e-b4bb-e1809e1f1dd2",
-    "faultCode": "F235",
-    "faultTime": "2023-07-11T01:09:09",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0032",
-    "battery": "BAT0",
-    "IMEI": "567531183043074",
-    "depotNumber": "Depot S",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.736612,
-        "lng": 76.614511
-      }
-    }
-  },
-  {
-    "uuid": "52e39a1f-3f48-4682-a485-aa98bf5a51db",
-    "faultCode": "F204",
-    "faultTime": "2022-10-19T03:38:33",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0033",
-    "battery": "BAT28",
-    "IMEI": "364040699144530",
-    "depotNumber": "Depot H",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.880226,
-        "lng": 76.510084
-      }
-    }
-  },
-  {
-    "uuid": "0de476ed-5517-47cf-8ab3-cfcda6571487",
-    "faultCode": "F235",
-    "faultTime": "2023-02-27T03:26:03",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "5 hours ago",
-    "busNumber": "Bus-0034",
-    "battery": "BAT99",
-    "IMEI": "809015898418805",
-    "depotNumber": "Depot H",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.758585,
-        "lng": 76.543573
-      }
-    }
-  },
-  {
-    "uuid": "672b4a8b-85bc-4303-8981-6f676764aa56",
-    "faultCode": "F235",
-    "faultTime": "2023-07-13T23:26:34",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "9 hours ago",
-    "busNumber": "Bus-0035",
-    "battery": "BAT50",
-    "IMEI": "958351488461619",
-    "depotNumber": "Depot I",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.212977,
-        "lng": 76.100823
-      }
-    }
-  },
-  {
-    "uuid": "c2291139-d270-4bd6-ba2a-f6e4e3ef3eec",
-    "faultCode": "F382",
-    "faultTime": "2023-03-25T11:58:21",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0036",
-    "battery": "BAT8",
-    "IMEI": "197654945131959",
-    "depotNumber": "Depot Y",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.860464,
-        "lng": 76.82011
-      }
-    }
-  },
-  {
-    "uuid": "dc02bde2-6dd4-442d-b473-c3eb0fb08c46",
-    "faultCode": "F398",
-    "faultTime": "2023-01-06T22:41:39",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "6 hours ago",
-    "busNumber": "Bus-0037",
-    "battery": "BAT27",
-    "IMEI": "162155491595421",
-    "depotNumber": "Depot A",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.10131,
-        "lng": 76.498722
-      }
-    }
-  },
-  {
-    "uuid": "2f7fbf5c-2ac8-4868-a964-0b1623942f67",
-    "faultCode": "F204",
-    "faultTime": "2023-04-14T08:58:04",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "3 hours ago",
-    "busNumber": "Bus-0038",
-    "battery": "BAT8",
-    "IMEI": "684337551965129",
-    "depotNumber": "Depot U",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.187024,
-        "lng": 76.90812
-      }
-    }
-  },
-  {
-    "uuid": "7cb39397-5004-4602-b834-f3182b6fe764",
-    "faultCode": "F235",
-    "faultTime": "2023-05-24T20:13:00",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "3 hours ago",
-    "busNumber": "Bus-0039",
-    "battery": "BAT53",
-    "IMEI": "680389473953368",
-    "depotNumber": "Depot J",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.025032,
-        "lng": 76.28605
-      }
-    }
-  },
-  {
-    "uuid": "19fa4cf7-58a5-4249-a056-a4b33303590e",
-    "faultCode": "F398",
-    "faultTime": "2022-12-08T10:37:21",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "10 hours ago",
-    "busNumber": "Bus-0040",
-    "battery": "BAT39",
-    "IMEI": "252029273741058",
-    "depotNumber": "Depot M",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.641265,
-        "lng": 76.463922
-      }
-    }
-  },
-  {
-    "uuid": "798ca86e-91f8-40fb-ba1f-d439de4977b2",
-    "faultCode": "F235",
-    "faultTime": "2023-07-05T12:05:24",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "1 hours ago",
-    "busNumber": "Bus-0041",
-    "battery": "BAT33",
-    "IMEI": "402051896340014",
-    "depotNumber": "Depot Q",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.307502,
-        "lng": 76.960718
-      }
-    }
-  },
-  {
-    "uuid": "f99cb365-593b-44c0-abc9-26eee5af305a",
-    "faultCode": "F382",
-    "faultTime": "2023-03-31T15:26:02",
-    "faultDescription": "B2V BatTempTooHigh",
-    "faultDuration": "5 hours ago",
-    "busNumber": "Bus-0042",
-    "battery": "BAT92",
-    "IMEI": "267848767315501",
-    "depotNumber": "Depot R",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.081496,
-        "lng": 77.12854
-      }
-    }
-  },
-  {
-    "uuid": "b70f14f3-5ad3-4631-8f46-018abf3bfe0a",
-    "faultCode": "F398",
-    "faultTime": "2023-02-12T11:20:18",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0043",
-    "battery": "BAT58",
-    "IMEI": "767703391343563",
-    "depotNumber": "Depot W",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.766679,
-        "lng": 76.778559
-      }
-    }
-  },
-  {
-    "uuid": "ffc17da1-48e5-4ed9-8682-e5ef62d55d82",
-    "faultCode": "F360",
-    "faultTime": "2023-04-06T21:58:32",
-    "faultDescription": "B2V CellVoltTooHigh",
-    "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0044",
-    "battery": "BAT90",
-    "IMEI": "451091801215666",
-    "depotNumber": "Depot L",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.58371,
-        "lng": 76.677449
-      }
-    }
-  },
-  {
-    "uuid": "9027960e-b1a5-42a7-a85d-a1a5a673b695",
-    "faultCode": "F204",
-    "faultTime": "2023-02-03T06:41:26",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "4 hours ago",
-    "busNumber": "Bus-0045",
-    "battery": "BAT57",
-    "IMEI": "266482669691568",
-    "depotNumber": "Depot I",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.591716,
-        "lng": 76.746479
-      }
-    }
-  },
-  {
-    "uuid": "da448cde-ee53-43dd-af6e-407d8318f336",
-    "faultCode": "F235",
-    "faultTime": "2023-06-13T05:54:22",
-    "faultDescription": "B2V TempDiff",
-    "faultDuration": "10 hours ago",
-    "busNumber": "Bus-0046",
-    "battery": "BAT92",
-    "IMEI": "611668399688834",
+    "IMEI": "763726634992607",
     "depotNumber": "Depot K",
     "faultLevel": "off",
     "location": {
       "coordinates": {
-        "lat": 28.35794,
-        "lng": 77.095678
+        "lat": 28.655444,
+        "lng": 76.76815
       }
     }
   },
   {
-    "uuid": "72ee9f5c-6371-4d0b-9e31-229da0c08f2b",
-    "faultCode": "F204",
-    "faultTime": "2023-07-27T05:14:43",
-    "faultDescription": "B2V TempNotControl",
-    "faultDuration": "5 hours ago",
-    "busNumber": "Bus-0047",
-    "battery": "BAT56",
-    "IMEI": "367811703869650",
-    "depotNumber": "Depot E",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.701581,
-        "lng": 76.089743
-      }
-    }
-  },
-  {
-    "uuid": "12ed11bc-68c5-466d-b2f9-f8948ba70806",
-    "faultCode": "F398",
-    "faultTime": "2023-06-12T06:15:06",
-    "faultDescription": "B2V BMSWorkVoltError",
-    "faultDuration": "1 hours ago",
-    "busNumber": "Bus-0048",
-    "battery": "BAT74",
-    "IMEI": "279847677280746",
-    "depotNumber": "Depot Z",
-    "faultLevel": "off",
-    "location": {
-      "coordinates": {
-        "lat": 28.270053,
-        "lng": 76.546619
-      }
-    }
-  },
-  {
-    "uuid": "9df33a3a-f24a-412f-9432-0a29e482f195",
-    "faultCode": "F360",
-    "faultTime": "2022-12-13T06:30:25",
+    "uuid": "3c3cc624-494c-41b1-b37a-d127a6f1a75b",
+    "faultCode": "F143",
+    "faultTime": "2023-05-23T19:04:08",
     "faultDescription": "B2V CellVoltTooHigh",
     "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0049",
-    "battery": "BAT49",
-    "IMEI": "904349146639015",
+    "busNumber": "Bus-003",
+    "battery": "BAT91",
+    "IMEI": "799499167698026",
+    "depotNumber": "Depot Y",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.005585,
+        "lng": 77.095316
+      }
+    }
+  },
+  {
+    "uuid": "7d89e3f5-9b9a-40af-b266-cd42137ed831",
+    "faultCode": "F289",
+    "faultTime": "2022-10-13T11:56:31",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "7 hours ago",
+    "busNumber": "Bus-004",
+    "battery": "BAT44",
+    "IMEI": "987725608159383",
+    "depotNumber": "Depot R",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.435503,
+        "lng": 76.497167
+      }
+    }
+  },
+  {
+    "uuid": "8bd2e20d-d5c7-42aa-a717-dd9c9b97ef3f",
+    "faultCode": "F289",
+    "faultTime": "2023-02-01T20:28:20",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-005",
+    "battery": "BAT40",
+    "IMEI": "640343980358076",
     "depotNumber": "Depot S",
     "faultLevel": "off",
     "location": {
       "coordinates": {
-        "lat": 28.7731,
-        "lng": 76.863059
+        "lat": 28.089249,
+        "lng": 76.313226
       }
     }
   },
   {
-    "uuid": "30ba6f21-7977-4af2-8150-7bdde96c94b4",
-    "faultCode": "F204",
-    "faultTime": "2023-03-19T07:44:33",
-    "faultDescription": "B2V TempNotControl",
+    "uuid": "64b7cd4b-7aab-446a-b442-43feb17bd749",
+    "faultCode": "F392",
+    "faultTime": "2023-07-16T17:04:52",
+    "faultDescription": "B2V TempDiff",
     "faultDuration": "7 hours ago",
-    "busNumber": "Bus-0050",
-    "battery": "BAT53",
-    "IMEI": "216791500123024",
+    "busNumber": "Bus-006",
+    "battery": "BAT79",
+    "IMEI": "502012979950208",
+    "depotNumber": "Depot N",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.421351,
+        "lng": 76.630334
+      }
+    }
+  },
+  {
+    "uuid": "d9d74119-ab9f-4e73-8213-ac9b579ec25c",
+    "faultCode": "F289",
+    "faultTime": "2023-05-27T08:01:10",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-007",
+    "battery": "BAT16",
+    "IMEI": "568580419673195",
+    "depotNumber": "Depot O",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.2055,
+        "lng": 76.932457
+      }
+    }
+  },
+  {
+    "uuid": "55fa814c-96e4-43a8-9945-5b590d36f0dd",
+    "faultCode": "F143",
+    "faultTime": "2023-07-21T18:07:11",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "4 hours ago",
+    "busNumber": "Bus-008",
+    "battery": "BAT40",
+    "IMEI": "154739373172414",
+    "depotNumber": "Depot H",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.62976,
+        "lng": 76.031592
+      }
+    }
+  },
+  {
+    "uuid": "5fbddd18-1611-4d38-b076-f9410b7d1d43",
+    "faultCode": "F143",
+    "faultTime": "2022-12-12T18:32:36",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "2 hours ago",
+    "busNumber": "Bus-009",
+    "battery": "BAT87",
+    "IMEI": "391879782838893",
+    "depotNumber": "Depot X",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.819072,
+        "lng": 76.593487
+      }
+    }
+  },
+  {
+    "uuid": "592bcdb2-6455-46b3-ad39-7d66d4bdfc25",
+    "faultCode": "F289",
+    "faultTime": "2022-12-23T13:58:22",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0010",
+    "battery": "BAT16",
+    "IMEI": "856341623495023",
+    "depotNumber": "Depot R",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.596467,
+        "lng": 76.233048
+      }
+    }
+  },
+  {
+    "uuid": "5ce31475-87d3-46bc-a5a4-aa0a11a81f1f",
+    "faultCode": "F143",
+    "faultTime": "2023-04-02T23:40:06",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "8 hours ago",
+    "busNumber": "Bus-0011",
+    "battery": "BAT82",
+    "IMEI": "900092359699322",
+    "depotNumber": "Depot B",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.327622,
+        "lng": 76.847473
+      }
+    }
+  },
+  {
+    "uuid": "473f5b8c-2c2e-4848-8ffc-422d0e9936cf",
+    "faultCode": "F143",
+    "faultTime": "2023-03-20T23:39:23",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "6 hours ago",
+    "busNumber": "Bus-0012",
+    "battery": "BAT11",
+    "IMEI": "401004826180012",
+    "depotNumber": "Depot H",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.289681,
+        "lng": 76.267345
+      }
+    }
+  },
+  {
+    "uuid": "952a2384-ce6f-480e-9b2f-76ee41911d96",
+    "faultCode": "F143",
+    "faultTime": "2023-03-15T12:28:18",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "7 hours ago",
+    "busNumber": "Bus-0013",
+    "battery": "BAT57",
+    "IMEI": "404161488748579",
+    "depotNumber": "Depot H",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.185149,
+        "lng": 76.580479
+      }
+    }
+  },
+  {
+    "uuid": "b3fe4cdb-d43b-42ea-8ebc-6f5f2061790a",
+    "faultCode": "F206",
+    "faultTime": "2022-10-18T14:31:32",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "8 hours ago",
+    "busNumber": "Bus-0014",
+    "battery": "BAT23",
+    "IMEI": "117464813870402",
+    "depotNumber": "Depot G",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.724631,
+        "lng": 76.73872
+      }
+    }
+  },
+  {
+    "uuid": "0e4ee858-02a2-42e6-9042-87e4314c5946",
+    "faultCode": "F392",
+    "faultTime": "2023-02-18T04:05:22",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "6 hours ago",
+    "busNumber": "Bus-0015",
+    "battery": "BAT1",
+    "IMEI": "104647999994566",
+    "depotNumber": "Depot I",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.420425,
+        "lng": 76.347018
+      }
+    }
+  },
+  {
+    "uuid": "d61b96b4-3314-4132-9231-6ebbbca16965",
+    "faultCode": "F206",
+    "faultTime": "2022-10-16T02:33:58",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "3 hours ago",
+    "busNumber": "Bus-0016",
+    "battery": "BAT88",
+    "IMEI": "228120102335001",
+    "depotNumber": "Depot G",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.126548,
+        "lng": 76.179855
+      }
+    }
+  },
+  {
+    "uuid": "63f059df-9b3b-4e78-b503-40c9fa64eff6",
+    "faultCode": "F143",
+    "faultTime": "2023-05-08T15:26:53",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "1 hours ago",
+    "busNumber": "Bus-0017",
+    "battery": "BAT11",
+    "IMEI": "283268015276833",
+    "depotNumber": "Depot T",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.882798,
+        "lng": 76.765556
+      }
+    }
+  },
+  {
+    "uuid": "8c633c51-0bfe-475b-b92f-fc227bb969fb",
+    "faultCode": "F206",
+    "faultTime": "2023-05-11T18:49:39",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0018",
+    "battery": "BAT74",
+    "IMEI": "524153119885374",
+    "depotNumber": "Depot N",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.129469,
+        "lng": 77.073221
+      }
+    }
+  },
+  {
+    "uuid": "8bc05142-b05d-4d90-b641-bd16608c987b",
+    "faultCode": "F206",
+    "faultTime": "2023-06-23T21:42:59",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0019",
+    "battery": "BAT35",
+    "IMEI": "551762854684223",
+    "depotNumber": "Depot R",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.672809,
+        "lng": 76.030424
+      }
+    }
+  },
+  {
+    "uuid": "2b9fc894-a59f-4ca8-81e5-c2df3ce268d7",
+    "faultCode": "F392",
+    "faultTime": "2023-05-27T22:31:32",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "8 hours ago",
+    "busNumber": "Bus-0020",
+    "battery": "BAT100",
+    "IMEI": "654878302770200",
+    "depotNumber": "Depot O",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.048819,
+        "lng": 76.702751
+      }
+    }
+  },
+  {
+    "uuid": "32e3c2b0-3120-4029-844f-ee3efb890e6a",
+    "faultCode": "F289",
+    "faultTime": "2023-05-29T17:42:48",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "9 hours ago",
+    "busNumber": "Bus-0021",
+    "battery": "BAT46",
+    "IMEI": "629175561910840",
+    "depotNumber": "Depot R",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.827778,
+        "lng": 76.345074
+      }
+    }
+  },
+  {
+    "uuid": "ea6698eb-99e7-418d-8d9c-f9462500b87e",
+    "faultCode": "F289",
+    "faultTime": "2023-03-08T09:49:02",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0022",
+    "battery": "BAT75",
+    "IMEI": "926739015938542",
+    "depotNumber": "Depot V",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.376529,
+        "lng": 76.400657
+      }
+    }
+  },
+  {
+    "uuid": "800ce08d-b585-4dfe-ab6a-e3d952f3951d",
+    "faultCode": "F143",
+    "faultTime": "2023-02-26T04:54:36",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0023",
+    "battery": "BAT36",
+    "IMEI": "704873138839026",
+    "depotNumber": "Depot O",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.361363,
+        "lng": 76.957298
+      }
+    }
+  },
+  {
+    "uuid": "892b76df-9d0b-4741-bb9c-44e15e866529",
+    "faultCode": "F289",
+    "faultTime": "2023-04-30T22:50:00",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "8 hours ago",
+    "busNumber": "Bus-0024",
+    "battery": "BAT33",
+    "IMEI": "328275721452304",
+    "depotNumber": "Depot P",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.257083,
+        "lng": 76.99134
+      }
+    }
+  },
+  {
+    "uuid": "2f0ef2dd-0166-4a5e-868c-8773eb1949f1",
+    "faultCode": "F289",
+    "faultTime": "2023-02-15T19:05:03",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "1 hours ago",
+    "busNumber": "Bus-0025",
+    "battery": "BAT26",
+    "IMEI": "126966124969993",
+    "depotNumber": "Depot R",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.613079,
+        "lng": 76.639398
+      }
+    }
+  },
+  {
+    "uuid": "481e2183-c22c-4bc6-a971-6e2dbd5a26f0",
+    "faultCode": "F206",
+    "faultTime": "2023-01-01T14:31:50",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0026",
+    "battery": "BAT75",
+    "IMEI": "945492002388221",
+    "depotNumber": "Depot A",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.463663,
+        "lng": 76.642318
+      }
+    }
+  },
+  {
+    "uuid": "e204115b-6fee-4885-befe-5d42bfd30f8a",
+    "faultCode": "F289",
+    "faultTime": "2023-06-16T03:00:08",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "3 hours ago",
+    "busNumber": "Bus-0027",
+    "battery": "BAT10",
+    "IMEI": "346826655724515",
+    "depotNumber": "Depot N",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.118021,
+        "lng": 77.05296
+      }
+    }
+  },
+  {
+    "uuid": "00b28716-de9c-4f30-9b63-68d53c49801c",
+    "faultCode": "F392",
+    "faultTime": "2023-06-28T07:34:56",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0028",
+    "battery": "BAT52",
+    "IMEI": "146843699273755",
+    "depotNumber": "Depot O",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.781536,
+        "lng": 76.014802
+      }
+    }
+  },
+  {
+    "uuid": "07346f52-c4a5-4c1f-a018-14e280e89724",
+    "faultCode": "F392",
+    "faultTime": "2023-05-03T05:24:58",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "9 hours ago",
+    "busNumber": "Bus-0029",
+    "battery": "BAT84",
+    "IMEI": "102504608723906",
+    "depotNumber": "Depot X",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.44089,
+        "lng": 76.887459
+      }
+    }
+  },
+  {
+    "uuid": "4c5686fb-5558-4c31-9508-5e6c52e09b1d",
+    "faultCode": "F206",
+    "faultTime": "2023-07-04T05:38:29",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "9 hours ago",
+    "busNumber": "Bus-0030",
+    "battery": "BAT25",
+    "IMEI": "945513312690632",
+    "depotNumber": "Depot B",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.404788,
+        "lng": 77.012394
+      }
+    }
+  },
+  {
+    "uuid": "85f61191-3c08-473a-8fae-22209379e2b4",
+    "faultCode": "F289",
+    "faultTime": "2023-07-24T09:30:29",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "8 hours ago",
+    "busNumber": "Bus-0031",
+    "battery": "BAT78",
+    "IMEI": "629172915442734",
     "depotNumber": "Depot E",
     "faultLevel": "off",
     "location": {
       "coordinates": {
-        "lat": 28.458824,
-        "lng": 76.609463
+        "lat": 28.811122,
+        "lng": 76.62137
+      }
+    }
+  },
+  {
+    "uuid": "e9a5a46f-69a7-493c-ac7e-e86377cadd2f",
+    "faultCode": "F143",
+    "faultTime": "2022-11-23T10:56:10",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "9 hours ago",
+    "busNumber": "Bus-0032",
+    "battery": "BAT5",
+    "IMEI": "605316579810471",
+    "depotNumber": "Depot T",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.661083,
+        "lng": 76.672376
+      }
+    }
+  },
+  {
+    "uuid": "1b246a65-375c-4b47-b78f-ef53c6acf15c",
+    "faultCode": "F392",
+    "faultTime": "2023-01-01T21:43:42",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "1 hours ago",
+    "busNumber": "Bus-0033",
+    "battery": "BAT89",
+    "IMEI": "565015564201329",
+    "depotNumber": "Depot T",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.14147,
+        "lng": 76.567871
+      }
+    }
+  },
+  {
+    "uuid": "a57ed69c-9d89-4085-a3d1-1920e1e770f1",
+    "faultCode": "F206",
+    "faultTime": "2023-07-10T05:35:04",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "7 hours ago",
+    "busNumber": "Bus-0034",
+    "battery": "BAT4",
+    "IMEI": "157939329052668",
+    "depotNumber": "Depot M",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.572727,
+        "lng": 77.188412
+      }
+    }
+  },
+  {
+    "uuid": "445aa60b-ce4d-41cf-a167-67210b945e51",
+    "faultCode": "F143",
+    "faultTime": "2023-08-01T19:47:37",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-0035",
+    "battery": "BAT86",
+    "IMEI": "470386529193619",
+    "depotNumber": "Depot R",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.021446,
+        "lng": 77.067808
+      }
+    }
+  },
+  {
+    "uuid": "42c8a26e-7248-41fd-a33f-3b72d17a83c2",
+    "faultCode": "F206",
+    "faultTime": "2023-05-01T03:31:42",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "8 hours ago",
+    "busNumber": "Bus-0036",
+    "battery": "BAT3",
+    "IMEI": "105469632638202",
+    "depotNumber": "Depot O",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.274508,
+        "lng": 76.145156
+      }
+    }
+  },
+  {
+    "uuid": "12f27fd1-09fc-4bc8-85bd-a1d8a395dc8e",
+    "faultCode": "F289",
+    "faultTime": "2023-01-19T23:35:59",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "10 hours ago",
+    "busNumber": "Bus-0037",
+    "battery": "BAT81",
+    "IMEI": "719887276331008",
+    "depotNumber": "Depot S",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.794775,
+        "lng": 76.087785
+      }
+    }
+  },
+  {
+    "uuid": "0cb1e1fa-c14a-4916-90f3-451b7ceb8cae",
+    "faultCode": "F392",
+    "faultTime": "2022-12-28T03:57:41",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "9 hours ago",
+    "busNumber": "Bus-0038",
+    "battery": "BAT86",
+    "IMEI": "730701547253045",
+    "depotNumber": "Depot B",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.348575,
+        "lng": 76.959824
+      }
+    }
+  },
+  {
+    "uuid": "b3049f58-7561-47ee-b4d1-0b5684cf8645",
+    "faultCode": "F143",
+    "faultTime": "2023-07-07T12:50:09",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "2 hours ago",
+    "busNumber": "Bus-0039",
+    "battery": "BAT22",
+    "IMEI": "469884609589578",
+    "depotNumber": "Depot V",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.178774,
+        "lng": 77.142416
+      }
+    }
+  },
+  {
+    "uuid": "c6968405-8ee2-40cb-9365-a0227f4da1ef",
+    "faultCode": "F392",
+    "faultTime": "2023-01-06T09:23:06",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "6 hours ago",
+    "busNumber": "Bus-0040",
+    "battery": "BAT18",
+    "IMEI": "895967315274372",
+    "depotNumber": "Depot U",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.48974,
+        "lng": 76.506148
+      }
+    }
+  },
+  {
+    "uuid": "27ca6e2b-e7e8-40d5-9807-eeeaa8e583f2",
+    "faultCode": "F143",
+    "faultTime": "2023-07-17T10:07:11",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "7 hours ago",
+    "busNumber": "Bus-0041",
+    "battery": "BAT54",
+    "IMEI": "186640772145247",
+    "depotNumber": "Depot Z",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.54902,
+        "lng": 77.063662
+      }
+    }
+  },
+  {
+    "uuid": "a7df4afb-7f0a-49dc-83ad-20c8b167d514",
+    "faultCode": "F143",
+    "faultTime": "2023-06-01T19:15:34",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "1 hours ago",
+    "busNumber": "Bus-0042",
+    "battery": "BAT59",
+    "IMEI": "420454222545713",
+    "depotNumber": "Depot M",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.143489,
+        "lng": 76.525116
+      }
+    }
+  },
+  {
+    "uuid": "e46daf36-9e23-435e-be4c-f1e3e5faed21",
+    "faultCode": "F206",
+    "faultTime": "2022-11-27T13:22:10",
+    "faultDescription": "B2V BMSWorkVoltError",
+    "faultDuration": "4 hours ago",
+    "busNumber": "Bus-0043",
+    "battery": "BAT71",
+    "IMEI": "862214688501849",
+    "depotNumber": "Depot J",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.260981,
+        "lng": 77.043533
+      }
+    }
+  },
+  {
+    "uuid": "dc6f72c9-f9a8-4103-8c31-5986a2b78e43",
+    "faultCode": "F289",
+    "faultTime": "2023-03-23T04:00:09",
+    "faultDescription": "B2V TempNotControl",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-0044",
+    "battery": "BAT36",
+    "IMEI": "114221525488924",
+    "depotNumber": "Depot G",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.175836,
+        "lng": 76.445098
+      }
+    }
+  },
+  {
+    "uuid": "fcc15faa-599a-4733-9828-98b872df4ce2",
+    "faultCode": "F143",
+    "faultTime": "2022-10-25T14:27:12",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "6 hours ago",
+    "busNumber": "Bus-0045",
+    "battery": "BAT79",
+    "IMEI": "256317777001009",
+    "depotNumber": "Depot I",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.825426,
+        "lng": 76.038302
+      }
+    }
+  },
+  {
+    "uuid": "892fe068-fb1d-434c-b6d9-84b765b5f01d",
+    "faultCode": "F143",
+    "faultTime": "2023-04-29T20:01:57",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "4 hours ago",
+    "busNumber": "Bus-0046",
+    "battery": "BAT61",
+    "IMEI": "254518221046612",
+    "depotNumber": "Depot T",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.347308,
+        "lng": 76.001441
+      }
+    }
+  },
+  {
+    "uuid": "ef5b304c-2d8d-4430-ae6e-6cf2b63030a6",
+    "faultCode": "F392",
+    "faultTime": "2023-03-06T08:27:21",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "1 hours ago",
+    "busNumber": "Bus-0047",
+    "battery": "BAT9",
+    "IMEI": "395767680698243",
+    "depotNumber": "Depot J",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.043615,
+        "lng": 76.198264
+      }
+    }
+  },
+  {
+    "uuid": "c0299c7c-ce36-415e-9148-e7a8489a773e",
+    "faultCode": "F143",
+    "faultTime": "2023-03-27T03:25:54",
+    "faultDescription": "B2V BatTempTooHigh",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-0048",
+    "battery": "BAT66",
+    "IMEI": "618362133152571",
+    "depotNumber": "Depot W",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.046562,
+        "lng": 76.548409
+      }
+    }
+  },
+  {
+    "uuid": "091fd926-b0be-4c50-9aeb-67e7efe8ba33",
+    "faultCode": "F392",
+    "faultTime": "2023-02-05T16:10:31",
+    "faultDescription": "B2V TempDiff",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-0049",
+    "battery": "BAT88",
+    "IMEI": "375504578234699",
+    "depotNumber": "Depot F",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.08513,
+        "lng": 76.719865
+      }
+    }
+  },
+  {
+    "uuid": "471c9ca1-04d8-451d-9e99-a2a6f0965649",
+    "faultCode": "F143",
+    "faultTime": "2023-05-29T08:51:10",
+    "faultDescription": "B2V CellVoltTooHigh",
+    "faultDuration": "5 hours ago",
+    "busNumber": "Bus-0050",
+    "battery": "BAT66",
+    "IMEI": "274201835615441",
+    "depotNumber": "Depot M",
+    "faultLevel": "off",
+    "location": {
+      "coordinates": {
+        "lat": 28.787432,
+        "lng": 76.795409
       }
     }
   }
