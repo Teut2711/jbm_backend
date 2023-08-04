@@ -9,8 +9,7 @@ app = Flask(__name__)
 CORS(
     app,
     resources={r"/api/*": {"origins": "*", "expose_headers": "Authorization"}},
-)  # Add CORS support and expose "Authorization" header
-
+)
 with open("./specificBusData.json") as f:
     specific_bus_data = json.load(f)
 
@@ -54,7 +53,7 @@ bus_statuses = [
 ]
 
 
-def filter_list(data, filters):
+def does_bus_data_satisfy_filters(data, filters):
     for k, _v in filters.items():
         try:
             v = int(_v)
@@ -62,38 +61,38 @@ def filter_list(data, filters):
             v = _v
         match k:
             case "busNumber":
-                return data.get("busNumber", None) and v == data[k]
+                return data.get("busNumber", False) and v == data[k]
             case "batteryNumber":
                 # Apply filtering logic based on batteryNumber
-                return data.get("battery", None) and v == data["battery"]
+                return data.get("battery", False) and v == data["battery"]
             case "deviceStatusType":
                 # Apply filtering logic based on deviceStatusType
                 return "status" in data and v == data["status"]
             case "cityWise":
                 # Apply filtering logic based on cityWise
                 return (
-                    data.get("location", None)
-                    and data["location"].get("address", None)
+                    data.get("location", False)
+                    and data["location"].get("address", False)
                     and utils.get_district_name(data["location"]["address"])
                     == v
                 )
             case "depotWise":
                 # Apply filtering logic based on depotWise
                 return (
-                    data.get("depotNumber", None) and v == data["depotNumber"]
+                    data.get("depotNumber", False) and v == data["depotNumber"]
                 )
             case "soCRange":
                 # Apply filtering logic based on soCRange
                 return (
-                    data.get("batteryOverview", None)
-                    and data["batteryOverview"].get("soc", None)
+                    data.get("batteryOverview", False)
+                    and data["batteryOverview"].get("soc", False)
                     and data["batteryOverview"]["soc"]["value"] == v
                 )
             case "soHRange":
                 # Apply filtering logic based on soHRange
                 return (
-                    data.get("batteryOverview", None)
-                    and data["batteryOverview"].get("soh", None)
+                    data.get("batteryOverview", False)
+                    and data["batteryOverview"].get("soh", False)
                     and data["batteryOverview"]["soh"]["value"] == v
                 )
             case "cycleCount":
@@ -102,14 +101,14 @@ def filter_list(data, filters):
             case "voltage":
                 # Apply filtering logic based on voltage
                 return (
-                    data.get("batteryOverview", None)
-                    and data["batteryOverview"].get("voltage", None)
+                    data.get("batteryOverview", False)
+                    and data["batteryOverview"].get("voltage", False)
                     and data["batteryOverview"]["voltage"]["value"] == v
                 )
             case "temperatureRange":
                 return (
-                    data.get("batteryOverview", None)
-                    and data["batteryOverview"].get("temperature", None)
+                    data.get("batteryOverview", False)
+                    and data["batteryOverview"].get("temperature", False)
                     and data["batteryOverview"]["temperature"]["value"] == v
                 )
 
@@ -118,8 +117,8 @@ def filter_list(data, filters):
                 return True
             case "voltageDiffInBatteryPackRange":
                 return (
-                    data.get("batteryOverview", None)
-                    and data["batteryOverview"].get("cellVoltageDelta", None)
+                    data.get("batteryOverview", False)
+                    and data["batteryOverview"].get("cellVoltageDelta", False)
                     and v[0]
                     <= data["batteryOverview"]["cellVoltageDelta"]["min"]
                     <= data["batteryOverview"]["cellVoltageDelta"]["max"]
@@ -134,7 +133,7 @@ def filter_list(data, filters):
                 return True
             case _:
                 # Handle the case for an unknown filter key (optional)
-                return False
+                return True
 
 
 @app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
@@ -160,7 +159,9 @@ def get_buses_data(appName, busStatus):
         ]
         if filters_data:
             filtered_data = [
-                bus for bus in buses_data if filter_list(bus, filters_data)
+                bus
+                for bus in buses_data
+                if does_bus_data_satisfy_filters(bus, filters_data)
             ]
     else:
         filtered_data = buses_data
@@ -252,15 +253,17 @@ def get_fault_by_uuid(appName, uuid):
     return jsonify({"status": "success", "data": {"faultedBuses": fault_data}})
 
 
-def transform_filter_fields(fields):
+def prepare_filters(fields):
     for k in fields.keys():
         match k:
             case "batteryNumber":
                 # Apply filtering logic based on batteryNumber
                 vals = set([i["battery"] for i in buses_data])
                 fields[k]["options"] = [{"label": i, "value": i} for i in vals]
-                fields[k]["initialValue"] = fields[k]["options"][0]["value"]
-                print(fields, vals)
+                fields[k]["options"] = [
+                    {"label": "Any", "value": "-"}
+                ] + fields[k]["options"]
+                fields[k]["initialValue"] = "-"
             case "deviceStatusType":
                 # Apply filtering logic based on deviceStatusType
                 vals = set([i["status"] for i in buses_data])
@@ -268,8 +271,11 @@ def transform_filter_fields(fields):
                     {"label": utils.kebab_to_title(i), "value": i}
                     for i in vals
                 ]
-                fields[k]["initialValue"] = fields[k]["options"][0]["value"]
+                fields[k]["options"] = [
+                    {"label": "Any", "value": "-"}
+                ] + fields[k]["options"]
 
+                fields[k]["initialValue"] = "-"
             case "cityWise":
                 # Apply filtering logic based on cityWise
                 vals = set(
@@ -278,15 +284,19 @@ def transform_filter_fields(fields):
                         for i in buses_data
                     ]
                 )
+
                 fields[k]["options"] = [{"label": i, "value": i} for i in vals]
-                fields[k]["initialValue"] = fields[k]["options"][0]["value"]
+                fields[k]["options"] = [
+                    {"label": "Any", "value": "-"}
+                ] + fields[k]["options"]
+                fields[k]["initialValue"] = "-"
 
             case "depotWise":
                 # Apply filtering logic based on depotWise
                 vals = set([i["depotNumber"] for i in buses_data])
                 fields[k]["options"] = [{"label": i, "value": i} for i in vals]
-                fields[k]["initialValue"] = fields[k]["options"][0]["value"]
-
+                fields[k]["options"].append({"label": "Any", "value": "-"})
+                fields[k]["initialValue"] = "-"
             case "soCRange":
                 ...
 
@@ -316,7 +326,13 @@ def transform_filter_fields(fields):
                 ...
             case "faultLevelWise":
                 # Apply filtering logic based on faultLevelWise
-                ...
+                vals = set([i["faultCode"] for i in faults_data])
+                fields[k]["options"] = [{"label": i, "value": i} for i in vals]
+                fields[k]["options"] = [
+                    {"label": "Any", "value": "-"}
+                ] + fields[k]["options"]
+                fields[k]["initialValue"] = "-"
+
             case _:
                 # Handle the case for an unknown filter key (optional)
                 ...
@@ -326,7 +342,7 @@ def transform_filter_fields(fields):
 with open("./filterstate.json") as f:
     data_filters = [
         {"fieldName": k, "fieldSpec": v}
-        for k, v in transform_filter_fields(json.load(f)).items()
+        for k, v in prepare_filters(json.load(f)).items()
     ]
 
 
