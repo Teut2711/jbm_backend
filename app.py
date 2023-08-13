@@ -1,29 +1,14 @@
 from collections import Counter
 import json
-import os
-from flask import Flask, jsonify, request
+from flask import jsonify, request
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from . import utils
 import urllib
-from dotenv import load_dotenv
+import jbm_backend
+from . import models
 
-load_dotenv()
-db_config = {
-    "username": os.getenv("BUCEPHALUS__TIMESCALEDB__USERNAME"),
-    "password": os.getenv("BUCEPHALUS__TIMESCALEDB__PASSWORD"),
-    "host": os.getenv("BUCEPHALUS__TIMESCALEDB__HOSTNAME"),
-    "port": os.getenv("BUCEPHALUS__TIMESCALEDB__PORTNUMBER"),
-    "database": os.getenv("BUCEPHALUS__TIMESCALEDB__DATABASE"),
-}
+app = jbm_backend.app
 
-DATABASE_URL = f"postgresql://{db_config['username']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}"
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
-
-db = SQLAlchemy(app)
-with app.app_context():
-    db.Model.metadata.reflect(db.engine)
 
 CORS(
     app,
@@ -56,16 +41,17 @@ def add_cors_headers(response):
 @app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
 def get_total_buses(appName):
     # Filter the data based on the bus status
-    from jbm_backend import models
+    positions = models.TraccerDevices.query.limit(5).all()
+    CAN = models.CANFrame.query.limit(5).all()
 
-    positions = models.TraccerPositions.query.limit(5).all()
+    def inner(model_instances):
+        for model_instance in model_instances:
+            for field in model_instance.__table__.columns.keys():
+                print(f"{field}: {getattr(model_instance, field)}")
+            print("-" * 20)
 
-    # Print the positions
-    for position in positions:
-        print(f"Position ID: {position.id}")
-        for field in position.__table__.columns.keys():
-            print(f"{field}: {getattr(position, field)}")
-        print("-" * 20)
+    inner(positions)
+    inner(CAN)
 
     c = Counter([i["status"] for i in buses_data])
     c["total"] = len(buses_data)
@@ -184,11 +170,6 @@ def get_buses_data(appName, busStatus):
             jsonify({"status": "error", "message": "Invalid bus status."}),
             400,
         )
-
-    # Filter the data based on the bus status
-    from jbm_backend import models
-
-    print(jsonify(models.TraccerPositions.query.limit(5).all()[0]))
 
     if busStatus != "all":
         filtered_data = [
