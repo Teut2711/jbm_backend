@@ -2,15 +2,15 @@
 FROM python:3.11
 
 # Step 2: Copy application code and dependencies
-WORKDIR /app
-COPY requirements.txt /app
+WORKDIR /jbm_backend
+COPY requirements.txt /jbm_backend
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Step 3: Copy the rest of your application code
-COPY . /app
+COPY . /jbm_backend
 
 # Step 4: Set the working directory
-WORKDIR /app
+WORKDIR /jbm_backend
 
 # Step 5: Expose the port your Flask app is listening on (replace 5000 with your actual port number)
 EXPOSE 5000

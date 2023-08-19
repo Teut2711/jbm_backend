@@ -6,9 +6,18 @@ from . import utils
 import urllib
 import jbm_backend
 from . import models
+import polars as pl
+from pathlib import Path
+
+from sqlalchemy import text
+from .sql_queries import bus_data_cte
 
 app = jbm_backend.app
+db = jbm_backend.db
 
+
+file_path = Path(__file__).parent / "TCU500 Vehicle Mapping 19-8-23_2.xlsx"
+df = pl.read_excel(file_path)
 
 CORS(
     app,
@@ -41,20 +50,53 @@ def add_cors_headers(response):
 @app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
 def get_total_buses(appName):
     # Filter the data based on the bus status
-    positions = models.TraccerDevices.query.limit(5).all()
-    CAN = models.CANFrame.query.limit(5).all()
+    # positions = models.TraccerDevices.query.limit(5).all()
+    # CAN = models.CANFrame.query.limit(5).all()
+    results = db.session.execute(
+        text(
+            """
+        WITH DF AS (
+            SELECT "IMEI", "traccar"."tc_devices"."name",
+            CASE
+            WHEN "status__full_charged" = '1.000000' THEN 'Fully Charged'
+            END "full-charged",
+            CASE
+            WHEN "status__BMS" = '1.000000' THEN 'Idle'
+            WHEN "status__BMS" = '2.000000' THEN 'Charging'
+            WHEN "status__BMS" = '3.000000' THEN 'Discharging'
+            END "BMS"
+            FROM "status__BMS" INNER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = "status__BMS"."IMEI"::TEXT --GROUP BY 3, 4;
+            WHERE name != CAST("IMEI" AS TEXT) )
 
-    def inner(model_instances):
-        for model_instance in model_instances:
-            for field in model_instance.__table__.columns.keys():
-                print(f"{field}: {getattr(model_instance, field)}")
-            print("-" * 20)
 
-    inner(positions)
-    inner(CAN)
+        SELECT 'Fully Charged'::text as "type", (
+            
+            (SELECT COUNT(*) FROM status__full_charged INNER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = status__full_charged."IMEI"::TEXT WHERE status__full_charged LIKE '1%')
+            +
+            (
+                SELECT COUNT(*) 
+            FROM DF 
+            WHERE DF."full-charged" = 'Fully Charged')
+        ) AS counts
+        union all
+        SELECT "BMS", COUNT("BMS") FROM DF
+        WHERE "BMS" IS NOT NULL
+        GROUP BY "BMS"
+        UNION ALL
+        SELECT 'Total'::text as "type", COUNT(*) as count FROM traccar.tc_devices WHERE name != uniqueId 
+        """
+        )
+    )
+    result_dict = {item[0]: item[1] for item in results}
 
     c = Counter([i["status"] for i in buses_data])
     c["total"] = len(buses_data)
+
+    c["total"] = result_dict["Total"]
+    c["charging"] = result_dict["Charging"]
+    c["discharging"] = result_dict["Discharging"]
+    c["full-charged"] = result_dict["Fully Charged"]
+    c["idle"] = result_dict["Idle"]
 
     return jsonify({"status": "success", "data": c})
 
@@ -155,8 +197,45 @@ def does_bus_data_satisfy_filters(data, filters):
     return is_true
 
 
+def get_rows_by_imei(df, imei):
+    try:
+        # Filter rows where 'IMEI' column matches the provided IMEI value
+        filtered_df = df.filter(df["IMEI"] == imei)
+
+        # Check if the filtered DataFrame is empty
+        if len(filtered_df) == 0:
+            return None, None  # No rows found for the provided IMEI
+        else:
+            # Get the values of "Depot Name" and "Depot City" columns
+            depot_name = (
+                filtered_df.select("Depot Name")
+                .to_pandas()["Depot Name"]
+                .iloc[0]
+            )
+            depot_city = (
+                filtered_df.select("Depot City")
+                .to_pandas()["Depot City"]
+                .iloc[0]
+            )
+            return depot_name, depot_city
+    except Exception as e:
+        # Handle any exceptions that may occur during the filtering operation
+        print(f"An error occurred: {str(e)}")
+        return None, None
+
+
 @app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
 def get_buses_data(appName, busStatus):
+    mapping = {
+        "in-depot": "in-depot",
+        "in-field": "in-field",
+        "charging": "Charging",
+        "discharging": "Discharging",
+        "disconnected": "Disconnected",
+        "full-charged": "Fully Charged",
+        "in-fault": "In fault",
+        "idle": "Idle",
+    }
     filters = request.args.get("filters", None)
     try:
         decoded_filters = urllib.parse.unquote(filters)
@@ -171,10 +250,18 @@ def get_buses_data(appName, busStatus):
             400,
         )
 
+    limit = int(request.args.get("limit", 10))
+    offset = int(request.args.get("offset", 0))
+
     if busStatus != "all":
         filtered_data = [
             bus for bus in buses_data if bus["status"] == busStatus
         ]
+        query = f"""
+                {bus_data_cte}
+                 SELECT * FROM BUS_DATA  WHERE '{mapping[busStatus]}' = ANY(status) LIMIT {limit} OFFSET {offset}
+                        """
+
     else:
         if decoded_filters is not None:
             filtered_data = [
@@ -182,11 +269,39 @@ def get_buses_data(appName, busStatus):
                 for bus in buses_data
                 if does_bus_data_satisfy_filters(bus, decoded_filters)
             ]
+            bus_data_cte
         else:
             filtered_data = buses_data
+        query = f"""
+                {bus_data_cte}
+                 SELECT * FROM BUS_DATA   LIMIT {limit} OFFSET {offset}
+                """
 
-    limit = int(request.args.get("limit", 10))
-    offset = int(request.args.get("offset", 0))
+    results = list(db.session.execute(text(query)))
+    filtered_data = filtered_data[:len(results)]
+    if results:
+        for k, i in enumerate(results):
+            filtered_data[k] = {
+                **filtered_data[k],
+                **{
+                    "uuid": i[1],
+                    "busNumber": i[0],
+                    "IMEI": i[1],
+                    "battery": "BAT32",
+                    "status": busStatus,
+                    "location": {
+                        "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
+                        "coordinates": {"lat": i[-2], "lng": i[-1]},
+                    },
+                },
+            }
+
+            depotNumber, cityName = get_rows_by_imei(df, i[1])
+            print(i, depotNumber, cityName)
+            if depotNumber:
+                filtered_data[k]["depotNumber"] = depotNumber
+            if cityName:
+                filtered_data[k]["battery"] = cityName
 
     paginated_data = filtered_data[offset : offset + limit]
 
@@ -201,7 +316,10 @@ def get_buses_data(appName, busStatus):
     return jsonify(
         {
             "status": "success",
-            "data": {"buses": paginated_data, "length": len(filtered_data)},
+            "data": {
+                "buses": paginated_data,
+                "length": len(filtered_data),
+            },
             "next": next_url,
         }
     )

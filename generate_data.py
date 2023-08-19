@@ -21,7 +21,6 @@ def get_address_from_lat_long(latitude, longitude):
 
     if location is not None:
         address = location.address
-        print(address)
         return address
     else:
         return ""
