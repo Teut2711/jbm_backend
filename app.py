@@ -6,7 +6,7 @@ from . import utils
 import urllib
 import jbm_backend
 from . import models
-import polars as pl
+import pandas as pd
 from pathlib import Path
 
 from sqlalchemy import text
@@ -17,7 +17,7 @@ db = jbm_backend.db
 
 
 file_path = Path(__file__).parent / "TCU500 Vehicle Mapping 19-8-23_2.xlsx"
-df = pl.read_excel(file_path)
+df = pd.read_excel(file_path)
 
 CORS(
     app,
@@ -197,26 +197,18 @@ def does_bus_data_satisfy_filters(data, filters):
     return is_true
 
 
-def get_rows_by_imei(df, imei):
+def get_rows_by_imei(df, bus_number):
     try:
         # Filter rows where 'IMEI' column matches the provided IMEI value
-        filtered_df = df.filter(df["IMEI"] == imei)
+        filtered_df = df[df["Vehicle Registration Number"] == bus_number]
 
         # Check if the filtered DataFrame is empty
         if len(filtered_df) == 0:
             return None, None  # No rows found for the provided IMEI
         else:
             # Get the values of "Depot Name" and "Depot City" columns
-            depot_name = (
-                filtered_df.select("Depot Name")
-                .to_pandas()["Depot Name"]
-                .iloc[0]
-            )
-            depot_city = (
-                filtered_df.select("Depot City")
-                .to_pandas()["Depot City"]
-                .iloc[0]
-            )
+            depot_name = filtered_df["Depot name"].iloc[0]
+            depot_city = filtered_df["Depot City"].iloc[0]
             return depot_name, depot_city
     except Exception as e:
         # Handle any exceptions that may occur during the filtering operation
@@ -236,6 +228,7 @@ def get_buses_data(appName, busStatus):
         "in-fault": "In fault",
         "idle": "Idle",
     }
+    reverse_mapping = {v: k for k, v in mapping.items()}
     filters = request.args.get("filters", None)
     try:
         decoded_filters = urllib.parse.unquote(filters)
@@ -278,17 +271,20 @@ def get_buses_data(appName, busStatus):
                 """
 
     results = list(db.session.execute(text(query)))
-    filtered_data = filtered_data[:len(results)]
+    filtered_data = filtered_data[: len(results)]
     if results:
+        x = filtered_data[0]
+        filtered_data = []
         for k, i in enumerate(results):
-            filtered_data[k] = {
-                **filtered_data[k],
+            busN = "".join(i[0].split(" "))
+            t = {
+                **x,
                 **{
                     "uuid": i[1],
-                    "busNumber": i[0],
+                    "busNumber": busN,
                     "IMEI": i[1],
                     "battery": "BAT32",
-                    "status": busStatus,
+                    "status": reverse_mapping[i[2][0]],
                     "location": {
                         "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
                         "coordinates": {"lat": i[-2], "lng": i[-1]},
@@ -296,12 +292,13 @@ def get_buses_data(appName, busStatus):
                 },
             }
 
-            depotNumber, cityName = get_rows_by_imei(df, i[1])
+            depotNumber, cityName = get_rows_by_imei(df, busN)
             print(i, depotNumber, cityName)
             if depotNumber:
-                filtered_data[k]["depotNumber"] = depotNumber
+                t["depotNumber"] = depotNumber
             if cityName:
-                filtered_data[k]["battery"] = cityName
+                t["battery"] = cityName
+            filtered_data.append(t)
 
     paginated_data = filtered_data[offset : offset + limit]
 
