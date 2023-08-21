@@ -284,7 +284,11 @@ def get_buses_data(appName, busStatus):
                     "busNumber": busN,
                     "IMEI": i[1],
                     "battery": "BAT32",
-                    "status": reverse_mapping[i[2][0]],
+                    "status": (
+                        reverse_mapping[i[2][0]]
+                        if busStatus == "all"
+                        else busStatus
+                    ),
                     "location": {
                         "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
                         "coordinates": {"lat": i[-2], "lng": i[-1]},
