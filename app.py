@@ -280,9 +280,9 @@ def get_buses_data(appName, busStatus):
             t = {
                 **x,
                 **{
-                    "uuid": i[1],
+                    "uuid": i[0],
                     "busNumber": busN,
-                    "IMEI": i[1],
+                    "IMEI": i[0],
                     "status": (
                         (
                             reverse_mapping[i[2][0]]
