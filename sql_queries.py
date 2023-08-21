@@ -1,31 +1,57 @@
 bus_data_cte = """
-WITH SUB_BUS_DATA AS (
-            SELECT "IMEI", "traccar"."tc_devices"."name",
-            CASE
-            WHEN "status__full_charged" = '1.000000' THEN 'Fully Charged'
-            END "full-charged",
-            CASE
-            WHEN "status__BMS" = '1.000000' THEN 'Idle'
-            WHEN "status__BMS" = '2.000000' THEN 'Charging'
-            WHEN "status__BMS" = '3.000000' THEN 'Discharging'
-            END "BMS"
-            FROM "status__BMS" INNER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = "status__BMS"."IMEI"::TEXT --GROUP BY 3, 4;
-                        WHERE name != CAST("IMEI" AS TEXT) ),
+WITH
+"battery_pack" AS (
+	SELECT
+		"IMEI",
+		LAST("timestamp", "timestamp") AS "timestamp",
+		CASE
+			WHEN LAST("B2V_FullChrg", "timestamp") = '1.000000' THEN 'full-charged'
+		END "status__full_charged",
+		CASE
+			WHEN LAST("B2V_BMSSta", "timestamp") = '0.000000' THEN 'Self-check'
+			WHEN LAST("B2V_BMSSta", "timestamp") = '1.000000' THEN 'idle'
+			WHEN LAST("B2V_BMSSta", "timestamp") = '2.000000' THEN 'charging'
+			WHEN LAST("B2V_BMSSta", "timestamp") = '3.000000' THEN 'discharging'
+		END "status__BMS"
+	FROM "c00a1f3"
+	GROUP BY "IMEI"
+),
+"vehicle" AS (
+	SELECT
+		"battery_pack"."IMEI",
+		"battery_pack"."timestamp",
+		ARRAY_REMOVE(ARRAY["battery_pack"."status__full_charged", "battery_pack"."status__BMS"], NULL) AS "status",
+		"traccar"."tc_devices"."name",
+		("traccar"."tc_devices"."attributes"::JSONB)->>'depot' AS "depot",
+		("traccar"."tc_devices"."attributes"::JSONB)->>'city' AS "city",
+		"traccar"."tc_devices"."id"
+	FROM "battery_pack"
+	LEFT OUTER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = "battery_pack"."IMEI"::TEXT
+),
+"position_tracker_advanced" AS (
+	SELECT
+		"deviceid",
+		LAST("fixtime", "fixtime") AS "timestamp",
+		LAST("latitude", "fixtime") AS "latitude",
+		LAST("longitude", "fixtime") AS "longitude"
+	FROM "traccar"."tc_positions"
+	WHERE
+		"latitude" != 0 AND
+		"longitude" != 0
+	GROUP BY "deviceid"
+), 
 BUS_DATA AS (
-    SELECT SUB_BUS_DATA.name, SUB_BUS_DATA."IMEI",ARRAY_REMOVE(ARRAY[SUB_BUS_DATA."full-charged", SUB_BUS_DATA."BMS"], NULL) as status, tp.latitude, tp.longitude
-    FROM SUB_BUS_DATA
-    JOIN traccar.tc_devices AS td ON td.name = SUB_BUS_DATA.name
-    JOIN traccar.tc_positions AS tp ON td.id = tp.deviceid
-    WHERE (SUB_BUS_DATA.name, tp.devicetime) IN (
-        SELECT SUB_BUS_DATA.name, MAX(tp.devicetime) AS max_devicetime
-        FROM SUB_BUS_DATA
-        JOIN traccar.tc_devices AS td ON td.name = SUB_BUS_DATA.name
-        JOIN (
-        SELECT *
-        FROM traccar.tc_positions
-        WHERE latitude != 0 AND longitude != 0
-    ) AS tp ON td.id = tp.deviceid
-        GROUP BY SUB_BUS_DATA.name
-    )
+    SELECT
+	"vehicle"."IMEI",
+	"vehicle"."timestamp" AS "timestamp_e",
+	"vehicle"."status",
+	"vehicle"."name",
+	"vehicle"."depot",
+	"vehicle"."city",
+	"position_tracker_advanced"."timestamp" AS "timestamp_g",
+	"position_tracker_advanced"."latitude",
+	"position_tracker_advanced"."longitude"
+FROM "vehicle"
+LEFT OUTER JOIN "position_tracker_advanced" ON "position_tracker_advanced"."deviceid" = "vehicle"."id"
 )
 """

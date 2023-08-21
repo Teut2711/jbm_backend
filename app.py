@@ -221,12 +221,12 @@ def get_buses_data(appName, busStatus):
     mapping = {
         "in-depot": "in-depot",
         "in-field": "in-field",
-        "charging": "Charging",
-        "discharging": "Discharging",
-        "disconnected": "Disconnected",
-        "full-charged": "Fully Charged",
-        "in-fault": "In fault",
-        "idle": "Idle",
+        "charging": "charging",
+        "discharging": "discharging",
+        "disconnected": "disconnected",
+        "full-charged": "full-charged",
+        "in-fault": "in-fault",
+        "idle": "idle",
     }
     reverse_mapping = {v: k for k, v in mapping.items()}
     filters = request.args.get("filters", None)
@@ -276,19 +276,24 @@ def get_buses_data(appName, busStatus):
         x = filtered_data[0]
         filtered_data = []
         for k, i in enumerate(results):
-            busN = "".join(i[0].split(" "))
+            busN = "".join(i[3].split(" ")) if i[3] else ""
             t = {
                 **x,
                 **{
                     "uuid": i[1],
                     "busNumber": busN,
                     "IMEI": i[1],
-                    "battery": "BAT32",
                     "status": (
-                        reverse_mapping[i[2][0]]
+                        (
+                            reverse_mapping[i[2][0]]
+                            if i[2] and len(i[2]) > 0
+                            else ""
+                        )
                         if busStatus == "all"
                         else busStatus
                     ),
+                    "depotNumber": i[4],
+                    "battery": i[5],
                     "location": {
                         "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
                         "coordinates": {"lat": i[-2], "lng": i[-1]},
@@ -296,12 +301,13 @@ def get_buses_data(appName, busStatus):
                 },
             }
 
-            depotNumber, cityName = get_rows_by_imei(df, busN)
-            print(i, depotNumber, cityName)
-            if depotNumber:
-                t["depotNumber"] = depotNumber
-            if cityName:
-                t["battery"] = cityName
+            # depotNumber, cityName = get_rows_by_imei(df, busN)
+            # print(i, depotNumber, cityName)
+            # if depotNumber:
+            #     t["depotNumber"] = depotNumber
+            # if cityName:
+            #     t["battery"] = cityName
+
             filtered_data.append(t)
 
     paginated_data = filtered_data[offset : offset + limit]
