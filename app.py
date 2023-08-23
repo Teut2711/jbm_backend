@@ -47,60 +47,6 @@ def add_cors_headers(response):
     return response
 
 
-@app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
-def get_total_buses(appName):
-    # Filter the data based on the bus status
-    # positions = models.TraccerDevices.query.limit(5).all()
-    # CAN = models.CANFrame.query.limit(5).all()
-    results = db.session.execute(
-        text(
-            """
-        WITH DF AS (
-            SELECT "IMEI", "traccar"."tc_devices"."name",
-            CASE
-            WHEN "status__full_charged" = '1.000000' THEN 'Fully Charged'
-            END "full-charged",
-            CASE
-            WHEN "status__BMS" = '1.000000' THEN 'Idle'
-            WHEN "status__BMS" = '2.000000' THEN 'Charging'
-            WHEN "status__BMS" = '3.000000' THEN 'Discharging'
-            END "BMS"
-            FROM "status__BMS" INNER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = "status__BMS"."IMEI"::TEXT --GROUP BY 3, 4;
-            WHERE name != CAST("IMEI" AS TEXT) )
-
-
-        SELECT 'Fully Charged'::text as "type", (
-            
-            (SELECT COUNT(*) FROM status__full_charged INNER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = status__full_charged."IMEI"::TEXT WHERE status__full_charged LIKE '1%')
-            +
-            (
-                SELECT COUNT(*) 
-            FROM DF 
-            WHERE DF."full-charged" = 'Fully Charged')
-        ) AS counts
-        union all
-        SELECT "BMS", COUNT("BMS") FROM DF
-        WHERE "BMS" IS NOT NULL
-        GROUP BY "BMS"
-        UNION ALL
-        SELECT 'Total'::text as "type", COUNT(*) as count FROM traccar.tc_devices WHERE name != uniqueId 
-        """
-        )
-    )
-    result_dict = {item[0]: item[1] for item in results}
-
-    c = Counter([i["status"] for i in buses_data])
-    c["total"] = len(buses_data)
-
-    c["total"] = result_dict["Total"]
-    c["charging"] = result_dict["Charging"]
-    c["discharging"] = result_dict["Discharging"]
-    c["full-charged"] = result_dict["Fully Charged"]
-    c["idle"] = result_dict["Idle"]
-
-    return jsonify({"status": "success", "data": c})
-
-
 bus_statuses = [
     "in-depot",
     "in-field",
@@ -112,6 +58,30 @@ bus_statuses = [
     "idle",
     "all",
 ]
+
+
+@app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
+def get_total_buses(appName):
+    # Filter the data based on the bus status
+    # positions = models.TraccerDevices.query.limit(5).all()
+    # CAN = models.CANFrame.query.limit(5).all()
+    def get_data(_type):
+        if _type == "all":
+            query = f"""
+                {bus_data_cte}
+                 SELECT COUNT(*) FROM BUS_DATA;  
+                """
+
+        else:
+            query = f"""
+                {bus_data_cte}
+                 SELECT COUNT(*) FROM BUS_DATA WHERE '{_type}'= ANY(status);  
+                """
+        return list(db.session.execute(text(query)))[0][0]
+
+    result_dict = {i: get_data(i) for i in bus_statuses}
+    # result_dict["total"] = result_dict["all"]
+    return jsonify({"status": "success", "data": result_dict})
 
 
 def does_bus_data_satisfy_filters(data, filters):
@@ -197,25 +167,6 @@ def does_bus_data_satisfy_filters(data, filters):
     return is_true
 
 
-def get_rows_by_imei(df, bus_number):
-    try:
-        # Filter rows where 'IMEI' column matches the provided IMEI value
-        filtered_df = df[df["Vehicle Registration Number"] == bus_number]
-
-        # Check if the filtered DataFrame is empty
-        if len(filtered_df) == 0:
-            return None, None  # No rows found for the provided IMEI
-        else:
-            # Get the values of "Depot Name" and "Depot City" columns
-            depot_name = filtered_df["Depot name"].iloc[0]
-            depot_city = filtered_df["Depot City"].iloc[0]
-            return depot_name, depot_city
-    except Exception as e:
-        # Handle any exceptions that may occur during the filtering operation
-        print(f"An error occurred: {str(e)}")
-        return None, None
-
-
 @app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
 def get_buses_data(appName, busStatus):
     mapping = {
@@ -250,6 +201,7 @@ def get_buses_data(appName, busStatus):
         filtered_data = [
             bus for bus in buses_data if bus["status"] == busStatus
         ]
+        print(limit, offset)
         query = f"""
                 {bus_data_cte}
                  SELECT * FROM BUS_DATA  WHERE '{mapping[busStatus]}' = ANY(status) LIMIT {limit} OFFSET {offset}
@@ -265,9 +217,10 @@ def get_buses_data(appName, busStatus):
             bus_data_cte
         else:
             filtered_data = buses_data
+
         query = f"""
                 {bus_data_cte}
-                 SELECT * FROM BUS_DATA   LIMIT {limit} OFFSET {offset}
+                 SELECT * FROM BUS_DATA  LIMIT {limit} OFFSET {offset}
                 """
 
     results = list(db.session.execute(text(query)))
@@ -277,6 +230,8 @@ def get_buses_data(appName, busStatus):
         filtered_data = []
         for k, i in enumerate(results):
             busN = "".join(i[3].split(" ")) if i[3] else ""
+            if not i[-1] or not i[-2]:
+                continue
             t = {
                 **x,
                 **{
@@ -286,7 +241,9 @@ def get_buses_data(appName, busStatus):
                     "status": (
                         (
                             reverse_mapping[i[2][0]]
-                            if i[2] and len(i[2]) > 0
+                            if i[2]
+                            and len(i[2]) > 0
+                            and i[2][0] in reverse_mapping
                             else ""
                         )
                         if busStatus == "all"
@@ -301,19 +258,21 @@ def get_buses_data(appName, busStatus):
                 },
             }
 
-            # depotNumber, cityName = get_rows_by_imei(df, busN)
-            # print(i, depotNumber, cityName)
-            # if depotNumber:
-            #     t["depotNumber"] = depotNumber
-            # if cityName:
-            #     t["battery"] = cityName
-
             filtered_data.append(t)
 
-    paginated_data = filtered_data[offset : offset + limit]
-
+    paginated_data = filtered_data
     next_offset = offset + limit
-    has_more = next_offset < len(filtered_data)
+    if busStatus != "all":
+        q = f"""
+    {bus_data_cte}
+    SELECT COUNT(*) FROM BUS_DATA  WHERE '{mapping[busStatus]}' = ANY(status)                
+    """
+    else:
+        q = f"""
+    {bus_data_cte}
+    SELECT COUNT(*) FROM BUS_DATA                
+    """
+    has_more = next_offset < list(db.session.execute(text(q)))[0][0]
 
     next_url = (
         f"/api/v1/app/{appName}/bus/{busStatus}?limit={limit}&offset={next_offset}"
@@ -325,7 +284,7 @@ def get_buses_data(appName, busStatus):
             "status": "success",
             "data": {
                 "buses": paginated_data,
-                "length": len(filtered_data),
+                "length": len(paginated_data),
             },
             "next": next_url,
         }
