@@ -201,7 +201,6 @@ def get_buses_data(appName, busStatus):
         filtered_data = [
             bus for bus in buses_data if bus["status"] == busStatus
         ]
-        print(limit, offset)
         query = f"""
                 {bus_data_cte}
                  SELECT * FROM BUS_DATA  WHERE '{mapping[busStatus]}' = ANY(status) LIMIT {limit} OFFSET {offset}
@@ -230,7 +229,7 @@ def get_buses_data(appName, busStatus):
         filtered_data = []
         for k, i in enumerate(results):
             busN = "".join(i[3].split(" ")) if i[3] else ""
-            if not i[-1] or not i[-2]:
+            if not i[-1] or not i[-2] or str(busN) == str(i[0]):
                 continue
             t = {
                 **x,
