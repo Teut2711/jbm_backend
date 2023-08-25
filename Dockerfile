@@ -14,6 +14,9 @@ WORKDIR /jbm_backend
 
 # Step 5: Expose the port your Flask app is listening on (replace 5000 with your actual port number)
 EXPOSE 5000
+# Step 6: Install Gunicorn
+RUN pip install gunicorn
 
-# Step 6: Specify the command to run your Flask app
-CMD ["flask", "--app", "app", "run", "--host", "0.0.0.0", "--debug"]
+# Step 7: Specify the command to run your Flask app with Gunicorn
+CMD ["gunicorn", "--workers", "4", "--bind", "0.0.0.0:5000", "jbm_backend:app"]
+
