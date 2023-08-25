@@ -2,10 +2,10 @@ from collections import Counter
 import json
 from flask import jsonify, request
 from flask_cors import CORS
-from . import utils
+from jbm_backend import utils
 import urllib
 import jbm_backend
-from . import models
+from jbm_backend import models
 import pandas as pd
 from pathlib import Path
 
