@@ -69,19 +69,26 @@ def get_total_buses(appName):
         if _type == "all":
             query = f"""
                 {bus_data_cte}
-                 SELECT COUNT(*) FROM BUS_DATA;  
+                 SELECT COUNT(*) FROM BUS_BATTERY_DATA  WHERE name != CAST(imei AS TEXT);  
                 """
 
         else:
             query = f"""
                 {bus_data_cte}
-                 SELECT COUNT(*) FROM BUS_DATA WHERE '{_type}'= ANY(status);  
+                 SELECT COUNT(*) FROM BUS_BATTERY_DATA WHERE '{_type}'= ANY(status)  AND name != CAST(imei AS TEXT);  
                 """
         return list(db.session.execute(text(query)))[0][0]
 
     result_dict = {i: get_data(i) for i in bus_statuses}
     # result_dict["total"] = result_dict["all"]
     return jsonify({"status": "success", "data": result_dict})
+
+
+def round_wrapper(x, to):
+    try:
+        return round(x, to)
+    except Exception:
+        return x
 
 
 def does_bus_data_satisfy_filters(data, filters):
@@ -167,6 +174,15 @@ def does_bus_data_satisfy_filters(data, filters):
     return is_true
 
 
+def get_results_dict(db, query):
+    results = db.session.execute(text(query))
+    results_keys = list(results.keys())
+    results_dict = list(
+        map(lambda x: dict(zip(results_keys, x)), list(results))
+    )
+    return results_dict
+
+
 @app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
 def get_buses_data(appName, busStatus):
     mapping = {
@@ -194,17 +210,19 @@ def get_buses_data(appName, busStatus):
             400,
         )
 
-    limit = int(request.args.get("limit", 10))
-    offset = int(request.args.get("offset", 0))
-
+    limit = int(request.args.get("limit", -1))
+    offset = int(request.args.get("offset", -1))
+    limit = limit if limit > 0 else None
+    offset = offset if offset >= 0 else None
     if busStatus != "all":
         filtered_data = [
             bus for bus in buses_data if bus["status"] == busStatus
         ]
         query = f"""
                 {bus_data_cte}
-                 SELECT * FROM BUS_DATA  WHERE '{mapping[busStatus]}' = ANY(status) LIMIT {limit} OFFSET {offset}
-                        """
+                 SELECT  * FROM BUS_BATTERY_DATA  WHERE '{mapping[busStatus]}' = ANY(status) """
+        if limit and offset:
+            query += f"LIMIT {limit} OFFSET {offset}"
 
     else:
         if decoded_filters is not None:
@@ -219,40 +237,115 @@ def get_buses_data(appName, busStatus):
 
         query = f"""
                 {bus_data_cte}
-                 SELECT * FROM BUS_DATA  LIMIT {limit} OFFSET {offset}
-                """
+                 SELECT  *  FROM BUS_BATTERY_DATA  """
+        if limit and offset:
+            query += f"LIMIT {limit} OFFSET {offset}"
 
-    results = list(db.session.execute(text(query)))
-    filtered_data = filtered_data[: len(results)]
-    if results:
-        x = filtered_data[0]
-        filtered_data = []
-        for k, i in enumerate(results):
-            busN = "".join(i[3].split(" ")) if i[3] else ""
-            if not i[-1] or not i[-2] or str(busN) == str(i[0]):
+    results_list = get_results_dict(db, query)
+
+    x = filtered_data[0]
+    filtered_data = []
+    if len(results_list) > 0:
+        for k, i in enumerate(results_list):
+            busN = "".join(i["name"].split(" ")) if i["name"] else ""
+            if (
+                not i["latitude"]
+                or not i["longitude"]
+                or str(busN) == str(i["imei"])
+            ):
                 continue
             t = {
                 **x,
                 **{
-                    "uuid": i[0],
+                    "uuid": i["imei"],
                     "busNumber": busN,
-                    "IMEI": i[0],
+                    "IMEI": i["imei"],
                     "status": (
                         (
-                            reverse_mapping[i[2][0]]
-                            if i[2]
-                            and len(i[2]) > 0
-                            and i[2][0] in reverse_mapping
-                            else ""
+                            next(
+                                (
+                                    reverse_mapping[item]
+                                    for item in i["status"]
+                                    if item in reverse_mapping
+                                ),
+                                "",
+                            )
                         )
                         if busStatus == "all"
                         else busStatus
                     ),
-                    "depotNumber": i[4],
-                    "battery": i[5],
+                    "depotNumber": i["depot"],
+                    "battery": i["city"],
                     "location": {
                         "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
-                        "coordinates": {"lat": i[-2], "lng": i[-1]},
+                        "coordinates": {
+                            "lat": i["latitude"],
+                            "lng": i["longitude"],
+                        },
+                    },
+                    "statusOptions": {
+                        "bus": {"text": "Online", "status": "on"},
+                        "CANData": {"text": "CAN Data", "status": "on"},
+                        "externalPower": {
+                            "text": "External Power",
+                            "status": "on",
+                        },
+                        "deviceData": {"text": "Device Data", "status": "on"},
+                        "GPSData": {"text": "GPS Data", "status": "on"},
+                        "busRunning": {"text": "Bus Running", "status": "on"},
+                    },
+                    "batteryOverview": {
+                        "soc": {
+                            "text": "SoC",
+                            "value": round_wrapper(i["soc"], 2),
+                            "units": "%",
+                        },
+                        "soh": {
+                            "text": "SoH",
+                            "value": round_wrapper(i["soh"], 2),
+                            "units": "%",
+                        },
+                        "temperature": {
+                            "text": "Temperature",
+                            "value": 76.1,
+                            "units": "\u00b0C",
+                        },
+                        "voltage": {
+                            "text": "Voltage",
+                            "value": round_wrapper(i["voltage"], 2),
+                            "units": "V",
+                        },
+                        "current": {
+                            "text": "Current",
+                            "value": round_wrapper(i["total_current"], 2),
+                            "units": "A",
+                        },
+                        "regenation": {
+                            "text": "Regeneration",
+                            "value": "Disabled",
+                        },
+                        "BMSStatus": {"text": "BMS Status", "value": "Normal"},
+                        "speed": {
+                            "text": "Speed",
+                            "value": 81,
+                            "units": "km/h",
+                        },
+                        "contractorStatus": {
+                            "text": "String Contractor Status",
+                            "value": "Closed",
+                        },
+                        "cellVoltageDelta": {
+                            "text": "String-Wise Delta of Cell Voltage",
+                            "min": 31.48,
+                            "max": 81.28,
+                            "units": "mV",
+                        },
+                        "temperatureDelta": {
+                            "text": "String-Wise Delta of Temperature",
+                            "min": 27.81,
+                            "max": 78.74,
+                            "units": "\u00b0C",
+                        },
                     },
                 },
             }
@@ -260,21 +353,31 @@ def get_buses_data(appName, busStatus):
             filtered_data.append(t)
 
     paginated_data = filtered_data
-    next_offset = offset + limit
-    if busStatus != "all":
-        q = f"""
-    {bus_data_cte}
-    SELECT COUNT(*) FROM BUS_DATA  WHERE '{mapping[busStatus]}' = ANY(status)                
-    """
-    else:
-        q = f"""
-    {bus_data_cte}
-    SELECT COUNT(*) FROM BUS_DATA                
-    """
-    has_more = next_offset < list(db.session.execute(text(q)))[0][0]
+    next_offset = None
+    has_more = None
+    if offset and limit:
+        next_offset = offset + limit
+        if busStatus != "all":
+            q = f"""
+        {bus_data_cte}
+        SELECT COUNT(*) FROM BUS_BATTERY_DATA  WHERE '{mapping[busStatus]}' = ANY(status) AND name != CAST(imei AS TEXT)                 
+        """
+        else:
+            q = f"""
+        {bus_data_cte}
+        SELECT COUNT(*) FROM BUS_BATTERY_DATA  WHERE name != CAST(imei AS TEXT)             
+        """
+        has_more = next_offset < list(db.session.execute(text(q)))[0][0]
 
     next_url = (
-        f"/api/v1/app/{appName}/bus/{busStatus}?limit={limit}&offset={next_offset}"
+        (
+            f"/api/v1/app/{appName}/bus/{busStatus}?"
+            + (
+                "limit={limit}&offset={next_offset}"
+                if limit and offset and next_offset
+                else ""
+            )
+        )
         if has_more
         else None
     )
@@ -293,12 +396,102 @@ def get_buses_data(appName, busStatus):
 @app.route("/api/v1/app/<appName>/bus/all/<uuid>", methods=["GET"])
 def get_bus_by_uuid(appName, uuid):
     if uuid == 0 or uuid == "0":
-        bus_data = specific_bus_data[0]
+        query = f"""
+                {bus_data_cte}
+                 SELECT  * FROM BUS_BATTERY_DATA  LIMIT 1
+        """
     else:
-        bus_data = next(
-            filter(lambda x: x["uuid"] == uuid, specific_bus_data), None
-        )
+        query = f"""
+                {bus_data_cte}
+                 SELECT  * FROM BUS_BATTERY_DATA  WHERE imei = {uuid}
+        """
 
+    results_dict = get_results_dict(db, query)
+    x = specific_bus_data[0]
+    filtered_data = []
+    if results_dict:
+        for k, i in enumerate(results_dict):
+            busN = "".join(i["name"].split(" ")) if i["name"] else ""
+            if (
+                not i["latitude"]
+                or not i["longitude"]
+                or str(busN) == str(i["imei"])
+            ):
+                continue
+            t = {
+                **x,
+                **{
+                    "uuid": i["imei"],
+                    "busNumber": busN,
+                    "IMEI": i["imei"],
+                    "status": ", ".join(i["status"]),
+                    "depotNumber": i["depot"],
+                    "battery": i["city"],
+                    "location": {
+                        "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
+                        "coordinates": {
+                            "lat": i["latitude"],
+                            "lng": i["longitude"],
+                        },
+                    },
+                    "batteryOverview": {
+                        "soc": {
+                            "text": "SoC",
+                            "value": round_wrapper(i["soc"], 2),
+                            "units": "%",
+                        },
+                        "soh": {
+                            "text": "SoH",
+                            "value": round_wrapper(i["soh"], 2),
+                            "units": "%",
+                        },
+                        "temperature": {
+                            "text": "Temperature",
+                            "value": 76.1,
+                            "units": "\u00b0C",
+                        },
+                        "voltage": {
+                            "text": "Voltage",
+                            "value": round_wrapper(i["voltage"], 2),
+                            "units": "V",
+                        },
+                        "current": {
+                            "text": "Current",
+                            "value": round_wrapper(i["total_current"], 2),
+                            "units": "A",
+                        },
+                        "regenation": {
+                            "text": "Regeneration",
+                            "value": "Disabled",
+                        },
+                        "BMSStatus": {"text": "BMS Status", "value": "Normal"},
+                        "speed": {
+                            "text": "Speed",
+                            "value": 81,
+                            "units": "km/h",
+                        },
+                        "contractorStatus": {
+                            "text": "String Contractor Status",
+                            "value": "Closed",
+                        },
+                        "cellVoltageDelta": {
+                            "text": "String-Wise Delta of Cell Voltage",
+                            "min": 31.48,
+                            "max": 81.28,
+                            "units": "mV",
+                        },
+                        "temperatureDelta": {
+                            "text": "String-Wise Delta of Temperature",
+                            "min": 27.81,
+                            "max": 78.74,
+                            "units": "\u00b0C",
+                        },
+                    },
+                },
+            }
+
+            filtered_data.append(t)
+    bus_data = next(iter(filtered_data), None)
     if not bus_data:
         return jsonify({"status": "error", "message": "Bus not found"}), 404
 
