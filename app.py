@@ -246,13 +246,9 @@ def get_buses_data(appName, busStatus):
     x = filtered_data[0]
     filtered_data = []
     if len(results_list) > 0:
-        for k, i in enumerate(results_list):
+        for _, i in enumerate(results_list):
             busN = "".join(i["name"].split(" ")) if i["name"] else ""
-            if (
-                not i["latitude"]
-                or not i["longitude"]
-                or str(busN) == str(i["imei"])
-            ):
+            if not i["latitude"] or not i["longitude"]:
                 continue
             t = {
                 **x,
@@ -283,8 +279,18 @@ def get_buses_data(appName, busStatus):
                             "lng": i["longitude"],
                         },
                     },
+                    "totalAlerts": 0,
                     "statusOptions": {
-                        "bus": {"text": "Online", "status": "on"},
+                        "bus": {
+                            "text": (
+                                "Online"
+                                if "Online" in i["status"]
+                                else "Offline"
+                            ),
+                            "status": (
+                                "off" if "Online" in i["status"] else "off"
+                            ),
+                        },
                         "CANData": {"text": "CAN Data", "status": "on"},
                         "externalPower": {
                             "text": "External Power",
@@ -307,7 +313,7 @@ def get_buses_data(appName, busStatus):
                         },
                         "temperature": {
                             "text": "Temperature",
-                            "value": 76.1,
+                            "value": round_wrapper(i["temperature"], 2),
                             "units": "\u00b0C",
                         },
                         "voltage": {
@@ -336,14 +342,14 @@ def get_buses_data(appName, busStatus):
                         },
                         "cellVoltageDelta": {
                             "text": "String-Wise Delta of Cell Voltage",
-                            "min": 31.48,
-                            "max": 81.28,
+                            "min": round_wrapper(i["min_cell_volt"], 2),
+                            "max": round_wrapper(i["max_cell_volt"], 2),
                             "units": "mV",
                         },
                         "temperatureDelta": {
                             "text": "String-Wise Delta of Temperature",
-                            "min": 27.81,
-                            "max": 78.74,
+                            "min": round_wrapper(i["min_cell_temp"], 2),
+                            "max": round_wrapper(i["max_cell_temp"], 2),
                             "units": "\u00b0C",
                         },
                     },
@@ -412,11 +418,7 @@ def get_bus_by_uuid(appName, uuid):
     if results_dict:
         for k, i in enumerate(results_dict):
             busN = "".join(i["name"].split(" ")) if i["name"] else ""
-            if (
-                not i["latitude"]
-                or not i["longitude"]
-                or str(busN) == str(i["imei"])
-            ):
+            if not i["latitude"] or not i["longitude"]:
                 continue
             t = {
                 **x,
@@ -434,6 +436,27 @@ def get_bus_by_uuid(appName, uuid):
                             "lng": i["longitude"],
                         },
                     },
+                    "totalAlerts": 0,
+                    "statusOptions": {
+                        "bus": {
+                            "text": (
+                                "Online"
+                                if "Online" in i["status"]
+                                else "Offline"
+                            ),
+                            "status": (
+                                "off" if "Online" in i["status"] else "off"
+                            ),
+                        },
+                        "CANData": {"text": "CAN Data", "status": "on"},
+                        "externalPower": {
+                            "text": "External Power",
+                            "status": "on",
+                        },
+                        "deviceData": {"text": "Device Data", "status": "on"},
+                        "GPSData": {"text": "GPS Data", "status": "on"},
+                        "busRunning": {"text": "Bus Running", "status": "on"},
+                    },
                     "batteryOverview": {
                         "soc": {
                             "text": "SoC",
@@ -447,7 +470,7 @@ def get_bus_by_uuid(appName, uuid):
                         },
                         "temperature": {
                             "text": "Temperature",
-                            "value": 76.1,
+                            "value": round_wrapper(i["temperature"], 2),
                             "units": "\u00b0C",
                         },
                         "voltage": {
@@ -476,14 +499,14 @@ def get_bus_by_uuid(appName, uuid):
                         },
                         "cellVoltageDelta": {
                             "text": "String-Wise Delta of Cell Voltage",
-                            "min": 31.48,
-                            "max": 81.28,
+                            "min": round_wrapper(i["min_cell_volt"], 2),
+                            "max": round_wrapper(i["max_cell_volt"], 2),
                             "units": "mV",
                         },
                         "temperatureDelta": {
                             "text": "String-Wise Delta of Temperature",
-                            "min": 27.81,
-                            "max": 78.74,
+                            "min": round_wrapper(i["min_cell_temp"], 2),
+                            "max": round_wrapper(i["max_cell_temp"], 2),
                             "units": "\u00b0C",
                         },
                     },

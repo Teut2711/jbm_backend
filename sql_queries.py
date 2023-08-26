@@ -26,22 +26,27 @@ WITH
 ),
 "vehicle" AS (
     SELECT
-        "battery_pack"."IMEI",
-        "battery_pack"."timestamp",
-        ARRAY[
-            "battery_pack"."status__battery_pack__full_charge",
-            "battery_pack"."status__battery_pack__current_polarity",
-            "battery_pack"."status__position_tracker_advanced__connection"
-        ] AS "status",
+        CASE
+            WHEN "battery_pack"."IMEI" IS NOT NULL THEN "battery_pack"."IMEI"
+            ELSE "traccar"."tc_devices"."uniqueid"::BIGINT
+        END "IMEI",
+        CASE
+            WHEN "battery_pack"."timestamp" IS NULL THEN '2022-02-02 22:22:22+02:00'::TIMESTAMP WITH TIME ZONE
+            ELSE "battery_pack"."timestamp"
+        END "timestamp",
+        CASE
+            WHEN "battery_pack"."status__position_tracker_advanced__connection" = 'Online' THEN ARRAY_REMOVE(ARRAY["battery_pack"."status__battery_pack__full_charge", "battery_pack"."status__battery_pack__current_polarity", "battery_pack"."status__position_tracker_advanced__connection"], NULL)
+            WHEN "battery_pack"."timestamp" IS NULL THEN ARRAY_REMOVE(ARRAY['{Waiting}'], NULL)
+            ELSE ARRAY_REMOVE(ARRAY["battery_pack"."status__position_tracker_advanced__connection"], NULL)
+        END "status",
         "traccar"."tc_devices"."name",
         ("traccar"."tc_devices"."attributes"::JSONB)->>'depot' AS "depot",
         ("traccar"."tc_devices"."attributes"::JSONB)->>'city' AS "city",
         "traccar"."tc_devices"."id"
     FROM "battery_pack"
-    LEFT OUTER JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = "battery_pack"."IMEI"::TEXT
+    FULL JOIN "traccar"."tc_devices" ON "traccar"."tc_devices"."uniqueid"::TEXT = "battery_pack"."IMEI"::TEXT
     WHERE "traccar"."tc_devices"."uniqueid"::TEXT != "traccar"."tc_devices"."name"::TEXT
-)
-,
+),
 "position_tracker_advanced" AS (
     SELECT
         "deviceid",
@@ -92,9 +97,50 @@ SOHOrdered AS (
   FROM "1821a1f3"
   ORDER BY "IMEI", "timestamp" DESC
 ),
+AverageTemperature AS (
+    SELECT DISTINCT ON ("IMEI") "IMEI",
+      "B2T_TAvg"::NUMERIC AS "average_temperature",
+      "timestamp" AS "average_temperature_time"
+    FROM
+      "18ff45f3"
+    ORDER BY
+      "IMEI", "timestamp" DESC
+  ),
+MinCellT1 AS (
+  SELECT DISTINCT ON ("IMEI") "IMEI", "B2V_MinCellT1" AS "min_cell_t1"
+  FROM "1016a1f3"
+  ORDER BY "IMEI", "timestamp" DESC
+),
+
+MaxCellT1 AS (
+  SELECT DISTINCT ON ("IMEI") "IMEI", "B2V_MaxCellT1" AS "max_cell_t1"
+  FROM "1016a1f3"
+  ORDER BY "IMEI", "timestamp" DESC
+),
+
+MinCellV1 AS (
+  SELECT DISTINCT ON ("IMEI") "IMEI", "B2V_MinCellV1" AS "min_cell_v1"
+  FROM "1012a1f3"
+  ORDER BY "IMEI", "timestamp" DESC
+),
+
+MaxCellV1 AS (
+  SELECT DISTINCT ON ("IMEI") "IMEI", "B2V_MaxCellV1" AS "max_cell_v1"
+  FROM "1012a1f3"
+  ORDER BY "IMEI", "timestamp" DESC
+),
 BUS_BATTERY AS (
 SELECT
-  v."IMEI" AS imei, voltage, total_current, soc, soh
+  v."IMEI" AS imei,
+  voltage,
+  total_current,
+  soc,
+  soh,
+  avt."average_temperature",
+  mt1."min_cell_t1",
+  mt2."max_cell_t1",
+  mv1."min_cell_v1",
+  mv2."max_cell_v1"
 FROM
   VoltageOrdered v
 INNER JOIN
@@ -103,9 +149,26 @@ INNER JOIN
   SOCOrdered s ON v."IMEI" = s."IMEI"
 INNER JOIN
   SOHOrdered h ON v."IMEI" = h."IMEI"
-),
+LEFT JOIN
+  AverageTemperature avt ON v."IMEI" = avt."IMEI"
+
+	LEFT JOIN
+  MinCellT1 mt1 ON v."IMEI" = mt1."IMEI"
+LEFT JOIN
+  MaxCellT1 mt2 ON v."IMEI" = mt2."IMEI"
+LEFT JOIN
+  MinCellV1 mv1 ON v."IMEI" = mv1."IMEI"
+LEFT JOIN
+  MaxCellV1 mv2 ON v."IMEI" = mv2."IMEI"
+)
+,
 BUS_BATTERY_DATA AS (
 
-SELECT "IMEI" AS imei,  status, name, depot, city, latitude, longitude, soc, soh, voltage, total_current FROM BUS_DATA bd LEFT JOIN BUS_BATTERY bb ON bd."IMEI"= bb.imei
+SELECT "IMEI" AS imei,  status, name, depot, city, latitude, longitude, soc, soh, voltage, total_current,average_temperature AS temperature,
+	min_cell_t1 AS min_cell_temp,
+  max_cell_t1 AS max_cell_temp,
+  min_cell_v1 AS min_cell_volt,
+  max_cell_v1 AS max_cell_volt
+	FROM BUS_DATA bd LEFT JOIN BUS_BATTERY bb ON bd."IMEI"= bb.imei
 	)
 """
