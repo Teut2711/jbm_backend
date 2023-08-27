@@ -162,7 +162,7 @@ LEFT JOIN
   MaxCellV1 mv2 ON v."IMEI" = mv2."IMEI"
 )
 ,
-BUS_BATTERY_DATA AS (
+bus_battery_data AS (
 
 SELECT "IMEI" AS imei,  status, name, depot, city, latitude, longitude, soc, soh, voltage, total_current,average_temperature AS temperature,
 	min_cell_t1 AS min_cell_temp,
