@@ -1,29 +1,31 @@
 from collections import Counter
+from decimal import Decimal
+from itertools import chain
 import json
+from threading import Thread
+import time
 from flask import jsonify, request
 from flask_cors import CORS
 from jbm_backend import utils
 import urllib
 import jbm_backend
-from jbm_backend import models
-import pandas as pd
-from pathlib import Path
+from decimal import Decimal, DecimalException
 
 from sqlalchemy import text
-from .sql_queries import bus_data_cte
+
+# from .sql_queries import bus_data_cte
 
 app = jbm_backend.app
 db = jbm_backend.db
 
-
-file_path = Path(__file__).parent / "TCU500 Vehicle Mapping 19-8-23_2.xlsx"
-df = pd.read_excel(file_path)
+bus_data_cte = ""
 
 CORS(
     app,
     resources={r"/api/*": {"origins": "*", "expose_headers": "Authorization"}},
 )
 
+schedule_thread = None
 
 with open("./specificBusData.json") as f:
     specific_bus_data = json.load(f)
@@ -60,22 +62,47 @@ bus_statuses = [
 ]
 
 
+def refresh_materialized_view():
+    print("Updated")
+    db.session.execute(
+        text(
+            """
+        REFRESH MATERIALIZED VIEW CONCURRENTLY bus_battery_data;
+             """
+        )
+    )
+    db.session.commit()
+
+
+def run_schedule(app):
+    with app.app_context():
+        while True:
+            refresh_materialized_view()
+            time.sleep(30)
+
+
 @app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
 def get_total_buses(appName):
     # Filter the data based on the bus status
     # positions = models.TraccerDevices.query.limit(5).all()
     # CAN = models.CANFrame.query.limit(5).all()
+    global schedule_thread
+    if not schedule_thread:
+        schedule_thread = Thread(target=lambda: run_schedule(app))
+        schedule_thread.daemon = True
+        schedule_thread.start()
+
     def get_data(_type):
         if _type == "all":
             query = f"""
                 {bus_data_cte}
-                 SELECT COUNT(*) FROM BUS_BATTERY_DATA  WHERE name != CAST(imei AS TEXT);  
+                 SELECT COUNT(*) FROM bus_battery_data  WHERE name != CAST(imei AS TEXT);  
                 """
 
         else:
             query = f"""
                 {bus_data_cte}
-                 SELECT COUNT(*) FROM BUS_BATTERY_DATA WHERE '{_type}'= ANY(status)  AND name != CAST(imei AS TEXT);  
+                 SELECT COUNT(*) FROM bus_battery_data WHERE '{_type}'= ANY(status)  AND name != CAST(imei AS TEXT);  
                 """
         return list(db.session.execute(text(query)))[0][0]
 
@@ -86,12 +113,14 @@ def get_total_buses(appName):
 
 def round_wrapper(x, to):
     try:
-        return round(x, to)
-    except Exception:
+        if isinstance(x, str):
+            x = Decimal(x)
+        return round(float(x), to)
+    except (ValueError, TypeError, DecimalException):
         return x
 
 
-def does_bus_data_satisfy_filters(data, filters):
+def apply_filters_to_bus_data(data, filters):
     is_true = True
     for k, _v in filters.items():
         try:
@@ -142,14 +171,14 @@ def does_bus_data_satisfy_filters(data, filters):
                     <= data["batteryOverview"]["voltage"]["value"]
                     <= v[1]
                 )
-            case "temperatureRange":
-                is_true &= (
-                    "batteryOverview" in data
-                    and "temperature" in data["batteryOverview"]
-                    and v[0]
-                    <= data["batteryOverview"]["temperature"]["value"]
-                    <= v[1]
-                )
+            # case "temperatureRange":
+            #     is_true &= (
+            #         "batteryOverview" in data
+            #         and "temperature" in data["batteryOverview"]
+            #         and v[0]
+            #         <= data["batteryOverview"]["temperature"]["value"]
+            #         <= v[1]
+            #     )
 
             case "cellDiffInBatteryPackRange":
                 # Apply filtering logic based on cellDiffInBatteryPackRange
@@ -181,6 +210,15 @@ def get_results_dict(db, query):
         map(lambda x: dict(zip(results_keys, x)), list(results))
     )
     return results_dict
+
+
+def get_results_list(db, query):
+    results = list(chain.from_iterable(db.session.execute(text(query))))
+    result_list = [
+        round_wrapper(float(value), 1) if isinstance(value, Decimal) else value
+        for value in results
+    ]
+    return result_list
 
 
 @app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
@@ -220,7 +258,7 @@ def get_buses_data(appName, busStatus):
         ]
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM BUS_BATTERY_DATA  WHERE '{mapping[busStatus]}' = ANY(status) """
+                 SELECT  * FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) """
         if limit and offset:
             query += f"LIMIT {limit} OFFSET {offset}"
 
@@ -229,7 +267,7 @@ def get_buses_data(appName, busStatus):
             filtered_data = [
                 bus
                 for bus in buses_data
-                if does_bus_data_satisfy_filters(bus, decoded_filters)
+                if apply_filters_to_bus_data(bus, decoded_filters)
             ]
             bus_data_cte
         else:
@@ -237,7 +275,7 @@ def get_buses_data(appName, busStatus):
 
         query = f"""
                 {bus_data_cte}
-                 SELECT  *  FROM BUS_BATTERY_DATA  """
+                 SELECT  *  FROM bus_battery_data  """
         if limit and offset:
             query += f"LIMIT {limit} OFFSET {offset}"
 
@@ -247,14 +285,13 @@ def get_buses_data(appName, busStatus):
     filtered_data = []
     if len(results_list) > 0:
         for _, i in enumerate(results_list):
-            busN = "".join(i["name"].split(" ")) if i["name"] else ""
             if not i["latitude"] or not i["longitude"]:
                 continue
             t = {
                 **x,
                 **{
                     "uuid": i["imei"],
-                    "busNumber": busN,
+                    "busNumber": i["name"],
                     "IMEI": i["imei"],
                     "status": (
                         (
@@ -301,6 +338,25 @@ def get_buses_data(appName, busStatus):
                         "busRunning": {"text": "Bus Running", "status": "on"},
                     },
                     "batteryOverview": {
+                        "__order__": [
+                            "soc",
+                            "soh",
+                            "inletTemperature",
+                            "outletTemperature",
+                            "current",
+                            "regeneration",
+                            "speed",
+                            "BMSStatus",
+                            "contractorStatus",
+                            "cellVoltageDelta1",
+                            "cellVoltageDelta2",
+                            "cellVoltageDelta3",
+                            "cellVoltageDelta4",
+                            "temperatureDelta1",
+                            "temperatureDelta2",
+                            "temperatureDelta3",
+                            "temperatureDelta4",
+                        ],
                         "soc": {
                             "text": "SoC",
                             "value": round_wrapper(i["soc"], 2),
@@ -311,45 +367,81 @@ def get_buses_data(appName, busStatus):
                             "value": round_wrapper(i["soh"], 2),
                             "units": "%",
                         },
-                        "temperature": {
-                            "text": "Temperature",
-                            "value": round_wrapper(i["temperature"], 2),
+                        "inletTemperature": {
+                            "text": "Inlet Temperature",
+                            "value": round_wrapper(i["inlet_temperature"], 2),
                             "units": "\u00b0C",
                         },
-                        "voltage": {
-                            "text": "Voltage",
-                            "value": round_wrapper(i["voltage"], 2),
-                            "units": "V",
+                        "outletTemperature": {
+                            "text": "Outlet Temperature",
+                            "value": round_wrapper(i["outlet_temperature"], 2),
+                            "units": "\u00b0C",
                         },
                         "current": {
                             "text": "Current",
                             "value": round_wrapper(i["total_current"], 2),
                             "units": "A",
                         },
-                        "regenation": {
+                        "regeneration": {
                             "text": "Regeneration",
                             "value": "Disabled",
                         },
                         "BMSStatus": {"text": "BMS Status", "value": "Normal"},
                         "speed": {
                             "text": "Speed",
-                            "value": 81,
+                            "value": round_wrapper(i["speed"], 2),
                             "units": "km/h",
                         },
                         "contractorStatus": {
                             "text": "String Contractor Status",
                             "value": "Closed",
                         },
-                        "cellVoltageDelta": {
-                            "text": "String-Wise Delta of Cell Voltage",
-                            "min": round_wrapper(i["min_cell_volt"], 2),
-                            "max": round_wrapper(i["max_cell_volt"], 2),
+                        "cellVoltageDelta1": {
+                            "text": "String-Wise Delta of Cell Voltage 1",
+                            "min": round_wrapper(i["min_cell_v1"], 2),
+                            "max": round_wrapper(i["max_cell_v1"], 2),
                             "units": "mV",
                         },
-                        "temperatureDelta": {
-                            "text": "String-Wise Delta of Temperature",
-                            "min": round_wrapper(i["min_cell_temp"], 2),
-                            "max": round_wrapper(i["max_cell_temp"], 2),
+                        "cellVoltageDelta2": {
+                            "text": "String-Wise Delta of Cell Voltage 2",
+                            "min": round_wrapper(i["min_cell_v2"], 2),
+                            "max": round_wrapper(i["max_cell_v2"], 2),
+                            "units": "mV",
+                        },
+                        "cellVoltageDelta3": {
+                            "text": "String-Wise Delta of Cell Voltage 3",
+                            "min": round_wrapper(i["min_cell_v3"], 2),
+                            "max": round_wrapper(i["max_cell_v3"], 2),
+                            "units": "mV",
+                        },
+                        "cellVoltageDelta4": {
+                            "text": "String-Wise Delta of Cell Voltage 4",
+                            "min": round_wrapper(i["min_cell_v4"], 2),
+                            "max": round_wrapper(i["max_cell_v4"], 2),
+                            "units": "mV",
+                        },
+                        "temperatureDelta1": {
+                            "text": "String-Wise Delta of Temperature 1",
+                            "min": round_wrapper(i["min_cell_t1"], 2),
+                            "max": round_wrapper(i["max_cell_t1"], 2),
+                            "units": "\u00b0C",
+                        },
+                        "temperatureDelta2": {
+                            "text": "String-Wise Delta of Temperature 2",
+                            "min": round_wrapper(i["min_cell_t2"], 2),
+                            "max": round_wrapper(i["max_cell_t2"], 2),
+                            "units": "\u00b0C",
+                        },
+                        "temperatureDelta3": {
+                            "text": "String-Wise Delta of Temperature 3",
+                            "min": round_wrapper(i["min_cell_t3"], 2),
+                            "max": round_wrapper(i["max_cell_t3"], 2),
+                            "units": "\u00b0C",
+                        },
+                        "temperatureDelta4": {
+                            "text": "String-Wise Delta of Temperature 4",
+                            "min": round_wrapper(i["min_cell_t4"], 2),
+                            "max": round_wrapper(i["max_cell_t4"], 2),
                             "units": "\u00b0C",
                         },
                     },
@@ -366,12 +458,12 @@ def get_buses_data(appName, busStatus):
         if busStatus != "all":
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM BUS_BATTERY_DATA  WHERE '{mapping[busStatus]}' = ANY(status) AND name != CAST(imei AS TEXT)                 
+        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND name != CAST(imei AS TEXT)                 
         """
         else:
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM BUS_BATTERY_DATA  WHERE name != CAST(imei AS TEXT)             
+        SELECT COUNT(*) FROM bus_battery_data  WHERE name != CAST(imei AS TEXT)             
         """
         has_more = next_offset < list(db.session.execute(text(q)))[0][0]
 
@@ -404,12 +496,12 @@ def get_bus_by_uuid(appName, uuid):
     if uuid == 0 or uuid == "0":
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM BUS_BATTERY_DATA  LIMIT 1
+                 SELECT  * FROM bus_battery_data  LIMIT 1
         """
     else:
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM BUS_BATTERY_DATA  WHERE imei = {uuid}
+                 SELECT  * FROM bus_battery_data  WHERE imei = {uuid}
         """
 
     results_dict = get_results_dict(db, query)
@@ -417,14 +509,13 @@ def get_bus_by_uuid(appName, uuid):
     filtered_data = []
     if results_dict:
         for k, i in enumerate(results_dict):
-            busN = "".join(i["name"].split(" ")) if i["name"] else ""
             if not i["latitude"] or not i["longitude"]:
                 continue
             t = {
                 **x,
                 **{
                     "uuid": i["imei"],
-                    "busNumber": busN,
+                    "busNumber": i["name"],
                     "IMEI": i["imei"],
                     "status": ", ".join(i["status"]),
                     "depotNumber": i["depot"],
@@ -458,6 +549,25 @@ def get_bus_by_uuid(appName, uuid):
                         "busRunning": {"text": "Bus Running", "status": "on"},
                     },
                     "batteryOverview": {
+                        "__order__": [
+                            "soc",
+                            "soh",
+                            "inletTemperature",
+                            "outletTemperature",
+                            "current",
+                            "regeneration",
+                            "speed",
+                            "BMSStatus",
+                            "contractorStatus",
+                            "cellVoltageDelta1",
+                            "cellVoltageDelta2",
+                            "cellVoltageDelta3",
+                            "cellVoltageDelta4",
+                            "temperatureDelta1",
+                            "temperatureDelta2",
+                            "temperatureDelta3",
+                            "temperatureDelta4",
+                        ],
                         "soc": {
                             "text": "SoC",
                             "value": round_wrapper(i["soc"], 2),
@@ -468,45 +578,81 @@ def get_bus_by_uuid(appName, uuid):
                             "value": round_wrapper(i["soh"], 2),
                             "units": "%",
                         },
-                        "temperature": {
-                            "text": "Temperature",
-                            "value": round_wrapper(i["temperature"], 2),
+                        "inletTemperature": {
+                            "text": "Inlet Temperature",
+                            "value": round_wrapper(i["inlet_temperature"], 2),
                             "units": "\u00b0C",
                         },
-                        "voltage": {
-                            "text": "Voltage",
-                            "value": round_wrapper(i["voltage"], 2),
-                            "units": "V",
+                        "outletTemperature": {
+                            "text": "Outlet Temperature",
+                            "value": round_wrapper(i["outlet_temperature"], 2),
+                            "units": "\u00b0C",
                         },
                         "current": {
                             "text": "Current",
                             "value": round_wrapper(i["total_current"], 2),
                             "units": "A",
                         },
-                        "regenation": {
+                        "regeneration": {
                             "text": "Regeneration",
                             "value": "Disabled",
                         },
                         "BMSStatus": {"text": "BMS Status", "value": "Normal"},
                         "speed": {
                             "text": "Speed",
-                            "value": 81,
+                            "value": round_wrapper(i["speed"], 2),
                             "units": "km/h",
                         },
                         "contractorStatus": {
                             "text": "String Contractor Status",
                             "value": "Closed",
                         },
-                        "cellVoltageDelta": {
-                            "text": "String-Wise Delta of Cell Voltage",
-                            "min": round_wrapper(i["min_cell_volt"], 2),
-                            "max": round_wrapper(i["max_cell_volt"], 2),
+                        "cellVoltageDelta1": {
+                            "text": "String-Wise Delta of Cell Voltage 1",
+                            "min": round_wrapper(i["min_cell_v1"], 2),
+                            "max": round_wrapper(i["max_cell_v1"], 2),
                             "units": "mV",
                         },
-                        "temperatureDelta": {
-                            "text": "String-Wise Delta of Temperature",
-                            "min": round_wrapper(i["min_cell_temp"], 2),
-                            "max": round_wrapper(i["max_cell_temp"], 2),
+                        "cellVoltageDelta2": {
+                            "text": "String-Wise Delta of Cell Voltage 2",
+                            "min": round_wrapper(i["min_cell_v2"], 2),
+                            "max": round_wrapper(i["max_cell_v2"], 2),
+                            "units": "mV",
+                        },
+                        "cellVoltageDelta3": {
+                            "text": "String-Wise Delta of Cell Voltage 3",
+                            "min": round_wrapper(i["min_cell_v3"], 2),
+                            "max": round_wrapper(i["max_cell_v3"], 2),
+                            "units": "mV",
+                        },
+                        "cellVoltageDelta4": {
+                            "text": "String-Wise Delta of Cell Voltage 4",
+                            "min": round_wrapper(i["min_cell_v4"], 2),
+                            "max": round_wrapper(i["max_cell_v4"], 2),
+                            "units": "mV",
+                        },
+                        "temperatureDelta1": {
+                            "text": "String-Wise Delta of Temperature 1",
+                            "min": round_wrapper(i["min_cell_t1"], 2),
+                            "max": round_wrapper(i["max_cell_t1"], 2),
+                            "units": "\u00b0C",
+                        },
+                        "temperatureDelta2": {
+                            "text": "String-Wise Delta of Temperature 2",
+                            "min": round_wrapper(i["min_cell_t2"], 2),
+                            "max": round_wrapper(i["max_cell_t2"], 2),
+                            "units": "\u00b0C",
+                        },
+                        "temperatureDelta3": {
+                            "text": "String-Wise Delta of Temperature 3",
+                            "min": round_wrapper(i["min_cell_t3"], 2),
+                            "max": round_wrapper(i["max_cell_t3"], 2),
+                            "units": "\u00b0C",
+                        },
+                        "temperatureDelta4": {
+                            "text": "String-Wise Delta of Temperature 4",
+                            "min": round_wrapper(i["min_cell_t4"], 2),
+                            "max": round_wrapper(i["max_cell_t4"], 2),
                             "units": "\u00b0C",
                         },
                     },
@@ -548,7 +694,7 @@ def get_faults_data(appName, faultStatus):
             bus_numbers = [
                 bus["busNumber"]
                 for bus in buses_data
-                if does_bus_data_satisfy_filters(bus, decoded_filters)
+                if apply_filters_to_bus_data(bus, decoded_filters)
             ]
 
             filtered_data = [
@@ -596,82 +742,117 @@ def get_fault_by_uuid(appName, uuid):
 def prepare_filters(fields):
     for k in fields.keys():
         match k:
-            case "batteryNumber":
-                # Apply filtering logic based on batteryNumber
-                vals = set([i["battery"] for i in buses_data])
-                fields[k]["options"] = [{"label": i, "value": i} for i in vals]
-                fields[k]["options"] = [
-                    {"label": "Any", "value": "-"}
-                ] + fields[k]["options"]
+            case "cityWise":
+                # Apply filtering logic based on cityWise
+                query = f"""
+                {bus_data_cte}
+                 SELECT DISTINCT UPPER(TRIM(city)) FROM bus_battery_data
+        """
+
+                vals = get_results_list(db, query)
                 fields[k]["initialValue"] = "-"
-            case "deviceStatusType":
-                # Apply filtering logic based on deviceStatusType
-                vals = set([i["status"] for i in buses_data])
+
                 fields[k]["options"] = [
-                    {"label": utils.kebab_to_title(i), "value": i}
+                    {
+                        "label": i,
+                        "value": utils.space_to_lowercase_kebab_case(i),
+                    }
                     for i in vals
                 ]
                 fields[k]["options"] = [
                     {"label": "Any", "value": "-"}
                 ] + fields[k]["options"]
 
-                fields[k]["initialValue"] = "-"
-            case "cityWise":
-                # Apply filtering logic based on cityWise
-                vals = set(
-                    [
-                        utils.get_district_name(i["location"]["address"])
-                        for i in buses_data
-                    ]
-                )
+            case "depotWise":
+                query = f"""
+                {bus_data_cte}
+                 SELECT DISTINCT UPPER(TRIM(depot)) FROM bus_battery_data
+        """
 
-                fields[k]["options"] = [{"label": i, "value": i} for i in vals]
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = "-"
+                fields[k]["options"] = [
+                    {
+                        "label": i,
+                        "value": utils.space_to_lowercase_kebab_case(i),
+                    }
+                    for i in vals
+                ]
                 fields[k]["options"] = [
                     {"label": "Any", "value": "-"}
                 ] + fields[k]["options"]
-                fields[k]["initialValue"] = "-"
 
-            case "depotWise":
-                # Apply filtering logic based on depotWise
-                vals = set([i["depotNumber"] for i in buses_data])
-                fields[k]["options"] = [{"label": i, "value": i} for i in vals]
-                fields[k]["options"].append({"label": "Any", "value": "-"})
-                fields[k]["initialValue"] = "-"
             case "soCRange":
-                ...
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(soc), MAX(soc) FROM bus_battery_data
+        """
+
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = vals
+                fields[k]["bounds"] = vals
 
             case "soHRange":
-                # Apply filtering logic based on soHRange
-                ...
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(soh), MAX(soh) FROM bus_battery_data
+        """
 
-            case "cycleCount":
-                # Apply filtering logic based on cycleCount
-                ...
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = vals
+                fields[k]["bounds"] = vals
+
             case "voltage":
-                # Apply filtering logic based on voltage
-                ...
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(voltage), MAX(voltage) FROM bus_battery_data
+        """
 
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+
+                fields[k]["initialValue"] = vals
+                fields[k]["bounds"] = vals
             case "temperatureRange":
                 ...
+            #         query = f"""
+            #         {bus_data_cte}
+            #         SELECT MIN(temperature), MAX(temperature) FROM bus_battery_data
+            # """
 
+            #         vals = get_results_list(db, query)
+            #         # Apply filtering logic based on depotWise
+            #         fields[k]["initialValue"] = vals
+            #         fields[k]["bounds"] = vals
             case "cellDiffInBatteryPackRange":
-                # Apply filtering logic based on cellDiffInBatteryPackRange
                 ...
+            #         # Apply filtering logic based on cellDiffInBatteryPackRange
+
+            #         #         query = f"""
+            #         #         {bus_data_cte}
+            #         #         SELECT MIN(temperature), max(temperature) FROM bus_battery_data
+            #         # """
+
+            #         #         vals = get_results_list(db, query)
+            #         #         # Apply filtering logic based on depotWise
+            #         #         fields[k]["initialValue"] = vals
+            #         ...
+
             case "voltageDiffInBatteryPackRange":
                 ...
+            #         query = f"""
+            #         {bus_data_cte}
+            #         SELECT MIN(min_cell_volt), MAX(max_cell_volt) FROM bus_battery_data
+            # """
 
-                # Apply filtering logic based on voltageDiffInBatteryPackRange
-            case "deviceDiffDisconnectConditions":
-                # Apply filtering logic based on deviceDiffDisconnectConditions
-                ...
-            case "faultLevelWise":
-                # Apply filtering logic based on faultLevelWise
-                vals = set([i["faultCode"] for i in faults_data])
-                fields[k]["options"] = [{"label": i, "value": i} for i in vals]
-                fields[k]["options"] = [
-                    {"label": "Any", "value": "-"}
-                ] + fields[k]["options"]
-                fields[k]["initialValue"] = "-"
+            #         vals = get_results_list(db, query)
+            #         # Apply filtering logic based on depotWise
+            #         fields[k]["initialValue"] = vals
+
+            #         # Apply filtering logic based on voltageDiffInBatteryPackRange
 
             case _:
                 # Handle the case for an unknown filter key (optional)
@@ -679,21 +860,19 @@ def prepare_filters(fields):
     return fields
 
 
-with open("./filterstate.json") as f:
-    data_filters = [
-        {"fieldName": k, "fieldSpec": v}
-        for k, v in prepare_filters(json.load(f)).items()
-    ]
-
-
 @app.route("/api/v1/app/<appName>/bus/all/filters-spec", methods=["GET"])
 def get_filter_specification(appName):
     try:
+        with open("./filterstate.json") as f:
+            data_filters = [
+                {"fieldName": k, "fieldSpec": v}
+                for k, v in prepare_filters(json.load(f)).items()
+            ]
         return jsonify({"status": "success", "data": {"fields": data_filters}})
-    except Exception:
+    except Exception as e:
         return (
-            jsonify({"status": "error", "message": "Fields specs not found"}),
-            404,
+            jsonify({"status": "error", "message": str(e)}),
+            500,
         )
 
 

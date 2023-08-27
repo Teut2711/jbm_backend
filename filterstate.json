@@ -4,44 +4,6 @@
     "type": "text",
     "label": "Bus Number"
   },
-  "batteryNumber": {
-    "initialValue": "A",
-    "type": "select",
-    "options": [
-      {
-        "label": "Option A",
-        "value": "A"
-      },
-      {
-        "label": "Option B",
-        "value": "B"
-      },
-      {
-        "label": "Option C",
-        "value": "C"
-      }
-    ],
-    "label": "Battery Number"
-  },
-  "deviceStatusType": {
-    "initialValue": "A",
-    "type": "select",
-    "options": [
-      {
-        "label": "Option A",
-        "value": "A"
-      },
-      {
-        "label": "Option B",
-        "value": "B"
-      },
-      {
-        "label": "Option C",
-        "value": "C"
-      }
-    ],
-    "label": "Device Status Type"
-  },
   "cityWise": {
     "initialValue": "A",
     "type": "select",
@@ -106,19 +68,6 @@
     "label": "SoH Range",
     "unit": "%"
   },
-  "cycleCount": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "Cycle Count Range",
-    "unit": ""
-  },
   "voltage": {
     "initialValue": [
       0,
@@ -143,20 +92,7 @@
       100
     ],
     "label": "Temperature Range",
-    "unit": "°C"
-  },
-  "cellDiffInBatteryPackRange": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "Cell Diff. in Battery Pack Range",
-    "unit": "mV"
+    "unit": "\u00b0C"
   },
   "voltageDiffInBatteryPackRange": {
     "initialValue": [
@@ -170,43 +106,5 @@
     ],
     "label": "Voltage Diff. in Battery Pack Range",
     "unit": "mV"
-  },
-  "deviceDiffDisconnectConditions": {
-    "initialValue": "C",
-    "type": "select",
-    "options": [
-      {
-        "label": "Option A",
-        "value": "A"
-      },
-      {
-        "label": "Option B",
-        "value": "B"
-      },
-      {
-        "label": "Option C",
-        "value": "C"
-      }
-    ],
-    "label": "Device Diff. disconnect conditions"
-  },
-  "faultLevelWise": {
-    "initialValue": "A",
-    "type": "select",
-    "options": [
-      {
-        "label": "Option A",
-        "value": "A"
-      },
-      {
-        "label": "Option B",
-        "value": "B"
-      },
-      {
-        "label": "Option C",
-        "value": "C"
-      }
-    ],
-    "label": "Fault Level Wise"
   }
 }

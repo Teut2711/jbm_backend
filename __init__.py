@@ -1,9 +1,13 @@
 import os
+from time import time
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+from sqlalchemy import text
+
 
 load_dotenv()
+
 
 db_config = {
     "username": os.getenv("BUCEPHALUS__TIMESCALEDB__USERNAME"),
@@ -19,5 +23,7 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 
 db = SQLAlchemy(app)
+
+
 with app.app_context():
     db.Model.metadata.reflect(db.engine)
