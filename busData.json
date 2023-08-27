@@ -71,7 +71,7 @@
         "value": 54,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -174,7 +174,7 @@
         "value": 68,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -277,7 +277,7 @@
         "value": 73,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -380,7 +380,7 @@
         "value": 59,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -483,7 +483,7 @@
         "value": 89,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -586,7 +586,7 @@
         "value": 80,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -689,7 +689,7 @@
         "value": 58,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -792,7 +792,7 @@
         "value": 55,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -895,7 +895,7 @@
         "value": 73,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -998,7 +998,7 @@
         "value": 78,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1101,7 +1101,7 @@
         "value": 85,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1204,7 +1204,7 @@
         "value": 79,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1307,7 +1307,7 @@
         "value": 74,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1410,7 +1410,7 @@
         "value": 76,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1513,7 +1513,7 @@
         "value": 70,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1616,7 +1616,7 @@
         "value": 91,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1719,7 +1719,7 @@
         "value": 83,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1822,7 +1822,7 @@
         "value": 58,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -1925,7 +1925,7 @@
         "value": 86,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2028,7 +2028,7 @@
         "value": 97,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2131,7 +2131,7 @@
         "value": 90,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2234,7 +2234,7 @@
         "value": 53,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2337,7 +2337,7 @@
         "value": 62,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2440,7 +2440,7 @@
         "value": 56,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2543,7 +2543,7 @@
         "value": 79,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2646,7 +2646,7 @@
         "value": 89,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2749,7 +2749,7 @@
         "value": 64,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2852,7 +2852,7 @@
         "value": 57,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -2955,7 +2955,7 @@
         "value": 82,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3058,7 +3058,7 @@
         "value": 93,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3161,7 +3161,7 @@
         "value": 86,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3264,7 +3264,7 @@
         "value": 62,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3367,7 +3367,7 @@
         "value": 82,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3470,7 +3470,7 @@
         "value": 70,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3573,7 +3573,7 @@
         "value": 68,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3676,7 +3676,7 @@
         "value": 79,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3779,7 +3779,7 @@
         "value": 80,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3882,7 +3882,7 @@
         "value": 73,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -3985,7 +3985,7 @@
         "value": 94,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4088,7 +4088,7 @@
         "value": 68,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4191,7 +4191,7 @@
         "value": 97,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4294,7 +4294,7 @@
         "value": 97,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4397,7 +4397,7 @@
         "value": 91,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4500,7 +4500,7 @@
         "value": 76,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4603,7 +4603,7 @@
         "value": 95,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4706,7 +4706,7 @@
         "value": 97,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4809,7 +4809,7 @@
         "value": 99,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -4912,7 +4912,7 @@
         "value": 88,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -5015,7 +5015,7 @@
         "value": 77,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
@@ -5118,7 +5118,7 @@
         "value": 82,
         "units": "A"
       },
-      "regenation": {
+      "regeneration": {
         "text": "Regeneration",
         "value": "Disabled"
       },
