@@ -67,44 +67,5 @@
     ],
     "label": "SoH Range",
     "unit": "%"
-  },
-  "voltage": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "Voltage Range",
-    "unit": "mV"
-  },
-  "temperatureRange": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "Temperature Range",
-    "unit": "\u00b0C"
-  },
-  "voltageDiffInBatteryPackRange": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "Voltage Diff. in Battery Pack Range",
-    "unit": "mV"
   }
 }

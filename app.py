@@ -81,6 +81,74 @@ def run_schedule(app):
             time.sleep(30)
 
 
+def apply_filters_to_bus_data(filters):
+    where_clauses = []
+    for k, _v in filters.items():
+        try:
+            v = int(_v)
+        except Exception:
+            v = _v
+        if isinstance(v, str):
+            v = v.strip()
+        match k:
+            case "busNumber" if v.strip() != "":
+                where_clauses.append(f"'{v}' ILIKE name")
+            case "cityWise" if v.strip() != "-":
+                # Apply filtering logic based on cityWise
+                where_clauses.append(f"'{v}' ILIKE city")
+            case "depotWise" if v.strip() != "-":
+                # Apply filtering logic based on depotWise
+                where_clauses.append(f"'{v}' ILIKE depot")
+            case "soCRange":
+                # Apply filtering logic based on soCRange
+                where_clauses.append(f"soc BETWEEN {v[0]} AND {v[1]}")
+
+            case "soHRange":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(f"soh BETWEEN {v[0]} AND {v[1]}")
+
+            # case "voltage":
+            #     # Apply filtering logic based on voltage
+            #     is_true &= (
+            #         "batteryOverview" in data
+            #         and "voltage" in data["batteryOverview"]
+            #         and v[0]
+            #         <= data["batteryOverview"]["voltage"]["value"]
+            #         <= v[1]
+            #     )
+            # # case "temperatureRange":
+            # #     is_true &= (
+            # #         "batteryOverview" in data
+            # #         and "temperature" in data["batteryOverview"]
+            # #         and v[0]
+            # #         <= data["batteryOverview"]["temperature"]["value"]
+            # #         <= v[1]
+            # #     )
+
+            # case "cellDiffInBatteryPackRange":
+            #     # Apply filtering logic based on cellDiffInBatteryPackRange
+            #     is_true &= True
+            # case "voltageDiffInBatteryPackRange":
+            #     is_true &= (
+            #         "batteryOverview" in data
+            #         and "cellVoltageDelta" in data["batteryOverview"]
+            #         and v[0]
+            #         <= data["batteryOverview"]["cellVoltageDelta"]["min"]
+            #         <= data["batteryOverview"]["cellVoltageDelta"]["max"]
+            #         <= v[1]
+            #     )
+            #     # Apply filtering logic based on voltageDiffInBatteryPackRange
+            # case "deviceDiffDisconnectConditions":
+            #     # Apply filtering logic based on deviceDiffDisconnectConditions
+            #     is_true &= True
+            # case "faultLevelWise":
+            #     # Apply filtering logic based on faultLevelWise
+            #     is_true &= True
+
+    where_clause = " AND ".join(where_clauses)
+    return where_clause
+
+
 @app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
 def get_total_buses(appName):
     # Filter the data based on the bus status
@@ -96,15 +164,33 @@ def get_total_buses(appName):
         if _type == "all":
             query = f"""
                 {bus_data_cte}
-                 SELECT COUNT(*) FROM bus_battery_data  WHERE name != CAST(imei AS TEXT);  
-                """
+                 SELECT COUNT(*) FROM bus_battery_data        """
+            if decoded_filters is not None:
+                query += (
+                    f" WHERE {apply_filters_to_bus_data(decoded_filters)} "
+                )
+            else:
+                query = query
 
         else:
             query = f"""
                 {bus_data_cte}
-                 SELECT COUNT(*) FROM bus_battery_data WHERE '{_type}'= ANY(status)  AND name != CAST(imei AS TEXT);  
-                """
+                 SELECT COUNT(*) FROM bus_battery_data WHERE '{_type}'= ANY(status)    """
+            if decoded_filters is not None:
+                query += f" AND {apply_filters_to_bus_data(decoded_filters)} "
+            else:
+                query = query
+
         return list(db.session.execute(text(query)))[0][0]
+
+    filters = request.args.get("filters", None)
+
+    try:
+        decoded_filters = urllib.parse.unquote(filters)
+        decoded_filters = json.loads(decoded_filters)
+
+    except Exception:
+        decoded_filters = None
 
     result_dict = {i: get_data(i) for i in bus_statuses}
     # result_dict["total"] = result_dict["all"]
@@ -118,89 +204,6 @@ def round_wrapper(x, to):
         return round(float(x), to)
     except (ValueError, TypeError, DecimalException):
         return x
-
-
-def apply_filters_to_bus_data(data, filters):
-    is_true = True
-    for k, _v in filters.items():
-        try:
-            v = int(_v)
-        except Exception:
-            v = _v
-        match k:
-            case "busNumber" if v.strip() != "":
-                is_true &= "busNumber" in data and v == data[k]
-            case "batteryNumber" if v.strip() != "-":
-                is_true &= "battery" in data and v == data["battery"]
-            case "deviceStatusType" if v.strip() != "-":
-                is_true = "status" in data and v == data["status"]
-            case "cityWise" if v.strip() != "-":
-                # Apply filtering logic based on cityWise
-                is_true &= (
-                    "location" in data
-                    and "address" in data["location"]
-                    and utils.get_district_name(data["location"]["address"])
-                    == v
-                )
-            case "depotWise" if v.strip() != "-":
-                # Apply filtering logic based on depotWise
-                is_true &= "depotNumber" in data and v == data["depotNumber"]
-            case "soCRange":
-                # Apply filtering logic based on soCRange
-                is_true &= (
-                    "batteryOverview" in data
-                    and "soc" in data["batteryOverview"]
-                    and v[0] <= data["batteryOverview"]["soc"]["value"] <= v[1]
-                )
-            case "soHRange":
-                # Apply filtering logic based on soHRange
-                is_true &= (
-                    "batteryOverview" in data
-                    and "soh" in data["batteryOverview"]
-                    and v[0] <= data["batteryOverview"]["soh"]["value"] <= v[1]
-                )
-            case "cycleCount":
-                # Apply filtering logic based on cycleCount
-                is_true &= True
-            case "voltage":
-                # Apply filtering logic based on voltage
-                is_true &= (
-                    "batteryOverview" in data
-                    and "voltage" in data["batteryOverview"]
-                    and v[0]
-                    <= data["batteryOverview"]["voltage"]["value"]
-                    <= v[1]
-                )
-            # case "temperatureRange":
-            #     is_true &= (
-            #         "batteryOverview" in data
-            #         and "temperature" in data["batteryOverview"]
-            #         and v[0]
-            #         <= data["batteryOverview"]["temperature"]["value"]
-            #         <= v[1]
-            #     )
-
-            case "cellDiffInBatteryPackRange":
-                # Apply filtering logic based on cellDiffInBatteryPackRange
-                is_true &= True
-            case "voltageDiffInBatteryPackRange":
-                is_true &= (
-                    "batteryOverview" in data
-                    and "cellVoltageDelta" in data["batteryOverview"]
-                    and v[0]
-                    <= data["batteryOverview"]["cellVoltageDelta"]["min"]
-                    <= data["batteryOverview"]["cellVoltageDelta"]["max"]
-                    <= v[1]
-                )
-                # Apply filtering logic based on voltageDiffInBatteryPackRange
-            case "deviceDiffDisconnectConditions":
-                # Apply filtering logic based on deviceDiffDisconnectConditions
-                is_true &= True
-            case "faultLevelWise":
-                # Apply filtering logic based on faultLevelWise
-                is_true &= True
-
-    return is_true
 
 
 def get_results_dict(db, query):
@@ -253,9 +256,6 @@ def get_buses_data(appName, busStatus):
     limit = limit if limit > 0 else None
     offset = offset if offset >= 0 else None
     if busStatus != "all":
-        filtered_data = [
-            bus for bus in buses_data if bus["status"] == busStatus
-        ]
         query = f"""
                 {bus_data_cte}
                  SELECT  * FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) """
@@ -263,25 +263,20 @@ def get_buses_data(appName, busStatus):
             query += f"LIMIT {limit} OFFSET {offset}"
 
     else:
-        if decoded_filters is not None:
-            filtered_data = [
-                bus
-                for bus in buses_data
-                if apply_filters_to_bus_data(bus, decoded_filters)
-            ]
-            bus_data_cte
-        else:
-            filtered_data = buses_data
-
         query = f"""
                 {bus_data_cte}
                  SELECT  *  FROM bus_battery_data  """
+        if decoded_filters is not None:
+            query += "  WHERE  " + apply_filters_to_bus_data(decoded_filters)
+        else:
+            query = query
+
         if limit and offset:
             query += f"LIMIT {limit} OFFSET {offset}"
 
     results_list = get_results_dict(db, query)
 
-    x = filtered_data[0]
+    x = buses_data[0]
     filtered_data = []
     if len(results_list) > 0:
         for _, i in enumerate(results_list):
@@ -669,8 +664,6 @@ def get_bus_by_uuid(appName, uuid):
 
 @app.route("/api/v1/app/<appName>/fault/<faultStatus>", methods=["GET"])
 def get_faults_data(appName, faultStatus):
-    filters = request.args.get("filters", None)
-
     try:
         decoded_filters = urllib.parse.unquote(filters)
         decoded_filters = json.loads(decoded_filters)
@@ -690,20 +683,7 @@ def get_faults_data(appName, faultStatus):
             fault for fault in faults_data if fault["status"] == faultStatus
         ]
     else:
-        if decoded_filters is not None:
-            bus_numbers = [
-                bus["busNumber"]
-                for bus in buses_data
-                if apply_filters_to_bus_data(bus, decoded_filters)
-            ]
-
-            filtered_data = [
-                fault
-                for fault in faults_data
-                if fault["busNumber"] in bus_numbers
-            ]
-        else:
-            filtered_data = faults_data
+        filtered_data = faults_data
 
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))
