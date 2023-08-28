@@ -12,6 +12,7 @@ import jbm_backend
 from decimal import Decimal, DecimalException
 
 from sqlalchemy import text
+from .generate_data import get_address_from_lat_long
 
 # from .sql_queries import bus_data_cte
 
@@ -282,12 +283,14 @@ def get_buses_data(appName, busStatus):
         for _, i in enumerate(results_list):
             if not i["latitude"] or not i["longitude"]:
                 continue
+
             t = {
                 **x,
                 **{
-                    "uuid": i["imei"],
-                    "busNumber": i["name"],
-                    "IMEI": i["imei"],
+                    "uuid": i.get("imei", ""),
+                    "busNumber": i.get("name", ""),
+                    "IMEI": i.get("imei", ""),
+                    "timestamp": i["timestamp"],
                     "status": (
                         (
                             next(
@@ -302,13 +305,14 @@ def get_buses_data(appName, busStatus):
                         if busStatus == "all"
                         else busStatus
                     ),
-                    "depotNumber": i["depot"],
-                    "battery": i["city"],
+                    "depotNumber": i.get("depot", "").title(),
+                    "battery": i.get("city", "").title(),
+                    "city": i.get("city", "").title(),
                     "location": {
-                        "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
+                        "address": f"Somewhere in {(i['depot'] or '').title()}",
                         "coordinates": {
-                            "lat": i["latitude"],
-                            "lng": i["longitude"],
+                            "lat": i.get("latitude", ""),
+                            "lng": i.get("longitude", ""),
                         },
                     },
                     "totalAlerts": 0,
@@ -320,125 +324,143 @@ def get_buses_data(appName, busStatus):
                                 else "Offline"
                             ),
                             "status": (
-                                "off" if "Online" in i["status"] else "off"
+                                "on" if "Online" in i["status"] else "off"
                             ),
                         },
-                        "CANData": {"text": "CAN Data", "status": "on"},
+                        "CANData": {
+                            "text": "CAN Data",
+                            "status": i.get("can_data_status", "off"),
+                        },
                         "externalPower": {
                             "text": "External Power",
-                            "status": "on",
+                            "status": i.get("external_power_status", "off"),
                         },
                         "deviceData": {"text": "Device Data", "status": "on"},
                         "GPSData": {"text": "GPS Data", "status": "on"},
-                        "busRunning": {"text": "Bus Running", "status": "on"},
+                        "busRunning": {
+                            "text": "Bus Running",
+                            "status": i.get("bus_running_status", "off"),
+                        },
                     },
-                    "batteryOverview": {
-                        "__order__": [
-                            "soc",
-                            "soh",
-                            "inletTemperature",
-                            "outletTemperature",
-                            "current",
-                            "regeneration",
-                            "speed",
-                            "BMSStatus",
-                            "contractorStatus",
-                            "cellVoltageDelta1",
-                            "cellVoltageDelta2",
-                            "cellVoltageDelta3",
-                            "cellVoltageDelta4",
-                            "temperatureDelta1",
-                            "temperatureDelta2",
-                            "temperatureDelta3",
-                            "temperatureDelta4",
-                        ],
-                        "soc": {
-                            "text": "SoC",
-                            "value": round_wrapper(i["soc"], 2),
-                            "units": "%",
-                        },
-                        "soh": {
-                            "text": "SoH",
-                            "value": round_wrapper(i["soh"], 2),
-                            "units": "%",
-                        },
-                        "inletTemperature": {
-                            "text": "Inlet Temperature",
-                            "value": round_wrapper(i["inlet_temperature"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "outletTemperature": {
-                            "text": "Outlet Temperature",
-                            "value": round_wrapper(i["outlet_temperature"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "current": {
-                            "text": "Current",
-                            "value": round_wrapper(i["total_current"], 2),
-                            "units": "A",
-                        },
-                        "regeneration": {
-                            "text": "Regeneration",
-                            "value": "Disabled",
-                        },
-                        "BMSStatus": {"text": "BMS Status", "value": "Normal"},
-                        "speed": {
-                            "text": "Speed",
-                            "value": round_wrapper(i["speed"], 2),
-                            "units": "km/h",
-                        },
-                        "contractorStatus": {
-                            "text": "String Contractor Status",
-                            "value": "Closed",
-                        },
-                        "cellVoltageDelta1": {
-                            "text": "String-Wise Delta of Cell Voltage 1",
-                            "min": round_wrapper(i["min_cell_v1"], 2),
-                            "max": round_wrapper(i["max_cell_v1"], 2),
-                            "units": "mV",
-                        },
-                        "cellVoltageDelta2": {
-                            "text": "String-Wise Delta of Cell Voltage 2",
-                            "min": round_wrapper(i["min_cell_v2"], 2),
-                            "max": round_wrapper(i["max_cell_v2"], 2),
-                            "units": "mV",
-                        },
-                        "cellVoltageDelta3": {
-                            "text": "String-Wise Delta of Cell Voltage 3",
-                            "min": round_wrapper(i["min_cell_v3"], 2),
-                            "max": round_wrapper(i["max_cell_v3"], 2),
-                            "units": "mV",
-                        },
-                        "cellVoltageDelta4": {
-                            "text": "String-Wise Delta of Cell Voltage 4",
-                            "min": round_wrapper(i["min_cell_v4"], 2),
-                            "max": round_wrapper(i["max_cell_v4"], 2),
-                            "units": "mV",
-                        },
-                        "temperatureDelta1": {
-                            "text": "String-Wise Delta of Temperature 1",
-                            "min": round_wrapper(i["min_cell_t1"], 2),
-                            "max": round_wrapper(i["max_cell_t1"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "temperatureDelta2": {
-                            "text": "String-Wise Delta of Temperature 2",
-                            "min": round_wrapper(i["min_cell_t2"], 2),
-                            "max": round_wrapper(i["max_cell_t2"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "temperatureDelta3": {
-                            "text": "String-Wise Delta of Temperature 3",
-                            "min": round_wrapper(i["min_cell_t3"], 2),
-                            "max": round_wrapper(i["max_cell_t3"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "temperatureDelta4": {
-                            "text": "String-Wise Delta of Temperature 4",
-                            "min": round_wrapper(i["min_cell_t4"], 2),
-                            "max": round_wrapper(i["max_cell_t4"], 2),
-                            "units": "\u00b0C",
-                        },
+                },
+                "batteryOverview": {
+                    "__order__": [
+                        "soc",
+                        "soh",
+                        "inletTemperature",
+                        "outletTemperature",
+                        "current",
+                        "regeneration",
+                        "speed",
+                        "BMSStatus",
+                        "contractorStatus",
+                        "cellVoltage1",
+                        "cellVoltage2",
+                        "cellVoltage3",
+                        "cellVoltage4",
+                        "cellTemperature1",
+                        "cellTemperature2",
+                        "cellTemperature3",
+                        "cellTemperature4",
+                    ],
+                    "soc": {
+                        "text": "SoC",
+                        "value": round_wrapper(i["soc"], 2),
+                        "units": "%",
+                    },
+                    "soh": {
+                        "text": "SoH",
+                        "value": round_wrapper(i["soh"], 2),
+                        "units": "%",
+                    },
+                    "inletTemperature": {
+                        "text": "Inlet Temperature",
+                        "value": round_wrapper(i["inlet_temperature"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "outletTemperature": {
+                        "text": "Outlet Temperature",
+                        "value": round_wrapper(i["outlet_temperature"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "current": {
+                        "text": "Current",
+                        "value": round_wrapper(i["current"], 2),
+                        "units": "A",
+                    },
+                    "voltage": {
+                        "text": "Voltage",
+                        "value": round_wrapper(i["voltage"], 2),
+                        "units": "mV",
+                    },
+                    "regeneration": {
+                        "text": "Regeneration",
+                        "value": (
+                            "Enabled"
+                            if i["regeneration_status"] == "on"
+                            else "Disabled"
+                        ),
+                    },
+                    "BMSStatus": {
+                        "text": "BMS Status",
+                        "value": (i["bms_status"] or "").title(),
+                    },
+                    "speed": {
+                        "text": "Speed",
+                        "value": round_wrapper(i["speed"], 2),
+                        "units": "km/h",
+                    },
+                    "contractorStatus": {
+                        "text": "String Contractor Status",
+                        "value": "Closed",
+                    },
+                    "cellVoltage1": {
+                        "text": "String-Wise Cell Voltage 1",
+                        "min": round_wrapper(i["min_cell_v1"], 2),
+                        "max": round_wrapper(i["max_cell_v1"], 2),
+                        "units": "mV",
+                    },
+                    "cellVoltage2": {
+                        "text": "String-Wise Cell Voltage 2",
+                        "min": round_wrapper(i["min_cell_v2"], 2),
+                        "max": round_wrapper(i["max_cell_v2"], 2),
+                        "units": "mV",
+                    },
+                    "cellVoltage3": {
+                        "text": "String-Wise Cell Voltage 3",
+                        "min": round_wrapper(i["min_cell_v3"], 2),
+                        "max": round_wrapper(i["max_cell_v3"], 2),
+                        "units": "mV",
+                    },
+                    "cellVoltage4": {
+                        "text": "String-Wise Cell Voltage 4",
+                        "min": round_wrapper(i["min_cell_v4"], 2),
+                        "max": round_wrapper(i["max_cell_v4"], 2),
+                        "units": "mV",
+                    },
+                    "cellTemperature1": {
+                        "text": "String-Wise Cell Temperature 1",
+                        "min": round_wrapper(i["min_cell_t1"], 2),
+                        "max": round_wrapper(i["max_cell_t1"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "cellTemperature2": {
+                        "text": "String-Wise Cell Temperature 2",
+                        "min": round_wrapper(i["min_cell_t2"], 2),
+                        "max": round_wrapper(i["max_cell_t2"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "cellTemperature3": {
+                        "text": "String-Wise Cell Temperature 3",
+                        "min": round_wrapper(i["min_cell_t3"], 2),
+                        "max": round_wrapper(i["max_cell_t3"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "cellTemperature4": {
+                        "text": "String-Wise Cell Temperature 4",
+                        "min": round_wrapper(i["min_cell_t4"], 2),
+                        "max": round_wrapper(i["max_cell_t4"], 2),
+                        "units": "\u00b0C",
                     },
                 },
             }
@@ -509,17 +531,19 @@ def get_bus_by_uuid(appName, uuid):
             t = {
                 **x,
                 **{
-                    "uuid": i["imei"],
-                    "busNumber": i["name"],
-                    "IMEI": i["imei"],
+                    "uuid": i.get("imei", ""),
+                    "busNumber": i.get("name", ""),
+                    "IMEI": i.get("imei", ""),
+                    "timestamp": i["timestamp"],
                     "status": ", ".join(i["status"]),
-                    "depotNumber": i["depot"],
-                    "battery": i["city"],
+                    "depotNumber": i.get("depot", "").title(),
+                    "battery": i.get("city", "").title(),
+                    "city": i.get("city", "").title(),
                     "location": {
-                        "address": "Narnaul, Mahendragarh District, Haryana, 123001, India",
+                        "address": f"Somewhere in {(i['depot'] or '').title()}",
                         "coordinates": {
-                            "lat": i["latitude"],
-                            "lng": i["longitude"],
+                            "lat": i.get("latitude", ""),
+                            "lng": i.get("longitude", ""),
                         },
                     },
                     "totalAlerts": 0,
@@ -531,125 +555,143 @@ def get_bus_by_uuid(appName, uuid):
                                 else "Offline"
                             ),
                             "status": (
-                                "off" if "Online" in i["status"] else "off"
+                                "on" if "Online" in i["status"] else "off"
                             ),
                         },
-                        "CANData": {"text": "CAN Data", "status": "on"},
+                        "CANData": {
+                            "text": "CAN Data",
+                            "status": i.get("can_data_status", "off"),
+                        },
                         "externalPower": {
                             "text": "External Power",
-                            "status": "on",
+                            "status": i.get("external_power_status", "off"),
                         },
                         "deviceData": {"text": "Device Data", "status": "on"},
                         "GPSData": {"text": "GPS Data", "status": "on"},
-                        "busRunning": {"text": "Bus Running", "status": "on"},
+                        "busRunning": {
+                            "text": "Bus Running",
+                            "status": i.get("bus_running_status", "off"),
+                        },
                     },
-                    "batteryOverview": {
-                        "__order__": [
-                            "soc",
-                            "soh",
-                            "inletTemperature",
-                            "outletTemperature",
-                            "current",
-                            "regeneration",
-                            "speed",
-                            "BMSStatus",
-                            "contractorStatus",
-                            "cellVoltageDelta1",
-                            "cellVoltageDelta2",
-                            "cellVoltageDelta3",
-                            "cellVoltageDelta4",
-                            "temperatureDelta1",
-                            "temperatureDelta2",
-                            "temperatureDelta3",
-                            "temperatureDelta4",
-                        ],
-                        "soc": {
-                            "text": "SoC",
-                            "value": round_wrapper(i["soc"], 2),
-                            "units": "%",
-                        },
-                        "soh": {
-                            "text": "SoH",
-                            "value": round_wrapper(i["soh"], 2),
-                            "units": "%",
-                        },
-                        "inletTemperature": {
-                            "text": "Inlet Temperature",
-                            "value": round_wrapper(i["inlet_temperature"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "outletTemperature": {
-                            "text": "Outlet Temperature",
-                            "value": round_wrapper(i["outlet_temperature"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "current": {
-                            "text": "Current",
-                            "value": round_wrapper(i["total_current"], 2),
-                            "units": "A",
-                        },
-                        "regeneration": {
-                            "text": "Regeneration",
-                            "value": "Disabled",
-                        },
-                        "BMSStatus": {"text": "BMS Status", "value": "Normal"},
-                        "speed": {
-                            "text": "Speed",
-                            "value": round_wrapper(i["speed"], 2),
-                            "units": "km/h",
-                        },
-                        "contractorStatus": {
-                            "text": "String Contractor Status",
-                            "value": "Closed",
-                        },
-                        "cellVoltageDelta1": {
-                            "text": "String-Wise Delta of Cell Voltage 1",
-                            "min": round_wrapper(i["min_cell_v1"], 2),
-                            "max": round_wrapper(i["max_cell_v1"], 2),
-                            "units": "mV",
-                        },
-                        "cellVoltageDelta2": {
-                            "text": "String-Wise Delta of Cell Voltage 2",
-                            "min": round_wrapper(i["min_cell_v2"], 2),
-                            "max": round_wrapper(i["max_cell_v2"], 2),
-                            "units": "mV",
-                        },
-                        "cellVoltageDelta3": {
-                            "text": "String-Wise Delta of Cell Voltage 3",
-                            "min": round_wrapper(i["min_cell_v3"], 2),
-                            "max": round_wrapper(i["max_cell_v3"], 2),
-                            "units": "mV",
-                        },
-                        "cellVoltageDelta4": {
-                            "text": "String-Wise Delta of Cell Voltage 4",
-                            "min": round_wrapper(i["min_cell_v4"], 2),
-                            "max": round_wrapper(i["max_cell_v4"], 2),
-                            "units": "mV",
-                        },
-                        "temperatureDelta1": {
-                            "text": "String-Wise Delta of Temperature 1",
-                            "min": round_wrapper(i["min_cell_t1"], 2),
-                            "max": round_wrapper(i["max_cell_t1"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "temperatureDelta2": {
-                            "text": "String-Wise Delta of Temperature 2",
-                            "min": round_wrapper(i["min_cell_t2"], 2),
-                            "max": round_wrapper(i["max_cell_t2"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "temperatureDelta3": {
-                            "text": "String-Wise Delta of Temperature 3",
-                            "min": round_wrapper(i["min_cell_t3"], 2),
-                            "max": round_wrapper(i["max_cell_t3"], 2),
-                            "units": "\u00b0C",
-                        },
-                        "temperatureDelta4": {
-                            "text": "String-Wise Delta of Temperature 4",
-                            "min": round_wrapper(i["min_cell_t4"], 2),
-                            "max": round_wrapper(i["max_cell_t4"], 2),
-                            "units": "\u00b0C",
-                        },
+                },
+                "batteryOverview": {
+                    "__order__": [
+                        "soc",
+                        "soh",
+                        "inletTemperature",
+                        "outletTemperature",
+                        "current",
+                        "regeneration",
+                        "speed",
+                        "BMSStatus",
+                        "contractorStatus",
+                        "cellVoltage1",
+                        "cellVoltage2",
+                        "cellVoltage3",
+                        "cellVoltage4",
+                        "cellTemperature1",
+                        "cellTemperature2",
+                        "cellTemperature3",
+                        "cellTemperature4",
+                    ],
+                    "soc": {
+                        "text": "SoC",
+                        "value": round_wrapper(i["soc"], 2),
+                        "units": "%",
+                    },
+                    "soh": {
+                        "text": "SoH",
+                        "value": round_wrapper(i["soh"], 2),
+                        "units": "%",
+                    },
+                    "inletTemperature": {
+                        "text": "Inlet Temperature",
+                        "value": round_wrapper(i["inlet_temperature"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "outletTemperature": {
+                        "text": "Outlet Temperature",
+                        "value": round_wrapper(i["outlet_temperature"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "current": {
+                        "text": "Current",
+                        "value": round_wrapper(i["current"], 2),
+                        "units": "A",
+                    },
+                    "voltage": {
+                        "text": "Voltage",
+                        "value": round_wrapper(i["voltage"], 2),
+                        "units": "mV",
+                    },
+                    "regeneration": {
+                        "text": "Regeneration",
+                        "value": (
+                            "Enabled"
+                            if i.get("regeneration_status", "") == "on"
+                            else "Disabled"
+                        ),
+                    },
+                    "BMSStatus": {
+                        "text": "BMS Status",
+                        "value": (i["bms_status"] or "").title(),
+                    },
+                    "speed": {
+                        "text": "Speed",
+                        "value": round_wrapper(i["speed"], 2),
+                        "units": "km/h",
+                    },
+                    "contractorStatus": {
+                        "text": "String Contractor Status",
+                        "value": "Closed",
+                    },
+                    "cellVoltage1": {
+                        "text": "String-Wise Cell Voltage 1",
+                        "min": round_wrapper(i["min_cell_v1"], 2),
+                        "max": round_wrapper(i["max_cell_v1"], 2),
+                        "units": "mV",
+                    },
+                    "cellVoltage2": {
+                        "text": "String-Wise Cell Voltage 2",
+                        "min": round_wrapper(i["min_cell_v2"], 2),
+                        "max": round_wrapper(i["max_cell_v2"], 2),
+                        "units": "mV",
+                    },
+                    "cellVoltage3": {
+                        "text": "String-Wise Cell Voltage 3",
+                        "min": round_wrapper(i["min_cell_v3"], 2),
+                        "max": round_wrapper(i["max_cell_v3"], 2),
+                        "units": "mV",
+                    },
+                    "cellVoltage4": {
+                        "text": "String-Wise Cell Voltage 4",
+                        "min": round_wrapper(i["min_cell_v4"], 2),
+                        "max": round_wrapper(i["max_cell_v4"], 2),
+                        "units": "mV",
+                    },
+                    "cellTemperature1": {
+                        "text": "String-Wise Cell Temperature 1",
+                        "min": round_wrapper(i["min_cell_t1"], 2),
+                        "max": round_wrapper(i["max_cell_t1"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "cellTemperature2": {
+                        "text": "String-Wise Cell Temperature 2",
+                        "min": round_wrapper(i["min_cell_t2"], 2),
+                        "max": round_wrapper(i["max_cell_t2"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "cellTemperature3": {
+                        "text": "String-Wise Cell Temperature 3",
+                        "min": round_wrapper(i["min_cell_t3"], 2),
+                        "max": round_wrapper(i["max_cell_t3"], 2),
+                        "units": "\u00b0C",
+                    },
+                    "cellTemperature4": {
+                        "text": "String-Wise Cell Temperature 4",
+                        "min": round_wrapper(i["min_cell_t4"], 2),
+                        "max": round_wrapper(i["max_cell_t4"], 2),
+                        "units": "\u00b0C",
                     },
                 },
             }
@@ -726,7 +768,7 @@ def prepare_filters(fields):
                 # Apply filtering logic based on cityWise
                 query = f"""
                 {bus_data_cte}
-                 SELECT DISTINCT UPPER(TRIM(city)) FROM bus_battery_data
+                 SELECT DISTINCT UPPER(TRIM(city)) FROM bus_battery_data WHERE city IS NOT NULL AND city != ''
         """
 
                 vals = get_results_list(db, query)
@@ -746,7 +788,7 @@ def prepare_filters(fields):
             case "depotWise":
                 query = f"""
                 {bus_data_cte}
-                 SELECT DISTINCT UPPER(TRIM(depot)) FROM bus_battery_data
+                 SELECT DISTINCT UPPER(TRIM(depot)) FROM bus_battery_data WHERE depot IS NOT NULL AND depot != ''
         """
 
                 vals = get_results_list(db, query)

@@ -19,10 +19,12 @@ def kebab_to_title(kebab_case_string):
 
 
 def space_to_lowercase_kebab_case(input_string):
+    if not input_string:
+        return ""
     # Split the input string by spaces and convert to lowercase
     words = input_string.lower().split()
 
     # Join the words with hyphens to create lowercase kebab case
-    kebab_case = '-'.join(words)
+    kebab_case = "-".join(words)
 
     return kebab_case
