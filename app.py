@@ -539,6 +539,7 @@ def get_bus_by_uuid(appName, uuid):
                         "lng": i.get("longitude", ""),
                     },
                 },
+                "signalStrength": i["signal_strength"],
                 "totalAlerts": 0,
                 "statusOptions": {
                     "bus": {
