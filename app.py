@@ -10,7 +10,6 @@ from jbm_backend import utils
 import urllib
 import jbm_backend
 from decimal import Decimal, DecimalException
-
 from sqlalchemy import text
 from .generate_data import get_address_from_lat_long
 
@@ -65,14 +64,17 @@ bus_statuses = [
 
 def refresh_materialized_view():
     print("Updated")
-    db.session.execute(
-        text(
-            """
+    try:
+        db.session.execute(
+            text(
+                """
         REFRESH MATERIALIZED VIEW CONCURRENTLY bus_battery_data;
              """
+            )
         )
-    )
-    db.session.commit()
+        db.session.commit()
+    except Exception:
+        pass
 
 
 def run_schedule(app):
@@ -93,7 +95,7 @@ def apply_filters_to_bus_data(filters):
             v = v.strip()
         match k:
             case "busNumber" if v.strip() != "":
-                where_clauses.append(f"'{v}' ILIKE name")
+                where_clauses.append(f"'{v}' ILIKE bus_number")
             case "cityWise" if v.strip() != "-":
                 # Apply filtering logic based on cityWise
                 where_clauses.append(f"'{v}' ILIKE city")
@@ -102,11 +104,15 @@ def apply_filters_to_bus_data(filters):
                 where_clauses.append(f"'{v}' ILIKE depot")
             case "soCRange":
                 # Apply filtering logic based on soCRange
-                where_clauses.append(f"soc BETWEEN {v[0]} AND {v[1]}")
+                where_clauses.append(
+                    f" (soc IS NULL OR soc BETWEEN {v[0]} AND {v[1]})"
+                )
 
             case "soHRange":
                 # Apply filtering logic based on soHRange
-                where_clauses.append(f"soh BETWEEN {v[0]} AND {v[1]}")
+                where_clauses.append(
+                    f" (soh IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
+                )
 
             # case "voltage":
             #     # Apply filtering logic based on voltage
@@ -277,7 +283,6 @@ def get_buses_data(appName, busStatus):
 
     results_list = get_results_dict(db, query)
 
-    x = buses_data[0]
     filtered_data = []
     if len(results_list) > 0:
         for _, i in enumerate(results_list):
@@ -285,62 +290,54 @@ def get_buses_data(appName, busStatus):
                 continue
 
             t = {
-                **x,
-                **{
-                    "uuid": i.get("imei", ""),
-                    "busNumber": i.get("name", ""),
-                    "IMEI": i.get("imei", ""),
-                    "timestamp": i["timestamp"],
-                    "status": (
-                        (
-                            next(
-                                (
-                                    reverse_mapping[item]
-                                    for item in i["status"]
-                                    if item in reverse_mapping
-                                ),
-                                "",
-                            )
+                "uuid": i.get("imei", ""),
+                "busNumber": i.get("bus_number", ""),
+                "IMEI": i.get("imei", ""),
+                "timestamp": i["timestamp"],
+                "status": (
+                    (
+                        next(
+                            (
+                                reverse_mapping[item]
+                                for item in i["status"]
+                                if item in reverse_mapping
+                            ),
+                            "",
                         )
-                        if busStatus == "all"
-                        else busStatus
-                    ),
-                    "depotNumber": i.get("depot", "").title(),
-                    "battery": i.get("city", "").title(),
-                    "city": i.get("city", "").title(),
-                    "location": {
-                        "address": f"Somewhere in {(i['depot'] or '').title()}",
-                        "coordinates": {
-                            "lat": i.get("latitude", ""),
-                            "lng": i.get("longitude", ""),
-                        },
+                    )
+                    if busStatus == "all"
+                    else busStatus
+                ),
+                "depotNumber": i.get("depot", "").title(),
+                "city": i.get("city", "").title(),
+                "location": {
+                    "address": f"Somewhere in {(i['depot'] or '').title()}",
+                    "coordinates": {
+                        "lat": i.get("latitude", ""),
+                        "lng": i.get("longitude", ""),
                     },
-                    "totalAlerts": 0,
-                    "statusOptions": {
-                        "bus": {
-                            "text": (
-                                "Online"
-                                if "Online" in i["status"]
-                                else "Offline"
-                            ),
-                            "status": (
-                                "on" if "Online" in i["status"] else "off"
-                            ),
-                        },
-                        "CANData": {
-                            "text": "CAN Data",
-                            "status": i.get("can_data_status", "off"),
-                        },
-                        "externalPower": {
-                            "text": "External Power",
-                            "status": i.get("external_power_status", "off"),
-                        },
-                        "deviceData": {"text": "Device Data", "status": "on"},
-                        "GPSData": {"text": "GPS Data", "status": "on"},
-                        "busRunning": {
-                            "text": "Bus Running",
-                            "status": i.get("bus_running_status", "off"),
-                        },
+                },
+                "totalAlerts": 0,
+                "statusOptions": {
+                    "bus": {
+                        "text": (
+                            "Online" if "Online" in i["status"] else "Offline"
+                        ),
+                        "status": ("on" if "Online" in i["status"] else "off"),
+                    },
+                    "CANData": {
+                        "text": "CAN Data",
+                        "status": i.get("can_data_status", "off"),
+                    },
+                    "externalPower": {
+                        "text": "External Power",
+                        "status": i.get("external_power_status", "off"),
+                    },
+                    "deviceData": {"text": "Device Data", "status": "on"},
+                    "GPSData": {"text": "GPS Data", "status": "on"},
+                    "busRunning": {
+                        "text": "Bus Running",
+                        "status": i.get("bus_running_status", "off"),
                     },
                 },
                 "batteryOverview": {
@@ -350,7 +347,7 @@ def get_buses_data(appName, busStatus):
                         "inletTemperature",
                         "outletTemperature",
                         "current",
-                        "regeneration",
+                        "voltage" "regeneration",
                         "speed",
                         "BMSStatus",
                         "contractorStatus",
@@ -475,12 +472,12 @@ def get_buses_data(appName, busStatus):
         if busStatus != "all":
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND name != CAST(imei AS TEXT)                 
+        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND bus_number != CAST(imei AS TEXT)                 
         """
         else:
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE name != CAST(imei AS TEXT)             
+        SELECT COUNT(*) FROM bus_battery_data  WHERE bus_number != CAST(imei AS TEXT)             
         """
         has_more = next_offset < list(db.session.execute(text(q)))[0][0]
 
@@ -522,56 +519,47 @@ def get_bus_by_uuid(appName, uuid):
         """
 
     results_dict = get_results_dict(db, query)
-    x = specific_bus_data[0]
     filtered_data = []
     if results_dict:
-        for k, i in enumerate(results_dict):
+        for _, i in enumerate(results_dict):
             if not i["latitude"] or not i["longitude"]:
                 continue
             t = {
-                **x,
-                **{
-                    "uuid": i.get("imei", ""),
-                    "busNumber": i.get("name", ""),
-                    "IMEI": i.get("imei", ""),
-                    "timestamp": i["timestamp"],
-                    "status": ", ".join(i["status"]),
-                    "depotNumber": i.get("depot", "").title(),
-                    "battery": i.get("city", "").title(),
-                    "city": i.get("city", "").title(),
-                    "location": {
-                        "address": f"Somewhere in {(i['depot'] or '').title()}",
-                        "coordinates": {
-                            "lat": i.get("latitude", ""),
-                            "lng": i.get("longitude", ""),
-                        },
+                "uuid": i.get("imei", ""),
+                "busNumber": i.get("bus_number", ""),
+                "IMEI": i.get("imei", ""),
+                "timestamp": i["timestamp"],
+                "status": ", ".join(i["status"]),
+                "depotNumber": i.get("depot", "").title(),
+                "city": i.get("city", "").title(),
+                "location": {
+                    "address": f"Somewhere in {(i['depot'] or '').title()}",
+                    "coordinates": {
+                        "lat": i.get("latitude", ""),
+                        "lng": i.get("longitude", ""),
                     },
-                    "totalAlerts": 0,
-                    "statusOptions": {
-                        "bus": {
-                            "text": (
-                                "Online"
-                                if "Online" in i["status"]
-                                else "Offline"
-                            ),
-                            "status": (
-                                "on" if "Online" in i["status"] else "off"
-                            ),
-                        },
-                        "CANData": {
-                            "text": "CAN Data",
-                            "status": i.get("can_data_status", "off"),
-                        },
-                        "externalPower": {
-                            "text": "External Power",
-                            "status": i.get("external_power_status", "off"),
-                        },
-                        "deviceData": {"text": "Device Data", "status": "on"},
-                        "GPSData": {"text": "GPS Data", "status": "on"},
-                        "busRunning": {
-                            "text": "Bus Running",
-                            "status": i.get("bus_running_status", "off"),
-                        },
+                },
+                "totalAlerts": 0,
+                "statusOptions": {
+                    "bus": {
+                        "text": (
+                            "Online" if "Online" in i["status"] else "Offline"
+                        ),
+                        "status": ("on" if "Online" in i["status"] else "off"),
+                    },
+                    "CANData": {
+                        "text": "CAN Data",
+                        "status": i.get("can_data_status", "off"),
+                    },
+                    "externalPower": {
+                        "text": "External Power",
+                        "status": i.get("external_power_status", "off"),
+                    },
+                    "deviceData": {"text": "Device Data", "status": "on"},
+                    "GPSData": {"text": "GPS Data", "status": "on"},
+                    "busRunning": {
+                        "text": "Bus Running",
+                        "status": i.get("bus_running_status", "off"),
                     },
                 },
                 "batteryOverview": {
@@ -581,10 +569,11 @@ def get_bus_by_uuid(appName, uuid):
                         "inletTemperature",
                         "outletTemperature",
                         "current",
+                        "voltage",
                         "regeneration",
                         "speed",
                         "BMSStatus",
-                        "contractorStatus",
+                        # "contractorStatus",
                         "cellVoltage1",
                         "cellVoltage2",
                         "cellVoltage3",
@@ -646,49 +635,69 @@ def get_bus_by_uuid(appName, uuid):
                         "value": "Closed",
                     },
                     "cellVoltage1": {
-                        "text": "String-Wise Cell Voltage 1",
+                        "text": "Cell Voltage S1",
                         "min": round_wrapper(i["min_cell_v1"], 2),
                         "max": round_wrapper(i["max_cell_v1"], 2),
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v1"] - i["min_cell_v1"], 2
+                            )
+                        ),
                         "units": "mV",
                     },
                     "cellVoltage2": {
-                        "text": "String-Wise Cell Voltage 2",
+                        "text": "Cell Voltage S2",
                         "min": round_wrapper(i["min_cell_v2"], 2),
                         "max": round_wrapper(i["max_cell_v2"], 2),
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v2"] - i["min_cell_v2"], 2
+                            )
+                        ),
                         "units": "mV",
                     },
                     "cellVoltage3": {
-                        "text": "String-Wise Cell Voltage 3",
+                        "text": "Cell Voltage S3",
                         "min": round_wrapper(i["min_cell_v3"], 2),
                         "max": round_wrapper(i["max_cell_v3"], 2),
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v3"] - i["min_cell_v3"], 2
+                            )
+                        ),
                         "units": "mV",
                     },
                     "cellVoltage4": {
-                        "text": "String-Wise Cell Voltage 4",
+                        "text": "Cell Voltage S4",
                         "min": round_wrapper(i["min_cell_v4"], 2),
                         "max": round_wrapper(i["max_cell_v4"], 2),
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v4"] - i["min_cell_v4"], 2
+                            )
+                        ),
                         "units": "mV",
                     },
                     "cellTemperature1": {
-                        "text": "String-Wise Cell Temperature 1",
+                        "text": "Cell Temperature S1",
                         "min": round_wrapper(i["min_cell_t1"], 2),
                         "max": round_wrapper(i["max_cell_t1"], 2),
                         "units": "\u00b0C",
                     },
                     "cellTemperature2": {
-                        "text": "String-Wise Cell Temperature 2",
+                        "text": "Cell Temperature S2",
                         "min": round_wrapper(i["min_cell_t2"], 2),
                         "max": round_wrapper(i["max_cell_t2"], 2),
                         "units": "\u00b0C",
                     },
                     "cellTemperature3": {
-                        "text": "String-Wise Cell Temperature 3",
+                        "text": "Cell Temperature S3",
                         "min": round_wrapper(i["min_cell_t3"], 2),
                         "max": round_wrapper(i["max_cell_t3"], 2),
                         "units": "\u00b0C",
                     },
                     "cellTemperature4": {
-                        "text": "String-Wise Cell Temperature 4",
+                        "text": "Cell Temperature S4",
                         "min": round_wrapper(i["min_cell_t4"], 2),
                         "max": round_wrapper(i["max_cell_t4"], 2),
                         "units": "\u00b0C",
@@ -768,7 +777,7 @@ def prepare_filters(fields):
                 # Apply filtering logic based on cityWise
                 query = f"""
                 {bus_data_cte}
-                 SELECT DISTINCT UPPER(TRIM(city)) FROM bus_battery_data WHERE city IS NOT NULL AND city != ''
+                 SELECT DISTINCT city FROM bus_battery_data WHERE city IS NOT NULL AND city != ''
         """
 
                 vals = get_results_list(db, query)
@@ -776,8 +785,8 @@ def prepare_filters(fields):
 
                 fields[k]["options"] = [
                     {
-                        "label": i,
-                        "value": utils.space_to_lowercase_kebab_case(i),
+                        "label": i.title(),
+                        "value": i,
                     }
                     for i in vals
                 ]
@@ -788,7 +797,7 @@ def prepare_filters(fields):
             case "depotWise":
                 query = f"""
                 {bus_data_cte}
-                 SELECT DISTINCT UPPER(TRIM(depot)) FROM bus_battery_data WHERE depot IS NOT NULL AND depot != ''
+                 SELECT depot FROM bus_battery_data WHERE depot IS NOT NULL AND depot != ''
         """
 
                 vals = get_results_list(db, query)
@@ -796,8 +805,8 @@ def prepare_filters(fields):
                 fields[k]["initialValue"] = "-"
                 fields[k]["options"] = [
                     {
-                        "label": i,
-                        "value": utils.space_to_lowercase_kebab_case(i),
+                        "label": i.title(),
+                        "value": i,
                     }
                     for i in vals
                 ]
