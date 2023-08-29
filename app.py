@@ -362,32 +362,32 @@ def get_buses_data(appName, busStatus):
                     ],
                     "soc": {
                         "text": "SoC",
-                        "value": round_wrapper(i["soc"], 2),
+                        "value": round_wrapper(i["soc"], 3),
                         "units": "%",
                     },
                     "soh": {
                         "text": "SoH",
-                        "value": round_wrapper(i["soh"], 2),
+                        "value": round_wrapper(i["soh"], 3),
                         "units": "%",
                     },
                     "inletTemperature": {
                         "text": "Inlet Temperature",
-                        "value": round_wrapper(i["inlet_temperature"], 2),
+                        "value": round_wrapper(i["inlet_temperature"], 3),
                         "units": "\u00b0C",
                     },
                     "outletTemperature": {
                         "text": "Outlet Temperature",
-                        "value": round_wrapper(i["outlet_temperature"], 2),
+                        "value": round_wrapper(i["outlet_temperature"], 3),
                         "units": "\u00b0C",
                     },
                     "current": {
                         "text": "Current",
-                        "value": round_wrapper(i["current"], 2),
+                        "value": round_wrapper(i["current"], 3),
                         "units": "A",
                     },
                     "voltage": {
                         "text": "Voltage",
-                        "value": round_wrapper(i["voltage"], 2),
+                        "value": round_wrapper(i["voltage"], 3),
                         "units": "mV",
                     },
                     "regeneration": {
@@ -404,7 +404,7 @@ def get_buses_data(appName, busStatus):
                     },
                     "speed": {
                         "text": "Speed",
-                        "value": round_wrapper(i["speed"], 2),
+                        "value": round_wrapper(i["speed"], 3),
                         "units": "km/h",
                     },
                     "contractorStatus": {
@@ -413,50 +413,50 @@ def get_buses_data(appName, busStatus):
                     },
                     "cellVoltage1": {
                         "text": "String-Wise Cell Voltage 1",
-                        "min": round_wrapper(i["min_cell_v1"], 2),
-                        "max": round_wrapper(i["max_cell_v1"], 2),
+                        "min": round_wrapper(i["min_cell_v1"], 3),
+                        "max": round_wrapper(i["max_cell_v1"], 3),
                         "units": "mV",
                     },
                     "cellVoltage2": {
                         "text": "String-Wise Cell Voltage 2",
-                        "min": round_wrapper(i["min_cell_v2"], 2),
-                        "max": round_wrapper(i["max_cell_v2"], 2),
+                        "min": round_wrapper(i["min_cell_v2"], 3),
+                        "max": round_wrapper(i["max_cell_v2"], 3),
                         "units": "mV",
                     },
                     "cellVoltage3": {
                         "text": "String-Wise Cell Voltage 3",
-                        "min": round_wrapper(i["min_cell_v3"], 2),
-                        "max": round_wrapper(i["max_cell_v3"], 2),
+                        "min": round_wrapper(i["min_cell_v3"], 3),
+                        "max": round_wrapper(i["max_cell_v3"], 3),
                         "units": "mV",
                     },
                     "cellVoltage4": {
                         "text": "String-Wise Cell Voltage 4",
-                        "min": round_wrapper(i["min_cell_v4"], 2),
-                        "max": round_wrapper(i["max_cell_v4"], 2),
+                        "min": round_wrapper(i["min_cell_v4"], 3),
+                        "max": round_wrapper(i["max_cell_v4"], 3),
                         "units": "mV",
                     },
                     "cellTemperature1": {
                         "text": "String-Wise Cell Temperature 1",
-                        "min": round_wrapper(i["min_cell_t1"], 2),
-                        "max": round_wrapper(i["max_cell_t1"], 2),
+                        "min": round_wrapper(i["min_cell_t1"], 3),
+                        "max": round_wrapper(i["max_cell_t1"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature2": {
                         "text": "String-Wise Cell Temperature 2",
-                        "min": round_wrapper(i["min_cell_t2"], 2),
-                        "max": round_wrapper(i["max_cell_t2"], 2),
+                        "min": round_wrapper(i["min_cell_t2"], 3),
+                        "max": round_wrapper(i["max_cell_t2"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature3": {
                         "text": "String-Wise Cell Temperature 3",
-                        "min": round_wrapper(i["min_cell_t3"], 2),
-                        "max": round_wrapper(i["max_cell_t3"], 2),
+                        "min": round_wrapper(i["min_cell_t3"], 3),
+                        "max": round_wrapper(i["max_cell_t3"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature4": {
                         "text": "String-Wise Cell Temperature 4",
-                        "min": round_wrapper(i["min_cell_t4"], 2),
-                        "max": round_wrapper(i["max_cell_t4"], 2),
+                        "min": round_wrapper(i["min_cell_t4"], 3),
+                        "max": round_wrapper(i["max_cell_t4"], 3),
                         "units": "\u00b0C",
                     },
                 },
@@ -586,33 +586,33 @@ def get_bus_by_uuid(appName, uuid):
                     ],
                     "soc": {
                         "text": "SoC",
-                        "value": round_wrapper(i["soc"], 2),
+                        "value": round_wrapper(i["soc"], 3),
                         "units": "%",
                     },
                     "soh": {
                         "text": "SoH",
-                        "value": round_wrapper(i["soh"], 2),
+                        "value": round_wrapper(i["soh"], 3),
                         "units": "%",
                     },
                     "inletTemperature": {
                         "text": "Inlet Temperature",
-                        "value": round_wrapper(i["inlet_temperature"], 2),
+                        "value": round_wrapper(i["inlet_temperature"], 3),
                         "units": "\u00b0C",
                     },
                     "outletTemperature": {
                         "text": "Outlet Temperature",
-                        "value": round_wrapper(i["outlet_temperature"], 2),
+                        "value": round_wrapper(i["outlet_temperature"], 3),
                         "units": "\u00b0C",
                     },
                     "current": {
                         "text": "Current",
-                        "value": round_wrapper(i["current"], 2),
+                        "value": round_wrapper(i["current"], 3),
                         "units": "A",
                     },
                     "voltage": {
                         "text": "Voltage",
-                        "value": round_wrapper(i["voltage"], 2),
-                        "units": "mV",
+                        "value": round_wrapper(i["voltage"], 3),
+                        "units": "V",
                     },
                     "regeneration": {
                         "text": "Regeneration",
@@ -628,7 +628,7 @@ def get_bus_by_uuid(appName, uuid):
                     },
                     "speed": {
                         "text": "Speed",
-                        "value": round_wrapper(i["speed"], 2),
+                        "value": round_wrapper(i["speed"], 3),
                         "units": "km/h",
                     },
                     "contractorStatus": {
@@ -637,70 +637,70 @@ def get_bus_by_uuid(appName, uuid):
                     },
                     "cellVoltage1": {
                         "text": "Cell Voltage S1",
-                        "min": round_wrapper(i["min_cell_v1"], 2),
-                        "max": round_wrapper(i["max_cell_v1"], 2),
+                        "min": round_wrapper(i["min_cell_v1"], 3),
+                        "max": round_wrapper(i["max_cell_v1"], 3),
                         "delta": (
                             round_wrapper(
                                 i["max_cell_v1"] - i["min_cell_v1"], 2
                             )
                         ),
-                        "units": "mV",
+                        "units": "V",
                     },
                     "cellVoltage2": {
                         "text": "Cell Voltage S2",
-                        "min": round_wrapper(i["min_cell_v2"], 2),
-                        "max": round_wrapper(i["max_cell_v2"], 2),
+                        "min": round_wrapper(i["min_cell_v2"], 3),
+                        "max": round_wrapper(i["max_cell_v2"], 3),
                         "delta": (
                             round_wrapper(
                                 i["max_cell_v2"] - i["min_cell_v2"], 2
                             )
                         ),
-                        "units": "mV",
+                        "units": "V",
                     },
                     "cellVoltage3": {
                         "text": "Cell Voltage S3",
-                        "min": round_wrapper(i["min_cell_v3"], 2),
-                        "max": round_wrapper(i["max_cell_v3"], 2),
+                        "min": round_wrapper(i["min_cell_v3"], 3),
+                        "max": round_wrapper(i["max_cell_v3"], 3),
                         "delta": (
                             round_wrapper(
-                                i["max_cell_v3"] - i["min_cell_v3"], 2
+                                i["max_cell_v3"] - i["min_cell_v3"], 3
                             )
                         ),
-                        "units": "mV",
+                        "units": "V",
                     },
                     "cellVoltage4": {
                         "text": "Cell Voltage S4",
-                        "min": round_wrapper(i["min_cell_v4"], 2),
-                        "max": round_wrapper(i["max_cell_v4"], 2),
+                        "min": round_wrapper(i["min_cell_v4"], 3),
+                        "max": round_wrapper(i["max_cell_v4"], 3),
                         "delta": (
                             round_wrapper(
-                                i["max_cell_v4"] - i["min_cell_v4"], 2
+                                i["max_cell_v4"] - i["min_cell_v4"], 3
                             )
                         ),
-                        "units": "mV",
+                        "units": "V",
                     },
                     "cellTemperature1": {
                         "text": "Cell Temperature S1",
-                        "min": round_wrapper(i["min_cell_t1"], 2),
+                        "min": round_wrapper(i["min_cell_t1"], 3),
                         "max": round_wrapper(i["max_cell_t1"], 2),
                         "units": "\u00b0C",
                     },
                     "cellTemperature2": {
                         "text": "Cell Temperature S2",
-                        "min": round_wrapper(i["min_cell_t2"], 2),
-                        "max": round_wrapper(i["max_cell_t2"], 2),
+                        "min": round_wrapper(i["min_cell_t2"], 3),
+                        "max": round_wrapper(i["max_cell_t2"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature3": {
                         "text": "Cell Temperature S3",
-                        "min": round_wrapper(i["min_cell_t3"], 2),
-                        "max": round_wrapper(i["max_cell_t3"], 2),
+                        "min": round_wrapper(i["min_cell_t3"], 3),
+                        "max": round_wrapper(i["max_cell_t3"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature4": {
                         "text": "Cell Temperature S4",
-                        "min": round_wrapper(i["min_cell_t4"], 2),
-                        "max": round_wrapper(i["max_cell_t4"], 2),
+                        "min": round_wrapper(i["min_cell_t4"], 3),
+                        "max": round_wrapper(i["max_cell_t4"], 3),
                         "units": "\u00b0C",
                     },
                 },
@@ -775,7 +775,6 @@ def prepare_filters(fields):
     for k in fields.keys():
         match k:
             case "cityWise":
-                # Apply filtering logic based on cityWise
                 query = f"""
                 {bus_data_cte}
                  SELECT DISTINCT city FROM bus_battery_data WHERE city IS NOT NULL AND city != ''
@@ -798,7 +797,7 @@ def prepare_filters(fields):
             case "depotWise":
                 query = f"""
                 {bus_data_cte}
-                 SELECT depot FROM bus_battery_data WHERE depot IS NOT NULL AND depot != ''
+                 SELECT DISTINCT depot FROM bus_battery_data WHERE depot IS NOT NULL AND depot != ''
         """
 
                 vals = get_results_list(db, query)
