@@ -1,3 +1,4 @@
+from decimal import Decimal, DecimalException
 import re
 
 
@@ -28,3 +29,12 @@ def space_to_lowercase_kebab_case(input_string):
     kebab_case = "-".join(words)
 
     return kebab_case
+
+
+def round_wrapper(x, to):
+    try:
+        if isinstance(x, str):
+            x = Decimal(x)
+        return round(float(x), to)
+    except (ValueError, TypeError, DecimalException):
+        return x

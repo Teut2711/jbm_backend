@@ -1,4 +1,5 @@
 from collections import Counter
+import datetime
 from decimal import Decimal
 from itertools import chain
 import json
@@ -6,17 +7,14 @@ from threading import Thread
 import time
 from flask import jsonify, request
 from flask_cors import CORS
-from jbm_backend import utils
 import urllib
-import jbm_backend
-from decimal import Decimal, DecimalException
+from jbm_backend import app, db
+from decimal import Decimal
 from sqlalchemy import text
-from .generate_data import get_address_from_lat_long
+from .utils import round_wrapper
+from datetime import datetime
 
 # from .sql_queries import bus_data_cte
-
-app = jbm_backend.app
-db = jbm_backend.db
 
 bus_data_cte = ""
 
@@ -204,15 +202,6 @@ def get_total_buses(appName):
     return jsonify({"status": "success", "data": result_dict})
 
 
-def round_wrapper(x, to):
-    try:
-        if isinstance(x, str):
-            x = Decimal(x)
-        return round(float(x), to)
-    except (ValueError, TypeError, DecimalException):
-        return x
-
-
 def get_results_dict(db, query):
     results = db.session.execute(text(query))
     results_keys = list(results.keys())
@@ -290,10 +279,12 @@ def get_buses_data(appName, busStatus):
                 continue
 
             t = {
-                "uuid": i.get("imei", ""),
-                "busNumber": i.get("bus_number", ""),
-                "IMEI": i.get("imei", ""),
-                "timestamp": i["timestamp"],
+                "uuid": i.get("imei", "") or "0",
+                "busNumber": i.get("bus_number", "") or "",
+                "IMEI": i.get("imei", "") or "",
+                "timestamp": i.get(
+                    "timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                ),
                 "status": (
                     (
                         next(
@@ -308,22 +299,22 @@ def get_buses_data(appName, busStatus):
                     if busStatus == "all"
                     else busStatus
                 ),
-                "depotNumber": i.get("depot", "").title(),
-                "city": i.get("city", "").title(),
+                "depotNumber": (i.get("depot", "") or "").title(),
+                "city": (i.get("city", "") or "").title(),
                 "location": {
                     "address": f"Somewhere in {(i['depot'] or '').title()}",
                     "coordinates": {
-                        "lat": i.get("latitude", ""),
-                        "lng": i.get("longitude", ""),
+                        "lat": i.get("latitude") or 28.8,
+                        "lng": i.get("longitude") or 28.8,
                     },
                 },
                 "totalAlerts": 0,
                 "statusOptions": {
                     "bus": {
                         "text": (
-                            "Online" if "Online" in i["status"] else "Offline"
+                            "Online" if i["bus_status"] == "on" else "Offline"
                         ),
-                        "status": ("on" if "Online" in i["status"] else "off"),
+                        "status": i["bus_status"],
                     },
                     "CANData": {
                         "text": "CAN Data",
@@ -344,13 +335,14 @@ def get_buses_data(appName, busStatus):
                     "__order__": [
                         "soc",
                         "soh",
+                        "voltage",
+                        "current",
+                        "regeneration",
+                        "BMSStatus",
                         "inletTemperature",
                         "outletTemperature",
-                        "current",
-                        "voltage" "regeneration",
                         "speed",
-                        "BMSStatus",
-                        "contractorStatus",
+                        # "contractorStatus",
                         "cellVoltage1",
                         "cellVoltage2",
                         "cellVoltage3",
@@ -404,7 +396,7 @@ def get_buses_data(appName, busStatus):
                     },
                     "speed": {
                         "text": "Speed",
-                        "value": round_wrapper(i["speed"], 3),
+                        "value": round_wrapper(i["speed"], 0),
                         "units": "km/h",
                     },
                     "contractorStatus": {
@@ -528,25 +520,27 @@ def get_bus_by_uuid(appName, uuid):
                 "uuid": i.get("imei", ""),
                 "busNumber": i.get("bus_number", ""),
                 "IMEI": i.get("imei", ""),
-                "timestamp": i["timestamp"],
-                "status": ", ".join(i["status"]),
-                "depotNumber": i.get("depot", "").title(),
-                "city": i.get("city", "").title(),
+                "timestamp": i.get(
+                    "timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                ),
+                "status": ", ".join(i.get("status", [""])),
+                "depotNumber": (i.get("depot", "") or "").title(),
+                "city": (i.get("city", "") or "").title(),
                 "location": {
                     "address": f"Somewhere in {(i['depot'] or '').title()}",
                     "coordinates": {
-                        "lat": i.get("latitude", ""),
-                        "lng": i.get("longitude", ""),
+                        "lat": i.get("latitude", 28.8),
+                        "lng": i.get("longitude", 28.8),
                     },
                 },
-                "signalStrength": i["signal_strength"],
+                "signalStrength": i["signal_strength"] or 1,
                 "totalAlerts": 0,
                 "statusOptions": {
                     "bus": {
                         "text": (
-                            "Online" if "Online" in i["status"] else "Offline"
+                            "Online" if i["bus_status"] == "on" else "Offline"
                         ),
-                        "status": ("on" if "Online" in i["status"] else "off"),
+                        "status": i["bus_status"],
                     },
                     "CANData": {
                         "text": "CAN Data",
@@ -567,13 +561,13 @@ def get_bus_by_uuid(appName, uuid):
                     "__order__": [
                         "soc",
                         "soh",
+                        "voltage",
+                        "current",
+                        "regeneration",
+                        "BMSStatus",
                         "inletTemperature",
                         "outletTemperature",
-                        "current",
-                        "voltage",
-                        "regeneration",
                         "speed",
-                        "BMSStatus",
                         # "contractorStatus",
                         "cellVoltage1",
                         "cellVoltage2",
@@ -628,7 +622,7 @@ def get_bus_by_uuid(appName, uuid):
                     },
                     "speed": {
                         "text": "Speed",
-                        "value": round_wrapper(i["speed"], 3),
+                        "value": round_wrapper(i["speed"], 0),
                         "units": "km/h",
                     },
                     "contractorStatus": {
@@ -641,7 +635,7 @@ def get_bus_by_uuid(appName, uuid):
                         "max": round_wrapper(i["max_cell_v1"], 3),
                         "delta": (
                             round_wrapper(
-                                i["max_cell_v1"] - i["min_cell_v1"], 2
+                                i["max_cell_v1"] - i["min_cell_v1"], 3
                             )
                         ),
                         "units": "V",
@@ -652,7 +646,7 @@ def get_bus_by_uuid(appName, uuid):
                         "max": round_wrapper(i["max_cell_v2"], 3),
                         "delta": (
                             round_wrapper(
-                                i["max_cell_v2"] - i["min_cell_v2"], 2
+                                i["max_cell_v2"] - i["min_cell_v2"], 3
                             )
                         ),
                         "units": "V",
