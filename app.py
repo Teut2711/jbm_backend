@@ -275,9 +275,6 @@ def get_buses_data(appName, busStatus):
     filtered_data = []
     if len(results_list) > 0:
         for _, i in enumerate(results_list):
-            if not i["latitude"] or not i["longitude"]:
-                continue
-
             t = {
                 "uuid": i.get("imei", "") or "0",
                 "busNumber": i.get("bus_number", "") or "",
@@ -328,7 +325,7 @@ def get_buses_data(appName, busStatus):
                     "GPSData": {"text": "GPS Data", "status": "on"},
                     "busRunning": {
                         "text": "Bus Running",
-                        "status": i.get("bus_running_status", "off"),
+                        "status": i["bus_running_status"],
                     },
                 },
                 "batteryOverview": {
@@ -380,13 +377,13 @@ def get_buses_data(appName, busStatus):
                     "voltage": {
                         "text": "Voltage",
                         "value": round_wrapper(i["voltage"], 3),
-                        "units": "mV",
+                        "units": "V",
                     },
                     "regeneration": {
                         "text": "Regeneration",
                         "value": (
                             "Enabled"
-                            if i["regeneration_status"] == "on"
+                            if i.get("regeneration_status", "") == "on"
                             else "Disabled"
                         ),
                     },
@@ -404,49 +401,69 @@ def get_buses_data(appName, busStatus):
                         "value": "Closed",
                     },
                     "cellVoltage1": {
-                        "text": "String-Wise Cell Voltage 1",
+                        "text": "Cell Voltage S1",
                         "min": round_wrapper(i["min_cell_v1"], 3),
                         "max": round_wrapper(i["max_cell_v1"], 3),
-                        "units": "mV",
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v1"] - i["min_cell_v1"], 3
+                            )
+                        ),
+                        "units": "V",
                     },
                     "cellVoltage2": {
-                        "text": "String-Wise Cell Voltage 2",
+                        "text": "Cell Voltage S2",
                         "min": round_wrapper(i["min_cell_v2"], 3),
                         "max": round_wrapper(i["max_cell_v2"], 3),
-                        "units": "mV",
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v2"] - i["min_cell_v2"], 3
+                            )
+                        ),
+                        "units": "V",
                     },
                     "cellVoltage3": {
-                        "text": "String-Wise Cell Voltage 3",
+                        "text": "Cell Voltage S3",
                         "min": round_wrapper(i["min_cell_v3"], 3),
                         "max": round_wrapper(i["max_cell_v3"], 3),
-                        "units": "mV",
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v3"] - i["min_cell_v3"], 3
+                            )
+                        ),
+                        "units": "V",
                     },
                     "cellVoltage4": {
-                        "text": "String-Wise Cell Voltage 4",
+                        "text": "Cell Voltage S4",
                         "min": round_wrapper(i["min_cell_v4"], 3),
                         "max": round_wrapper(i["max_cell_v4"], 3),
-                        "units": "mV",
+                        "delta": (
+                            round_wrapper(
+                                i["max_cell_v4"] - i["min_cell_v4"], 3
+                            )
+                        ),
+                        "units": "V",
                     },
                     "cellTemperature1": {
-                        "text": "String-Wise Cell Temperature 1",
+                        "text": "Cell Temperature S1",
                         "min": round_wrapper(i["min_cell_t1"], 3),
-                        "max": round_wrapper(i["max_cell_t1"], 3),
+                        "max": round_wrapper(i["max_cell_t1"], 2),
                         "units": "\u00b0C",
                     },
                     "cellTemperature2": {
-                        "text": "String-Wise Cell Temperature 2",
+                        "text": "Cell Temperature S2",
                         "min": round_wrapper(i["min_cell_t2"], 3),
                         "max": round_wrapper(i["max_cell_t2"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature3": {
-                        "text": "String-Wise Cell Temperature 3",
+                        "text": "Cell Temperature S3",
                         "min": round_wrapper(i["min_cell_t3"], 3),
                         "max": round_wrapper(i["max_cell_t3"], 3),
                         "units": "\u00b0C",
                     },
                     "cellTemperature4": {
-                        "text": "String-Wise Cell Temperature 4",
+                        "text": "Cell Temperature S4",
                         "min": round_wrapper(i["min_cell_t4"], 3),
                         "max": round_wrapper(i["max_cell_t4"], 3),
                         "units": "\u00b0C",
@@ -514,8 +531,6 @@ def get_bus_by_uuid(appName, uuid):
     filtered_data = []
     if results_dict:
         for _, i in enumerate(results_dict):
-            if not i["latitude"] or not i["longitude"]:
-                continue
             t = {
                 "uuid": i.get("imei", ""),
                 "busNumber": i.get("bus_number", ""),
@@ -554,7 +569,7 @@ def get_bus_by_uuid(appName, uuid):
                     "GPSData": {"text": "GPS Data", "status": "on"},
                     "busRunning": {
                         "text": "Bus Running",
-                        "status": i.get("bus_running_status", "off"),
+                        "status": i["bus_running_status"],
                     },
                 },
                 "batteryOverview": {
