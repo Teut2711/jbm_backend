@@ -102,27 +102,25 @@
                     ELSE 'Unknown'::text
                 END AS status__battery_pack__full_charge,
                 CASE
-                    WHEN last(c00a1f3."B2V_BMSSta", c00a1f3."timestamp") = '0.000000'::text THEN 'idle'::text
-                    WHEN last(c00a1f3."B2V_BMSSta", c00a1f3."timestamp") = '1.000000'::text THEN 'idle'::text
                     WHEN last(c00a1f3."B2V_BMSSta", c00a1f3."timestamp") = '2.000000'::text THEN 'charging'::text
                     WHEN last(c00a1f3."B2V_BMSSta", c00a1f3."timestamp") = '3.000000'::text THEN 'discharging'::text
-                    ELSE 'Unknown-BMS-Status'::text
+                    ELSE 'Idle'::text
                 END AS status__battery_pack__current_polarity,
                 CASE
-                    WHEN last(c00a1f3."timestamp", c00a1f3."timestamp") < (now() - '01:00:00'::interval) THEN 'disconnected'::text
-                    ELSE 'online'::text
+                    WHEN last(c00a1f3."timestamp", c00a1f3."timestamp") < (now() - '01:00:00'::interval) THEN 'idle'::text
+                    ELSE 'Online'::text
                 END AS status__position_tracker_advanced__connection,
             last(c00a1f3."B2V_TotalI", c00a1f3."timestamp") AS current,
             last(c00a1f3."B2V_HVP", c00a1f3."timestamp") AS voltage,
                 CASE
-                    WHEN last(c00a1f3."B2V_BMSSta", c00a1f3."timestamp") = '3.000000'::text AND last(c00a1f3."B2V_TotalI", c00a1f3."timestamp") < 0::numeric THEN 'Regenerative-Braking'::text
-                    ELSE 'Driving'::text
+                    WHEN last(c00a1f3."B2V_BMSSta", c00a1f3."timestamp") = '3.000000'::text AND last(c00a1f3."B2V_TotalI", c00a1f3."timestamp") < 0::numeric THEN 'regenerative-braking'::text
+                    ELSE 'Unknown'::text
                 END AS status__vehicle_control_unit__regenerative_braking
            FROM c00a1f3
           WHERE c00a1f3."timestamp" < now()
           GROUP BY c00a1f3."IMEI"
         ), battery_pack AS (
-         SELECT DISTINCT ON (battery_pack__c00a1f3."IMEI") battery_pack__c00a1f3."IMEI",
+         SELECT battery_pack__c00a1f3."IMEI",
             battery_pack__c00a1f3."timestamp",
             battery_pack__c00a1f3.status__battery_pack__full_charge,
             battery_pack__c00a1f3.status__battery_pack__current_polarity,
@@ -177,10 +175,14 @@
                     ELSE battery_pack."timestamp"
                 END AS "timestamp",
                 CASE
-                    WHEN battery_pack.status__position_tracker_advanced__connection = 'online'::text THEN array_remove(ARRAY[battery_pack.status__battery_pack__full_charge, battery_pack.status__battery_pack__current_polarity, battery_pack.status__position_tracker_advanced__connection, battery_pack.status__vehicle_control_unit__regenerative_braking], NULL::text)
-                    WHEN battery_pack."timestamp" IS NULL THEN array_remove(ARRAY['disconnected'::text], NULL::text)
+                    WHEN battery_pack.status__position_tracker_advanced__connection = 'Online'::text THEN array_remove(ARRAY[battery_pack.status__battery_pack__full_charge, battery_pack.status__battery_pack__current_polarity, battery_pack.status__position_tracker_advanced__connection, battery_pack.status__vehicle_control_unit__regenerative_braking], NULL::text)
+                    WHEN battery_pack."timestamp" IS NULL THEN array_remove(ARRAY['idle'::text], NULL::text)
                     ELSE array_remove(ARRAY[battery_pack.status__position_tracker_advanced__connection], NULL::text)
                 END AS status,
+            battery_pack.status__battery_pack__full_charge,
+            battery_pack.status__battery_pack__current_polarity,
+            battery_pack.status__position_tracker_advanced__connection,
+            battery_pack.status__vehicle_control_unit__regenerative_braking,
             battery_pack.current,
             battery_pack.voltage,
             battery_pack."SoC",
@@ -229,6 +231,15 @@
             vehicle."IMEI",
             vehicle."timestamp" AS timestamp_e,
             vehicle.status,
+            vehicle.status__battery_pack__full_charge,
+            vehicle.status__battery_pack__current_polarity,
+            vehicle.status__position_tracker_advanced__connection,
+            vehicle.status__vehicle_control_unit__regenerative_braking,
+                CASE
+                    WHEN vehicle.status__position_tracker_advanced__connection = 'idle'::text THEN 'idle'::text
+                    WHEN vehicle."timestamp" < (now() - '1 day'::interval) THEN 'idle'::text
+                    ELSE vehicle.status__battery_pack__current_polarity
+                END AS status0,
             vehicle.name,
             vehicle.depot,
             vehicle.city,
@@ -315,14 +326,12 @@
                 CASE
                     WHEN asset."OBD2" IS NULL THEN 'off'::text
                     WHEN asset."OBD2" = true THEN 'on'::text
-                    WHEN asset."OBD2" = false THEN 'off'::text
                     ELSE 'off'::text
                 END AS can_data_status,
                 CASE
-                    WHEN asset.ignition IS NULL THEN 'off'::text
-                    WHEN asset.ignition = true THEN 'on'::text
-                    WHEN asset.ignition = false THEN 'off'::text
-                    ELSE 'off'::text
+                    WHEN asset.speed IS NULL THEN 'off'::text
+                    WHEN asset.speed::double precision::integer <= 0 THEN 'off'::text
+                    ELSE 'on'::text
                 END AS bus_running_status,
                 CASE
                     WHEN ('regenerative-braking'::text IN ( SELECT lower(unnest(asset.status)) AS lower)) THEN 'on'::text
@@ -337,11 +346,16 @@
                     WHEN 'discharging'::text = ANY (asset.status) THEN 'discharging'::text
                     WHEN 'idle'::text = ANY (asset.status) THEN 'idle'::text
                     ELSE NULL::text
-                END AS bms_status
+                END AS bms_status,
+            fd.has_fault
            FROM asset
+             LEFT JOIN bus_faults_data fd ON asset."IMEI" = fd.imei
         ), bus_battery_data_cte AS (
          SELECT bus_battery_data_renamed.imei,
-            bus_battery_data_renamed.status,
+                CASE
+                    WHEN bus_battery_data_renamed.has_fault IS NOT NULL THEN array_append(bus_battery_data_renamed.status, bus_battery_data_renamed.has_fault)
+                    ELSE bus_battery_data_renamed.status
+                END AS status,
             bus_battery_data_renamed.bus_number,
             bus_battery_data_renamed.depot,
             bus_battery_data_renamed.city,
@@ -349,7 +363,10 @@
             bus_battery_data_renamed.longitude,
             bus_battery_data_renamed.soc,
             bus_battery_data_renamed.soh,
-            bus_battery_data_renamed.current,
+                CASE
+                    WHEN bus_battery_data_renamed.bms_status = 'idle'::text THEN 0::numeric
+                    ELSE bus_battery_data_renamed.current
+                END AS current,
             bus_battery_data_renamed.voltage,
             bus_battery_data_renamed.inlet_temperature,
             bus_battery_data_renamed.outlet_temperature,
@@ -373,17 +390,26 @@
             bus_battery_data_renamed.min_cell_t2,
             bus_battery_data_renamed.min_cell_t3,
             bus_battery_data_renamed.min_cell_t4,
-            bus_battery_data_renamed.speed,
+                CASE
+                    WHEN bus_battery_data_renamed.bms_status = 'idle'::text THEN '0'::text
+                    ELSE bus_battery_data_renamed.speed
+                END AS speed,
             bus_battery_data_renamed."timestamp",
             bus_battery_data_renamed.external_power_status,
             bus_battery_data_renamed.signal_strength,
             bus_battery_data_renamed.can_data_status,
-            bus_battery_data_renamed.bus_running_status,
-            bus_battery_data_renamed.regeneration_status,
+                CASE
+                    WHEN bus_battery_data_renamed.bms_status = 'idle'::text OR bus_battery_data_renamed.speed = '0'::text THEN 'off'::text
+                    ELSE bus_battery_data_renamed.bus_running_status
+                END AS bus_running_status,
+                CASE
+                    WHEN bus_battery_data_renamed.bms_status = 'idle'::text THEN 'off'::text
+                    ELSE bus_battery_data_renamed.regeneration_status
+                END AS regeneration_status,
             bus_battery_data_renamed.bus_status,
             bus_battery_data_renamed.bms_status
            FROM bus_battery_data_renamed
-          WHERE NOT (bus_battery_data_renamed.imei IS NULL OR bus_battery_data_renamed.status IS NULL OR bus_battery_data_renamed.bus_number IS NULL OR bus_battery_data_renamed.depot IS NULL OR bus_battery_data_renamed.city IS NULL OR bus_battery_data_renamed.latitude IS NULL OR bus_battery_data_renamed.longitude IS NULL OR bus_battery_data_renamed.soc IS NULL OR bus_battery_data_renamed.soh IS NULL OR bus_battery_data_renamed.current IS NULL OR bus_battery_data_renamed.voltage IS NULL OR bus_battery_data_renamed.inlet_temperature IS NULL OR bus_battery_data_renamed.outlet_temperature IS NULL OR bus_battery_data_renamed.max_cell_v1 IS NULL OR bus_battery_data_renamed.max_cell_v2 IS NULL OR bus_battery_data_renamed.max_cell_v3 IS NULL OR bus_battery_data_renamed.max_cell_v4 IS NULL OR bus_battery_data_renamed.min_cell_v1 IS NULL OR bus_battery_data_renamed.min_cell_v2 IS NULL OR bus_battery_data_renamed.min_cell_v3 IS NULL OR bus_battery_data_renamed.min_cell_v4 IS NULL OR bus_battery_data_renamed.delta_cell_v1 IS NULL OR bus_battery_data_renamed.delta_cell_v2 IS NULL OR bus_battery_data_renamed.delta_cell_v3 IS NULL OR bus_battery_data_renamed.delta_cell_v4 IS NULL OR bus_battery_data_renamed.max_cell_t1 IS NULL OR bus_battery_data_renamed.max_cell_t2 IS NULL OR bus_battery_data_renamed.max_cell_t3 IS NULL OR bus_battery_data_renamed.max_cell_t4 IS NULL OR bus_battery_data_renamed.min_cell_t1 IS NULL OR bus_battery_data_renamed.min_cell_t2 IS NULL OR bus_battery_data_renamed.min_cell_t3 IS NULL OR bus_battery_data_renamed.min_cell_t4 IS NULL OR bus_battery_data_renamed.speed IS NULL OR bus_battery_data_renamed."timestamp" IS NULL OR bus_battery_data_renamed.external_power_status IS NULL OR bus_battery_data_renamed.signal_strength IS NULL OR bus_battery_data_renamed.can_data_status IS NULL OR bus_battery_data_renamed.bus_running_status IS NULL OR bus_battery_data_renamed.regeneration_status IS NULL OR bus_battery_data_renamed.bus_status IS NULL OR bus_battery_data_renamed.bms_status IS NULL)
+          WHERE NOT (bus_battery_data_renamed.imei IS NULL OR bus_battery_data_renamed.status IS NULL OR bus_battery_data_renamed.bus_number IS NULL OR bus_battery_data_renamed.depot IS NULL OR bus_battery_data_renamed.city IS NULL OR bus_battery_data_renamed.latitude IS NULL OR bus_battery_data_renamed.longitude IS NULL OR bus_battery_data_renamed.soc IS NULL OR bus_battery_data_renamed.soh IS NULL OR bus_battery_data_renamed.current IS NULL OR bus_battery_data_renamed.voltage IS NULL OR bus_battery_data_renamed.inlet_temperature IS NULL OR bus_battery_data_renamed.outlet_temperature IS NULL OR bus_battery_data_renamed.max_cell_v1 IS NULL OR bus_battery_data_renamed.max_cell_v2 IS NULL OR bus_battery_data_renamed.max_cell_v3 IS NULL OR bus_battery_data_renamed.max_cell_v4 IS NULL OR bus_battery_data_renamed.min_cell_v1 IS NULL OR bus_battery_data_renamed.min_cell_v2 IS NULL OR bus_battery_data_renamed.min_cell_v3 IS NULL OR bus_battery_data_renamed.min_cell_v4 IS NULL OR bus_battery_data_renamed.delta_cell_v1 IS NULL OR bus_battery_data_renamed.delta_cell_v2 IS NULL OR bus_battery_data_renamed.delta_cell_v3 IS NULL OR bus_battery_data_renamed.delta_cell_v4 IS NULL OR bus_battery_data_renamed.max_cell_t1 IS NULL OR bus_battery_data_renamed.max_cell_t2 IS NULL OR bus_battery_data_renamed.max_cell_t3 IS NULL OR bus_battery_data_renamed.max_cell_t4 IS NULL OR bus_battery_data_renamed.min_cell_t1 IS NULL OR bus_battery_data_renamed.min_cell_t2 IS NULL OR bus_battery_data_renamed.min_cell_t3 IS NULL OR bus_battery_data_renamed.min_cell_t4 IS NULL OR bus_battery_data_renamed.speed IS NULL OR bus_battery_data_renamed."timestamp" IS NULL OR bus_battery_data_renamed.external_power_status IS NULL OR bus_battery_data_renamed.signal_strength IS NULL OR bus_battery_data_renamed.can_data_status IS NULL OR bus_battery_data_renamed.bus_running_status IS NULL OR bus_battery_data_renamed.regeneration_status IS NULL OR bus_battery_data_renamed.bus_status IS NULL OR bus_battery_data_renamed.bms_status IS NULL OR bus_battery_data_renamed.longitude::numeric <= 0::numeric OR bus_battery_data_renamed.latitude::numeric <= 0::numeric)
         )
  SELECT bus_battery_data_cte.imei,
     bus_battery_data_cte.status,

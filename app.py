@@ -71,8 +71,8 @@ def refresh_materialized_view():
             )
         )
         db.session.commit()
-    except Exception:
-        pass
+    except Exception as e:
+        print(e)
 
 
 def run_schedule(app):
@@ -94,19 +94,19 @@ def apply_filters_to_bus_data(filters):
         match k:
             case "busNumber" if v.strip() != "":
                 where_clauses.append(f"'{v}' ILIKE bus_number")
-            case "cityWise" if v.strip() != "-":
+            case "city" if v.strip() != "-":
                 # Apply filtering logic based on cityWise
                 where_clauses.append(f"'{v}' ILIKE city")
-            case "depotWise" if v.strip() != "-":
+            case "depot" if v.strip() != "-":
                 # Apply filtering logic based on depotWise
                 where_clauses.append(f"'{v}' ILIKE depot")
-            case "soCRange":
+            case "soc":
                 # Apply filtering logic based on soCRange
                 where_clauses.append(
                     f" (soc IS NULL OR soc BETWEEN {v[0]} AND {v[1]})"
                 )
 
-            case "soHRange":
+            case "soh":
                 # Apply filtering logic based on soHRange
                 where_clauses.append(
                     f" (soh IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
@@ -160,7 +160,7 @@ def get_total_buses(appName):
     # positions = models.TraccerDevices.query.limit(5).all()
     # CAN = models.CANFrame.query.limit(5).all()
     global schedule_thread
-    if not schedule_thread:
+    if schedule_thread is None or not schedule_thread.is_alive():
         schedule_thread = Thread(target=lambda: run_schedule(app))
         schedule_thread.daemon = True
         schedule_thread.start()
@@ -516,6 +516,12 @@ def get_buses_data(appName, busStatus):
 
 @app.route("/api/v1/app/<appName>/bus/all/<uuid>", methods=["GET"])
 def get_bus_by_uuid(appName, uuid):
+    global schedule_thread
+    if schedule_thread is None or not schedule_thread.is_alive():
+        schedule_thread = Thread(target=lambda: run_schedule(app))
+        schedule_thread.daemon = True
+        schedule_thread.start()
+
     if uuid == 0 or uuid == "0":
         query = f"""
                 {bus_data_cte}
@@ -783,7 +789,7 @@ def get_fault_by_uuid(appName, uuid):
 def prepare_filters(fields):
     for k in fields.keys():
         match k:
-            case "cityWise":
+            case "city":
                 query = f"""
                 {bus_data_cte}
                  SELECT DISTINCT city FROM bus_battery_data WHERE city IS NOT NULL AND city != ''
@@ -803,7 +809,7 @@ def prepare_filters(fields):
                     {"label": "Any", "value": "-"}
                 ] + fields[k]["options"]
 
-            case "depotWise":
+            case "depot":
                 query = f"""
                 {bus_data_cte}
                  SELECT DISTINCT depot FROM bus_battery_data WHERE depot IS NOT NULL AND depot != ''
@@ -823,7 +829,7 @@ def prepare_filters(fields):
                     {"label": "Any", "value": "-"}
                 ] + fields[k]["options"]
 
-            case "soCRange":
+            case "soc":
                 query = f"""
                 {bus_data_cte}
                 SELECT MIN(soc), MAX(soc) FROM bus_battery_data
@@ -834,7 +840,7 @@ def prepare_filters(fields):
                 fields[k]["initialValue"] = vals
                 fields[k]["bounds"] = vals
 
-            case "soHRange":
+            case "soh":
                 query = f"""
                 {bus_data_cte}
                 SELECT MIN(soh), MAX(soh) FROM bus_battery_data
@@ -904,11 +910,25 @@ def prepare_filters(fields):
 def get_filter_specification(appName):
     try:
         with open("./filterstate.json") as f:
-            data_filters = [
-                {"fieldName": k, "fieldSpec": v}
-                for k, v in prepare_filters(json.load(f)).items()
-            ]
-        return jsonify({"status": "success", "data": {"fields": data_filters}})
+            data_filters = {
+                k: v for k, v in prepare_filters(json.load(f)).items()
+            }
+
+        return jsonify(
+            {
+                "status": "success",
+                "data": {
+                    "fields": data_filters,
+                },
+                "__order__": [
+                    "busNumber",
+                    "city",
+                    "depot",
+                    "soc",
+                    "soh",
+                ],
+            }
+        )
     except Exception as e:
         return (
             jsonify({"status": "error", "message": str(e)}),

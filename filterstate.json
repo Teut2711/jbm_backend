@@ -4,7 +4,7 @@
     "type": "text",
     "label": "Bus Number"
   },
-  "cityWise": {
+  "city": {
     "initialValue": "A",
     "type": "select",
     "options": [
@@ -23,7 +23,7 @@
     ],
     "label": "City Wise"
   },
-  "depotWise": {
+  "depot": {
     "initialValue": "A",
     "type": "select",
     "options": [
@@ -42,7 +42,7 @@
     ],
     "label": "Depot Wise"
   },
-  "soCRange": {
+  "soc": {
     "initialValue": [
       0,
       100
@@ -55,7 +55,7 @@
     "label": "SoC Range",
     "unit": "%"
   },
-  "soHRange": {
+  "soh": {
     "initialValue": [
       0,
       100
