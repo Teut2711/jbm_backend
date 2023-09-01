@@ -901,7 +901,6 @@ def get_filter_specification(appName):
                     "fields": data_filters,
                 },
                 "__order__": [
-                    "busNumber",
                     "city",
                     "depot",
                     "soc",
