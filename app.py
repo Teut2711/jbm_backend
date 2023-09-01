@@ -79,7 +79,7 @@ def run_schedule(app):
     with app.app_context():
         while True:
             refresh_materialized_view()
-            time.sleep(30)
+            time.sleep(10)
 
 
 def apply_filters_to_bus_data(filters):
@@ -729,47 +729,14 @@ def get_bus_by_uuid(appName, uuid):
     return jsonify({"status": "success", "data": bus_data})
 
 
-@app.route("/api/v1/app/<appName>/fault/<faultStatus>", methods=["GET"])
-def get_faults_data(appName, faultStatus):
-    try:
-        decoded_filters = urllib.parse.unquote(filters)
-        decoded_filters = json.loads(decoded_filters)
+@app.route("/api/v1/app/<appName>/fault", methods=["GET"])
+def get_faults_data(appName):
+    filtered_data = faults_data
 
-    except Exception:
-        decoded_filters = None
-
-    if faultStatus not in bus_statuses:
-        return (
-            jsonify({"status": "error", "message": "Invalid bus status."}),
-            400,
-        )
-
-    # Filter the data based on the bus status
-    if faultStatus != "all":
-        filtered_data = [
-            fault for fault in faults_data if fault["status"] == faultStatus
-        ]
-    else:
-        filtered_data = faults_data
-
-    limit = int(request.args.get("limit", 10))
-    offset = int(request.args.get("offset", 0))
-
-    paginated_data = filtered_data[offset : offset + limit]
-
-    next_offset = offset + limit
-    has_more = next_offset < len(faults_data)
-
-    next_url = (
-        f"/api/v1/app/{appName}/fault/{faultStatus}?limit={limit}&offset={next_offset}"
-        if has_more
-        else None
-    )
     return jsonify(
         {
             "status": "success",
-            "data": {"faults": paginated_data, "length": len(faults_data)},
-            "next": next_url,
+            "data": {"faults": filtered_data, "length": len(faults_data)},
         }
     )
 
