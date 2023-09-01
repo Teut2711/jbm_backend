@@ -130,9 +130,16 @@ def apply_filters_to_bus_data(filters):
             # #         <= v[1]
             # #     )
 
-            # case "cellDiffInBatteryPackRange":
-            #     # Apply filtering logic based on cellDiffInBatteryPackRange
-            #     is_true &= True
+            case "cellDiffInBatteryPackRange":
+                where_clauses.append(
+                    f"""(
+                        LEAST(delta_cell_v1, delta_cell_v2, delta_cell_v3, delta_cell_v4) >= {v[0]}
+                        AND
+                        GREATEST(delta_cell_v1, delta_cell_v2, delta_cell_v3, delta_cell_v4) <= {v[1]}
+                    )
+                    """
+                )
+
             # case "voltageDiffInBatteryPackRange":
             #     is_true &= (
             #         "batteryOverview" in data
@@ -805,7 +812,9 @@ def prepare_filters(fields):
                 vals = get_results_list(db, query)
                 # Apply filtering logic based on depotWise
                 fields[k]["initialValue"] = vals
-                fields[k]["bounds"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
 
             case "soh":
                 query = f"""
@@ -816,7 +825,9 @@ def prepare_filters(fields):
                 vals = get_results_list(db, query)
                 # Apply filtering logic based on depotWise
                 fields[k]["initialValue"] = vals
-                fields[k]["bounds"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
 
             case "voltage":
                 query = f"""
@@ -828,7 +839,10 @@ def prepare_filters(fields):
                 # Apply filtering logic based on depotWise
 
                 fields[k]["initialValue"] = vals
-                fields[k]["bounds"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
+
             case "temperatureRange":
                 ...
             #         query = f"""
@@ -841,19 +855,18 @@ def prepare_filters(fields):
             #         fields[k]["initialValue"] = vals
             #         fields[k]["bounds"] = vals
             case "cellDiffInBatteryPackRange":
-                ...
-            #         # Apply filtering logic based on cellDiffInBatteryPackRange
+                query = f"""
+                    {bus_data_cte}
+                 SELECT MIN(LEAST(delta_cell_v1, delta_cell_v2, delta_cell_v3, delta_cell_v4)) ,
+                        MAX(GREATEST(delta_cell_v1, delta_cell_v2, delta_cell_v3, delta_cell_v4)) 
+                 FROM bus_battery_data
+                    """
 
-            #         #         query = f"""
-            #         #         {bus_data_cte}
-            #         #         SELECT MIN(temperature), max(temperature) FROM bus_battery_data
-            #         # """
-
-            #         #         vals = get_results_list(db, query)
-            #         #         # Apply filtering logic based on depotWise
-            #         #         fields[k]["initialValue"] = vals
-            #         ...
-
+                vals = get_results_list(db, query)
+                fields[k]["initialValue"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
             case "voltageDiffInBatteryPackRange":
                 ...
             #         query = f"""
@@ -893,6 +906,7 @@ def get_filter_specification(appName):
                     "depot",
                     "soc",
                     "soh",
+                    "cellDiffInBatteryPackRange",
                 ],
             }
         )
