@@ -738,7 +738,9 @@ def get_bus_by_uuid(appName, uuid):
 
 @app.route("/api/v1/app/<appName>/fault", methods=["GET"])
 def get_faults_data(appName):
-    filtered_data = faults_data
+    filtered_data = [
+        {**x, "faultStatus": "Resolved", "faultLevel": 1} for x in faults_data
+    ]
 
     return jsonify(
         {
