@@ -280,6 +280,38 @@
            FROM vehicle
              LEFT JOIN position_tracker_advanced ON position_tracker_advanced.deviceid = vehicle.id
              LEFT JOIN position_tracker_advanced__others ON position_tracker_advanced__others."IMEI" = vehicle."IMEI"
+        ), battery_pack__1010a1f3 AS (
+         SELECT "1010a1f3"."IMEI",
+            time_bucket('00:00:01'::interval, last("1010a1f3"."timestamp", "1010a1f3"."timestamp")) AS "timestamp",
+                CASE
+                    WHEN last(concat("1010a1f3"."B2V_CellVoltTooHigh2", "1010a1f3"."B2V_CellVoltTooHigh3", "1010a1f3"."B2V_CellVoltTooHigh4", "1010a1f3"."B2V_CellVoltTooLow2", "1010a1f3"."B2V_CellVoltTooLow3", "1010a1f3"."B2V_CellVoltTooLow4", "1010a1f3"."B2V_BatVoltTooHigh3", "1010a1f3"."B2V_BatVoltTooLow3", "1010a1f3"."B2V_BatTempTooHigh2", "1010a1f3"."B2V_BatTempTooHigh3", "1010a1f3"."B2V_BatTempTooHigh4", "1010a1f3"."B2V_BatTempTooLow1", "1010a1f3"."B2V_DchgOverI2", "1010a1f3"."B2V_FeedbackChrgOverI2", "1010a1f3"."B2V_IntranetCANComm3", "1010a1f3"."B2V_SysConnFault4"), "1010a1f3"."timestamp") = '0.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.000000'::text THEN 'No Fault'::text
+                    ELSE 'Fault'::text
+                END AS fault__1010a1f3
+           FROM "1010a1f3"
+          GROUP BY "1010a1f3"."IMEI"
+        ), battery_pack__1011a1f3 AS (
+         SELECT "1011a1f3"."IMEI",
+            time_bucket('00:00:01'::interval, last("1011a1f3"."timestamp", "1011a1f3"."timestamp")) AS "timestamp",
+                CASE
+                    WHEN last(concat("1011a1f3"."B2V_CellVoltDiff1", "1011a1f3"."B2V_BMSWorkVoltError3", "1011a1f3"."B2V_TempDiff1", "1011a1f3"."B2V_TempNotControl4", "1011a1f3"."B2V_SOCTooLow1", "1011a1f3"."B2V_SOCTooLow2", "1011a1f3"."B2V_SOCTooHigh1", "1011a1f3"."B2V_SOCJump1", "1011a1f3"."B2V_PowerCANCom3", "1011a1f3"."B2V_MiddleCANCom3", "1011a1f3"."B2V_TMSCom1", "1011a1f3"."B2V_TMSFault2", "1011a1f3"."B2V_IncorrectConfigStr4", "1011a1f3"."B2V_StrVDiffTooLarge3", "1011a1f3"."B2V_ChrgSignalLose3", "1011a1f3"."B2V_HVILFault3", "1011a1f3"."B2V_CellVInRangeOutFault2", "1011a1f3"."B2V_CellStandTDetectFault1", "1011a1f3"."B2V_CellStandTDetectFault2", "1011a1f3"."B2V_LECUBoardTTooHigh1", "1011a1f3"."B2V_LECUVChipTTooHigh1"), "1011a1f3"."timestamp") = '0.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.0000000.000000'::text THEN 'No Fault'::text
+                    ELSE 'Fault'::text
+                END AS fault__1011a1f3
+           FROM "1011a1f3"
+          GROUP BY "1011a1f3"."IMEI"
+        ), bus_faults_renamed AS (
+         SELECT battery_pack__1010a1f3."IMEI" AS imei,
+            lower(battery_pack__1010a1f3.fault__1010a1f3) AS fault1,
+            lower(battery_pack__1011a1f3.fault__1011a1f3) AS fault2
+           FROM battery_pack__1010a1f3
+             JOIN battery_pack__1011a1f3 ON battery_pack__1010a1f3."IMEI" = battery_pack__1011a1f3."IMEI"
+          ORDER BY battery_pack__1010a1f3."IMEI"
+        ), bus_faults_data_cte AS (
+         SELECT bus_faults_renamed.imei,
+                CASE
+                    WHEN bus_faults_renamed.fault1 = 'fault'::text OR bus_faults_renamed.fault2 = 'fault'::text THEN 'in-fault'::text
+                    ELSE NULL::text
+                END AS has_fault
+           FROM bus_faults_renamed
         ), bus_battery_data_renamed AS (
          SELECT asset."IMEI" AS imei,
             ( SELECT array_agg(lower(btrim(status.status))) AS status
@@ -346,11 +378,16 @@
                     WHEN 'discharging'::text = ANY (asset.status) THEN 'discharging'::text
                     WHEN 'idle'::text = ANY (asset.status) THEN 'idle'::text
                     ELSE NULL::text
-                END AS bms_status
+                END AS bms_status,
+            fd.has_fault
            FROM asset
+             LEFT JOIN bus_faults_data_cte fd ON asset."IMEI" = fd.imei
         ), bus_battery_data_cte AS (
          SELECT bus_battery_data_renamed.imei,
-            bus_battery_data_renamed.status,
+                CASE
+                    WHEN bus_battery_data_renamed.has_fault IS NOT NULL THEN array_append(bus_battery_data_renamed.status, bus_battery_data_renamed.has_fault)
+                    ELSE bus_battery_data_renamed.status
+                END AS status,
             bus_battery_data_renamed.bus_number,
             bus_battery_data_renamed.depot,
             bus_battery_data_renamed.city,
