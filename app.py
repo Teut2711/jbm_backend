@@ -3,6 +3,7 @@ import datetime
 from decimal import Decimal
 from itertools import chain
 import json
+import random
 from threading import Thread
 import time
 from flask import jsonify, request
@@ -738,8 +739,15 @@ def get_bus_by_uuid(appName, uuid):
 
 @app.route("/api/v1/app/<appName>/fault", methods=["GET"])
 def get_faults_data(appName):
+    status_choices = ["Open", "In Process", "Close"]
+
     filtered_data = [
-        {**x, "faultStatus": "Resolved", "faultLevel": 1} for x in faults_data
+        {
+            **x,
+            "faultStatus": random.choice(status_choices),
+            "faultLevel": random.randint(1, 4),
+        }
+        for x in faults_data
     ]
 
     return jsonify(
