@@ -134,10 +134,14 @@ def apply_filters_to_bus_data(filters):
             case "cellDiffInBatteryPackRange":
                 where_clauses.append(
                     f"""(
-                        LEAST(delta_cell_v1, delta_cell_v2, delta_cell_v3, delta_cell_v4) >= {v[0]}
-                        AND
-                        GREATEST(delta_cell_v1, delta_cell_v2, delta_cell_v3, delta_cell_v4) <= {v[1]}
-                    )
+                        (delta_cell_v1 >= {v[0]} AND delta_cell_v1 <= {v[1]}) OR
+                        (delta_cell_v2 >= {v[0]} AND delta_cell_v2 <= {v[1]}) OR 
+                        (delta_cell_v3 >= {v[0]} AND delta_cell_v3 <= {v[1]}) OR
+                        (delta_cell_v4 >= {v[0]} AND delta_cell_v4 <= {v[1]})
+                        )
+
+
+
                     """
                 )
 
