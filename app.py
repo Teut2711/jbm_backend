@@ -412,44 +412,28 @@ def get_buses_data(appName, busStatus):
                         "text": "Cell Voltage S1",
                         "min": round_wrapper(i["min_cell_v1"], 3),
                         "max": round_wrapper(i["max_cell_v1"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v1"] - i["min_cell_v1"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v1"], 3)),
                         "units": "V",
                     },
                     "cellVoltage2": {
                         "text": "Cell Voltage S2",
                         "min": round_wrapper(i["min_cell_v2"], 3),
                         "max": round_wrapper(i["max_cell_v2"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v2"] - i["min_cell_v2"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v2"], 3)),
                         "units": "V",
                     },
                     "cellVoltage3": {
                         "text": "Cell Voltage S3",
                         "min": round_wrapper(i["min_cell_v3"], 3),
                         "max": round_wrapper(i["max_cell_v3"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v3"] - i["min_cell_v3"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v3"], 3)),
                         "units": "V",
                     },
                     "cellVoltage4": {
                         "text": "Cell Voltage S4",
                         "min": round_wrapper(i["min_cell_v4"], 3),
                         "max": round_wrapper(i["max_cell_v4"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v4"] - i["min_cell_v4"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v4"], 3)),
                         "units": "V",
                     },
                     "cellTemperature1": {
@@ -662,44 +646,28 @@ def get_bus_by_uuid(appName, uuid):
                         "text": "Cell Voltage S1",
                         "min": round_wrapper(i["min_cell_v1"], 3),
                         "max": round_wrapper(i["max_cell_v1"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v1"] - i["min_cell_v1"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v1"], 3)),
                         "units": "V",
                     },
                     "cellVoltage2": {
                         "text": "Cell Voltage S2",
                         "min": round_wrapper(i["min_cell_v2"], 3),
                         "max": round_wrapper(i["max_cell_v2"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v2"] - i["min_cell_v2"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v2"], 3)),
                         "units": "V",
                     },
                     "cellVoltage3": {
                         "text": "Cell Voltage S3",
                         "min": round_wrapper(i["min_cell_v3"], 3),
                         "max": round_wrapper(i["max_cell_v3"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v3"] - i["min_cell_v3"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v3"], 3)),
                         "units": "V",
                     },
                     "cellVoltage4": {
                         "text": "Cell Voltage S4",
                         "min": round_wrapper(i["min_cell_v4"], 3),
                         "max": round_wrapper(i["max_cell_v4"], 3),
-                        "delta": (
-                            round_wrapper(
-                                i["max_cell_v4"] - i["min_cell_v4"], 3
-                            )
-                        ),
+                        "delta": (round_wrapper(i["delta_cell_v4"], 3)),
                         "units": "V",
                     },
                     "cellTemperature1": {
