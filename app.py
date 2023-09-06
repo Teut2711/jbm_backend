@@ -71,6 +71,7 @@ def refresh_materialized_view():
              """
             )
         )
+
         db.session.commit()
     except Exception as e:
         print(e)
@@ -521,7 +522,7 @@ def get_bus_by_uuid(appName, uuid):
     if uuid == 0 or uuid == "0":
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM bus_battery_data  LIMIT 1
+                 SELECT  * FROM bus_battery_data  ORDER BY imei LIMIT 1
         """
     else:
         query = f"""
@@ -889,6 +890,36 @@ def get_filter_specification(appName):
                     "soh",
                     "cellDiffInBatteryPackRange",
                 ],
+            }
+        )
+    except Exception as e:
+        return (
+            jsonify({"status": "error", "message": str(e)}),
+            500,
+        )
+
+
+@app.route("/api/v1/app/<appName>/search", methods=["GET"])
+def get_list(appName):
+    try:
+        query = "SELECT imei, bus_number FROM  bus_battery_data ORDER BY imei"
+        vals = get_results_dict(db, query)
+        d = list(
+            map(
+                lambda x: {
+                    "label": " & ".join(map(str, x.values())),
+                    "id": x["imei"],
+                },
+                vals,
+            )
+        )
+
+        return jsonify(
+            {
+                "status": "success",
+                "data": {
+                    "search": d,
+                },
             }
         )
     except Exception as e:
