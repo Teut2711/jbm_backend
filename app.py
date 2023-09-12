@@ -61,29 +61,6 @@ bus_statuses = [
 ]
 
 
-def refresh_materialized_view():
-    print("Updated")
-    try:
-        db.session.execute(
-            text(
-                """
-        REFRESH MATERIALIZED VIEW CONCURRENTLY bus_battery_data;
-             """
-            )
-        )
-
-        db.session.commit()
-    except Exception as e:
-        print(e)
-
-
-def run_schedule(app):
-    with app.app_context():
-        while True:
-            refresh_materialized_view()
-            time.sleep(10)
-
-
 def apply_filters_to_bus_data(filters):
     where_clauses = []
     for k, _v in filters.items():
@@ -169,15 +146,6 @@ def apply_filters_to_bus_data(filters):
 
 @app.route("/api/v1/app/<appName>/bus/total", methods=["GET"])
 def get_total_buses(appName):
-    # Filter the data based on the bus status
-    # positions = models.TraccerDevices.query.limit(5).all()
-    # CAN = models.CANFrame.query.limit(5).all()
-    global schedule_thread
-    if schedule_thread is None or not schedule_thread.is_alive():
-        schedule_thread = Thread(target=lambda: run_schedule(app))
-        schedule_thread.daemon = True
-        schedule_thread.start()
-
     def get_data(_type):
         if _type == "all":
             query = f"""
@@ -211,7 +179,6 @@ def get_total_buses(appName):
         decoded_filters = None
 
     result_dict = {i: get_data(i) for i in bus_statuses}
-    # result_dict["total"] = result_dict["all"]
     return jsonify({"status": "success", "data": result_dict})
 
 
@@ -513,12 +480,6 @@ def get_buses_data(appName, busStatus):
 
 @app.route("/api/v1/app/<appName>/bus/all/<uuid>", methods=["GET"])
 def get_bus_by_uuid(appName, uuid):
-    global schedule_thread
-    if schedule_thread is None or not schedule_thread.is_alive():
-        schedule_thread = Thread(target=lambda: run_schedule(app))
-        schedule_thread.daemon = True
-        schedule_thread.start()
-
     if uuid == 0 or uuid == "0":
         query = f"""
                 {bus_data_cte}
