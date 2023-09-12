@@ -384,10 +384,11 @@
              LEFT JOIN bus_faults_data_cte fd ON asset."IMEI" = fd.imei
         ), bus_battery_data_cte AS (
          SELECT bus_battery_data_renamed.imei,
+            array_remove((bus_battery_data_renamed.status || ARRAY[bus_battery_data_renamed.has_fault]) || ARRAY[
                 CASE
-                    WHEN bus_battery_data_renamed.has_fault IS NOT NULL THEN array_append(bus_battery_data_renamed.status, bus_battery_data_renamed.has_fault)
-                    ELSE bus_battery_data_renamed.status
-                END AS status,
+                    WHEN bus_battery_data_renamed.can_data_status = 'off'::text THEN 'in-field'::text
+                    ELSE NULL::text
+                END], NULL::text) AS status,
             bus_battery_data_renamed.bus_number,
             bus_battery_data_renamed.depot,
             bus_battery_data_renamed.city,
