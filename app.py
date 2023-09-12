@@ -3,9 +3,8 @@ import datetime
 from decimal import Decimal
 from itertools import chain
 import json
-import random
-from threading import Thread
 import time
+import uuid
 from flask import jsonify, request
 from flask_cors import CORS
 import urllib
@@ -26,15 +25,8 @@ CORS(
 
 schedule_thread = None
 
-with open("./specificBusData.json") as f:
-    specific_bus_data = json.load(f)
-
 with open("./faultData.json") as f:
     faults_data = json.load(f)
-
-
-with open("./busData.json") as f:
-    buses_data = json.load(f)
 
 
 with open("./specificFaultData.json") as f:
@@ -674,6 +666,20 @@ def get_bus_by_uuid(appName, uuid):
 
 @app.route("/api/v1/app/<appName>/fault", methods=["GET"])
 def get_faults_data(appName):
+    limit = int(request.args.get("limit", -1))
+    offset = int(request.args.get("offset", -1))
+    limit = limit if limit > 0 else None
+    offset = offset if offset >= 0 else None
+
+    query = f"""
+            {bus_data_cte}
+            SELECT  * FROM bus_faults_data 
+            """
+    if limit and offset:
+        query += f"LIMIT {limit} OFFSET {offset}"
+
+    results_list = get_results_dict(db, query)
+
     status_choices = [
         {
             "value": "open",
@@ -688,16 +694,26 @@ def get_faults_data(appName):
             "label": "Close",
         },
     ]
-
     filtered_data = [
         {
-            **x,
-            "faultStatus": random.choice(status_choices),
-            "faultLevel": random.randint(1, 4),
+            "uuid": str(uuid.uuid4()),
+            "busNumber": res["bus_number"],
+            "faultCode": res["fault_code"],
+            "faultDescription": res["fault_description"],
+            "faultStatus": next(
+                (
+                    i
+                    for i in status_choices
+                    if res["fault_status"] == i["value"]
+                ),
+                {"open": "Open"},
+            ),
+            "faultTime": res["fault_time"],
+            "faultLevel": res["fault_level"],
+            "faultDuration": res["fault_duration"],
         }
-        for x in faults_data
+        for res in results_list
     ]
-
     return jsonify(
         {
             "status": "success",
@@ -708,9 +724,7 @@ def get_faults_data(appName):
 
 @app.route("/api/v1/app/<appName>/fault/all/<uuid>", methods=["GET"])
 def get_fault_by_uuid(appName, uuid):
-    fault_data = list(
-        (fault for fault in specific_fault_data if fault["uuid"] == uuid)
-    )
+    fault_data = list([specific_fault_data[0]])
 
     if not fault_data:
         return jsonify({"status": "error", "message": "Faults not found"}), 404
