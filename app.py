@@ -712,7 +712,20 @@ def get_bus_by_uuid(appName, uuid):
 
 @app.route("/api/v1/app/<appName>/fault", methods=["GET"])
 def get_faults_data(appName):
-    status_choices = ["Open", "In Process", "Close"]
+    status_choices = [
+        {
+            "value": "open",
+            "label": "Open",
+        },
+        {
+            "value": "in-process",
+            "label": "In Process",
+        },
+        {
+            "value": "close",
+            "label": "Close",
+        },
+    ]
 
     filtered_data = [
         {
