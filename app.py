@@ -478,12 +478,12 @@ def get_buses_data(appName, busStatus):
         if busStatus != "all":
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND bus_number != CAST(imei AS TEXT)                 
+        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND bus_number != imei                 
         """
         else:
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE bus_number != CAST(imei AS TEXT)             
+        SELECT COUNT(*) FROM bus_battery_data  WHERE bus_number != imei            
         """
         has_more = next_offset < list(db.session.execute(text(q)))[0][0]
 
@@ -525,9 +525,10 @@ def get_bus_by_uuid(appName, uuid):
                  SELECT  * FROM bus_battery_data  ORDER BY imei LIMIT 1
         """
     else:
+        uuid = str(uuid)
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM bus_battery_data  WHERE imei = {uuid}
+                 SELECT  * FROM bus_battery_data  WHERE imei = '{uuid}'
         """
 
     results_dict = get_results_dict(db, query)
