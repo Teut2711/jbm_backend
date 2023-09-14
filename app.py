@@ -25,9 +25,6 @@ CORS(
 
 schedule_thread = None
 
-with open("./faultData.json") as f:
-    faults_data = json.load(f)
-
 
 with open("./specificFaultData.json") as f:
     specific_fault_data = json.load(f)
@@ -671,8 +668,7 @@ def get_faults_data(appName):
     limit = limit if limit > 0 else None
     offset = offset if offset >= 0 else None
 
-    query = f"""
-            {bus_data_cte}
+    query = """
             SELECT  * FROM bus_faults_data 
             """
     if limit and offset:
@@ -714,10 +710,12 @@ def get_faults_data(appName):
         }
         for res in results_list
     ]
+    print(len(filtered_data))
+
     return jsonify(
         {
             "status": "success",
-            "data": {"faults": filtered_data, "length": len(faults_data)},
+            "data": {"faults": filtered_data, "length": len(filtered_data)},
         }
     )
 
