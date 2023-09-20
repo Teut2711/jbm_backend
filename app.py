@@ -80,6 +80,18 @@ def apply_filters_to_bus_data(filters):
                     f" (soh IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
                 )
 
+            case "inletTemperature":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(
+                    f" (inlet_temperature IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
+                )
+
+            case "outletTemperature":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(
+                    f" (outlet_temperature IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
+                )
+
             # case "voltage":
             #     # Apply filtering logic based on voltage
             #     is_true &= (
@@ -189,8 +201,8 @@ def get_results_list(db, query):
     return result_list
 
 
-@app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
-def get_buses_data(appName, busStatus):
+@app.route("/api/v1/app/<appName>/bus", methods=["GET"])
+def get_buses_data(appName):
     mapping = {
         "in-depot": "in-depot",
         "in-field": "in-field",
@@ -203,6 +215,7 @@ def get_buses_data(appName, busStatus):
     }
     reverse_mapping = {v: k for k, v in mapping.items()}
     filters = request.args.get("filters", None)
+    bus_status = request.args.get("status", None)
     try:
         decoded_filters = urllib.parse.unquote(filters)
         decoded_filters = json.loads(decoded_filters)
@@ -210,7 +223,7 @@ def get_buses_data(appName, busStatus):
     except Exception:
         decoded_filters = None
 
-    if busStatus not in bus_statuses:
+    if bus_status not in bus_statuses:
         return (
             jsonify({"status": "error", "message": "Invalid bus status."}),
             400,
@@ -220,10 +233,10 @@ def get_buses_data(appName, busStatus):
     offset = int(request.args.get("offset", -1))
     limit = limit if limit > 0 else None
     offset = offset if offset >= 0 else None
-    if busStatus != "all":
+    if bus_status != "all":
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) """
+                 SELECT  * FROM bus_battery_data  WHERE '{mapping[bus_status]}' = ANY(status) """
         if limit and offset:
             query += f"LIMIT {limit} OFFSET {offset}"
 
@@ -262,8 +275,8 @@ def get_buses_data(appName, busStatus):
                             "",
                         )
                     )
-                    if busStatus == "all"
-                    else busStatus
+                    if bus_status == "all"
+                    else bus_status
                 ),
                 "depotNumber": (i.get("depot", "") or "").title(),
                 "city": (i.get("city", "") or "").title(),
@@ -431,10 +444,10 @@ def get_buses_data(appName, busStatus):
     has_more = None
     if offset and limit:
         next_offset = offset + limit
-        if busStatus != "all":
+        if bus_status != "all":
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND bus_number != imei                 
+        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[bus_status]}' = ANY(status) AND bus_number != imei                 
         """
         else:
             q = f"""
@@ -445,7 +458,7 @@ def get_buses_data(appName, busStatus):
 
     next_url = (
         (
-            f"/api/v1/app/{appName}/bus/{busStatus}?"
+            f"/api/v1/app/{appName}/bus/{bus_status}?"
             + (
                 "limit={limit}&offset={next_offset}"
                 if limit and offset and next_offset
@@ -850,13 +863,40 @@ def prepare_filters(fields):
 
             #         # Apply filtering logic based on voltageDiffInBatteryPackRange
 
+            case "temperatureInlet":
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(inlet_temperature), MAX(inlet_temperature) FROM bus_battery_data
+        """
+
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
+
+            case "temperatureOutlet":
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(outlet_temperature), MAX(outlet_temperature) FROM bus_battery_data
+        """
+
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
+
             case _:
                 # Handle the case for an unknown filter key (optional)
                 ...
+            
     return fields
 
 
-@app.route("/api/v1/app/<appName>/bus/all/filters-spec", methods=["GET"])
+@app.route("/api/v1/app/<appName>/filters-spec", methods=["GET"])
 def get_filter_specification(appName):
     try:
         with open("./filterstate.json") as f:
@@ -876,6 +916,8 @@ def get_filter_specification(appName):
                     "soc",
                     "soh",
                     "cellDiffInBatteryPackRange",
+                    "temperatureInlet",
+                    "temperatureOutlet"
                 ],
             }
         )
