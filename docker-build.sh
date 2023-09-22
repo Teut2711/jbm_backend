@@ -1,2 +1,3 @@
-docker build -t teut2711/preksha-jbm-backend:realdata8 .
-docker push teut2711/preksha-jbm-backend:realdata8 
+##  stable is 8
+docker build -t teut2711/preksha-jbm-backend:realdata9 .
+docker push teut2711/preksha-jbm-backend:realdata9 
