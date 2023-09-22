@@ -128,6 +128,31 @@ def apply_filters_to_bus_data(filters):
             # case "faultLevelWise":
             #     # Apply filtering logic based on faultLevelWise
             #     is_true &= True
+            case "temperatureInlet":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(
+                    f" (inlet_temperature IS NULL OR inlet_temperature BETWEEN {v[0]} AND {v[1]})"
+                )
+
+            case "temperatureOutlet":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(
+                    f" (outlet_temperature IS NULL OR outlet_temperature BETWEEN {v[0]} AND {v[1]})"
+                )
+
+            case "temperature":
+                where_clauses.append(
+                    f"""(
+                        ({v[0]} <= min_cell_t1 AND max_cell_t1 <= {v[1]}) OR
+                        ({v[0]} <= min_cell_t2 AND max_cell_t2 <= {v[1]}) OR
+                        ({v[0]} <= min_cell_t3 AND max_cell_t3 <= {v[1]}) OR
+                        ({v[0]} <= min_cell_t4 AND max_cell_t4 <= {v[1]})
+                        )
+
+
+
+                    """
+                )
 
     where_clause = " AND ".join(where_clauses)
     return where_clause
@@ -189,8 +214,8 @@ def get_results_list(db, query):
     return result_list
 
 
-@app.route("/api/v1/app/<appName>/bus/<busStatus>", methods=["GET"])
-def get_buses_data(appName, busStatus):
+@app.route("/api/v1/app/<appName>/bus", methods=["GET"])
+def get_buses_data(appName):
     mapping = {
         "in-depot": "in-depot",
         "in-field": "in-field",
@@ -203,6 +228,7 @@ def get_buses_data(appName, busStatus):
     }
     reverse_mapping = {v: k for k, v in mapping.items()}
     filters = request.args.get("filters", None)
+    busStatus = request.args.get("status", None)
     try:
         decoded_filters = urllib.parse.unquote(filters)
         decoded_filters = json.loads(decoded_filters)
@@ -704,7 +730,8 @@ def get_faults_data(appName):
                 ),
                 {"open": "Open"},
             ),
-            "faultTime": res["fault_time"],
+            "startTime": res["start_time"],
+            "endTime": res["end_time"],
             "faultLevel": res["fault_level"],
             "faultDuration": res["fault_duration"],
         }
@@ -813,17 +840,6 @@ def prepare_filters(fields):
                 fields[k]["max"] = vals[1]
                 fields[k]["step"] = (vals[1] - vals[0]) / 100
 
-            case "temperatureRange":
-                ...
-            #         query = f"""
-            #         {bus_data_cte}
-            #         SELECT MIN(temperature), MAX(temperature) FROM bus_battery_data
-            # """
-
-            #         vals = get_results_list(db, query)
-            #         # Apply filtering logic based on depotWise
-            #         fields[k]["initialValue"] = vals
-            #         fields[k]["bounds"] = vals
             case "cellDiffInBatteryPackRange":
                 query = f"""
                     {bus_data_cte}
@@ -850,13 +866,54 @@ def prepare_filters(fields):
 
             #         # Apply filtering logic based on voltageDiffInBatteryPackRange
 
+            case "temperatureInlet":
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(inlet_temperature), MAX(inlet_temperature) FROM bus_battery_data
+        """
+
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
+
+            case "temperatureOutlet":
+                query = f"""
+                {bus_data_cte}
+                SELECT MIN(outlet_temperature), MAX(outlet_temperature) FROM bus_battery_data
+        """
+
+                vals = get_results_list(db, query)
+                # Apply filtering logic based on depotWise
+                fields[k]["initialValue"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
+
+            case "temperature":
+                query = f"""
+                    {bus_data_cte}
+                 SELECT MIN(LEAST(min_cell_t1, min_cell_t2, min_cell_t3, min_cell_t4)) ,
+                        MAX(GREATEST(max_cell_t1, max_cell_t2, max_cell_t3, max_cell_t4)) 
+                 FROM bus_battery_data
+                    """
+
+                vals = get_results_list(db, query)
+                fields[k]["initialValue"] = vals
+                fields[k]["min"] = vals[0]
+                fields[k]["max"] = vals[1]
+                fields[k]["step"] = (vals[1] - vals[0]) / 100
+
             case _:
                 # Handle the case for an unknown filter key (optional)
                 ...
+
     return fields
 
 
-@app.route("/api/v1/app/<appName>/bus/all/filters-spec", methods=["GET"])
+@app.route("/api/v1/app/<appName>/filters-spec", methods=["GET"])
 def get_filter_specification(appName):
     try:
         with open("./filterstate.json") as f:
@@ -876,6 +933,9 @@ def get_filter_specification(appName):
                     "soc",
                     "soh",
                     "cellDiffInBatteryPackRange",
+                    "temperatureInlet",
+                    "temperatureOutlet",
+                    "temperature",
                 ],
             }
         )
@@ -914,6 +974,37 @@ def get_list(appName):
             jsonify({"status": "error", "message": str(e)}),
             500,
         )
+
+
+@app.route("/refresh-view", methods=["GET"])
+def refresh_view():
+    error = ""
+    try:
+        db.session.execute(
+            text(
+                """
+            REFRESH MATERIALIZED VIEW CONCURRENTLY bus_battery_data;
+                """
+            )
+        )
+        db.session.commit()
+    except Exception as e:
+        error += f"\n{e}"
+    try:
+        db.session.execute(
+            text(
+                """
+                REFRESH MATERIALIZED VIEW CONCURRENTLY bus_faults_data;
+                    """
+            )
+        )
+        db.session.commit()
+    except Exception as e:
+        error += f"\n{e}"
+    if error:
+        return {"status": "error", "message": error}
+    else:
+        return {"status": "success", "message": "Refresh views"}
 
 
 if __name__ == "__main__":
