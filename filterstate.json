@@ -69,55 +69,55 @@
       "unit": "%"
   },
   "cellDiffInBatteryPackRange": {
-      "initialValue": [
-          0,
-          100
-      ],
-      "type": "range",
-      "bounds": [
-          0,
-          100
-      ],
-      "label": "Cell Diff in Battery Pack Range",
-      "unit": "V"
+    "initialValue": [
+      0,
+      100
+    ],
+    "type": "range",
+    "bounds": [
+      0,
+      100
+    ],
+    "label": "Cell Diff in Battery Pack Range",
+    "unit": "V"
   },
   "temperatureInlet": {
-      "initialValue": [
-          0,
-          100
-      ],
-      "type": "range",
-      "bounds": [
-          0,
-          100
-      ],
-      "label": "Temperature Inlet Range",
-      "unit": "\u00b0C"
+    "initialValue": [
+      0,
+      100
+    ],
+    "type": "range",
+    "bounds": [
+      0,
+      100
+    ],
+    "label": "Temperature Inlet Range",
+    "unit": "\u00b0C"
   },
   "temperatureOutlet": {
-      "initialValue": [
-          0,
-          100
-      ],
-      "type": "range",
-      "bounds": [
-          0,
-          100
-      ],
-      "label": "Temperature Outlet Range",
-      "unit": "\u00b0C"
+    "initialValue": [
+      0,
+      100
+    ],
+    "type": "range",
+    "bounds": [
+      0,
+      100
+    ],
+    "label": "Temperature Outlet Range",
+    "unit": "\u00b0C"
   },
   "temperature": {
-      "initialValue": [
-          0,
-          100
-      ],
-      "type": "range",
-      "bounds": [
-          0,
-          100
-      ],
-      "label": "Temperature Range",
-      "unit": "\u00b0C"
+    "initialValue": [
+      0,
+      100
+    ],
+    "type": "range",
+    "bounds": [
+      0,
+      100
+    ],
+    "label": "Temperature Range",
+    "unit": "\u00b0C"
   }
 }
