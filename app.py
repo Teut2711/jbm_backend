@@ -3,8 +3,7 @@ import datetime
 from decimal import Decimal
 from itertools import chain
 import json
-import time
-import uuid
+from uuid import uuid4
 from flask import jsonify, request
 from flask_cors import CORS
 import urllib
@@ -24,10 +23,6 @@ CORS(
 )
 
 schedule_thread = None
-
-
-with open("./specificFaultData.json") as f:
-    specific_fault_data = json.load(f)
 
 
 @app.after_request
@@ -465,7 +460,7 @@ def get_buses_data(appName):
         else:
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE bus_number != imei            
+        SELECT COUNT(*) FROM bus_battery_data  WHERE bus_number != imei
         """
         has_more = next_offset < list(db.session.execute(text(q)))[0][0]
 
@@ -493,7 +488,7 @@ def get_buses_data(appName):
     )
 
 
-@app.route("/api/v1/app/<appName>/bus/all/<uuid>", methods=["GET"])
+@app.route("/api/v1/app/<appName>/bus/<uuid>", methods=["GET"])
 def get_bus_by_uuid(appName, uuid):
     if uuid == 0 or uuid == "0":
         query = f"""
@@ -718,7 +713,7 @@ def get_faults_data(appName):
     ]
     filtered_data = [
         {
-            "uuid": str(uuid.uuid4()),
+            "uuid": str(uuid4()),
             "busNumber": res["bus_number"],
             "faultCode": res["fault_code"],
             "faultDescription": res["fault_description"],
@@ -734,6 +729,9 @@ def get_faults_data(appName):
             "endTime": res["end_time"],
             "faultLevel": res["fault_level"],
             "faultDuration": res["fault_duration"],
+            "faultType": "Automatic",
+            "timeToResolve": res["fault_duration"],
+            "ticketNumber": "T-01",
         }
         for res in results_list
     ]
@@ -747,14 +745,67 @@ def get_faults_data(appName):
     )
 
 
-@app.route("/api/v1/app/<appName>/fault/all/<uuid>", methods=["GET"])
+@app.route("/api/v1/app/<appName>/fault/<uuid>", methods=["GET"])
 def get_fault_by_uuid(appName, uuid):
-    fault_data = list([specific_fault_data[0]])
+    limit = int(request.args.get("limit", -1))
+    offset = int(request.args.get("offset", -1))
+    limit = limit if limit > 0 else None
+    offset = offset if offset >= 0 else None
 
-    if not fault_data:
-        return jsonify({"status": "error", "message": "Faults not found"}), 404
+    query = f"""
+            SELECT  * FROM bus_faults_data WHERE imei = '{uuid}'
+            """
+    if limit and offset:
+        query += f"LIMIT {limit} OFFSET {offset}"
 
-    return jsonify({"status": "success", "data": {"faultedBuses": fault_data}})
+    results_list = get_results_dict(db, query)
+
+    status_choices = [
+        {
+            "value": "open",
+            "label": "Open",
+        },
+        {
+            "value": "in-process",
+            "label": "In Process",
+        },
+        {
+            "value": "close",
+            "label": "Close",
+        },
+    ]
+    filtered_data = [
+        {
+            "uuid": str(uuid4()),
+            "busNumber": res["bus_number"],
+            "faultCode": res["fault_code"],
+            "faultDescription": res["fault_description"],
+            "faultStatus": next(
+                (
+                    i
+                    for i in status_choices
+                    if res["fault_status"] == i["value"]
+                ),
+                {"open": "Open"},
+            ),
+            "startTime": res["start_time"],
+            "endTime": res["end_time"],
+            "faultLevel": res["fault_level"],
+            "faultDuration": res["fault_duration"],
+            "faultType": "Automatic",
+            "timeToResolve": res["fault_duration"],
+            "ticketNumber": "T-01",
+        }
+        for res in results_list
+    ]
+    print(len(filtered_data))
+
+    return jsonify(
+        {
+            "status": "success",
+            "data": {"faults": filtered_data, "length": len(filtered_data)},
+        }
+    )
 
 
 def prepare_filters(fields):
