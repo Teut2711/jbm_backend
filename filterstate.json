@@ -1,72 +1,72 @@
 {
   "busNumber": {
-    "initialValue": "",
-    "type": "text",
-    "label": "Bus Number"
+      "initialValue": "",
+      "type": "text",
+      "label": "Bus Number"
   },
   "city": {
-    "initialValue": "A",
-    "type": "select",
-    "options": [
-      {
-        "label": "Option A",
-        "value": "A"
-      },
-      {
-        "label": "Option B",
-        "value": "B"
-      },
-      {
-        "label": "Option C",
-        "value": "C"
-      }
-    ],
-    "label": "City Wise"
+      "initialValue": "A",
+      "type": "select",
+      "options": [
+          {
+              "label": "Option A",
+              "value": "A"
+          },
+          {
+              "label": "Option B",
+              "value": "B"
+          },
+          {
+              "label": "Option C",
+              "value": "C"
+          }
+      ],
+      "label": "City Wise"
   },
   "depot": {
-    "initialValue": "A",
-    "type": "select",
-    "options": [
-      {
-        "label": "Option A",
-        "value": "A"
-      },
-      {
-        "label": "Option B",
-        "value": "B"
-      },
-      {
-        "label": "Option C",
-        "value": "C"
-      }
-    ],
-    "label": "Depot Wise"
+      "initialValue": "A",
+      "type": "select",
+      "options": [
+          {
+              "label": "Option A",
+              "value": "A"
+          },
+          {
+              "label": "Option B",
+              "value": "B"
+          },
+          {
+              "label": "Option C",
+              "value": "C"
+          }
+      ],
+      "label": "Depot Wise"
   },
   "soc": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "SoC Range",
-    "unit": "%"
+      "initialValue": [
+          0,
+          100
+      ],
+      "type": "range",
+      "bounds": [
+          0,
+          100
+      ],
+      "label": "SoC Range",
+      "unit": "%"
   },
   "soh": {
-    "initialValue": [
-      0,
-      100
-    ],
-    "type": "range",
-    "bounds": [
-      0,
-      100
-    ],
-    "label": "SoH Range",
-    "unit": "%"
+      "initialValue": [
+          0,
+          100
+      ],
+      "type": "range",
+      "bounds": [
+          0,
+          100
+      ],
+      "label": "SoH Range",
+      "unit": "%"
   },
   "cellDiffInBatteryPackRange": {
     "initialValue": [

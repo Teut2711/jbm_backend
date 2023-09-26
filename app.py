@@ -75,6 +75,18 @@ def apply_filters_to_bus_data(filters):
                     f" (soh IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
                 )
 
+            case "inletTemperature":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(
+                    f" (inlet_temperature IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
+                )
+
+            case "outletTemperature":
+                # Apply filtering logic based on soHRange
+                where_clauses.append(
+                    f" (outlet_temperature IS NULL OR soh BETWEEN {v[0]} AND {v[1]})"
+                )
+
             # case "voltage":
             #     # Apply filtering logic based on voltage
             #     is_true &= (
@@ -223,7 +235,7 @@ def get_buses_data(appName):
     }
     reverse_mapping = {v: k for k, v in mapping.items()}
     filters = request.args.get("filters", None)
-    busStatus = request.args.get("status", None)
+    bus_status = request.args.get("status", None)
     try:
         decoded_filters = urllib.parse.unquote(filters)
         decoded_filters = json.loads(decoded_filters)
@@ -231,7 +243,7 @@ def get_buses_data(appName):
     except Exception:
         decoded_filters = None
 
-    if busStatus not in bus_statuses:
+    if bus_status not in bus_statuses:
         return (
             jsonify({"status": "error", "message": "Invalid bus status."}),
             400,
@@ -241,10 +253,10 @@ def get_buses_data(appName):
     offset = int(request.args.get("offset", -1))
     limit = limit if limit > 0 else None
     offset = offset if offset >= 0 else None
-    if busStatus != "all":
+    if bus_status != "all":
         query = f"""
                 {bus_data_cte}
-                 SELECT  * FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) """
+                 SELECT  * FROM bus_battery_data  WHERE '{mapping[bus_status]}' = ANY(status) """
         if limit and offset:
             query += f"LIMIT {limit} OFFSET {offset}"
 
@@ -283,8 +295,8 @@ def get_buses_data(appName):
                             "",
                         )
                     )
-                    if busStatus == "all"
-                    else busStatus
+                    if bus_status == "all"
+                    else bus_status
                 ),
                 "depotNumber": (i.get("depot", "") or "").title(),
                 "city": (i.get("city", "") or "").title(),
@@ -452,10 +464,10 @@ def get_buses_data(appName):
     has_more = None
     if offset and limit:
         next_offset = offset + limit
-        if busStatus != "all":
+        if bus_status != "all":
             q = f"""
         {bus_data_cte}
-        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[busStatus]}' = ANY(status) AND bus_number != imei                 
+        SELECT COUNT(*) FROM bus_battery_data  WHERE '{mapping[bus_status]}' = ANY(status) AND bus_number != imei                 
         """
         else:
             q = f"""
@@ -466,7 +478,7 @@ def get_buses_data(appName):
 
     next_url = (
         (
-            f"/api/v1/app/{appName}/bus/{busStatus}?"
+            f"/api/v1/app/{appName}/bus/{bus_status}?"
             + (
                 "limit={limit}&offset={next_offset}"
                 if limit and offset and next_offset
@@ -714,6 +726,7 @@ def get_faults_data(appName):
     filtered_data = [
         {
             "uuid": str(uuid4()),
+            "imei": res["imei"],
             "busNumber": res["bus_number"],
             "faultCode": res["fault_code"],
             "faultDescription": res["fault_description"],
@@ -729,7 +742,6 @@ def get_faults_data(appName):
             "endTime": res["end_time"],
             "faultLevel": res["fault_level"],
             "faultDuration": res["fault_duration"],
-            "faultType": "Automatic",
             "timeToResolve": res["fault_duration"],
             "ticketNumber": "T-01",
         }
@@ -751,10 +763,16 @@ def get_fault_by_uuid(appName, uuid):
     offset = int(request.args.get("offset", -1))
     limit = limit if limit > 0 else None
     offset = offset if offset >= 0 else None
+    start_time = request.args.get("startTime", None)
+    fault_code = request.args.get("faultCode", None)
 
     query = f"""
-            SELECT  * FROM bus_faults_data WHERE imei = '{uuid}'
+            SELECT  * FROM bus_faults_data WHERE imei ='{uuid}'
             """
+    if start_time and fault_code:
+        query += (
+            f" AND start_time='{start_time}' AND fault_code='{fault_code}'"
+        )
     if limit and offset:
         query += f"LIMIT {limit} OFFSET {offset}"
 
@@ -777,6 +795,7 @@ def get_fault_by_uuid(appName, uuid):
     filtered_data = [
         {
             "uuid": str(uuid4()),
+            "imei": res["imei"],
             "busNumber": res["bus_number"],
             "faultCode": res["fault_code"],
             "faultDescription": res["fault_description"],
@@ -798,7 +817,6 @@ def get_fault_by_uuid(appName, uuid):
         }
         for res in results_list
     ]
-    print(len(filtered_data))
 
     return jsonify(
         {
