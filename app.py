@@ -298,7 +298,7 @@ def get_buses_data(appName):
                     if bus_status == "all"
                     else bus_status
                 ),
-                "depotNumber": (i.get("depot", "") or "").title(),
+                "depot": (i.get("depot", "") or "").title(),
                 "city": (i.get("city", "") or "").title(),
                 "location": {
                     "address": f"Somewhere in {(i['depot'] or '').title()}",
@@ -526,7 +526,7 @@ def get_bus_by_uuid(appName, uuid):
                     "timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 ),
                 "status": ", ".join(i.get("status", [""])),
-                "depotNumber": (i.get("depot", "") or "").title(),
+                "depot": (i.get("depot", "") or "").title(),
                 "city": (i.get("city", "") or "").title(),
                 "location": {
                     "address": f"Somewhere in {(i['depot'] or '').title()}",
