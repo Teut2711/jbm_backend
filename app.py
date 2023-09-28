@@ -303,8 +303,8 @@ def get_buses_data(appName):
                 "location": {
                     "address": f"Somewhere in {(i['depot'] or '').title()}",
                     "coordinates": {
-                        "lat": i.get("latitude") or 28.8,
-                        "lng": i.get("longitude") or 28.8,
+                        "lat": i["latitude"],
+                        "lng": i["longitude"],
                     },
                 },
                 "totalAlerts": 0,
@@ -531,8 +531,8 @@ def get_bus_by_uuid(appName, uuid):
                 "location": {
                     "address": f"Somewhere in {(i['depot'] or '').title()}",
                     "coordinates": {
-                        "lat": i.get("latitude", 28.8),
-                        "lng": i.get("longitude", 28.8),
+                        "lat": i["latitude"],
+                        "lng": i["longitude"],
                     },
                 },
                 "signalStrength": i["signal_strength"] or 1,
@@ -742,12 +742,18 @@ def get_faults_data(appName):
             "endTime": res["end_time"],
             "faultLevel": res["fault_level"],
             "faultDuration": res["fault_duration"],
-            "timeToResolve": res["fault_duration"],
+            "timeToResolve": res["time_to_resolve"],
+            "faultType": "Automatic",
+            "location": {
+                "coordinates": {
+                    "lat": res["latitude"],
+                    "lng": res["longitude"],
+                },
+            },
             "ticketNumber": "T-01",
         }
         for res in results_list
     ]
-    print(len(filtered_data))
 
     return jsonify(
         {
@@ -765,7 +771,6 @@ def get_fault_by_uuid(appName, uuid):
     offset = offset if offset >= 0 else None
     start_time = request.args.get("startTime", None)
     fault_code = request.args.get("faultCode", None)
-
     query = f"""
             SELECT  * FROM bus_faults_data WHERE imei ='{uuid}'
             """
@@ -812,18 +817,18 @@ def get_fault_by_uuid(appName, uuid):
             "faultLevel": res["fault_level"],
             "faultDuration": res["fault_duration"],
             "faultType": "Automatic",
-            "timeToResolve": res["fault_duration"],
+            "timeToResolve": res["time_to_resolve"],
+            "location": {
+                "coordinates": {
+                    "lat": res["latitude"],
+                    "lng": res["longitude"],
+                },
+            },
             "ticketNumber": "T-01",
         }
         for res in results_list
     ]
-
-    return jsonify(
-        {
-            "status": "success",
-            "data": {"faults": filtered_data, "length": len(filtered_data)},
-        }
-    )
+    return jsonify({"status": "success", "data": {"faults": filtered_data}})
 
 
 def prepare_filters(fields):

@@ -1,36 +1,45 @@
 ```Faults
- WITH x AS (
-         SELECT status."IMEI"::text AS imei,
-            array_remove(string_to_array(status._faults, ','::text, ''::text), NULL::text) AS all_faults
-           FROM status
-        ), y AS (
-         SELECT x.imei,
-            x.all_faults
-           FROM x
-          WHERE x.all_faults IS NOT NULL AND cardinality(x.all_faults) > 0
-        ), z AS (
-         SELECT y.imei,
+
+ WITH y AS (
+         SELECT faults."IMEI"::text AS imei,
             btrim(replace(tc_devices.name::text, ' '::text, ''::text)) AS bus_number,
-            split_part(t.element, '|'::text, 1) AS fault_time,
-            split_part(t.element, '|'::text, 2) AS fault_code,
-            split_part(t.element, '|'::text, 3) AS fault_description,
-            split_part(t.element, '|'::text, 4) AS fault_level,
-            now()::timestamp without time zone - split_part(t.element, '|'::text, 1)::timestamp without time zone AS fault_duration,
-            'open'::text AS fault_status
-           FROM y
-             LEFT JOIN traccar.tc_devices ON y.imei = tc_devices.uniqueid::text
-             CROSS JOIN LATERAL unnest(y.all_faults) t(element)
+            faults.start::text AS start_time,
+            faults."end"::text AS end_time,
+                CASE
+                    WHEN faults.status IS FALSE THEN concat(date_part('hour'::text, faults."end"::timestamp without time zone - faults.start::timestamp without time zone), ' hours ', date_part('minute'::text, faults."end"::timestamp without time zone - faults.start::timestamp without time zone), ' minutes')
+                    ELSE concat(date_part('hour'::text, now()::timestamp without time zone - faults.start::timestamp without time zone), ' hours ', date_part('minute'::text, now()::timestamp without time zone - faults.start::timestamp without time zone), ' minutes')
+                END AS fault_duration,
+                CASE
+                    WHEN faults.status IS FALSE THEN concat(date_part('hour'::text, faults."end"::timestamp without time zone - faults.start::timestamp without time zone), ' hours ', date_part('minute'::text, faults."end"::timestamp without time zone - faults.start::timestamp without time zone), ' minutes')
+                    ELSE NULL::text
+                END AS time_to_resolve,
+            faults.level::text AS fault_level,
+            faults.code AS fault_code,
+                CASE
+                    WHEN faults.status IS TRUE THEN 'open'::text
+                    ELSE 'close'::text
+                END AS fault_status,
+            faults.latitude,
+            faults.longitude,
+            faults.description AS fault_description
+           FROM faults
+             LEFT JOIN traccar.tc_devices ON faults."IMEI"::text = tc_devices.uniqueid::text
         )
- SELECT z.imei,
-    z.bus_number,
-    z.fault_time,
-    z.fault_code,
-    z.fault_description,
-    z.fault_level,
-    z.fault_duration::text AS fault_duration,
-    z.fault_status
-   FROM z;
-   ```
+ SELECT y.imei,
+    y.bus_number,
+    y.start_time,
+    y.end_time,
+    y.fault_duration,
+    y.time_to_resolve,
+    y.fault_level,
+    y.fault_code,
+    y.fault_status,
+    y.latitude,
+    y.longitude,
+    y.fault_description
+   FROM y
+  WHERE y.imei <> y.bus_number;
+```
 
 ```BUSES
  WITH position_tracker_advanced__others AS (
@@ -480,7 +489,7 @@
           WHERE NOT (bus_battery_data_renamed.status IS NULL OR bus_battery_data_renamed.bus_number IS NULL OR bus_battery_data_renamed.depot IS NULL OR bus_battery_data_renamed.city IS NULL OR bus_battery_data_renamed.latitude IS NULL OR bus_battery_data_renamed.longitude IS NULL)
         )
  SELECT bus_battery_data_cte.imei,
-    bus_battery_data_cte.status,
+    array_remove(bus_battery_data_cte.status, 'in-field'::text) AS status,
     bus_battery_data_cte.bus_number,
     bus_battery_data_cte.depot,
     bus_battery_data_cte.city,
@@ -514,13 +523,13 @@
     bus_battery_data_cte.min_cell_t4,
     bus_battery_data_cte.speed,
     bus_battery_data_cte."timestamp",
-    bus_battery_data_cte.external_power_status,
-    bus_battery_data_cte.signal_strength,
-    bus_battery_data_cte.can_data_status,
+    'on'::text AS external_power_status,
+    '5'::text AS signal_strength,
+    'on'::text AS can_data_status,
     bus_battery_data_cte.bus_running_status,
     bus_battery_data_cte.regeneration_status,
     bus_battery_data_cte.bus_status,
     bus_battery_data_cte.bms_status
    FROM bus_battery_data_cte;
-   ```
+      ```
 
