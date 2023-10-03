@@ -307,7 +307,9 @@ def get_buses_data(appName):
                         "lng": i["longitude"],
                     },
                 },
-                "totalAlerts": 0,
+                "busType": i["bus_type"],
+
+                "totalAlerts": i["total_alerts"],
                 "statusOptions": {
                     "bus": {
                         "text": (
@@ -536,7 +538,9 @@ def get_bus_by_uuid(appName, uuid):
                     },
                 },
                 "signalStrength": i["signal_strength"] or 1,
-                "totalAlerts": 0,
+                "busType": i["bus_type"],
+
+                "totalAlerts": i["total_alerts"],
                 "statusOptions": {
                     "bus": {
                         "text": (
